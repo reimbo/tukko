@@ -5,7 +5,7 @@ import './root.css'
 function MapPlaceholder() {
   return (
     <p>
-      Map of London.{' '}
+      Traffic Visualizer
       <noscript>You need to enable JavaScript to see this map.</noscript>
     </p>
   )
@@ -14,9 +14,11 @@ function MapPlaceholder() {
 export default function root(): JSX.Element {
   return(
     <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      scrollWheelZoom={true}
+      center={[62.24144, 25.758846]}
+      maxBounds={[[70.182772,18.506675],[59.712756,32.559953]]}
+      maxBoundsViscosity={0.9}
+      zoomDelta={0}
+      zoom={7}
       placeholder={<MapPlaceholder />}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
