@@ -1,3 +1,7 @@
+/**
+ * Custom handler to display the station location on the map.
+ * Using the station location from the getStations API module.
+ */
 import { useState, useEffect } from 'react';
 import { fetchStations } from '../api/getStations';
 

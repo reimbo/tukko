@@ -31,6 +31,7 @@ function Geoman() {
 export default function Root(): JSX.Element {
   // update this variable to change the display station
   const displayStation = 66;
+  // store station location data in stationData
   const [stationData, isLoading] = useStationData(displayStation);
 
   if (isLoading) {
