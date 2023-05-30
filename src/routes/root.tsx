@@ -1,9 +1,9 @@
-import { useMap, MapContainer, TileLayer } from 'react-leaflet';
+import { useMap, MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './leaflet.css';
 import './root.css';
 import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
-import { useStationData } from '../handlers/pickStation';
+import { useStationData } from '../handlers/useStationData';
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -30,9 +30,9 @@ function Geoman() {
 
 export default function Root(): JSX.Element {
   // update this variable to change the display station
-  const displayStation = 66;
+  const displayStation = 136;
   // store station location data in stationData
-  const [stationData, isLoading] = useStationData(displayStation);
+  const [stationData, isLoading, stationName] = useStationData(displayStation);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -53,6 +53,9 @@ export default function Root(): JSX.Element {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
+        <Popup> Station {stationName} </Popup>
+      </Marker>
 
       <Geoman />
     </MapContainer>

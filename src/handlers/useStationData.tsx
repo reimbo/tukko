@@ -11,18 +11,26 @@ type Station = {
   altitude?: number;
 };
 
-export function useStationData(station:number): [Station[], boolean] {
+export function useStationData(station:number): [Station[], boolean, string] {
   const [stationData, setStationData] = useState<Station[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [stationName, setStationName] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const locations = await fetchStations();
+        const locations = (await fetchStations()).stationLocation;
         if (locations.length > 0) {
           const { latitude, longitude, altitude } = locations[station];
           setStationData([{ latitude, longitude, altitude }]);
         }
+        
+        const names = (await fetchStations()).stationName;
+        if (names.length > 0) {
+          const stationName = names[station];
+          setStationName(stationName);
+        }
+
       } catch (error) {
         console.error('Error fetching station data:', error);
       } finally {
@@ -33,5 +41,5 @@ export function useStationData(station:number): [Station[], boolean] {
     fetchData();
   }, []);
 
-  return [stationData, isLoading];
+  return [stationData, isLoading, stationName];
 }

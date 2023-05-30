@@ -26,7 +26,7 @@ async function fetchStations() {
     console.error('Error fetching station data:', error);
   }
 
-  return stationLocation;
+  return {stationLocation, stationName};
 }
 
 
