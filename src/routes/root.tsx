@@ -168,6 +168,12 @@ export default function Root(): JSX.Element {
               }}>
                 <Popup>
                   {coords.properties.tasks}
+                  Station name: {stationName[0]} <br/>
+                  Station id: {stationList[0]} <br/>
+                  Sensor: {sensorData.id} <br/>
+                  Sensor name: {sensorData.name} <br/>
+                  Unit: {sensorData.unit} <br/>
+                  Value: {sensorData.value}
                 </Popup>
               </Marker>
             ))}
