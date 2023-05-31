@@ -8,8 +8,9 @@ type SensorData = {
   value: number;
 };
 
-export function useSensorData(stationID: string): SensorData[] {
-  const [sensorData, setSensorData] = useState<SensorData[]>([]);
+export function useSensorData(stationID: string): [SensorData,boolean] {
+  const [sensorData, setSensorData,] = useState<SensorData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +22,13 @@ export function useSensorData(stationID: string): SensorData[] {
         }
       } catch (error) {
         console.error('Error fetching station data:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, [stationID]);
 
-  return sensorData;
+  return [sensorData[0], isLoading];
 }
