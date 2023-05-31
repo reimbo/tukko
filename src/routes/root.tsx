@@ -13,7 +13,7 @@ function MapPlaceholder(): JSX.Element {
       Traffic Visualizer
       <noscript>You need to enable JavaScript to see this map.</noscript>
     </p>
-  )
+  );
 }
 
 function Geoman() {
@@ -102,6 +102,9 @@ export default function root(): JSX.Element {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
+        <Popup> Station name: {stationName} <br></br> Station id: {stationID} <br></br>Sensor: {sensorData.id}  <br></br>Sensor name:{sensorData.name}  <br></br>Unit: {sensorData.unit}  <br></br>Value: {sensorData.value} </Popup>
+      </Marker>
 
       <Geoman />
 
