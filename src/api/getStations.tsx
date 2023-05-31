@@ -4,7 +4,7 @@
  */
 import axios from 'axios';
 
-const stationList: number[] = [];
+const stationList: string[] = [];
 const stationLocation: { longitude: number, latitude: number, altitude: number }[] = [];
 const stationName: string[] = [];
 
@@ -17,7 +17,7 @@ async function fetchStations() {
     });
     console.log(stationData[0]);
     for (const station of stationData) {
-      stationList.push(station.id);
+      stationList.push(station.id.toString());
       const [longitude, latitude, altitude] = station.geometry.coordinates;
       stationLocation.push({ latitude, longitude , altitude });
       stationName.push(station.properties.name);
@@ -26,7 +26,7 @@ async function fetchStations() {
     console.error('Error fetching station data:', error);
   }
 
-  return {stationLocation, stationName};
+  return {stationLocation, stationName, stationList};
 }
 
 

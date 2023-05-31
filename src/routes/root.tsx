@@ -4,6 +4,7 @@ import './root.css';
 import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { useStationData } from '../handlers/useStationData';
+import { useSensorData } from '../handlers/fetchSensorData';
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -31,9 +32,15 @@ function Geoman() {
 export default function Root(): JSX.Element {
   // update this variable to change the display station
   const displayStation = 136;
-  // store station location data in stationData
-  const [stationData, isLoading, stationName] = useStationData(displayStation);
 
+  // store station location data in stationData
+  const [stationData, isLoading, stationName, stationID] = useStationData(displayStation);
+  
+  // update this variable to change the display sensor
+  const displaySensor = "23226";
+
+  const [sensorData] = useSensorData(displaySensor); // Destructure the sensor data from the tuple
+  
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -54,7 +61,7 @@ export default function Root(): JSX.Element {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
-        <Popup> Station {stationName} </Popup>
+        <Popup> Station name: {stationName} <br></br> Station id: {stationID} <br></br>Sensor: {sensorData.id}  <br></br>Sensor name:{sensorData.name}  <br></br>Unit: {sensorData.unit}  <br></br>Value: {sensorData.value} </Popup>
       </Marker>
 
       <Geoman />
