@@ -6,6 +6,9 @@ import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import coordsData from "./data/coords.json"
+import { useStationData } from '../handlers/useStationData';
+import { useSensorData } from '../handlers/fetchSensorData';
+
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -64,7 +67,23 @@ const orangeIcon = new L.Icon({
 
 
 
-export default function root(): JSX.Element {
+export default function Root(): JSX.Element {
+  // update this variable to change the display station
+  const displayStation = 136;
+
+  // store station location data in stationData
+  const [stationData, isLoading, stationName, stationID] = useStationData(displayStation);
+  
+  // update this variable to change the display sensor
+  const displaySensor = "23226";
+
+  const [sensorData] = useSensorData(displaySensor); // Destructure the sensor data from the tuple
+  
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  const firstLocation = stationData.length > 0 ? stationData[0] : null;
 
   const greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -90,11 +109,11 @@ export default function root(): JSX.Element {
     </div> */}
 
     <MapContainer
-      center={[62.2414436340332, 25.758846282958984]}
-      maxBounds={[[70.182772,18.506675],[59.712756,32.559953]]}
+      center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
+      maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
       maxBoundsViscosity={0.9}
-      zoomDelta={1}
-      zoom={6}
+      zoomDelta={0}
+      zoom={12}
       placeholder={<MapPlaceholder />}>
 
 
