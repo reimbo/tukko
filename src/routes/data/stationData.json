@@ -1,0 +1,269 @@
+[
+    {
+      "station_id": "20002",
+      "station_name": "vt1_Espoo_Hirvisuo",
+      "latitude": 60.220898,
+      "longitude": 24.637997
+    },
+    {
+      "station_id": "20004",
+      "station_name": "vt1_Espoo_Suomenoja",
+      "latitude": 60.165177,
+      "longitude": 24.731734
+    },
+    {
+      "station_id": "20006",
+      "station_name": "vt1_Espoo_Kasavuori",
+      "latitude": 60.210344,
+      "longitude": 24.680272
+    },
+    {
+      "station_id": "20007",
+      "station_name": "vt1_Espoo_Olarinluoma",
+      "latitude": 60.215567,
+      "longitude": 24.641685
+    },
+    {
+      "station_id": "20009",
+      "station_name": "vt1_Espoo_Kuurinniitty",
+      "latitude": 60.200669,
+      "longitude": 24.710207
+    },
+    {
+      "station_id": "20010",
+      "station_name": "vt1_Espoo_Tuomarila",
+      "latitude": 60.205637,
+      "longitude": 24.695188
+    },
+    {
+      "station_id": "20011",
+      "station_name": "vt1_Espoo_Kauklahti",
+      "latitude": 60.172429,
+      "longitude": 24.520222
+    },
+    {
+      "station_id": "20016",
+      "station_name": "vt1_Espoo_Stensgård",
+      "latitude": 60.205067,
+      "longitude": 24.749333
+    },
+    {
+      "station_id": "20010",
+      "station_name": "vt1_Kirkkonummi_Koivuhovi",
+      "latitude": 60.165785,
+      "longitude": 24.523103
+    },
+    {
+      "station_id": "20017",
+      "station_name": "vt1_Kirkkonummi_Heikkilä",
+      "latitude": 60.152781,
+      "longitude": 24.527491
+    },
+    {
+      "station_id": "20018",
+      "station_name": "vt1_Kirkkonummi_Masala",
+      "latitude": 60.15612,
+      "longitude": 24.535441
+    },
+    {
+      "station_id": "20024",
+      "station_name": "vt1_Kirkkonummi_Torhola",
+      "latitude": 60.157661,
+      "longitude": 24.543415
+    },
+    {
+      "station_id": "20025",
+      "station_name": "vt1_Kirkkonummi_Jorvas",
+      "latitude": 60.165465,
+      "longitude": 24.556768
+    },
+    {
+      "station_id": "20026",
+      "station_name": "vt1_Kirkkonummi_Flaamingo",
+      "latitude": 60.155354,
+      "longitude": 24.564979
+    },
+    {
+      "station_id": "20028",
+      "station_name": "vt1_Kirkkonummi_Kyrkslätt",
+      "latitude": 60.151574,
+      "longitude": 24.571229
+    },
+    {
+        "station_id": "20301",
+        "station_name": "vt1_Kirkkonummi_Kantvik",
+        "latitude": 60.102755,
+        "longitude": 24.516054
+      },
+      {
+          "station_id": "23003",
+          "station_name": "vt1_Vihti_Kiljava",
+          "latitude": 60.117661,
+          "longitude": 24.80397
+      },
+      {
+          "station_id": "23004",
+          "station_name": "vt1_Vihti_Huhtaa",
+          "latitude": 60.116651,
+          "longitude": 24.819737
+      },
+      {
+          "station_id": "23005",
+          "station_name": "vt1_Vihti_Mäntsälä",
+          "latitude": 60.115647,
+          "longitude": 24.839487
+      },
+      {
+          "station_id": "23006",
+          "station_name": "vt1_Mäntsälä_Marttila",
+          "latitude": 60.113972,
+          "longitude": 24.860063
+      },
+      {
+          "station_id": "23007",
+          "station_name": "vt1_Mäntsälä_Oinasjoki",
+          "latitude": 60.112689,
+          "longitude": 24.880559
+      },
+      {
+          "station_id": "23008",
+          "station_name": "vt1_Mäntsälä_Äijälä",
+          "latitude": 60.111221,
+          "longitude": 24.897654
+      },
+      {
+          "station_id": "23009",
+          "station_name": "vt1_Mäntsälä_Kiiskilä",
+          "latitude": 60.110011,
+          "longitude": 24.917187
+      },
+      {
+          "station_id": "23010",
+          "station_name": "vt1_Mäntsälä_Rajamäki",
+          "latitude": 60.107899,
+          "longitude": 24.932655
+      },
+      {
+          "station_id": "23011",
+          "station_name": "vt1_Mäntsälä_Sukkula",
+          "latitude": 60.107018,
+          "longitude": 24.951376
+      },
+      {
+          "station_id": "23012",
+          "station_name": "vt1_Mäntsälä_Sarvisalo",
+          "latitude": 60.105709,
+          "longitude": 24.969032
+      },
+      {
+          "station_id": "23013",
+          "station_name": "vt1_Mäntsälä_Oravala",
+          "latitude": 60.104628,
+          "longitude": 24.984184
+      },
+      {
+          "station_id": "23014",
+          "station_name": "vt1_Mäntsälä_Koivisto",
+          "latitude": 60.103299,
+          "longitude": 25.003184
+      },
+      {
+          "station_id": "23015",
+          "station_name": "vt1_Mäntsälä_Hyvinkää",
+          "latitude": 60.102334,
+          "longitude": 25.02091
+      },
+      {
+          "station_id": "23098",
+          "station_name": "vt1_Hyvinkää_Puolanka",
+          "latitude": 60.100569,
+          "longitude": 25.034959
+      },
+      {
+        "station_id": "23099",
+        "station_name": "vt1_Helsinki_Vartiokylä",
+        "latitude": 60.231363,
+        "longitude": 25.048308
+      },
+      {
+        "station_id": "23101",
+        "station_name": "vt1_Helsinki_Kulosaari",
+        "latitude": 60.191469,
+        "longitude": 25.006224
+      },
+      {
+        "station_id": "23102",
+        "station_name": "vt1_Helsinki_Tammisalo",
+        "latitude": 60.183438,
+        "longitude": 25.024141
+      },
+      {
+        "station_id": "23103",
+        "station_name": "vt1_Helsinki_Santahamina",
+        "latitude": 60.188758,
+        "longitude": 25.077468
+      },
+      {
+        "station_id": "23104",
+        "station_name": "vt1_Helsinki_Vuosaari",
+        "latitude": 60.207113,
+        "longitude": 25.103764
+      },
+      {
+        "station_id": "23105",
+        "station_name": "vt1_Helsinki_Rastila",
+        "latitude": 60.219309,
+        "longitude": 25.112651
+      },
+      {
+        "station_id": "23106",
+        "station_name": "vt1_Helsinki_Mellunmäki",
+        "latitude": 60.240723,
+        "longitude": 25.082052
+      },
+      {
+        "station_id": "23107",
+        "station_name": "vt1_Helsinki_Roihupelto",
+        "latitude": 60.221463,
+        "longitude": 25.085151
+      },
+      {
+        "station_id": "23108",
+        "station_name": "vt1_Helsinki_Kivikko",
+        "latitude": 60.209519,
+        "longitude": 25.077044
+      },
+      {
+        "station_id": "23109",
+        "station_name": "vt1_Helsinki_Itäväylä",
+        "latitude": 60.196945,
+        "longitude": 25.065785
+      },
+      {
+        "station_id": "23110",
+        "station_name": "vt1_Helsinki_Hermanni",
+        "latitude": 60.18746,
+        "longitude": 25.046071
+      },
+      {
+        "station_id": "23111",
+        "station_name": "vt1_Helsinki_Kaisaniemi",
+        "latitude": 60.172199,
+        "longitude": 24.952197
+      },
+      {
+        "station_id": "23112",
+        "station_name": "vt1_Helsinki_Pasila",
+        "latitude": 60.198364,
+        "longitude": 24.926262
+      },
+      {
+        "station_id": "23114",
+        "station_name": "vt1_Helsinki_Länsi-Pasila",
+        "latitude": 60.196718,
+        "longitude": 24.908033
+      }
+
+    
+]
+  
