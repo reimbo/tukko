@@ -12,7 +12,6 @@ import {useState, useEffect} from 'react';
 
 /**
  * Variables for the map
- * stationLocation: array of objects containing the coordinates of the stations
  * stationLocation[0].latitude: latitude of the first station
  * stationLocation[0].longitude: longitude of the first station
  * stationName: array of strings containing the names of the stations
@@ -103,19 +102,12 @@ export default function Root(): JSX.Element {
   if (isLoading) {
     return <p>Loading...</p>;
   }
+  
 
   const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
   console.log(stationLocation.length+"locations***\n")
   console.log(stationName.length+"names***\n")
   console.log(stationList.length+"ids***\n")
-  const greenIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-  });
 
   return(
 
@@ -216,24 +208,25 @@ export default function Root(): JSX.Element {
           </LayerGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay name="Show markers 4">
+        <LayersControl.Overlay name="Stations">
           <LayerGroup>
-          {coordsData.map(coords => (
+          {stationLocation.map(stations => (
               <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+              position={[stations.latitude, stations.longitude ]}
               icon={orangeIcon}
               eventHandlers={{
                 mouseover: (event) => event.target.openPopup(),
               }}>
                 <Popup>
-                  {coords.properties.tasks}
+                  Station name:<br/>
+                  Station id: <br/>
+                  Unit: <br/>
+                  Value:
                 </Popup>
               </Marker>
             ))}
           </LayerGroup>
         </LayersControl.Overlay>
-
         <LayersControl.Overlay name="Show markers 5">
           <LayerGroup>
             
