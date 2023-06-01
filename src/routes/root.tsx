@@ -193,6 +193,16 @@ export default function Root(): JSX.Element {
     shadowSize: [41, 41]
   });
 
+
+  //The combined data is passed to the MapContainer as props
+  const combinedData = {
+    stationLocation: stationLocation,
+    stationList: stationList,
+    stationName: stationName,
+    sensorDataList: sensorDataList,
+
+  }
+
   return(
 
     <Fragment>
@@ -232,27 +242,27 @@ export default function Root(): JSX.Element {
 
 
       <LayersControl position="topright" collapsed={false} >
-        <LayersControl.Overlay name="Show markers">
-          <LayerGroup>
-            {coordsData.map(coords => (
-              <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+      <LayersControl.Overlay name="Show markers">
+        <LayerGroup>
+          {combinedData.stationList.map((stationId, index) => (
+            <Marker 
+              key={stationId}
+              position={[
+                combinedData.stationLocation[index].latitude,
+                combinedData.stationLocation[index].longitude
+              ]}
               eventHandlers={{
-                mouseover: (event) => event.target.openPopup(),
-              }}>
-                <Popup>
-                  {coords.properties.tasks}
-                  Station name: {stationName[0]} <br/>
-                  Station id: {stationList[0]} <br/>
-                  Sensor name: {sensorDataList[0].name} <br/>
-                  Unit: {sensorDataList[0].unit} <br/>
-                  Value: {sensorDataList[0].value}
-                </Popup>
-              </Marker>
-            ))}
-          </LayerGroup>
-        </LayersControl.Overlay>
+                mouseover: (event) => event.target.openPopup()
+              }}
+            >
+              <Popup>
+                Station name: {combinedData.stationName[index]} <br/>
+                Station id: {stationId} <br/>
+              </Popup>
+            </Marker>
+          ))}
+        </LayerGroup>
+      </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 2">
           <LayerGroup>
