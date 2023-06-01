@@ -290,24 +290,25 @@ export default function Root(): JSX.Element {
           </LayerGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay name="Show markers 4">
+        <LayersControl.Overlay name="Stations">
           <LayerGroup>
-          {coordsData.map(coords => (
+          {stationLocation.map(stations => (
               <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+              position={[stations.latitude, stations.longitude ]}
               icon={orangeIcon}
               eventHandlers={{
                 mouseover: (event) => event.target.openPopup(),
               }}>
                 <Popup>
-                  {coords.properties.tasks}
+                  Station name:<br/>
+                  Station id: <br/>
+                  Unit: <br/>
+                  Value:
                 </Popup>
               </Marker>
             ))}
           </LayerGroup>
         </LayersControl.Overlay>
-
         <LayersControl.Overlay name="Show markers 5">
           <LayerGroup>
             
