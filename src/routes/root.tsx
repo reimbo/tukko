@@ -6,8 +6,19 @@ import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import coordsData from "./data/coords.json"
-import { useStationData } from '../handlers/useStationData';
+import { stationLocation, isLoading, stationName,stationList, fetchStations } from '../api/getStations';
 import { useSensorData } from '../handlers/fetchSensorData';
+import {useState, useEffect} from 'react';
+
+/**
+ * Variables for the map
+ * stationLocation[0].latitude: latitude of the first station
+ * stationLocation[0].longitude: longitude of the first station
+ * stationName: array of strings containing the names of the stations
+ * stationName[0]: name of the first station
+ * stationList: array of strings containing the ids of the stations
+ * stationList[0]: id of the first station
+ */
 
 
 function MapPlaceholder(): JSX.Element {
@@ -66,21 +77,37 @@ const orangeIcon = new L.Icon({
 
 export default function Root(): JSX.Element {
   // update this variable to change the display station
-  const displayStation = 136;
+  // const displayStation = 136;
 
   // store station location data in stationData
-  const [stationData, isLoading, stationName, stationID] = useStationData(displayStation);
+  // const [stationLocation, isLoading, stationName,stationList]  = await useStationData();
   
+  console.log(stationLocation.length);
+  console.log(stationName.length);
   // update this variable to change the display sensor
   const displaySensor = "23226";
 
   const [sensorData] = useSensorData(displaySensor); // Destructure the sensor data from the tuple
-  
+  useEffect(() => {
+    const fetchStationData = async () => {
+      try {
+        await fetchStations();
+      } catch (error) {
+        console.error('Error fetching station data:', error);
+      }
+    };
+
+    fetchStationData();
+  }, []);
   if (isLoading) {
     return <p>Loading...</p>;
   }
+  
 
-  const firstLocation = stationData.length > 0 ? stationData[0] : null;
+  const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
+  console.log(stationLocation.length+"locations***\n")
+  console.log(stationName.length+"names***\n")
+  console.log(stationList.length+"ids***\n")
 
   return(
 
@@ -96,23 +123,28 @@ export default function Root(): JSX.Element {
       <label >Hide Markers</label><br/>   
     </div> */}
 
-    <MapContainer
-      center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
-      maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
-      maxBoundsViscosity={0.9}
-      zoomDelta={0}
-      zoom={12}
-      placeholder={<MapPlaceholder />}>
-
-
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
-        <Popup> Station name: {stationName} <br></br> Station id: {stationID} <br></br>Sensor: {sensorData.id}  <br></br>Sensor name:{sensorData.name}  <br></br>Unit: {sensorData.unit}  <br></br>Value: {sensorData.value} </Popup>
-      </Marker>
-
+      <MapContainer
+        center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
+        maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
+        maxBoundsViscosity={0.9}
+        zoomDelta={0}
+        zoom={12}
+        placeholder={<MapPlaceholder />}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
+          <Popup>
+            Station name: {stationName[0]} <br/>
+            Station id: {stationList[0]} <br/>
+            Sensor: {sensorData.id} <br/>
+            Sensor name: {sensorData.name} <br/>
+            Unit: {sensorData.unit} <br/>
+            Value: {sensorData.value}
+            </Popup>
+        </Marker>
       <Geoman />
 
 
@@ -128,6 +160,12 @@ export default function Root(): JSX.Element {
               }}>
                 <Popup>
                   {coords.properties.tasks}
+                  Station name: {stationName[0]} <br/>
+                  Station id: {stationList[0]} <br/>
+                  Sensor: {sensorData.id} <br/>
+                  Sensor name: {sensorData.name} <br/>
+                  Unit: {sensorData.unit} <br/>
+                  Value: {sensorData.value}
                 </Popup>
               </Marker>
             ))}
@@ -170,24 +208,25 @@ export default function Root(): JSX.Element {
           </LayerGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay name="Show markers 4">
+        <LayersControl.Overlay name="Stations">
           <LayerGroup>
-          {coordsData.map(coords => (
+          {stationLocation.map(stations => (
               <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+              position={[stations.latitude, stations.longitude ]}
               icon={orangeIcon}
               eventHandlers={{
                 mouseover: (event) => event.target.openPopup(),
               }}>
                 <Popup>
-                  {coords.properties.tasks}
+                  Station name:<br/>
+                  Station id: <br/>
+                  Unit: <br/>
+                  Value:
                 </Popup>
               </Marker>
             ))}
           </LayerGroup>
         </LayersControl.Overlay>
-
         <LayersControl.Overlay name="Show markers 5">
           <LayerGroup>
             
