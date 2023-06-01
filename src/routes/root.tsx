@@ -220,8 +220,6 @@ export default function Root(): JSX.Element {
                 <Popup>
                   Station name:<br/>
                   Station id: <br/>
-                  Unit: <br/>
-                  Value:
                 </Popup>
               </Marker>
             ))}
