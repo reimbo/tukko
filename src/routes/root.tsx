@@ -6,8 +6,7 @@ import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import coordsData from "./data/coords.json"
-import { stationLocation, isLoading, stationName,stationList, fetchStations } from '../api/getStations';
-// import { useSensorData } from '../handlers/fetchSensorData';
+import { stationLocation, stationName,stationList, fetchStations } from '../api/getStations';
 import { fetchAllStations } from '../api/getSensors';
 import {useState, useEffect} from 'react';
 
@@ -89,17 +88,12 @@ export default function Root(): JSX.Element {
   // update this variable to change the number of display stations
   // const displayStation = 50;
 
-  // store station location data in stationData
-  // const [stationLocation, isLoading, stationName,stationList]  = await useStationData();
-  
   type SensorData = {
     id: number;
     name: string;
     unit: string;
     value: number;
   };
-  const [stationLoaded, setStationLoaded] = useState(false);
-  const [sensorLoaded, setSensorLoaded] = useState(false);
 
   const [sensorDataList, setSensorDataList] = useState<SensorData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -112,12 +106,10 @@ export default function Root(): JSX.Element {
   // update this variable to change the display sensor
   // const displaySensor = "23226";
   
-  // const [sensorData] = useSensorData(displaySensor); // Destructure the sensor data from the tuple
   useEffect(() => {
     const fetchStationData = async () => {
       try {
         await fetchStations();
-        setStationLoaded(true);
       } catch (error) {
         console.error('Error fetching station data:', error);
       }
@@ -143,40 +135,10 @@ export default function Root(): JSX.Element {
 
     fetchData();
   }, []);
-  
-
-
-  // const [sensorDataList, setSensorDataList] = useState<SensorData[]>([]);
-  
-  // const sensorData = useSensorData(stationList); // Call useSensorData hook directly
-
-  // useEffect(() => {
-  //   const FetchSensorData = async () => {
-  //     try {
-  //       if (sensorData !== undefined) {
-  //         const newDataList = sensorData.flatMap((sensorArray) =>
-  //           sensorArray.map((sensor) => {
-  //             const { id, name, unit, value } = sensor;
-  //             return { id, name, unit, value };
-  //           })
-  //         );
-  //         setSensorDataList((prevDataList) => [...prevDataList, ...newDataList]);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching sensor data:', error);
-  //     }
-  //   };
-
-    
-  //     FetchSensorData();
-  // }, [stationLoaded]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
-  // if (isLoading || !stationLoaded || !sensorLoaded) {
-  //   return <p>Loading...</p>;
-  // }
   
 
   const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
@@ -184,6 +146,7 @@ export default function Root(): JSX.Element {
   console.log(stationName.length+"names***\n")
   // console.log(stationList.length+"ids***\n")
   console.log(sensorDataList.length+" sensor ***\n")
+
   const greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',

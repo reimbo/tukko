@@ -23,7 +23,7 @@ async function fetchStations() {
     }
 
     // Store the updated data in local storage
-    localStorage.setItem('stationData', JSON.stringify(stationData));
+    // localStorage.setItem('stationData', JSON.stringify(stationData));
 
   } catch (error) {
     console.error('Error fetching station data:', error);
