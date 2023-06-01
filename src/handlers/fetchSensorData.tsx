@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchSingleStation } from '../api/getSensors';
+import { fetchAllStations } from '../api/getSensors';
 
 type SensorData = {
   id: number;
@@ -8,17 +8,16 @@ type SensorData = {
   value: number;
 };
 
-export function useSensorData(stationID: string): [SensorData,boolean] {
-  const [sensorData, setSensorData,] = useState<SensorData[]>([]);
+export function useSensorData(): [SensorData[]] {
+  const [sensorData, setSensorData] = useState<SensorData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sensors = await fetchSingleStation(stationID);
-        if (sensors !== undefined) {
-          const { id, name, unit, value } = sensors;
-          setSensorData([{ id, name, unit, value }]);
+        const stationDataResponse = await fetchAllStations();
+        if (stationDataResponse && stationDataResponse.length > 0) {
+          setSensorData(stationDataResponse);
         }
       } catch (error) {
         console.error('Error fetching station data:', error);
@@ -28,7 +27,7 @@ export function useSensorData(stationID: string): [SensorData,boolean] {
     };
 
     fetchData();
-  }, [stationID]);
+  }, []);
 
-  return [sensorData[0], isLoading];
+  return [sensorData];
 }

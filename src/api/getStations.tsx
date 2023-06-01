@@ -1,20 +1,10 @@
-/**
- * This is the stations API module.
- * Usage: fetch all stations data from https://tie.digitraffic.fi/api/tms/v1/stations
- */
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const stationList: string[] = [];
 const stationLocation: { longitude: number, latitude: number, altitude: number }[] = [];
 const stationName: string[] = [];
 let isLoading = true;
-
-// type Station = {
-//   latitude: number;
-//   longitude: number;
-//   altitude?: number;
-// };
 
 async function fetchStations() {
   try {
@@ -23,36 +13,31 @@ async function fetchStations() {
       const { id, geometry, properties } = feature;
       return { id, geometry, properties };
     });
-    
+
+    // Extract the required data from stationData
     for (const station of stationData) {
       stationList.push(station.id.toString());
       const [longitude, latitude, altitude] = station.geometry.coordinates;
-      stationLocation.push({ latitude, longitude , altitude });
+      stationLocation.push({ latitude, longitude, altitude });
       stationName.push(station.properties.name);
     }
-    
-    // return { stationLocation, stationName, stationList };
+
+    // Store the updated data in local storage
+    localStorage.setItem('stationData', JSON.stringify(stationData));
+
   } catch (error) {
     console.error('Error fetching station data:', error);
     throw error;
-  }finally {
+  } finally {
     isLoading = false;
   }
 }
 
 function useStationData() {
-  // const [stationData, setStationData] = useState<Station[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [stationName, setStationName] = useState<string>('');
-  // const [stationID, setStationID] = useState<string[]>([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         await fetchStations();
-        // console.log(locations.length+"locations***\n")
-        
-
       } catch (error) {
         console.error('Error fetching station data:', error);
       } finally {
@@ -62,8 +47,6 @@ function useStationData() {
 
     fetchData();
   }, []);
-
-  // return [stationLocation, isLoading, stationName,stationList];
 }
 
-export { stationLocation, isLoading, stationName,stationList,useStationData, fetchStations };
+export { stationLocation, isLoading, stationName, stationList, useStationData, fetchStations };

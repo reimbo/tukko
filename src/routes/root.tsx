@@ -7,20 +7,30 @@ import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import coordsData from "./data/coords.json"
 import { stationLocation, isLoading, stationName,stationList, fetchStations } from '../api/getStations';
-import { useSensorData } from '../handlers/fetchSensorData';
+// import { useSensorData } from '../handlers/fetchSensorData';
+import { fetchAllStations } from '../api/getSensors';
 import {useState, useEffect} from 'react';
 
 /**
  * Variables for the map
- * stationLocation[0].latitude: latitude of the first station
- * stationLocation[0].longitude: longitude of the first station
+ * stationLocation: array of objects containing the coordinates of the stations
+ *    stationLocation[0].latitude: latitude of the first station
+ *    stationLocation[0].longitude: longitude of the first station
  * stationName: array of strings containing the names of the stations
- * stationName[0]: name of the first station
+ *    stationName[0]: name of the first station
  * stationList: array of strings containing the ids of the stations
- * stationList[0]: id of the first station
+ *    stationList[0]: id of the first station
  */
 
-
+/**
+ * 
+ * example marker popup with sensor data
+ *  Station name: {stationName[0]} <br/>
+ *  Station id: {stationList[0]} <br/>
+ *  Sensor name: {sensorDataList[0].name} <br/>
+ *  Unit: {sensorDataList[0].unit} <br/>
+ *  Value: {sensorDataList[0].value}
+ */
 function MapPlaceholder(): JSX.Element {
   return (
     <p>
@@ -76,22 +86,38 @@ const orangeIcon = new L.Icon({
 
 
 export default function Root(): JSX.Element {
-  // update this variable to change the display station
-  // const displayStation = 136;
+  // update this variable to change the number of display stations
+  // const displayStation = 50;
 
   // store station location data in stationData
   // const [stationLocation, isLoading, stationName,stationList]  = await useStationData();
   
+  type SensorData = {
+    id: number;
+    name: string;
+    unit: string;
+    value: number;
+  };
+  const [stationLoaded, setStationLoaded] = useState(false);
+  const [sensorLoaded, setSensorLoaded] = useState(false);
+
+  const [sensorDataList, setSensorDataList] = useState<SensorData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  
   console.log(stationLocation.length);
   console.log(stationName.length);
-  // update this variable to change the display sensor
-  const displaySensor = "23226";
 
-  const [sensorData] = useSensorData(displaySensor); // Destructure the sensor data from the tuple
+  // update this variable to change the display sensor
+  // const displaySensor = "23226";
+  
+  // const [sensorData] = useSensorData(displaySensor); // Destructure the sensor data from the tuple
   useEffect(() => {
     const fetchStationData = async () => {
       try {
         await fetchStations();
+        setStationLoaded(true);
       } catch (error) {
         console.error('Error fetching station data:', error);
       }
@@ -99,15 +125,73 @@ export default function Root(): JSX.Element {
 
     fetchStationData();
   }, []);
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const stationDataResponse = await fetchAllStations();
+        if (stationDataResponse && stationDataResponse.length > 0) {
+          setSensorDataList(stationDataResponse);
+        }
+      } catch (error) {
+        console.error('Error fetching sensor data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+
+
+  // const [sensorDataList, setSensorDataList] = useState<SensorData[]>([]);
+  
+  // const sensorData = useSensorData(stationList); // Call useSensorData hook directly
+
+  // useEffect(() => {
+  //   const FetchSensorData = async () => {
+  //     try {
+  //       if (sensorData !== undefined) {
+  //         const newDataList = sensorData.flatMap((sensorArray) =>
+  //           sensorArray.map((sensor) => {
+  //             const { id, name, unit, value } = sensor;
+  //             return { id, name, unit, value };
+  //           })
+  //         );
+  //         setSensorDataList((prevDataList) => [...prevDataList, ...newDataList]);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching sensor data:', error);
+  //     }
+  //   };
+
+    
+  //     FetchSensorData();
+  // }, [stationLoaded]);
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
+  // if (isLoading || !stationLoaded || !sensorLoaded) {
+  //   return <p>Loading...</p>;
+  // }
   
 
   const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
   console.log(stationLocation.length+"locations***\n")
   console.log(stationName.length+"names***\n")
-  console.log(stationList.length+"ids***\n")
+  // console.log(stationList.length+"ids***\n")
+  console.log(sensorDataList.length+" sensor ***\n")
+  const greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
 
   return(
 
@@ -139,10 +223,9 @@ export default function Root(): JSX.Element {
           <Popup>
             Station name: {stationName[0]} <br/>
             Station id: {stationList[0]} <br/>
-            Sensor: {sensorData.id} <br/>
-            Sensor name: {sensorData.name} <br/>
-            Unit: {sensorData.unit} <br/>
-            Value: {sensorData.value}
+            Sensor name: {sensorDataList[0].name} <br/>
+            Unit: {sensorDataList[0].unit} <br/>
+            Value: {sensorDataList[0].value}
             </Popup>
         </Marker>
       <Geoman />
@@ -162,10 +245,9 @@ export default function Root(): JSX.Element {
                   {coords.properties.tasks}
                   Station name: {stationName[0]} <br/>
                   Station id: {stationList[0]} <br/>
-                  Sensor: {sensorData.id} <br/>
-                  Sensor name: {sensorData.name} <br/>
-                  Unit: {sensorData.unit} <br/>
-                  Value: {sensorData.value}
+                  Sensor name: {sensorDataList[0].name} <br/>
+                  Unit: {sensorDataList[0].unit} <br/>
+                  Value: {sensorDataList[0].value}
                 </Popup>
               </Marker>
             ))}
