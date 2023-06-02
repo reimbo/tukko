@@ -1,4 +1,5 @@
 # !!! run "node run build" BEFORE building the container !!!
+version: '1'
 services:
   ngnix:
     image: nginx:latest
@@ -9,6 +10,6 @@ services:
      - 3000:80
     working_dir: /
     # for testing you can "node run build" to update build files in /dist
-    # /usr/share/nginx/html is mounted to /dist directory, so the running container will atimatically hook up the changes in the build directory
+    # /usr/share/nginx/html is mounted to /dist directory, so the running container will atimatically hook up the changes
     volumes:
       - ./dist:/usr/share/nginx/html
