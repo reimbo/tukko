@@ -4,8 +4,10 @@ import stationData from '../routes/data/stationData.json';
 interface Station {
   station_id: string;
   station_name: string;
-  latitude: number;
-  longitude: number;
+  station_location:{
+    latitude: number;
+    longitude: number;
+  }
 }
 
 interface Sensor {
