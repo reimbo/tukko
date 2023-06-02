@@ -100,8 +100,8 @@ export default function Root(): JSX.Element {
 
 
   
-  console.log(stationLocation.length);
-  console.log(stationName.length);
+  // console.log(stationLocation.length);
+  // console.log(stationName.length);
 
   // update this variable to change the display sensor
   // const displaySensor = "23226";
