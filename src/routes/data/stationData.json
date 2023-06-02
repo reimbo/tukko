@@ -1,269 +1,4146 @@
 [
-    {
-      "station_id": "20002",
-      "station_name": "vt1_Espoo_Hirvisuo",
+  {
+    "station_id": "20002",
+    "station_name": "vt1_Espoo_Hirvisuo",
+    "station_location": {
       "latitude": 60.220898,
       "longitude": 24.637997
-    },
-    {
-      "station_id": "20004",
-      "station_name": "vt1_Espoo_Suomenoja",
-      "latitude": 60.165177,
-      "longitude": 24.731734
-    },
-    {
-      "station_id": "20006",
-      "station_name": "vt1_Espoo_Kasavuori",
+    }
+  },
+  {
+    "station_id": "20004",
+    "station_name": "vt1_Espoo_Kasavuori",
+    "station_location": {
       "latitude": 60.210344,
       "longitude": 24.680272
-    },
-    {
-      "station_id": "20007",
-      "station_name": "vt1_Espoo_Olarinluoma",
-      "latitude": 60.215567,
-      "longitude": 24.641685
-    },
-    {
-      "station_id": "20009",
-      "station_name": "vt1_Espoo_Kuurinniitty",
+    }
+  },
+  {
+    "station_id": "20006",
+    "station_name": "vt1_Espoo_Kuurinniitty",
+    "station_location": {
       "latitude": 60.200669,
       "longitude": 24.710207
-    },
-    {
-      "station_id": "20010",
-      "station_name": "vt1_Espoo_Tuomarila",
+    }
+  },
+  {
+    "station_id": "20007",
+    "station_name": "vt1_Espoo_Tuomarila",
+    "station_location": {
       "latitude": 60.205637,
       "longitude": 24.695188
-    },
-    {
-      "station_id": "20011",
-      "station_name": "vt1_Espoo_Kauklahti",
-      "latitude": 60.172429,
-      "longitude": 24.520222
-    },
-    {
-      "station_id": "20016",
-      "station_name": "vt1_Espoo_Stensgård",
+    }
+  },
+  {
+    "station_id": "20009",
+    "station_name": "vt1_Espoo_Stensgård",
+    "station_location": {
       "latitude": 60.205067,
       "longitude": 24.749333
-    },
-    {
-      "station_id": "20010",
-      "station_name": "vt1_Kirkkonummi_Koivuhovi",
-      "latitude": 60.165785,
-      "longitude": 24.523103
-    },
-    {
-      "station_id": "20017",
-      "station_name": "vt1_Kirkkonummi_Heikkilä",
-      "latitude": 60.152781,
-      "longitude": 24.527491
-    },
-    {
-      "station_id": "20018",
-      "station_name": "vt1_Kirkkonummi_Masala",
-      "latitude": 60.15612,
-      "longitude": 24.535441
-    },
-    {
-      "station_id": "20024",
-      "station_name": "vt1_Kirkkonummi_Torhola",
-      "latitude": 60.157661,
-      "longitude": 24.543415
-    },
-    {
-      "station_id": "20025",
-      "station_name": "vt1_Kirkkonummi_Jorvas",
-      "latitude": 60.165465,
-      "longitude": 24.556768
-    },
-    {
-      "station_id": "20026",
-      "station_name": "vt1_Kirkkonummi_Flaamingo",
-      "latitude": 60.155354,
-      "longitude": 24.564979
-    },
-    {
-      "station_id": "20028",
-      "station_name": "vt1_Kirkkonummi_Kyrkslätt",
-      "latitude": 60.151574,
-      "longitude": 24.571229
-    },
-    {
-        "station_id": "20301",
-        "station_name": "vt1_Kirkkonummi_Kantvik",
-        "latitude": 60.102755,
-        "longitude": 24.516054
-      },
-      {
-          "station_id": "23003",
-          "station_name": "vt1_Vihti_Kiljava",
-          "latitude": 60.117661,
-          "longitude": 24.80397
-      },
-      {
-          "station_id": "23004",
-          "station_name": "vt1_Vihti_Huhtaa",
-          "latitude": 60.116651,
-          "longitude": 24.819737
-      },
-      {
-          "station_id": "23005",
-          "station_name": "vt1_Vihti_Mäntsälä",
-          "latitude": 60.115647,
-          "longitude": 24.839487
-      },
-      {
-          "station_id": "23006",
-          "station_name": "vt1_Mäntsälä_Marttila",
-          "latitude": 60.113972,
-          "longitude": 24.860063
-      },
-      {
-          "station_id": "23007",
-          "station_name": "vt1_Mäntsälä_Oinasjoki",
-          "latitude": 60.112689,
-          "longitude": 24.880559
-      },
-      {
-          "station_id": "23008",
-          "station_name": "vt1_Mäntsälä_Äijälä",
-          "latitude": 60.111221,
-          "longitude": 24.897654
-      },
-      {
-          "station_id": "23009",
-          "station_name": "vt1_Mäntsälä_Kiiskilä",
-          "latitude": 60.110011,
-          "longitude": 24.917187
-      },
-      {
-          "station_id": "23010",
-          "station_name": "vt1_Mäntsälä_Rajamäki",
-          "latitude": 60.107899,
-          "longitude": 24.932655
-      },
-      {
-          "station_id": "23011",
-          "station_name": "vt1_Mäntsälä_Sukkula",
-          "latitude": 60.107018,
-          "longitude": 24.951376
-      },
-      {
-          "station_id": "23012",
-          "station_name": "vt1_Mäntsälä_Sarvisalo",
-          "latitude": 60.105709,
-          "longitude": 24.969032
-      },
-      {
-          "station_id": "23013",
-          "station_name": "vt1_Mäntsälä_Oravala",
-          "latitude": 60.104628,
-          "longitude": 24.984184
-      },
-      {
-          "station_id": "23014",
-          "station_name": "vt1_Mäntsälä_Koivisto",
-          "latitude": 60.103299,
-          "longitude": 25.003184
-      },
-      {
-          "station_id": "23015",
-          "station_name": "vt1_Mäntsälä_Hyvinkää",
-          "latitude": 60.102334,
-          "longitude": 25.02091
-      },
-      {
-          "station_id": "23098",
-          "station_name": "vt1_Hyvinkää_Puolanka",
-          "latitude": 60.100569,
-          "longitude": 25.034959
-      },
-      {
-        "station_id": "23099",
-        "station_name": "vt1_Helsinki_Vartiokylä",
-        "latitude": 60.231363,
-        "longitude": 25.048308
-      },
-      {
-        "station_id": "23101",
-        "station_name": "vt1_Helsinki_Kulosaari",
-        "latitude": 60.191469,
-        "longitude": 25.006224
-      },
-      {
-        "station_id": "23102",
-        "station_name": "vt1_Helsinki_Tammisalo",
-        "latitude": 60.183438,
-        "longitude": 25.024141
-      },
-      {
-        "station_id": "23103",
-        "station_name": "vt1_Helsinki_Santahamina",
-        "latitude": 60.188758,
-        "longitude": 25.077468
-      },
-      {
-        "station_id": "23104",
-        "station_name": "vt1_Helsinki_Vuosaari",
-        "latitude": 60.207113,
-        "longitude": 25.103764
-      },
-      {
-        "station_id": "23105",
-        "station_name": "vt1_Helsinki_Rastila",
-        "latitude": 60.219309,
-        "longitude": 25.112651
-      },
-      {
-        "station_id": "23106",
-        "station_name": "vt1_Helsinki_Mellunmäki",
-        "latitude": 60.240723,
-        "longitude": 25.082052
-      },
-      {
-        "station_id": "23107",
-        "station_name": "vt1_Helsinki_Roihupelto",
-        "latitude": 60.221463,
-        "longitude": 25.085151
-      },
-      {
-        "station_id": "23108",
-        "station_name": "vt1_Helsinki_Kivikko",
-        "latitude": 60.209519,
-        "longitude": 25.077044
-      },
-      {
-        "station_id": "23109",
-        "station_name": "vt1_Helsinki_Itäväylä",
-        "latitude": 60.196945,
-        "longitude": 25.065785
-      },
-      {
-        "station_id": "23110",
-        "station_name": "vt1_Helsinki_Hermanni",
-        "latitude": 60.18746,
-        "longitude": 25.046071
-      },
-      {
-        "station_id": "23111",
-        "station_name": "vt1_Helsinki_Kaisaniemi",
-        "latitude": 60.172199,
-        "longitude": 24.952197
-      },
-      {
-        "station_id": "23112",
-        "station_name": "vt1_Helsinki_Pasila",
-        "latitude": 60.198364,
-        "longitude": 24.926262
-      },
-      {
-        "station_id": "23114",
-        "station_name": "vt1_Helsinki_Länsi-Pasila",
-        "latitude": 60.196718,
-        "longitude": 24.908033
-      }
-
-    
+    }
+  },
+  {
+    "station_id": "20010",
+    "station_name": "vt1_Espoo_Turveradantie",
+    "station_location": {
+      "latitude": 60.206768,
+      "longitude": 24.785277
+    }
+  },
+  {
+    "station_id": "20011",
+    "station_name": "vt1_Espoo_Sinimäki",
+    "station_location": {
+      "latitude": 60.205988,
+      "longitude": 24.776775
+    }
+  },
+  {
+    "station_id": "20016",
+    "station_name": "vt1_Espoo_Säterinmetsä_2_Hki",
+    "station_location": {
+      "latitude": 60.208135,
+      "longitude": 24.811301
+    }
+  },
+  {
+    "station_id": "20017",
+    "station_name": "vt1_Espoo_Espoonsilta",
+    "station_location": {
+      "latitude": 60.208264,
+      "longitude": 24.803387
+    }
+  },
+  {
+    "station_id": "20018",
+    "station_name": "vt1_Espoo_Ruukinranta",
+    "station_location": {
+      "latitude": 60.208922,
+      "longitude": 24.826427
+    }
+  },
+  {
+    "station_id": "20024",
+    "station_name": "vt3_Mäyränkallio",
+    "station_location": {
+      "latitude": 60.383362,
+      "longitude": 24.814737
+    }
+  },
+  {
+    "station_id": "20025",
+    "station_name": "vt3_Yli-Hemmi",
+    "station_location": {
+      "latitude": 60.393297,
+      "longitude": 24.814253
+    }
+  },
+  {
+    "station_id": "20026",
+    "station_name": "vt3_Nurmijärvi_Hki",
+    "station_location": {
+      "latitude": 60.451756,
+      "longitude": 24.844291
+    }
+  },
+  {
+    "station_id": "20028",
+    "station_name": "st170_Kulosaari_LML",
+    "station_location": {
+      "latitude": 60.185775,
+      "longitude": 24.992731
+    }
+  },
+  {
+    "station_id": "20301",
+    "station_name": "kt46_Kouvola_Uimila_Flex",
+    "station_location": {
+      "latitude": 61.150644,
+      "longitude": 26.343977
+    }
+  },
+  {
+    "station_id": "20603",
+    "station_name": "vt14_Juva_Flex3",
+    "station_location": {
+      "latitude": 61.899062,
+      "longitude": 27.823605
+    }
+  },
+  {
+    "station_id": "21201",
+    "station_name": "vt4_Oulu_Intiö_LML",
+    "station_location": {
+      "latitude": 65.020043,
+      "longitude": 25.508104
+    }
+  },
+  {
+    "station_id": "21202",
+    "station_name": "Vt20_Oulu_Honkimaa_Flex",
+    "station_location": {
+      "latitude": 65.108883,
+      "longitude": 25.716369
+    }
+  },
+  {
+    "station_id": "21203",
+    "station_name": "Vt4_Oulu_Kontinkangas_Flex",
+    "station_location": {
+      "latitude": 65.007569,
+      "longitude": 25.505512
+    }
+  },
+  {
+    "station_id": "21401",
+    "station_name": "st943_Kolari_T_Flex",
+    "station_location": {
+      "latitude": 67.311012,
+      "longitude": 23.754484
+    }
+  },
+  {
+    "station_id": "21402",
+    "station_name": "Kt80_Kolari_Ylläsjärvi_Flex",
+    "station_location": {
+      "latitude": 67.455527,
+      "longitude": 24.259109
+    }
+  },
+  {
+    "station_id": "23001",
+    "station_name": "vt7_Rita",
+    "station_location": {
+      "latitude": 60.417002,
+      "longitude": 25.689529
+    }
+  },
+  {
+    "station_id": "23003",
+    "station_name": "kt51_Kivenlahti",
+    "station_location": {
+      "latitude": 60.153502,
+      "longitude": 24.664459
+    }
+  },
+  {
+    "station_id": "23004",
+    "station_name": "vt3_Kivistö",
+    "station_location": {
+      "latitude": 60.3,
+      "longitude": 24.849501
+    }
+  },
+  {
+    "station_id": "23005",
+    "station_name": "vt3_Klaukkalantie",
+    "station_location": {
+      "latitude": 60.354656,
+      "longitude": 24.808791
+    }
+  },
+  {
+    "station_id": "23006",
+    "station_name": "st102_Hiidenkallio",
+    "station_location": {
+      "latitude": 60.211601,
+      "longitude": 24.746882
+    }
+  },
+  {
+    "station_id": "23007",
+    "station_name": "vt4_Vantaa_Honkanummi",
+    "station_location": {
+      "latitude": 60.285738,
+      "longitude": 25.093679
+    }
+  },
+  {
+    "station_id": "23008",
+    "station_name": "vt4_Vantaa_Leppäkorpi",
+    "station_location": {
+      "latitude": 60.362098,
+      "longitude": 25.115766
+    }
+  },
+  {
+    "station_id": "23009",
+    "station_name": "kt45_Vantaa_Ilola",
+    "station_location": {
+      "latitude": 60.320603,
+      "longitude": 24.997117
+    }
+  },
+  {
+    "station_id": "23010",
+    "station_name": "st101_Espoo_Laajalahti",
+    "station_location": {
+      "latitude": 60.189783,
+      "longitude": 24.807454
+    }
+  },
+  {
+    "station_id": "23011",
+    "station_name": "st101_Helsinki_Vartiokylä",
+    "station_location": {
+      "latitude": 60.219097,
+      "longitude": 25.082548
+    }
+  },
+  {
+    "station_id": "23012",
+    "station_name": "kt50_Espoo_Muurala",
+    "station_location": {
+      "latitude": 60.214649,
+      "longitude": 24.633121
+    }
+  },
+  {
+    "station_id": "23013",
+    "station_name": "vt3_Vantaa_Martinkyläntie",
+    "station_location": {
+      "latitude": 60.288139,
+      "longitude": 24.862004
+    }
+  },
+  {
+    "station_id": "23014",
+    "station_name": "vt6_Lapinjärvi_Kimonkylä",
+    "station_location": {
+      "latitude": 60.699375,
+      "longitude": 26.302983
+    }
+  },
+  {
+    "station_id": "23015",
+    "station_name": "vt6_Lapinjärvi",
+    "station_location": {
+      "latitude": 60.615872,
+      "longitude": 26.173444
+    }
+  },
+  {
+    "station_id": "23098",
+    "station_name": "kt51_Espoo_Piispansilta",
+    "station_location": {
+      "latitude": 60.163857,
+      "longitude": 24.737301
+    }
+  },
+  {
+    "station_id": "23099",
+    "station_name": "vt4_Järvenpää_Isokytö",
+    "station_location": {
+      "latitude": 60.482986,
+      "longitude": 25.13824
+    }
+  },
+  {
+    "station_id": "23101",
+    "station_name": "kt51_Hanasaari",
+    "station_location": {
+      "latitude": 60.164977,
+      "longitude": 24.848744
+    }
+  },
+  {
+    "station_id": "23102",
+    "station_name": "kt51_Soukka",
+    "station_location": {
+      "latitude": 60.156229,
+      "longitude": 24.639432
+    }
+  },
+  {
+    "station_id": "23103",
+    "station_name": "vt1_Espoo_Huopalahti",
+    "station_location": {
+      "latitude": 60.206155,
+      "longitude": 24.843448
+    }
+  },
+  {
+    "station_id": "23104",
+    "station_name": "vt1_Palojärvi",
+    "station_location": {
+      "latitude": 60.294137,
+      "longitude": 24.347814
+    }
+  },
+  {
+    "station_id": "23105",
+    "station_name": "st110_Hiidenvesi",
+    "station_location": {
+      "latitude": 60.370633,
+      "longitude": 24.134285
+    }
+  },
+  {
+    "station_id": "23106",
+    "station_name": "vt2_Huhmari",
+    "station_location": {
+      "latitude": 60.323471,
+      "longitude": 24.338949
+    }
+  },
+  {
+    "station_id": "23107",
+    "station_name": "vt3_Kaivoksela",
+    "station_location": {
+      "latitude": 60.269691,
+      "longitude": 24.874943
+    }
+  },
+  {
+    "station_id": "23108",
+    "station_name": "vt3_Karhunkorpi",
+    "station_location": {
+      "latitude": 60.496427,
+      "longitude": 24.85174
+    }
+  },
+  {
+    "station_id": "23109",
+    "station_name": "vt4_Jakomäki",
+    "station_location": {
+      "latitude": 60.254734,
+      "longitude": 25.06756
+    }
+  },
+  {
+    "station_id": "23110",
+    "station_name": "vt4_Mäntsälä_Hakkari",
+    "station_location": {
+      "latitude": 60.591375,
+      "longitude": 25.23404
+    }
+  },
+  {
+    "station_id": "23111",
+    "station_name": "vt6_Loviisa_Liljendal",
+    "station_location": {
+      "latitude": 60.557843,
+      "longitude": 26.049543
+    }
+  },
+  {
+    "station_id": "23112",
+    "station_name": "vt7_Treksilä",
+    "station_location": {
+      "latitude": 60.355937,
+      "longitude": 25.528011
+    }
+  },
+  {
+    "station_id": "23114",
+    "station_name": "vt25_Virkkala",
+    "station_location": {
+      "latitude": 60.203684,
+      "longitude": 24.019133
+    }
+  },
+  {
+    "station_id": "23115",
+    "station_name": "kt55_Saksala",
+    "station_location": {
+      "latitude": 60.413602,
+      "longitude": 25.581225
+    }
+  },
+  {
+    "station_id": "23116",
+    "station_name": "st101_Leppävaara",
+    "station_location": {
+      "latitude": 60.213364,
+      "longitude": 24.816295
+    }
+  },
+  {
+    "station_id": "23117",
+    "station_name": "vt1_Munkkiniemi",
+    "station_location": {
+      "latitude": 60.202989,
+      "longitude": 24.873178
+    }
+  },
+  {
+    "station_id": "23118",
+    "station_name": "st101_Espoo_Keilaniemi",
+    "station_location": {
+      "latitude": 60.171482,
+      "longitude": 24.82517
+    }
+  },
+  {
+    "station_id": "23119",
+    "station_name": "vt7_Helsinki_Itäsalmi",
+    "station_location": {
+      "latitude": 60.261902,
+      "longitude": 25.166377
+    }
+  },
+  {
+    "station_id": "23121",
+    "station_name": "yt11888_Liljendal2",
+    "station_location": {
+      "latitude": 60.55198,
+      "longitude": 26.02344
+    }
+  },
+  {
+    "station_id": "23122",
+    "station_name": "vt2_Karkkila",
+    "station_location": {
+      "latitude": 60.573588,
+      "longitude": 24.150133
+    }
+  },
+  {
+    "station_id": "23123",
+    "station_name": "st120_Pähkinärinne",
+    "station_location": {
+      "latitude": 60.251886,
+      "longitude": 24.830899
+    }
+  },
+  {
+    "station_id": "23124",
+    "station_name": "vt25_Dragsvik",
+    "station_location": {
+      "latitude": 59.999169,
+      "longitude": 23.513729
+    }
+  },
+  {
+    "station_id": "23125",
+    "station_name": "kt50_Bemböle",
+    "station_location": {
+      "latitude": 60.203588,
+      "longitude": 24.60793
+    }
+  },
+  {
+    "station_id": "23126",
+    "station_name": "st101_Konala",
+    "station_location": {
+      "latitude": 60.230059,
+      "longitude": 24.84139
+    }
+  },
+  {
+    "station_id": "23127",
+    "station_name": "kt45_Tuusula_Rusutjärvi",
+    "station_location": {
+      "latitude": 60.434238,
+      "longitude": 24.987002
+    }
+  },
+  {
+    "station_id": "23128",
+    "station_name": "kt50_Voutila",
+    "station_location": {
+      "latitude": 60.296065,
+      "longitude": 24.866698
+    }
+  },
+  {
+    "station_id": "23129",
+    "station_name": "vt25_Selki",
+    "station_location": {
+      "latitude": 60.458688,
+      "longitude": 24.527557
+    }
+  },
+  {
+    "station_id": "23130",
+    "station_name": "vt25_Keravanjärvi",
+    "station_location": {
+      "latitude": 60.617152,
+      "longitude": 25.0923
+    }
+  },
+  {
+    "station_id": "23131",
+    "station_name": "kt45_Helsinki_Tuomarinkartano",
+    "station_location": {
+      "latitude": 60.256725,
+      "longitude": 24.954101
+    }
+  },
+  {
+    "station_id": "23133",
+    "station_name": "vt25_Noppo",
+    "station_location": {
+      "latitude": 60.58102,
+      "longitude": 24.833017
+    }
+  },
+  {
+    "station_id": "23134",
+    "station_name": "kt51_Inkoo",
+    "station_location": {
+      "latitude": 60.060438,
+      "longitude": 24.075244
+    }
+  },
+  {
+    "station_id": "23135",
+    "station_name": "st170_Ilola",
+    "station_location": {
+      "latitude": 60.453244,
+      "longitude": 25.735009
+    }
+  },
+  {
+    "station_id": "23136",
+    "station_name": "st140_Arola",
+    "station_location": {
+      "latitude": 60.545894,
+      "longitude": 25.191554
+    }
+  },
+  {
+    "station_id": "23137",
+    "station_name": "vt3_Vantaa_Keimola",
+    "station_location": {
+      "latitude": 60.326456,
+      "longitude": 24.825444
+    }
+  },
+  {
+    "station_id": "23138",
+    "station_name": "st120_Odilampi",
+    "station_location": {
+      "latitude": 60.305288,
+      "longitude": 24.745301
+    }
+  },
+  {
+    "station_id": "23139",
+    "station_name": "vt1_Nupuri",
+    "station_location": {
+      "latitude": 60.228092,
+      "longitude": 24.596879
+    }
+  },
+  {
+    "station_id": "23140",
+    "station_name": "kt50_Järvenperä",
+    "station_location": {
+      "latitude": 60.238826,
+      "longitude": 24.695584
+    }
+  },
+  {
+    "station_id": "23141",
+    "station_name": "vt7_Box",
+    "station_location": {
+      "latitude": 60.31517,
+      "longitude": 25.411283
+    }
+  },
+  {
+    "station_id": "23142",
+    "station_name": "vt4_Levanto",
+    "station_location": {
+      "latitude": 60.736118,
+      "longitude": 25.448445
+    }
+  },
+  {
+    "station_id": "23143",
+    "station_name": "kt51_Sundsberg",
+    "station_location": {
+      "latitude": 60.141217,
+      "longitude": 24.552767
+    }
+  },
+  {
+    "station_id": "23144",
+    "station_name": "vt1_Friisinmäki",
+    "station_location": {
+      "latitude": 60.207796,
+      "longitude": 24.794647
+    }
+  },
+  {
+    "station_id": "23145",
+    "station_name": "st101_Kannelmäki",
+    "station_location": {
+      "latitude": 60.234542,
+      "longitude": 24.879279
+    }
+  },
+  {
+    "station_id": "23146",
+    "station_name": "st101_Länsi-Pakila",
+    "station_location": {
+      "latitude": 60.239547,
+      "longitude": 24.919151
+    }
+  },
+  {
+    "station_id": "23147",
+    "station_name": "st101_Pakila",
+    "station_location": {
+      "latitude": 60.241903,
+      "longitude": 24.93714
+    }
+  },
+  {
+    "station_id": "23148",
+    "station_name": "st101_Pukinmäki",
+    "station_location": {
+      "latitude": 60.241568,
+      "longitude": 24.98135
+    }
+  },
+  {
+    "station_id": "23149",
+    "station_name": "st101_Malmi",
+    "station_location": {
+      "latitude": 60.241347,
+      "longitude": 25.029364
+    }
+  },
+  {
+    "station_id": "23150",
+    "station_name": "kt50_Vantaanportti",
+    "station_location": {
+      "latitude": 60.290175,
+      "longitude": 24.973523
+    }
+  },
+  {
+    "station_id": "23151",
+    "station_name": "st120_Pitäjänmäki",
+    "station_location": {
+      "latitude": 60.224261,
+      "longitude": 24.878373
+    }
+  },
+  {
+    "station_id": "23152",
+    "station_name": "vt3_Pirkkola",
+    "station_location": {
+      "latitude": 60.226466,
+      "longitude": 24.907502
+    }
+  },
+  {
+    "station_id": "23153",
+    "station_name": "kt45_Oulunkylä",
+    "station_location": {
+      "latitude": 60.224056,
+      "longitude": 24.945214
+    }
+  },
+  {
+    "station_id": "23154",
+    "station_name": "vt4_Viikinmäki",
+    "station_location": {
+      "latitude": 60.222722,
+      "longitude": 24.987709
+    }
+  },
+  {
+    "station_id": "23156",
+    "station_name": "kt51_Jorvas",
+    "station_location": {
+      "latitude": 60.127648,
+      "longitude": 24.492014
+    }
+  },
+  {
+    "station_id": "23158",
+    "station_name": "st170_Hagaböle",
+    "station_location": {
+      "latitude": 60.487317,
+      "longitude": 25.99756
+    }
+  },
+  {
+    "station_id": "23159",
+    "station_name": "kt50_Petikko",
+    "station_location": {
+      "latitude": 60.277263,
+      "longitude": 24.814062
+    }
+  },
+  {
+    "station_id": "23160",
+    "station_name": "kt50_Heidehof",
+    "station_location": {
+      "latitude": 60.280605,
+      "longitude": 25.046374
+    }
+  },
+  {
+    "station_id": "23162",
+    "station_name": "st102_Olarinluoma",
+    "station_location": {
+      "latitude": 60.175982,
+      "longitude": 24.755706
+    }
+  },
+  {
+    "station_id": "23163",
+    "station_name": "st102_Kokinkylä",
+    "station_location": {
+      "latitude": 60.190826,
+      "longitude": 24.746484
+    }
+  },
+  {
+    "station_id": "23164",
+    "station_name": "vt3_Kivihaka",
+    "station_location": {
+      "latitude": 60.211965,
+      "longitude": 24.901549
+    }
+  },
+  {
+    "station_id": "23165",
+    "station_name": "vt3_Hakuninmaa",
+    "station_location": {
+      "latitude": 60.259821,
+      "longitude": 24.877246
+    }
+  },
+  {
+    "station_id": "23167",
+    "station_name": "vt1_Espoo_Sepänkylä",
+    "station_location": {
+      "latitude": 60.203158,
+      "longitude": 24.740568
+    }
+  },
+  {
+    "station_id": "23168",
+    "station_name": "kt50_Askisto",
+    "station_location": {
+      "latitude": 60.27328,
+      "longitude": 24.776513
+    }
+  },
+  {
+    "station_id": "23169",
+    "station_name": "kt50_Pakkala",
+    "station_location": {
+      "latitude": 60.295746,
+      "longitude": 24.94332
+    }
+  },
+  {
+    "station_id": "23172",
+    "station_name": "vt7_Helsinki_Bäcknäs",
+    "station_location": {
+      "latitude": 60.274724,
+      "longitude": 25.245947
+    }
+  },
+  {
+    "station_id": "23175",
+    "station_name": "vt1_Espoo_Lommila",
+    "station_location": {
+      "latitude": 60.21556,
+      "longitude": 24.661165
+    }
+  },
+  {
+    "station_id": "23176",
+    "station_name": "vt7_Sipoo_Sipoonlahti",
+    "station_location": {
+      "latitude": 60.280371,
+      "longitude": 25.317951
+    }
+  },
+  {
+    "station_id": "23177",
+    "station_name": "vt7_Sipoo_Kallback",
+    "station_location": {
+      "latitude": 60.288833,
+      "longitude": 25.341034
+    }
+  },
+  {
+    "station_id": "23178",
+    "station_name": "vt7_Sipoo_Kulloo",
+    "station_location": {
+      "latitude": 60.322813,
+      "longitude": 25.450135
+    }
+  },
+  {
+    "station_id": "23179",
+    "station_name": "vt7_Fazerila",
+    "station_location": {
+      "latitude": 60.254263,
+      "longitude": 25.111558
+    }
+  },
+  {
+    "station_id": "23182",
+    "station_name": "kt50_Hakunila",
+    "station_location": {
+      "latitude": 60.271322,
+      "longitude": 25.098008
+    }
+  },
+  {
+    "station_id": "23183",
+    "station_name": "kt50_Järvenperä2",
+    "station_location": {
+      "latitude": 60.252097,
+      "longitude": 24.714007
+    }
+  },
+  {
+    "station_id": "23184",
+    "station_name": "vt7_Porvoo_Uusikrouvi",
+    "station_location": {
+      "latitude": 60.42567,
+      "longitude": 25.749595
+    }
+  },
+  {
+    "station_id": "23185",
+    "station_name": "vt7_Porvoo_Lohijärvi",
+    "station_location": {
+      "latitude": 60.455621,
+      "longitude": 25.840384
+    }
+  },
+  {
+    "station_id": "23186",
+    "station_name": "vt7_Loviisa_Gammelbyviken",
+    "station_location": {
+      "latitude": 60.490404,
+      "longitude": 25.913508
+    }
+  },
+  {
+    "station_id": "23187",
+    "station_name": "vt7_Loviisa_Kärrbacka",
+    "station_location": {
+      "latitude": 60.473096,
+      "longitude": 26.118634
+    }
+  },
+  {
+    "station_id": "23188",
+    "station_name": "vt7_Loviisa",
+    "station_location": {
+      "latitude": 60.465378,
+      "longitude": 26.212552
+    }
+  },
+  {
+    "station_id": "23189",
+    "station_name": "vt7_Loviisa_Itä",
+    "station_location": {
+      "latitude": 60.479183,
+      "longitude": 26.278494
+    }
+  },
+  {
+    "station_id": "23190",
+    "station_name": "vt7_Porvoo_Ernestas",
+    "station_location": {
+      "latitude": 60.380907,
+      "longitude": 25.598321
+    }
+  },
+  {
+    "station_id": "23191",
+    "station_name": "vt1_Kolmiranta",
+    "station_location": {
+      "latitude": 60.257719,
+      "longitude": 24.50065
+    }
+  },
+  {
+    "station_id": "23192",
+    "station_name": "vt1_Veikkola",
+    "station_location": {
+      "latitude": 60.287221,
+      "longitude": 24.416719
+    }
+  },
+  {
+    "station_id": "23193",
+    "station_name": "vt1_Hevoskallio",
+    "station_location": {
+      "latitude": 60.302294,
+      "longitude": 24.253194
+    }
+  },
+  {
+    "station_id": "23194",
+    "station_name": "vt1_Lehmijärvi",
+    "station_location": {
+      "latitude": 60.28803,
+      "longitude": 24.158551
+    }
+  },
+  {
+    "station_id": "23195",
+    "station_name": "st103_Satamatie",
+    "station_location": {
+      "latitude": 60.241105,
+      "longitude": 25.153666
+    }
+  },
+  {
+    "station_id": "23196",
+    "station_name": "Niinisaarentie",
+    "station_location": {
+      "latitude": 60.220754,
+      "longitude": 25.158891
+    }
+  },
+  {
+    "station_id": "23197",
+    "station_name": "st100_Kivihaan_tunneli",
+    "station_location": {
+      "latitude": 60.208329,
+      "longitude": 24.908478
+    }
+  },
+  {
+    "station_id": "23198",
+    "station_name": "vt7_Porvoo",
+    "station_location": {
+      "latitude": 60.404355,
+      "longitude": 25.631168
+    }
+  },
+  {
+    "station_id": "23201",
+    "station_name": "st110_Muurla_Salo",
+    "station_location": {
+      "latitude": 60.368037,
+      "longitude": 23.357739
+    }
+  },
+  {
+    "station_id": "23203",
+    "station_name": "vt3_Hämeenkyrö",
+    "station_location": {
+      "latitude": 61.58514,
+      "longitude": 23.42946
+    }
+  },
+  {
+    "station_id": "23204",
+    "station_name": "vt3_Ikaalinen",
+    "station_location": {
+      "latitude": 61.912381,
+      "longitude": 22.975875
+    }
+  },
+  {
+    "station_id": "23205",
+    "station_name": "vt8_Raisio",
+    "station_location": {
+      "latitude": 60.503039,
+      "longitude": 22.159199
+    }
+  },
+  {
+    "station_id": "23206",
+    "station_name": "vt8_Pyhäranta",
+    "station_location": {
+      "latitude": 60.986934,
+      "longitude": 21.586275
+    }
+  },
+  {
+    "station_id": "23207",
+    "station_name": "vt8_Pori",
+    "station_location": {
+      "latitude": 61.544747,
+      "longitude": 21.809442
+    }
+  },
+  {
+    "station_id": "23208",
+    "station_name": "vt9_Aura",
+    "station_location": {
+      "latitude": 60.593513,
+      "longitude": 22.468601
+    }
+  },
+  {
+    "station_id": "23209",
+    "station_name": "vt10_Marttila",
+    "station_location": {
+      "latitude": 60.614918,
+      "longitude": 22.923377
+    }
+  },
+  {
+    "station_id": "23210",
+    "station_name": "vt12_Vammala",
+    "station_location": {
+      "latitude": 61.315328,
+      "longitude": 22.838086
+    }
+  },
+  {
+    "station_id": "23211",
+    "station_name": "vt12_Lappi_tl",
+    "station_location": {
+      "latitude": 61.112461,
+      "longitude": 21.728834
+    }
+  },
+  {
+    "station_id": "23221",
+    "station_name": "vt2_Nakkila",
+    "station_location": {
+      "latitude": 61.366166,
+      "longitude": 21.987405
+    }
+  },
+  {
+    "station_id": "23223",
+    "station_name": "vt8_Eurajoki",
+    "station_location": {
+      "latitude": 61.170103,
+      "longitude": 21.627913
+    }
+  },
+  {
+    "station_id": "23224",
+    "station_name": "vt11_Kullaa",
+    "station_location": {
+      "latitude": 61.466795,
+      "longitude": 22.347332
+    }
+  },
+  {
+    "station_id": "23225",
+    "station_name": "st180_Parainen",
+    "station_location": {
+      "latitude": 60.243432,
+      "longitude": 22.179276
+    }
+  },
+  {
+    "station_id": "23226",
+    "station_name": "vt23_Kankaanpää",
+    "station_location": {
+      "latitude": 61.789045,
+      "longitude": 22.245398
+    }
+  },
+  {
+    "station_id": "23227",
+    "station_name": "vt1_Kaarina_Kirismäki",
+    "station_location": {
+      "latitude": 60.446988,
+      "longitude": 22.516331
+    }
+  },
+  {
+    "station_id": "23230",
+    "station_name": "vt10_Lieto",
+    "station_location": {
+      "latitude": 60.497675,
+      "longitude": 22.426255
+    }
+  },
+  {
+    "station_id": "23231",
+    "station_name": "kt40_Vanto",
+    "station_location": {
+      "latitude": 60.469166,
+      "longitude": 22.085889
+    }
+  },
+  {
+    "station_id": "23232",
+    "station_name": "vt2_Porin_lentokent",
+    "station_location": {
+      "latitude": 61.45647,
+      "longitude": 21.821122
+    }
+  },
+  {
+    "station_id": "23233",
+    "station_name": "kt40_Hauninen",
+    "station_location": {
+      "latitude": 60.494327,
+      "longitude": 22.217791
+    }
+  },
+  {
+    "station_id": "23234",
+    "station_name": "kt40_Oriketo",
+    "station_location": {
+      "latitude": 60.489531,
+      "longitude": 22.316174
+    }
+  },
+  {
+    "station_id": "23235",
+    "station_name": "vt1_Turku_Kupittaa",
+    "station_location": {
+      "latitude": 60.446488,
+      "longitude": 22.304526
+    }
+  },
+  {
+    "station_id": "23237",
+    "station_name": "vt1_Turku_Kurkela_länsi",
+    "station_location": {
+      "latitude": 60.424922,
+      "longitude": 22.334731
+    }
+  },
+  {
+    "station_id": "23238",
+    "station_name": "vt1_Kaarina_Kurkela_itä",
+    "station_location": {
+      "latitude": 60.421987,
+      "longitude": 22.364204
+    }
+  },
+  {
+    "station_id": "23239",
+    "station_name": "vt1_Kaarina",
+    "station_location": {
+      "latitude": 60.424022,
+      "longitude": 22.402097
+    }
+  },
+  {
+    "station_id": "23240",
+    "station_name": "vt1_Kaarina_Piikkiö",
+    "station_location": {
+      "latitude": 60.440193,
+      "longitude": 22.475811
+    }
+  },
+  {
+    "station_id": "23242",
+    "station_name": "vt1_Paimio_Paimionjoki",
+    "station_location": {
+      "latitude": 60.430131,
+      "longitude": 22.656045
+    }
+  },
+  {
+    "station_id": "23243",
+    "station_name": "vt1_Paimio_Valkoja",
+    "station_location": {
+      "latitude": 60.423384,
+      "longitude": 22.68301
+    }
+  },
+  {
+    "station_id": "23244",
+    "station_name": "vt1_Paimio_Vista",
+    "station_location": {
+      "latitude": 60.425558,
+      "longitude": 22.745452
+    }
+  },
+  {
+    "station_id": "23245",
+    "station_name": "vt1_Salo_Hajala",
+    "station_location": {
+      "latitude": 60.435067,
+      "longitude": 22.969131
+    }
+  },
+  {
+    "station_id": "23247",
+    "station_name": "vt1_Salo_Isokylä_länsi",
+    "station_location": {
+      "latitude": 60.418888,
+      "longitude": 23.148232
+    }
+  },
+  {
+    "station_id": "23248",
+    "station_name": "vt1_Salo_Muurla",
+    "station_location": {
+      "latitude": 60.38888,
+      "longitude": 23.292028
+    }
+  },
+  {
+    "station_id": "23249",
+    "station_name": "vt8_Ihala",
+    "station_location": {
+      "latitude": 60.477609,
+      "longitude": 22.186943
+    }
+  },
+  {
+    "station_id": "23250",
+    "station_name": "vt8_Masku",
+    "station_location": {
+      "latitude": 60.583131,
+      "longitude": 22.090035
+    }
+  },
+  {
+    "station_id": "23251",
+    "station_name": "kt40_Krookila",
+    "station_location": {
+      "latitude": 60.47133,
+      "longitude": 22.142869
+    }
+  },
+  {
+    "station_id": "23252",
+    "station_name": "st185_Artukainen",
+    "station_location": {
+      "latitude": 60.460639,
+      "longitude": 22.18283
+    }
+  },
+  {
+    "station_id": "23254",
+    "station_name": "st180_Kuusisto",
+    "station_location": {
+      "latitude": 60.367642,
+      "longitude": 22.358665
+    }
+  },
+  {
+    "station_id": "23255",
+    "station_name": "st180_Parainen_Simonby",
+    "station_location": {
+      "latitude": 60.193727,
+      "longitude": 22.043474
+    }
+  },
+  {
+    "station_id": "23257",
+    "station_name": "yt1851_Turku_Härkämäki",
+    "station_location": {
+      "latitude": 60.463565,
+      "longitude": 22.202798
+    }
+  },
+  {
+    "station_id": "23302",
+    "station_name": "vt7_Hamina_Lankamalmi",
+    "station_location": {
+      "latitude": 60.572097,
+      "longitude": 27.128804
+    }
+  },
+  {
+    "station_id": "23303",
+    "station_name": "vt7_Hamina_Ruissalo",
+    "station_location": {
+      "latitude": 60.579562,
+      "longitude": 27.14252
+    }
+  },
+  {
+    "station_id": "23304",
+    "station_name": "vt7_Hamina_Husula",
+    "station_location": {
+      "latitude": 60.590888,
+      "longitude": 27.16234
+    }
+  },
+  {
+    "station_id": "23305",
+    "station_name": "vt7_Hamina_Kolsila_itä",
+    "station_location": {
+      "latitude": 60.595672,
+      "longitude": 27.255259
+    }
+  },
+  {
+    "station_id": "23306",
+    "station_name": "vt13_Lappeenranta_Nuijamaa_Uusi",
+    "station_location": {
+      "latitude": 60.95499,
+      "longitude": 28.520228
+    }
+  },
+  {
+    "station_id": "23307",
+    "station_name": "vt7_Virolahti_Virojoki",
+    "station_location": {
+      "latitude": 60.608743,
+      "longitude": 27.676303
+    }
+  },
+  {
+    "station_id": "23308",
+    "station_name": "vt7_Virolahti_Ravijoki",
+    "station_location": {
+      "latitude": 60.596463,
+      "longitude": 27.475294
+    }
+  },
+  {
+    "station_id": "23309",
+    "station_name": "vt7_Virolahti_Vaalimaa",
+    "station_location": {
+      "latitude": 60.605247,
+      "longitude": 27.825572
+    }
+  },
+  {
+    "station_id": "23310",
+    "station_name": "vt7_Virolahti_Vaalimaan_tunneli_itä",
+    "station_location": {
+      "latitude": 60.613172,
+      "longitude": 27.796472
+    }
+  },
+  {
+    "station_id": "23311",
+    "station_name": "vt13_Lappeenranta_Nuijamaa_tulli",
+    "station_location": {
+      "latitude": 60.960868,
+      "longitude": 28.510239
+    }
+  },
+  {
+    "station_id": "23401",
+    "station_name": "vt3_Lempäälä_Sääksjärvi",
+    "station_location": {
+      "latitude": 61.408751,
+      "longitude": 23.765753
+    }
+  },
+  {
+    "station_id": "23402",
+    "station_name": "st130_Jutikkala",
+    "station_location": {
+      "latitude": 61.149148,
+      "longitude": 24.057586
+    }
+  },
+  {
+    "station_id": "23403",
+    "station_name": "vt2_Humppila",
+    "station_location": {
+      "latitude": 60.967187,
+      "longitude": 23.288468
+    }
+  },
+  {
+    "station_id": "23404",
+    "station_name": "vt9_Kangasala_Suinula",
+    "station_location": {
+      "latitude": 61.549823,
+      "longitude": 24.071581
+    }
+  },
+  {
+    "station_id": "23405",
+    "station_name": "vt10_Hämeenlinna",
+    "station_location": {
+      "latitude": 61.047286,
+      "longitude": 24.666447
+    }
+  },
+  {
+    "station_id": "23406",
+    "station_name": "vt11_Nokia_Linnavuori",
+    "station_location": {
+      "latitude": 61.503859,
+      "longitude": 23.368056
+    }
+  },
+  {
+    "station_id": "23407",
+    "station_name": "vt12_Hollola",
+    "station_location": {
+      "latitude": 61.00463,
+      "longitude": 25.282269
+    }
+  },
+  {
+    "station_id": "23408",
+    "station_name": "kt54_Hausjärvi",
+    "station_location": {
+      "latitude": 60.793106,
+      "longitude": 24.976368
+    }
+  },
+  {
+    "station_id": "23409",
+    "station_name": "kt66_Ruovesi",
+    "station_location": {
+      "latitude": 62.01343,
+      "longitude": 24.027612
+    }
+  },
+  {
+    "station_id": "23421",
+    "station_name": "kt65_Ylöjärvi",
+    "station_location": {
+      "latitude": 61.54414,
+      "longitude": 23.607493
+    }
+  },
+  {
+    "station_id": "23422",
+    "station_name": "st190_Viiala",
+    "station_location": {
+      "latitude": 61.241797,
+      "longitude": 23.738401
+    }
+  },
+  {
+    "station_id": "23424",
+    "station_name": "vt4_Renkomäki",
+    "station_location": {
+      "latitude": 60.907742,
+      "longitude": 25.613012
+    }
+  },
+  {
+    "station_id": "23425",
+    "station_name": "vt10_Tammela",
+    "station_location": {
+      "latitude": 60.825646,
+      "longitude": 23.787928
+    }
+  },
+  {
+    "station_id": "23426",
+    "station_name": "vt12_Hämeenlinna_Hauho",
+    "station_location": {
+      "latitude": 61.159476,
+      "longitude": 24.685769
+    }
+  },
+  {
+    "station_id": "23428",
+    "station_name": "kt54_Loppi",
+    "station_location": {
+      "latitude": 60.731605,
+      "longitude": 24.393024
+    }
+  },
+  {
+    "station_id": "23429",
+    "station_name": "vt3_Riihimäki_Herajoki",
+    "station_location": {
+      "latitude": 60.709512,
+      "longitude": 24.736828
+    }
+  },
+  {
+    "station_id": "23430",
+    "station_name": "vt24_Asikkala",
+    "station_location": {
+      "latitude": 61.126882,
+      "longitude": 25.637911
+    }
+  },
+  {
+    "station_id": "23431",
+    "station_name": "vt12_Kangasala_Suorama",
+    "station_location": {
+      "latitude": 61.478619,
+      "longitude": 23.977413
+    }
+  },
+  {
+    "station_id": "23432",
+    "station_name": "vt3_Janakkala",
+    "station_location": {
+      "latitude": 60.854666,
+      "longitude": 24.597507
+    }
+  },
+  {
+    "station_id": "23433",
+    "station_name": "st130_Pispantie",
+    "station_location": {
+      "latitude": 61.28564,
+      "longitude": 23.955748
+    }
+  },
+  {
+    "station_id": "23435",
+    "station_name": "vt9_Tampere_Karkunvuori",
+    "station_location": {
+      "latitude": 61.463652,
+      "longitude": 23.808471
+    }
+  },
+  {
+    "station_id": "23436",
+    "station_name": "yt13782_Nokia_Rajasalmi",
+    "station_location": {
+      "latitude": 61.478807,
+      "longitude": 23.586782
+    }
+  },
+  {
+    "station_id": "23437",
+    "station_name": "vt3_Hlinna_Mo3",
+    "station_location": {
+      "latitude": 61.015127,
+      "longitude": 24.412691
+    }
+  },
+  {
+    "station_id": "23438",
+    "station_name": "vt12_Tre_Paasikiventie",
+    "station_location": {
+      "latitude": 61.508408,
+      "longitude": 23.697679
+    }
+  },
+  {
+    "station_id": "23439",
+    "station_name": "vt12_Tre_Teiskontie",
+    "station_location": {
+      "latitude": 61.504163,
+      "longitude": 23.821503
+    }
+  },
+  {
+    "station_id": "23440",
+    "station_name": "vt3_Lempäälä_Lippo",
+    "station_location": {
+      "latitude": 61.2527,
+      "longitude": 23.837494
+    }
+  },
+  {
+    "station_id": "23441",
+    "station_name": "st140_Hollola",
+    "station_location": {
+      "latitude": 61.037244,
+      "longitude": 25.750283
+    }
+  },
+  {
+    "station_id": "23442",
+    "station_name": "vt4_Heinola_Lusi",
+    "station_location": {
+      "latitude": 61.336375,
+      "longitude": 26.041199
+    }
+  },
+  {
+    "station_id": "23445",
+    "station_name": "vt9_Kylmäkoski",
+    "station_location": {
+      "latitude": 61.115503,
+      "longitude": 23.647575
+    }
+  },
+  {
+    "station_id": "23446",
+    "station_name": "Lahti_Kärpäsenmäki",
+    "station_location": {
+      "latitude": 60.981177,
+      "longitude": 25.59501
+    }
+  },
+  {
+    "station_id": "23447",
+    "station_name": "Lahti_Joutjärvi",
+    "station_location": {
+      "latitude": 60.973187,
+      "longitude": 25.69798
+    }
+  },
+  {
+    "station_id": "23448",
+    "station_name": "vt9_Orivesi_Talviainen",
+    "station_location": {
+      "latitude": 61.73148,
+      "longitude": 24.70895
+    }
+  },
+  {
+    "station_id": "23449",
+    "station_name": "vt3_Tre_Sarankulma",
+    "station_location": {
+      "latitude": 61.460262,
+      "longitude": 23.74535
+    }
+  },
+  {
+    "station_id": "23450",
+    "station_name": "vt3_Tampere_Myllypuro",
+    "station_location": {
+      "latitude": 61.519701,
+      "longitude": 23.56775
+    }
+  },
+  {
+    "station_id": "23451",
+    "station_name": "vt9_Tre_Aitovuori",
+    "station_location": {
+      "latitude": 61.528153,
+      "longitude": 23.939764
+    }
+  },
+  {
+    "station_id": "23452",
+    "station_name": "Vt12_Tre_Onkiniemi",
+    "station_location": {
+      "latitude": 61.503156,
+      "longitude": 23.724675
+    }
+  },
+  {
+    "station_id": "23453",
+    "station_name": "Tampere_Mustalahti",
+    "station_location": {
+      "latitude": 61.502302,
+      "longitude": 23.739676
+    }
+  },
+  {
+    "station_id": "23455",
+    "station_name": "kt65_Tre_Epilänharju",
+    "station_location": {
+      "latitude": 61.517417,
+      "longitude": 23.654093
+    }
+  },
+  {
+    "station_id": "23456",
+    "station_name": "kt65_Tre_Lielahti",
+    "station_location": {
+      "latitude": 61.511616,
+      "longitude": 23.679207
+    }
+  },
+  {
+    "station_id": "23457",
+    "station_name": "vt12_Tre_Petsamo",
+    "station_location": {
+      "latitude": 61.50648,
+      "longitude": 23.785048
+    }
+  },
+  {
+    "station_id": "23458",
+    "station_name": "vt12_Tampere_Ruotula",
+    "station_location": {
+      "latitude": 61.504198,
+      "longitude": 23.852788
+    }
+  },
+  {
+    "station_id": "23460",
+    "station_name": "vt3_Pirkkala_Huovi",
+    "station_location": {
+      "latitude": 61.45259,
+      "longitude": 23.636382
+    }
+  },
+  {
+    "station_id": "23461",
+    "station_name": "vt4_Vierumäki",
+    "station_location": {
+      "latitude": 61.09851,
+      "longitude": 25.905938
+    }
+  },
+  {
+    "station_id": "23462",
+    "station_name": "vt3_Nokia_Rajasalmi",
+    "station_location": {
+      "latitude": 61.477796,
+      "longitude": 23.588359
+    }
+  },
+  {
+    "station_id": "23463",
+    "station_name": "vt3_Pirkkala_Sankila",
+    "station_location": {
+      "latitude": 61.459451,
+      "longitude": 23.617727
+    }
+  },
+  {
+    "station_id": "23464",
+    "station_name": "yt3495_Rautaharkko",
+    "station_location": {
+      "latitude": 61.479608,
+      "longitude": 23.775252
+    }
+  },
+  {
+    "station_id": "23465",
+    "station_name": "vt3_Hämeenlinna_E",
+    "station_location": {
+      "latitude": 60.990539,
+      "longitude": 24.458373
+    }
+  },
+  {
+    "station_id": "23466",
+    "station_name": "vt3_Hämeenlinna_P",
+    "station_location": {
+      "latitude": 61.000574,
+      "longitude": 24.450819
+    }
+  },
+  {
+    "station_id": "23468",
+    "station_name": "vt12_Lahti_Patomäki",
+    "station_location": {
+      "latitude": 60.954571,
+      "longitude": 25.62992
+    }
+  },
+  {
+    "station_id": "23469",
+    "station_name": "vt12_Lahti_Liipola",
+    "station_location": {
+      "latitude": 60.955907,
+      "longitude": 25.664579
+    }
+  },
+  {
+    "station_id": "23470",
+    "station_name": "vt4_Lahti_Lotila",
+    "station_location": {
+      "latitude": 60.964905,
+      "longitude": 25.708902
+    }
+  },
+  {
+    "station_id": "23471",
+    "station_name": "vt3_Tampere_Multisilta",
+    "station_location": {
+      "latitude": 61.439193,
+      "longitude": 23.759727
+    }
+  },
+  {
+    "station_id": "23501",
+    "station_name": "st170_Pyhtää_Siltakylä",
+    "station_location": {
+      "latitude": 60.497151,
+      "longitude": 26.764592
+    }
+  },
+  {
+    "station_id": "23502",
+    "station_name": "vt12_Iitti_Mankala",
+    "station_location": {
+      "latitude": 60.913273,
+      "longitude": 26.179252
+    }
+  },
+  {
+    "station_id": "23503",
+    "station_name": "vt26_Kouvola_Loveslampi",
+    "station_location": {
+      "latitude": 60.848624,
+      "longitude": 27.40631
+    }
+  },
+  {
+    "station_id": "23504",
+    "station_name": "vt7_Vaalimaa_rekkaparkki1",
+    "station_location": {
+      "latitude": 60.596836,
+      "longitude": 27.835291
+    }
+  },
+  {
+    "station_id": "23505",
+    "station_name": "vt7_Vaalimaa_rekkaparkki2",
+    "station_location": {
+      "latitude": 60.601271,
+      "longitude": 27.851074
+    }
+  },
+  {
+    "station_id": "23506",
+    "station_name": "vt7_Hamina_Lelu",
+    "station_location": {
+      "latitude": 60.565741,
+      "longitude": 27.349145
+    }
+  },
+  {
+    "station_id": "23521",
+    "station_name": "vt6_Kouvola_Elimäki",
+    "station_location": {
+      "latitude": 60.77637,
+      "longitude": 26.484791
+    }
+  },
+  {
+    "station_id": "23522",
+    "station_name": "vt6_Luumäki_kko",
+    "station_location": {
+      "latitude": 60.934604,
+      "longitude": 27.664768
+    }
+  },
+  {
+    "station_id": "23524",
+    "station_name": "vt6_Rautjärvi_Änkilä",
+    "station_location": {
+      "latitude": 61.408419,
+      "longitude": 29.306611
+    }
+  },
+  {
+    "station_id": "23526",
+    "station_name": "vt13_Mikkeli_Suomenniemi",
+    "station_location": {
+      "latitude": 61.319175,
+      "longitude": 27.38452
+    }
+  },
+  {
+    "station_id": "23527",
+    "station_name": "vt15_Kouvola_Tuohikotti",
+    "station_location": {
+      "latitude": 61.074383,
+      "longitude": 27.05936
+    }
+  },
+  {
+    "station_id": "23528",
+    "station_name": "kt62_Ruokolahti_Kotaniemi",
+    "station_location": {
+      "latitude": 61.382702,
+      "longitude": 28.654392
+    }
+  },
+  {
+    "station_id": "23529",
+    "station_name": "vt6_Kouvola_Utti",
+    "station_location": {
+      "latitude": 60.886205,
+      "longitude": 26.819139
+    }
+  },
+  {
+    "station_id": "23530",
+    "station_name": "vt15_Kotka_Juurikorpi",
+    "station_location": {
+      "latitude": 60.623619,
+      "longitude": 26.9219
+    }
+  },
+  {
+    "station_id": "23531",
+    "station_name": "vt6_Imatra_Rönkkä",
+    "station_location": {
+      "latitude": 61.229893,
+      "longitude": 28.856509
+    }
+  },
+  {
+    "station_id": "23532",
+    "station_name": "kt62_Imatra_raja2",
+    "station_location": {
+      "latitude": 61.127607,
+      "longitude": 28.833624
+    }
+  },
+  {
+    "station_id": "23533",
+    "station_name": "vt13_Lappeenranta_Karhusjärvi",
+    "station_location": {
+      "latitude": 61.036816,
+      "longitude": 28.364389
+    }
+  },
+  {
+    "station_id": "23534",
+    "station_name": "vt6_Lappeenranta_Muukko",
+    "station_location": {
+      "latitude": 61.101493,
+      "longitude": 28.404704
+    }
+  },
+  {
+    "station_id": "23535",
+    "station_name": "kt62_Imatra_raja1",
+    "station_location": {
+      "latitude": 61.13534,
+      "longitude": 28.818879
+    }
+  },
+  {
+    "station_id": "23547",
+    "station_name": "vt13_Lappeenranta_Nuijamaa_MP5",
+    "station_location": {
+      "latitude": 60.977438,
+      "longitude": 28.492213
+    }
+  },
+  {
+    "station_id": "23550",
+    "station_name": "st170_Virolahti_Vaahterikonsuo",
+    "station_location": {
+      "latitude": 60.572017,
+      "longitude": 27.634758
+    }
+  },
+  {
+    "station_id": "23556",
+    "station_name": "vt6_Lappeenranta_Selkäharju",
+    "station_location": {
+      "latitude": 61.028375,
+      "longitude": 28.060646
+    }
+  },
+  {
+    "station_id": "23558",
+    "station_name": "vt6_Lappeenranta_Mattila",
+    "station_location": {
+      "latitude": 61.041208,
+      "longitude": 28.160704
+    }
+  },
+  {
+    "station_id": "23559",
+    "station_name": "vt6_Lappeenranta_Reijola",
+    "station_location": {
+      "latitude": 61.042912,
+      "longitude": 28.198946
+    }
+  },
+  {
+    "station_id": "23560",
+    "station_name": "vt6_Lappeenranta_Karhuvuori",
+    "station_location": {
+      "latitude": 61.051124,
+      "longitude": 28.246022
+    }
+  },
+  {
+    "station_id": "23561",
+    "station_name": "vt6_Lappeenranta_Hartikkala",
+    "station_location": {
+      "latitude": 61.061776,
+      "longitude": 28.282199
+    }
+  },
+  {
+    "station_id": "23562",
+    "station_name": "vt6_Lappeenranta_Mälkiä",
+    "station_location": {
+      "latitude": 61.071791,
+      "longitude": 28.309848
+    }
+  },
+  {
+    "station_id": "23563",
+    "station_name": "vt6_Lappeenranta_Joutseno",
+    "station_location": {
+      "latitude": 61.120376,
+      "longitude": 28.49518
+    }
+  },
+  {
+    "station_id": "23564",
+    "station_name": "vt6_Lappeenranta_Korvenkangas",
+    "station_location": {
+      "latitude": 61.165909,
+      "longitude": 28.679108
+    }
+  },
+  {
+    "station_id": "23572",
+    "station_name": "vt7_Kotka_Salminlahti",
+    "station_location": {
+      "latitude": 60.550655,
+      "longitude": 26.995934
+    }
+  },
+  {
+    "station_id": "23573",
+    "station_name": "vt7_Hamina_Summa",
+    "station_location": {
+      "latitude": 60.569312,
+      "longitude": 27.086762
+    }
+  },
+  {
+    "station_id": "23574",
+    "station_name": "vt7_Kotka_Kyminlinna",
+    "station_location": {
+      "latitude": 60.505233,
+      "longitude": 26.90234
+    }
+  },
+  {
+    "station_id": "23575",
+    "station_name": "vt7_Pyhtää2",
+    "station_location": {
+      "latitude": 60.486397,
+      "longitude": 26.54646
+    }
+  },
+  {
+    "station_id": "23576",
+    "station_name": "vt7_Kotka_Karhula",
+    "station_location": {
+      "latitude": 60.514416,
+      "longitude": 26.926898
+    }
+  },
+  {
+    "station_id": "23577",
+    "station_name": "vt7_Kotka_Otsola",
+    "station_location": {
+      "latitude": 60.526567,
+      "longitude": 26.954217
+    }
+  },
+  {
+    "station_id": "23578",
+    "station_name": "vt7_Pyhtää_Ahvenkoski_Itä",
+    "station_location": {
+      "latitude": 60.490154,
+      "longitude": 26.460474
+    }
+  },
+  {
+    "station_id": "23579",
+    "station_name": "vt7_Pyhtää_Siltakylä2",
+    "station_location": {
+      "latitude": 60.500132,
+      "longitude": 26.701676
+    }
+  },
+  {
+    "station_id": "23580",
+    "station_name": "vt7_Pyhtää_Mokra",
+    "station_location": {
+      "latitude": 60.501077,
+      "longitude": 26.811021
+    }
+  },
+  {
+    "station_id": "23581",
+    "station_name": "vt7_Virolahti_Vaalimaa, raja",
+    "station_location": {
+      "latitude": 60.606657,
+      "longitude": 27.869444
+    }
+  },
+  {
+    "station_id": "23582",
+    "station_name": "vt13_Lappeenranta_Nuijamaa",
+    "station_location": {
+      "latitude": 60.964523,
+      "longitude": 28.503726
+    }
+  },
+  {
+    "station_id": "23583",
+    "station_name": "vt7_Kotka_Petäjäsuo",
+    "station_location": {
+      "latitude": 60.497487,
+      "longitude": 26.855128
+    }
+  },
+  {
+    "station_id": "23584",
+    "station_name": "st170_Pyhtää",
+    "station_location": {
+      "latitude": 60.49029,
+      "longitude": 26.681621
+    }
+  },
+  {
+    "station_id": "23586",
+    "station_name": "vt15_Kotka_Kotkansaari",
+    "station_location": {
+      "latitude": 60.463908,
+      "longitude": 26.921393
+    }
+  },
+  {
+    "station_id": "23587",
+    "station_name": "vt6_Luumäki_Somerharju",
+    "station_location": {
+      "latitude": 60.913277,
+      "longitude": 27.387624
+    }
+  },
+  {
+    "station_id": "23590",
+    "station_name": "vt12_Iitti, Tillola",
+    "station_location": {
+      "latitude": 60.880548,
+      "longitude": 26.429675
+    }
+  },
+  {
+    "station_id": "23591",
+    "station_name": "vt15_Kouvola_Havukka",
+    "station_location": {
+      "latitude": 60.817549,
+      "longitude": 26.788494
+    }
+  },
+  {
+    "station_id": "23592",
+    "station_name": "vt6_Kouvola_Metso",
+    "station_location": {
+      "latitude": 60.904803,
+      "longitude": 26.999613
+    }
+  },
+  {
+    "station_id": "23593",
+    "station_name": "st387_Lappeenranta_Ylämaa",
+    "station_location": {
+      "latitude": 60.765028,
+      "longitude": 27.979948
+    }
+  },
+  {
+    "station_id": "23594",
+    "station_name": "vt6_Kouvola_Hevossuo",
+    "station_location": {
+      "latitude": 60.841068,
+      "longitude": 26.541592
+    }
+  },
+  {
+    "station_id": "23595",
+    "station_name": "vt6_Kouvola_Puhjo",
+    "station_location": {
+      "latitude": 60.872762,
+      "longitude": 26.639312
+    }
+  },
+  {
+    "station_id": "23596",
+    "station_name": "vt6_Kouvola_Käyrälampi",
+    "station_location": {
+      "latitude": 60.88464,
+      "longitude": 26.754927
+    }
+  },
+  {
+    "station_id": "23597",
+    "station_name": "vt13_Lappeenranta_Nuijamaa_rask",
+    "station_location": {
+      "latitude": 60.96021,
+      "longitude": 28.510393
+    }
+  },
+  {
+    "station_id": "23598",
+    "station_name": "vt7_Virolahti, Vaalimaa_rask",
+    "station_location": {
+      "latitude": 60.606425,
+      "longitude": 27.869182
+    }
+  },
+  {
+    "station_id": "23599",
+    "station_name": "vt7_Kotka_Leppäsaari",
+    "station_location": {
+      "latitude": 60.50124,
+      "longitude": 26.883346
+    }
+  },
+  {
+    "station_id": "23602",
+    "station_name": "vt5_Mäntyharju_Toivola",
+    "station_location": {
+      "latitude": 61.47962,
+      "longitude": 26.75034
+    }
+  },
+  {
+    "station_id": "23603",
+    "station_name": "vt5_Joroinen_Tienhaara",
+    "station_location": {
+      "latitude": 62.138214,
+      "longitude": 27.838071
+    }
+  },
+  {
+    "station_id": "23604",
+    "station_name": "vt13_Mikkeli_Ristiina",
+    "station_location": {
+      "latitude": 61.556588,
+      "longitude": 27.25169
+    }
+  },
+  {
+    "station_id": "23605",
+    "station_name": "vt14_Juva1",
+    "station_location": {
+      "latitude": 61.898902,
+      "longitude": 27.823353
+    }
+  },
+  {
+    "station_id": "23606",
+    "station_name": "vt14_Savonlinna_Nojanmaa",
+    "station_location": {
+      "latitude": 61.871715,
+      "longitude": 28.950363
+    }
+  },
+  {
+    "station_id": "23607",
+    "station_name": "kt72_Pieksämäki_Virtasalmi",
+    "station_location": {
+      "latitude": 62.122853,
+      "longitude": 27.247958
+    }
+  },
+  {
+    "station_id": "23622",
+    "station_name": "vt13_Kangasniemi_Synsiö",
+    "station_location": {
+      "latitude": 62.093642,
+      "longitude": 26.499139
+    }
+  },
+  {
+    "station_id": "23623",
+    "station_name": "vt4_Hartola",
+    "station_location": {
+      "latitude": 61.492351,
+      "longitude": 25.9794
+    }
+  },
+  {
+    "station_id": "23627",
+    "station_name": "vt5_Juva_Nuutilanmäki",
+    "station_location": {
+      "latitude": 61.795714,
+      "longitude": 27.598326
+    }
+  },
+  {
+    "station_id": "23628",
+    "station_name": "vt4_Murhamäki",
+    "station_location": {
+      "latitude": 61.274775,
+      "longitude": 26.065516
+    }
+  },
+  {
+    "station_id": "23629",
+    "station_name": "vt23_Pieksämäki_Siikamäki",
+    "station_location": {
+      "latitude": 62.290789,
+      "longitude": 27.402817
+    }
+  },
+  {
+    "station_id": "23630",
+    "station_name": "vt5_Pertunmaa_Kuortti",
+    "station_location": {
+      "latitude": 61.39936,
+      "longitude": 26.386836
+    }
+  },
+  {
+    "station_id": "23631",
+    "station_name": "vt5_Joroinen_Kuvansi",
+    "station_location": {
+      "latitude": 62.276534,
+      "longitude": 27.86515
+    }
+  },
+  {
+    "station_id": "23632",
+    "station_name": "vt14_Savonlinna_Hevonpäänniemi",
+    "station_location": {
+      "latitude": 61.879312,
+      "longitude": 28.854191
+    }
+  },
+  {
+    "station_id": "23633",
+    "station_name": "vt5_Mikkeli_Pitkäjärvi",
+    "station_location": {
+      "latitude": 61.677505,
+      "longitude": 27.249481
+    }
+  },
+  {
+    "station_id": "23701",
+    "station_name": "vt9_Liperi_Viinijärvi",
+    "station_location": {
+      "latitude": 62.684077,
+      "longitude": 29.104469
+    }
+  },
+  {
+    "station_id": "23704",
+    "station_name": "kt71_Kitee_Väärämäki",
+    "station_location": {
+      "latitude": 62.05345,
+      "longitude": 29.607403
+    }
+  },
+  {
+    "station_id": "23705",
+    "station_name": "kt73_Lieksa_Mähkö",
+    "station_location": {
+      "latitude": 63.303887,
+      "longitude": 30.050097
+    }
+  },
+  {
+    "station_id": "23723",
+    "station_name": "vt23_Liperi_Kompero",
+    "station_location": {
+      "latitude": 62.606588,
+      "longitude": 29.260483
+    }
+  },
+  {
+    "station_id": "23724",
+    "station_name": "vt9_Tohmajärvi_Niirala",
+    "station_location": {
+      "latitude": 62.171684,
+      "longitude": 30.622457
+    }
+  },
+  {
+    "station_id": "23725",
+    "station_name": "vt6_Juuka_Lonkaa",
+    "station_location": {
+      "latitude": 63.291359,
+      "longitude": 29.230376
+    }
+  },
+  {
+    "station_id": "23726",
+    "station_name": "vt9_Liperi_Ylämylly",
+    "station_location": {
+      "latitude": 62.625341,
+      "longitude": 29.582287
+    }
+  },
+  {
+    "station_id": "23727",
+    "station_name": "vt6_Kontiolahti_Lehmo",
+    "station_location": {
+      "latitude": 62.660065,
+      "longitude": 29.78608
+    }
+  },
+  {
+    "station_id": "23729",
+    "station_name": "vt9_Tohmajärvi_Kaurila",
+    "station_location": {
+      "latitude": 62.17786,
+      "longitude": 30.525608
+    }
+  },
+  {
+    "station_id": "23730",
+    "station_name": "vt9_Joensuu_Noljakka",
+    "station_location": {
+      "latitude": 62.62456,
+      "longitude": 29.711943
+    }
+  },
+  {
+    "station_id": "23731",
+    "station_name": "vt6_Joensuu_Reijola",
+    "station_location": {
+      "latitude": 62.530771,
+      "longitude": 29.862889
+    }
+  },
+  {
+    "station_id": "23732",
+    "station_name": "vt6_Kitee_Kousa",
+    "station_location": {
+      "latitude": 61.974061,
+      "longitude": 29.873465
+    }
+  },
+  {
+    "station_id": "23733",
+    "station_name": "vt6_Joensuu",
+    "station_location": {
+      "latitude": 62.614368,
+      "longitude": 29.780506
+    }
+  },
+  {
+    "station_id": "23801",
+    "station_name": "vt5_Leppävirta_Oikearanta",
+    "station_location": {
+      "latitude": 62.520063,
+      "longitude": 27.681544
+    }
+  },
+  {
+    "station_id": "23803",
+    "station_name": "vt5_Siilinjärvi_Pyyjärvi",
+    "station_location": {
+      "latitude": 63.103916,
+      "longitude": 27.647471
+    }
+  },
+  {
+    "station_id": "23804",
+    "station_name": "vt9_Tuusniemi_Tuusjärvi",
+    "station_location": {
+      "latitude": 62.870994,
+      "longitude": 28.33583
+    }
+  },
+  {
+    "station_id": "23805",
+    "station_name": "kt75_Rautavaara_Luostanlinna",
+    "station_location": {
+      "latitude": 63.367592,
+      "longitude": 28.574839
+    }
+  },
+  {
+    "station_id": "23806",
+    "station_name": "kt77_Pielavesi_Kopsankylä",
+    "station_location": {
+      "latitude": 63.194671,
+      "longitude": 26.715213
+    }
+  },
+  {
+    "station_id": "23807",
+    "station_name": "vt27_Kiuruvesi_Hamarinvuori",
+    "station_location": {
+      "latitude": 63.674695,
+      "longitude": 26.432573
+    }
+  },
+  {
+    "station_id": "23821",
+    "station_name": "vt9_Suonenjoki_Kutunjärvi",
+    "station_location": {
+      "latitude": 62.676118,
+      "longitude": 27.416714
+    }
+  },
+  {
+    "station_id": "23822",
+    "station_name": "kt88_Vieremä",
+    "station_location": {
+      "latitude": 63.749188,
+      "longitude": 26.986018
+    }
+  },
+  {
+    "station_id": "23824",
+    "station_name": "kt75_Nilsiä_Suholanmäki",
+    "station_location": {
+      "latitude": 63.159412,
+      "longitude": 28.059585
+    }
+  },
+  {
+    "station_id": "23825",
+    "station_name": "vt5_Kuopio_Hiltulanlahti",
+    "station_location": {
+      "latitude": 62.809001,
+      "longitude": 27.603342
+    }
+  },
+  {
+    "station_id": "23826",
+    "station_name": "vt5_Iisalmi_Paloisjärvi",
+    "station_location": {
+      "latitude": 63.566831,
+      "longitude": 27.251752
+    }
+  },
+  {
+    "station_id": "23827",
+    "station_name": "vt9_Kuopio_Jännevirta",
+    "station_location": {
+      "latitude": 62.949672,
+      "longitude": 27.882583
+    }
+  },
+  {
+    "station_id": "23828",
+    "station_name": "vt5_Kuopio_Rahusenlampi",
+    "station_location": {
+      "latitude": 62.917967,
+      "longitude": 27.678447
+    }
+  },
+  {
+    "station_id": "23832",
+    "station_name": "vt5_Kuopio_Levänen",
+    "station_location": {
+      "latitude": 62.86975,
+      "longitude": 27.619645
+    }
+  },
+  {
+    "station_id": "23833",
+    "station_name": "kt75_Siilinjärvi_Pajukoski",
+    "station_location": {
+      "latitude": 63.134857,
+      "longitude": 27.825265
+    }
+  },
+  {
+    "station_id": "23834",
+    "station_name": "vt5_Kuopio_Tikkalansaari",
+    "station_location": {
+      "latitude": 62.952349,
+      "longitude": 27.679283
+    }
+  },
+  {
+    "station_id": "23835",
+    "station_name": "vt5_Kuopio_Sorsasalo",
+    "station_location": {
+      "latitude": 62.963797,
+      "longitude": 27.696782
+    }
+  },
+  {
+    "station_id": "23836",
+    "station_name": "vt5_Siilinjärvi_Vuorela",
+    "station_location": {
+      "latitude": 62.982096,
+      "longitude": 27.706255
+    }
+  },
+  {
+    "station_id": "23901",
+    "station_name": "vt4_Jyväskylä_Tikkakoski",
+    "station_location": {
+      "latitude": 62.370742,
+      "longitude": 25.701282
+    }
+  },
+  {
+    "station_id": "23902",
+    "station_name": "vt4_Äänekoski_Karvalahti",
+    "station_location": {
+      "latitude": 62.656247,
+      "longitude": 25.725978
+    }
+  },
+  {
+    "station_id": "23903",
+    "station_name": "vt9_Laukaa_Lievestuore",
+    "station_location": {
+      "latitude": 62.248253,
+      "longitude": 26.159011
+    }
+  },
+  {
+    "station_id": "23904",
+    "station_name": "vt13_Saarijärvi_Alajärvi",
+    "station_location": {
+      "latitude": 62.796193,
+      "longitude": 25.059282
+    }
+  },
+  {
+    "station_id": "23905",
+    "station_name": "vt23_Keuruu_Tiusala",
+    "station_location": {
+      "latitude": 62.246944,
+      "longitude": 24.563221
+    }
+  },
+  {
+    "station_id": "23921",
+    "station_name": "vt24_Kuhmoinen",
+    "station_location": {
+      "latitude": 61.488543,
+      "longitude": 25.146808
+    }
+  },
+  {
+    "station_id": "23922",
+    "station_name": "vt9_Muurame_Niittyaho",
+    "station_location": {
+      "latitude": 62.095101,
+      "longitude": 25.62855
+    }
+  },
+  {
+    "station_id": "23923",
+    "station_name": "vt4_Jyväskylä_Halssila",
+    "station_location": {
+      "latitude": 62.242054,
+      "longitude": 25.786025
+    }
+  },
+  {
+    "station_id": "23925",
+    "station_name": "vt4_Viitasaari_Löytänä",
+    "station_location": {
+      "latitude": 63.224403,
+      "longitude": 25.66295
+    }
+  },
+  {
+    "station_id": "23927",
+    "station_name": "vt9_Jyväskylä_Saakoski",
+    "station_location": {
+      "latitude": 61.977691,
+      "longitude": 25.401237
+    }
+  },
+  {
+    "station_id": "23928",
+    "station_name": "vt4_Joutsa_Harvastensuo",
+    "station_location": {
+      "latitude": 61.826185,
+      "longitude": 26.09787
+    }
+  },
+  {
+    "station_id": "23929",
+    "station_name": "vt4_Jyväskylä_Hupeli",
+    "station_location": {
+      "latitude": 62.234518,
+      "longitude": 25.89628
+    }
+  },
+  {
+    "station_id": "23930",
+    "station_name": "vt9_Jämsä",
+    "station_location": {
+      "latitude": 61.84994,
+      "longitude": 25.162483
+    }
+  },
+  {
+    "station_id": "23931",
+    "station_name": "vt18_Petäjävesi_Vehkasuo",
+    "station_location": {
+      "latitude": 62.271666,
+      "longitude": 25.39467
+    }
+  },
+  {
+    "station_id": "23932",
+    "station_name": "vt4_Viitasaari_Hännilänsalmi",
+    "station_location": {
+      "latitude": 63.041557,
+      "longitude": 25.81487
+    }
+  },
+  {
+    "station_id": "23933",
+    "station_name": "vt4_Jyväskylä_Mannila",
+    "station_location": {
+      "latitude": 62.278469,
+      "longitude": 25.728211
+    }
+  },
+  {
+    "station_id": "23934",
+    "station_name": "st637_Jyväskylä_Palokangas",
+    "station_location": {
+      "latitude": 62.300927,
+      "longitude": 25.82149
+    }
+  },
+  {
+    "station_id": "23935",
+    "station_name": "vt4_Toivakka_Majalampi",
+    "station_location": {
+      "latitude": 62.106346,
+      "longitude": 25.978907
+    }
+  },
+  {
+    "station_id": "23936",
+    "station_name": "vt4_Laukaa_Vehniä",
+    "station_location": {
+      "latitude": 62.44338,
+      "longitude": 25.682379
+    }
+  },
+  {
+    "station_id": "23937",
+    "station_name": "kt77_Viitasaari_Tuliniemi",
+    "station_location": {
+      "latitude": 63.144195,
+      "longitude": 25.815228
+    }
+  },
+  {
+    "station_id": "23938",
+    "station_name": "vt9_Jyväskylä_Lutakko",
+    "station_location": {
+      "latitude": 62.24248,
+      "longitude": 25.759138
+    }
+  },
+  {
+    "station_id": "23998",
+    "station_name": "vt4_Mäntsälä_E",
+    "station_location": {
+      "latitude": 60.61914,
+      "longitude": 25.275103
+    }
+  },
+  {
+    "station_id": "24001",
+    "station_name": "vt3_Ilmajoki_Majakangas",
+    "station_location": {
+      "latitude": 62.787786,
+      "longitude": 22.280752
+    }
+  },
+  {
+    "station_id": "24002",
+    "station_name": "vt3_Hälsingby",
+    "station_location": {
+      "latitude": 63.020728,
+      "longitude": 21.809896
+    }
+  },
+  {
+    "station_id": "24003",
+    "station_name": "vt8_Koivulahti",
+    "station_location": {
+      "latitude": 63.147016,
+      "longitude": 21.785075
+    }
+  },
+  {
+    "station_id": "24004",
+    "station_name": "vt18_Isokyrö",
+    "station_location": {
+      "latitude": 62.97981,
+      "longitude": 22.346244
+    }
+  },
+  {
+    "station_id": "24005",
+    "station_name": "vt19_Luopajärvi",
+    "station_location": {
+      "latitude": 62.587638,
+      "longitude": 22.753175
+    }
+  },
+  {
+    "station_id": "24006",
+    "station_name": "kt67_Ilmajoki",
+    "station_location": {
+      "latitude": 62.740972,
+      "longitude": 22.619883
+    }
+  },
+  {
+    "station_id": "24007",
+    "station_name": "vt19_Lapua",
+    "station_location": {
+      "latitude": 62.939917,
+      "longitude": 23.039081
+    }
+  },
+  {
+    "station_id": "24021",
+    "station_name": "vt3_Koskue",
+    "station_location": {
+      "latitude": 62.393682,
+      "longitude": 22.797149
+    }
+  },
+  {
+    "station_id": "24022",
+    "station_name": "vt8_Närpiö",
+    "station_location": {
+      "latitude": 62.442163,
+      "longitude": 21.426471
+    }
+  },
+  {
+    "station_id": "24023",
+    "station_name": "vt8_Kokkola",
+    "station_location": {
+      "latitude": 63.86026,
+      "longitude": 23.239785
+    }
+  },
+  {
+    "station_id": "24024",
+    "station_name": "kt66_Alavus_Sampsalampi",
+    "station_location": {
+      "latitude": 62.446835,
+      "longitude": 23.626927
+    }
+  },
+  {
+    "station_id": "24026",
+    "station_name": "vt8_Kovjoki",
+    "station_location": {
+      "latitude": 63.548586,
+      "longitude": 22.707169
+    }
+  },
+  {
+    "station_id": "24027",
+    "station_name": "vt16_Alajärvi",
+    "station_location": {
+      "latitude": 63.019731,
+      "longitude": 23.678787
+    }
+  },
+  {
+    "station_id": "24028",
+    "station_name": "kt68_Evijärvi",
+    "station_location": {
+      "latitude": 63.335551,
+      "longitude": 23.514634
+    }
+  },
+  {
+    "station_id": "24029",
+    "station_name": "st724_Raippaluoto",
+    "station_location": {
+      "latitude": 63.206633,
+      "longitude": 21.483404
+    }
+  },
+  {
+    "station_id": "24030",
+    "station_name": "vt3_Vaasa_Mt",
+    "station_location": {
+      "latitude": 63.062707,
+      "longitude": 21.707043
+    }
+  },
+  {
+    "station_id": "24031",
+    "station_name": "vt19_Alahärmä_Voltti",
+    "station_location": {
+      "latitude": 63.289083,
+      "longitude": 22.800476
+    }
+  },
+  {
+    "station_id": "24032",
+    "station_name": "vt18_Seinäjoki_Munakka",
+    "station_location": {
+      "latitude": 62.851504,
+      "longitude": 22.781877
+    }
+  },
+  {
+    "station_id": "24033",
+    "station_name": "vt18_Alavus_Tuuri",
+    "station_location": {
+      "latitude": 62.594559,
+      "longitude": 23.691022
+    }
+  },
+  {
+    "station_id": "24034",
+    "station_name": "kt67_Seinäjoki",
+    "station_location": {
+      "latitude": 62.797651,
+      "longitude": 22.844776
+    }
+  },
+  {
+    "station_id": "24035",
+    "station_name": "kt63_Kauhava",
+    "station_location": {
+      "latitude": 63.124067,
+      "longitude": 23.067366
+    }
+  },
+  {
+    "station_id": "24036",
+    "station_name": "kt68_Pietarsaari",
+    "station_location": {
+      "latitude": 63.639362,
+      "longitude": 22.819768
+    }
+  },
+  {
+    "station_id": "24037",
+    "station_name": "vt18_Nurmo_Uittoo",
+    "station_location": {
+      "latitude": 62.772412,
+      "longitude": 23.010367
+    }
+  },
+  {
+    "station_id": "24038",
+    "station_name": "kt63_Kaustinen",
+    "station_location": {
+      "latitude": 63.559336,
+      "longitude": 23.752316
+    }
+  },
+  {
+    "station_id": "24039",
+    "station_name": "kt68_Ähtäri",
+    "station_location": {
+      "latitude": 62.540259,
+      "longitude": 24.044465
+    }
+  },
+  {
+    "station_id": "24040",
+    "station_name": "vt28_Kannus",
+    "station_location": {
+      "latitude": 63.899235,
+      "longitude": 23.859098
+    }
+  },
+  {
+    "station_id": "24041",
+    "station_name": "vt13_Kaustinen_Viiperi",
+    "station_location": {
+      "latitude": 63.600912,
+      "longitude": 23.464234
+    }
+  },
+  {
+    "station_id": "24042",
+    "station_name": "kt67_Kauhajoki_P",
+    "station_location": {
+      "latitude": 62.480593,
+      "longitude": 22.280583
+    }
+  },
+  {
+    "station_id": "24043",
+    "station_name": "yt17367_Kurikka_Panttil",
+    "station_location": {
+      "latitude": 62.667424,
+      "longitude": 22.375474
+    }
+  },
+  {
+    "station_id": "24044",
+    "station_name": "kt66_Kuortane",
+    "station_location": {
+      "latitude": 62.805063,
+      "longitude": 23.51699
+    }
+  },
+  {
+    "station_id": "24045",
+    "station_name": "vt8_Mustasaari_Riimal",
+    "station_location": {
+      "latitude": 62.951484,
+      "longitude": 21.762415
+    }
+  },
+  {
+    "station_id": "24046",
+    "station_name": "kt67_Teuva",
+    "station_location": {
+      "latitude": 62.471338,
+      "longitude": 21.683517
+    }
+  },
+  {
+    "station_id": "24047",
+    "station_name": "vt3_Kurikka_Tuiskula",
+    "station_location": {
+      "latitude": 62.640243,
+      "longitude": 22.431398
+    }
+  },
+  {
+    "station_id": "24048",
+    "station_name": "vt13_Kokkola_Ribacken",
+    "station_location": {
+      "latitude": 63.798287,
+      "longitude": 23.213805
+    }
+  },
+  {
+    "station_id": "24049",
+    "station_name": "vt19_Lapua_Voitilanjärvi",
+    "station_location": {
+      "latitude": 63.01968,
+      "longitude": 23.055276
+    }
+  },
+  {
+    "station_id": "24050",
+    "station_name": "vt8_Kristiinankaupunki",
+    "station_location": {
+      "latitude": 62.067786,
+      "longitude": 21.530825
+    }
+  },
+  {
+    "station_id": "24051",
+    "station_name": "vt3_Laihia_Perälä",
+    "station_location": {
+      "latitude": 62.95587,
+      "longitude": 22.045875
+    }
+  },
+  {
+    "station_id": "24052",
+    "station_name": "vt8_Himanka",
+    "station_location": {
+      "latitude": 64.04918,
+      "longitude": 23.641947
+    }
+  },
+  {
+    "station_id": "24053",
+    "station_name": "vt18_Laihia_Vedenoja",
+    "station_location": {
+      "latitude": 62.991996,
+      "longitude": 22.080626
+    }
+  },
+  {
+    "station_id": "24054",
+    "station_name": "kt44_Kauhajoki",
+    "station_location": {
+      "latitude": 62.447897,
+      "longitude": 22.215368
+    }
+  },
+  {
+    "station_id": "24055",
+    "station_name": "kt68_Lehtimäki",
+    "station_location": {
+      "latitude": 62.808306,
+      "longitude": 23.937685
+    }
+  },
+  {
+    "station_id": "24056",
+    "station_name": "vt18_Alavus_Kuivaskylä",
+    "station_location": {
+      "latitude": 62.592388,
+      "longitude": 23.467483
+    }
+  },
+  {
+    "station_id": "24057",
+    "station_name": "vt8_Vaasa_Yhdystie",
+    "station_location": {
+      "latitude": 63.087002,
+      "longitude": 21.671131
+    }
+  },
+  {
+    "station_id": "24058",
+    "station_name": "vt16_Ylistaro",
+    "station_location": {
+      "latitude": 62.960082,
+      "longitude": 22.547341
+    }
+  },
+  {
+    "station_id": "24059",
+    "station_name": "vt19_Nurmo",
+    "station_location": {
+      "latitude": 62.826881,
+      "longitude": 22.925756
+    }
+  },
+  {
+    "station_id": "24060",
+    "station_name": "kt66_Alavus_Pohjoinen",
+    "station_location": {
+      "latitude": 62.635241,
+      "longitude": 23.575968
+    }
+  },
+  {
+    "station_id": "24061",
+    "station_name": "vt18_Seinäjöki_Pajuneva",
+    "station_location": {
+      "latitude": 62.810611,
+      "longitude": 22.851669
+    }
+  },
+  {
+    "station_id": "24062",
+    "station_name": "vt18_Töysä_Jokikylä",
+    "station_location": {
+      "latitude": 62.613384,
+      "longitude": 23.763369
+    }
+  },
+  {
+    "station_id": "24063",
+    "station_name": "vt8_Kaitsor_Vöyri-Maksamaa",
+    "station_location": {
+      "latitude": 63.256345,
+      "longitude": 22.282447
+    }
+  },
+  {
+    "station_id": "24064",
+    "station_name": "vt13_Perho_Möttönen",
+    "station_location": {
+      "latitude": 63.167325,
+      "longitude": 24.522279
+    }
+  },
+  {
+    "station_id": "24065",
+    "station_name": "vt18_Ähtäri_Inha",
+    "station_location": {
+      "latitude": 62.555526,
+      "longitude": 24.122218
+    }
+  },
+  {
+    "station_id": "24066",
+    "station_name": "vt8_Mustasaari_Lintuvuori",
+    "station_location": {
+      "latitude": 63.130044,
+      "longitude": 21.719721
+    }
+  },
+  {
+    "station_id": "24067",
+    "station_name": "vt8_Vaasa_Böle",
+    "station_location": {
+      "latitude": 63.107493,
+      "longitude": 21.654017
+    }
+  },
+  {
+    "station_id": "24068",
+    "station_name": "vt19_Ilmajoki_Rengonkylä",
+    "station_location": {
+      "latitude": 62.709277,
+      "longitude": 22.837219
+    }
+  },
+  {
+    "station_id": "24069",
+    "station_name": "vt19_Seinäjoki_Kertunlaakso",
+    "station_location": {
+      "latitude": 62.795397,
+      "longitude": 22.934864
+    }
+  },
+  {
+    "station_id": "24070",
+    "station_name": "st724_Vaasa_Onkilahti",
+    "station_location": {
+      "latitude": 63.113409,
+      "longitude": 21.617358
+    }
+  },
+  {
+    "station_id": "24101",
+    "station_name": "vt4_Pyhäjärvi",
+    "station_location": {
+      "latitude": 63.623715,
+      "longitude": 25.784847
+    }
+  },
+  {
+    "station_id": "24103",
+    "station_name": "vt28_Sievi",
+    "station_location": {
+      "latitude": 63.87307,
+      "longitude": 24.711697
+    }
+  },
+  {
+    "station_id": "24104",
+    "station_name": "vt27_Ylivieska_Alavieska",
+    "station_location": {
+      "latitude": 64.123127,
+      "longitude": 24.352838
+    }
+  },
+  {
+    "station_id": "24105",
+    "station_name": "vt27_Haapajärvi",
+    "station_location": {
+      "latitude": 63.744651,
+      "longitude": 25.605169
+    }
+  },
+  {
+    "station_id": "24121",
+    "station_name": "vt4_Kärsämäki",
+    "station_location": {
+      "latitude": 63.948495,
+      "longitude": 25.807715
+    }
+  },
+  {
+    "station_id": "24122",
+    "station_name": "vt13_Veteli",
+    "station_location": {
+      "latitude": 63.428212,
+      "longitude": 23.91719
+    }
+  },
+  {
+    "station_id": "24123",
+    "station_name": "kt86_Oulainen",
+    "station_location": {
+      "latitude": 64.244521,
+      "longitude": 24.82984
+    }
+  },
+  {
+    "station_id": "24124",
+    "station_name": "vt8_Rahvo",
+    "station_location": {
+      "latitude": 64.29854,
+      "longitude": 23.93825
+    }
+  },
+  {
+    "station_id": "24201",
+    "station_name": "vt4_Oulu_Mäntylä",
+    "station_location": {
+      "latitude": 64.979487,
+      "longitude": 25.509072
+    }
+  },
+  {
+    "station_id": "24202",
+    "station_name": "vt4_Ii",
+    "station_location": {
+      "latitude": 65.302676,
+      "longitude": 25.374974
+    }
+  },
+  {
+    "station_id": "24203",
+    "station_name": "vt5_Kuusamo_Nissinvaara",
+    "station_location": {
+      "latitude": 66.060366,
+      "longitude": 29.146153
+    }
+  },
+  {
+    "station_id": "24204",
+    "station_name": "vt8_Raahe",
+    "station_location": {
+      "latitude": 64.686291,
+      "longitude": 24.561522
+    }
+  },
+  {
+    "station_id": "24205",
+    "station_name": "kt86_Liminka_Heinijärvi",
+    "station_location": {
+      "latitude": 64.708879,
+      "longitude": 25.386099
+    }
+  },
+  {
+    "station_id": "24206",
+    "station_name": "vt4_Oulu_Ouluntulli",
+    "station_location": {
+      "latitude": 64.946703,
+      "longitude": 25.532678
+    }
+  },
+  {
+    "station_id": "24207",
+    "station_name": "vt4_Oulu_Haukipudas",
+    "station_location": {
+      "latitude": 65.174538,
+      "longitude": 25.425123
+    }
+  },
+  {
+    "station_id": "24221",
+    "station_name": "vt4_Rantsila",
+    "station_location": {
+      "latitude": 64.382939,
+      "longitude": 25.846923
+    }
+  },
+  {
+    "station_id": "24222",
+    "station_name": "st847_Tupos",
+    "station_location": {
+      "latitude": 64.839634,
+      "longitude": 25.48791
+    }
+  },
+  {
+    "station_id": "24223",
+    "station_name": "vt20_Kiiminki",
+    "station_location": {
+      "latitude": 65.065491,
+      "longitude": 25.63996
+    }
+  },
+  {
+    "station_id": "24224",
+    "station_name": "vt20_Pintamo",
+    "station_location": {
+      "latitude": 65.441362,
+      "longitude": 27.608001
+    }
+  },
+  {
+    "station_id": "24225",
+    "station_name": "kt78_Pudasjärvi",
+    "station_location": {
+      "latitude": 65.66987,
+      "longitude": 26.688639
+    }
+  },
+  {
+    "station_id": "24226",
+    "station_name": "vt4_Kempele",
+    "station_location": {
+      "latitude": 64.914518,
+      "longitude": 25.535325
+    }
+  },
+  {
+    "station_id": "24227",
+    "station_name": "vt22_Muhos_Riihikylä",
+    "station_location": {
+      "latitude": 64.856358,
+      "longitude": 25.894297
+    }
+  },
+  {
+    "station_id": "24228",
+    "station_name": "st847_Haukipudas",
+    "station_location": {
+      "latitude": 65.120244,
+      "longitude": 25.372514
+    }
+  },
+  {
+    "station_id": "24229",
+    "station_name": "vt4_Ii_Myllykangas",
+    "station_location": {
+      "latitude": 65.533222,
+      "longitude": 25.251153
+    }
+  },
+  {
+    "station_id": "24230",
+    "station_name": "vt20_Rankkila",
+    "station_location": {
+      "latitude": 65.265773,
+      "longitude": 26.729714
+    }
+  },
+  {
+    "station_id": "24231",
+    "station_name": "vt4_Oulu_Kello",
+    "station_location": {
+      "latitude": 65.120506,
+      "longitude": 25.429964
+    }
+  },
+  {
+    "station_id": "24232",
+    "station_name": "vt20_Kettumäki",
+    "station_location": {
+      "latitude": 65.413902,
+      "longitude": 27.425284
+    }
+  },
+  {
+    "station_id": "24233",
+    "station_name": "kt88_Alpua",
+    "station_location": {
+      "latitude": 64.455218,
+      "longitude": 25.152491
+    }
+  },
+  {
+    "station_id": "24234",
+    "station_name": "vt5_Toranki",
+    "station_location": {
+      "latitude": 65.946859,
+      "longitude": 29.161443
+    }
+  },
+  {
+    "station_id": "24235",
+    "station_name": "vt8_Lapinkangas",
+    "station_location": {
+      "latitude": 64.783198,
+      "longitude": 25.350434
+    }
+  },
+  {
+    "station_id": "24236",
+    "station_name": "vt4_Ala-Temmes",
+    "station_location": {
+      "latitude": 64.804166,
+      "longitude": 25.509354
+    }
+  },
+  {
+    "station_id": "24237",
+    "station_name": "vt4_Oulu_Intiö",
+    "station_location": {
+      "latitude": 65.019337,
+      "longitude": 25.508377
+    }
+  },
+  {
+    "station_id": "24238",
+    "station_name": "vt4_Oulu_Isko",
+    "station_location": {
+      "latitude": 65.046788,
+      "longitude": 25.462881
+    }
+  },
+  {
+    "station_id": "24239",
+    "station_name": "st815_Lentokentäntie",
+    "station_location": {
+      "latitude": 64.949734,
+      "longitude": 25.49017
+    }
+  },
+  {
+    "station_id": "24243",
+    "station_name": "vt4_Luhasto",
+    "station_location": {
+      "latitude": 64.842413,
+      "longitude": 25.505382
+    }
+  },
+  {
+    "station_id": "24244",
+    "station_name": "vt4_Oulu_Laanila",
+    "station_location": {
+      "latitude": 65.032306,
+      "longitude": 25.494083
+    }
+  },
+  {
+    "station_id": "24246",
+    "station_name": "vt4_Oulu_Kuivasjärvi",
+    "station_location": {
+      "latitude": 65.071121,
+      "longitude": 25.442274
+    }
+  },
+  {
+    "station_id": "24247",
+    "station_name": "st847_Oulunlahti",
+    "station_location": {
+      "latitude": 64.970414,
+      "longitude": 25.492182
+    }
+  },
+  {
+    "station_id": "24248",
+    "station_name": "st815_Oulunsalo",
+    "station_location": {
+      "latitude": 64.937519,
+      "longitude": 25.423416
+    }
+  },
+  {
+    "station_id": "24249",
+    "station_name": "st815_Lunki",
+    "station_location": {
+      "latitude": 64.933641,
+      "longitude": 25.398064
+    }
+  },
+  {
+    "station_id": "24250",
+    "station_name": "vt4_Oulu_Kontinkangas",
+    "station_location": {
+      "latitude": 65.008548,
+      "longitude": 25.506412
+    }
+  },
+  {
+    "station_id": "24251",
+    "station_name": "vt4_Oulu_Lintula",
+    "station_location": {
+      "latitude": 64.995387,
+      "longitude": 25.506002
+    }
+  },
+  {
+    "station_id": "24252",
+    "station_name": "st866_Kuusamo_T",
+    "station_location": {
+      "latitude": 65.800076,
+      "longitude": 30.092822
+    }
+  },
+  {
+    "station_id": "24253",
+    "station_name": "st816_Hailuoto",
+    "station_location": {
+      "latitude": 65.041186,
+      "longitude": 25.054259
+    }
+  },
+  {
+    "station_id": "24254",
+    "station_name": "vt20_Rusko2",
+    "station_location": {
+      "latitude": 65.054793,
+      "longitude": 25.607712
+    }
+  },
+  {
+    "station_id": "24255",
+    "station_name": "vt8_Hurnasperä",
+    "station_location": {
+      "latitude": 64.524612,
+      "longitude": 24.369767
+    }
+  },
+  {
+    "station_id": "24256",
+    "station_name": "vt22_Oulu_Kaukovainio",
+    "station_location": {
+      "latitude": 64.994916,
+      "longitude": 25.529079
+    }
+  },
+  {
+    "station_id": "24257",
+    "station_name": "vt22_Oulu_Iinatti",
+    "station_location": {
+      "latitude": 64.978763,
+      "longitude": 25.571824
+    }
+  },
+  {
+    "station_id": "24301",
+    "station_name": "vt5_Kajaani_Mineraali",
+    "station_location": {
+      "latitude": 64.31526,
+      "longitude": 28.037973
+    }
+  },
+  {
+    "station_id": "24302",
+    "station_name": "vt5_Ristijärvi",
+    "station_location": {
+      "latitude": 64.487399,
+      "longitude": 28.177557
+    }
+  },
+  {
+    "station_id": "24303",
+    "station_name": "kt75_Kankivaara",
+    "station_location": {
+      "latitude": 63.997561,
+      "longitude": 29.635331
+    }
+  },
+  {
+    "station_id": "24321",
+    "station_name": "vt5_Hatulanmäki",
+    "station_location": {
+      "latitude": 63.995736,
+      "longitude": 27.405197
+    }
+  },
+  {
+    "station_id": "24322",
+    "station_name": "vt5_Nuottijärvi",
+    "station_location": {
+      "latitude": 64.162712,
+      "longitude": 27.524666
+    }
+  },
+  {
+    "station_id": "24323",
+    "station_name": "vt6_Sotkamo_Korholanmäki",
+    "station_location": {
+      "latitude": 64.142281,
+      "longitude": 27.997045
+    }
+  },
+  {
+    "station_id": "24324",
+    "station_name": "vt22_Törmäkylä",
+    "station_location": {
+      "latitude": 64.605566,
+      "longitude": 26.646651
+    }
+  },
+  {
+    "station_id": "24325",
+    "station_name": "kt89_Vartius",
+    "station_location": {
+      "latitude": 64.496246,
+      "longitude": 29.908877
+    }
+  },
+  {
+    "station_id": "24326",
+    "station_name": "vt28_Vuottolahti",
+    "station_location": {
+      "latitude": 64.111085,
+      "longitude": 27.266699
+    }
+  },
+  {
+    "station_id": "24327",
+    "station_name": "kt78_Aska",
+    "station_location": {
+      "latitude": 65.047852,
+      "longitude": 27.713043
+    }
+  },
+  {
+    "station_id": "24328",
+    "station_name": "vt5_Tapiola",
+    "station_location": {
+      "latitude": 65.362985,
+      "longitude": 29.030641
+    }
+  },
+  {
+    "station_id": "24329",
+    "station_name": "vt22_Mieslahti",
+    "station_location": {
+      "latitude": 64.394333,
+      "longitude": 27.956216
+    }
+  },
+  {
+    "station_id": "24401",
+    "station_name": "vt4_Tervola",
+    "station_location": {
+      "latitude": 66.080761,
+      "longitude": 24.760508
+    }
+  },
+  {
+    "station_id": "24402",
+    "station_name": "vt4_Ivalo",
+    "station_location": {
+      "latitude": 68.515564,
+      "longitude": 27.523849
+    }
+  },
+  {
+    "station_id": "24403",
+    "station_name": "vt5_Kemijärvi_Kenttälä",
+    "station_location": {
+      "latitude": 66.86155,
+      "longitude": 27.451654
+    }
+  },
+  {
+    "station_id": "24404",
+    "station_name": "st921_Kaakamo",
+    "station_location": {
+      "latitude": 65.806811,
+      "longitude": 24.462407
+    }
+  },
+  {
+    "station_id": "24405",
+    "station_name": "kt82_Misi",
+    "station_location": {
+      "latitude": 66.678773,
+      "longitude": 26.629466
+    }
+  },
+  {
+    "station_id": "24421",
+    "station_name": "vt21_Kolari",
+    "station_location": {
+      "latitude": 67.227022,
+      "longitude": 23.895951
+    }
+  },
+  {
+    "station_id": "24422",
+    "station_name": "kt79_Jääskö",
+    "station_location": {
+      "latitude": 66.993328,
+      "longitude": 25.254241
+    }
+  },
+  {
+    "station_id": "24423",
+    "station_name": "kt81_Peräposio",
+    "station_location": {
+      "latitude": 66.188151,
+      "longitude": 27.75097
+    }
+  },
+  {
+    "station_id": "24424",
+    "station_name": "vt4_Olkkajärvi",
+    "station_location": {
+      "latitude": 66.600396,
+      "longitude": 26.076851
+    }
+  },
+  {
+    "station_id": "24425",
+    "station_name": "kt78_Saukkokangas",
+    "station_location": {
+      "latitude": 66.15926,
+      "longitude": 26.252369
+    }
+  },
+  {
+    "station_id": "24426",
+    "station_name": "vt5_Suomu",
+    "station_location": {
+      "latitude": 66.550979,
+      "longitude": 28.113813
+    }
+  },
+  {
+    "station_id": "24427",
+    "station_name": "kt83_Raanujärvi",
+    "station_location": {
+      "latitude": 66.639587,
+      "longitude": 24.848527
+    }
+  },
+  {
+    "station_id": "24429",
+    "station_name": "kt91_Rajajooseppi",
+    "station_location": {
+      "latitude": 68.476006,
+      "longitude": 28.472525
+    }
+  },
+  {
+    "station_id": "24430",
+    "station_name": "kt82_Salla_Kelloselkä",
+    "station_location": {
+      "latitude": 66.943722,
+      "longitude": 29.033167
+    }
+  },
+  {
+    "station_id": "24431",
+    "station_name": "vt29_Tornio",
+    "station_location": {
+      "latitude": 65.841331,
+      "longitude": 24.146169
+    }
+  },
+  {
+    "station_id": "24432",
+    "station_name": "kt98_Aavasaksa",
+    "station_location": {
+      "latitude": 66.378874,
+      "longitude": 23.688378
+    }
+  },
+  {
+    "station_id": "24433",
+    "station_name": "st937_Pello",
+    "station_location": {
+      "latitude": 66.801136,
+      "longitude": 23.986233
+    }
+  },
+  {
+    "station_id": "24435",
+    "station_name": "st954_Muonio",
+    "station_location": {
+      "latitude": 67.939449,
+      "longitude": 23.665253
+    }
+  },
+  {
+    "station_id": "24436",
+    "station_name": "st959_Karesuvanto",
+    "station_location": {
+      "latitude": 68.44367,
+      "longitude": 22.476785
+    }
+  },
+  {
+    "station_id": "24437",
+    "station_name": "vt4_mp3_Jokisuu",
+    "station_location": {
+      "latitude": 65.790748,
+      "longitude": 24.529134
+    }
+  },
+  {
+    "station_id": "24438",
+    "station_name": "vt4_mp2_Jokisuu",
+    "station_location": {
+      "latitude": 65.794495,
+      "longitude": 24.521032
+    }
+  },
+  {
+    "station_id": "24439",
+    "station_name": "vt29_Tornio_Luukkaankangas",
+    "station_location": {
+      "latitude": 65.826223,
+      "longitude": 24.394622
+    }
+  },
+  {
+    "station_id": "24441",
+    "station_name": "vt29_Tornio_Torppi",
+    "station_location": {
+      "latitude": 65.840493,
+      "longitude": 24.204948
+    }
+  },
+  {
+    "station_id": "24442",
+    "station_name": "kt92_Näätämö",
+    "station_location": {
+      "latitude": 69.66844,
+      "longitude": 29.11538
+    }
+  },
+  {
+    "station_id": "24443",
+    "station_name": "st970_Nuorgam",
+    "station_location": {
+      "latitude": 70.088659,
+      "longitude": 27.960647
+    }
+  },
+  {
+    "station_id": "24444",
+    "station_name": "vt4_Utsjoki",
+    "station_location": {
+      "latitude": 69.90983,
+      "longitude": 27.030076
+    }
+  },
+  {
+    "station_id": "24445",
+    "station_name": "kt92_Karigasniemi",
+    "station_location": {
+      "latitude": 69.398291,
+      "longitude": 25.845486
+    }
+  },
+  {
+    "station_id": "24446",
+    "station_name": "kt93_Kivilompolo",
+    "station_location": {
+      "latitude": 68.662024,
+      "longitude": 23.321537
+    }
+  },
+  {
+    "station_id": "24447",
+    "station_name": "vt21_Kilpisjärvi_T",
+    "station_location": {
+      "latitude": 69.070682,
+      "longitude": 20.763701
+    }
+  },
+  {
+    "station_id": "24448",
+    "station_name": "vt4_Torvinen",
+    "station_location": {
+      "latitude": 67.186298,
+      "longitude": 26.641632
+    }
+  },
+  {
+    "station_id": "24449",
+    "station_name": "vt4_Yläpostojoki",
+    "station_location": {
+      "latitude": 67.734913,
+      "longitude": 26.757701
+    }
+  },
+  {
+    "station_id": "24450",
+    "station_name": "vt4_Rovaniemi_Revontuli",
+    "station_location": {
+      "latitude": 66.503881,
+      "longitude": 25.725824
+    }
+  },
+  {
+    "station_id": "24451",
+    "station_name": "vt4_Ala-Korkalo",
+    "station_location": {
+      "latitude": 66.45307,
+      "longitude": 25.578162
+    }
+  },
+  {
+    "station_id": "24452",
+    "station_name": "vt4_Marostenmäki",
+    "station_location": {
+      "latitude": 65.69221,
+      "longitude": 24.685796
+    }
+  },
+  {
+    "station_id": "24453",
+    "station_name": "vt4_Siikalahti",
+    "station_location": {
+      "latitude": 65.711237,
+      "longitude": 24.626502
+    }
+  },
+  {
+    "station_id": "24454",
+    "station_name": "vt4_Peurasaari",
+    "station_location": {
+      "latitude": 65.727615,
+      "longitude": 24.593543
+    }
+  },
+  {
+    "station_id": "24455",
+    "station_name": "vt4_Karjalahti",
+    "station_location": {
+      "latitude": 65.739392,
+      "longitude": 24.587776
+    }
+  },
+  {
+    "station_id": "24456",
+    "station_name": "vt4_Kivikko",
+    "station_location": {
+      "latitude": 65.752546,
+      "longitude": 24.573752
+    }
+  },
+  {
+    "station_id": "24457",
+    "station_name": "vt4_Ristikangas",
+    "station_location": {
+      "latitude": 65.762976,
+      "longitude": 24.571985
+    }
+  },
+  {
+    "station_id": "24458",
+    "station_name": "vt21_Tornio",
+    "station_location": {
+      "latitude": 65.871573,
+      "longitude": 24.166525
+    }
+  },
+  {
+    "station_id": "24459",
+    "station_name": "vt21_Ylitornio",
+    "station_location": {
+      "latitude": 66.365037,
+      "longitude": 23.695734
+    }
+  },
+  {
+    "station_id": "24460",
+    "station_name": "kt79_Ylikylä",
+    "station_location": {
+      "latitude": 66.534674,
+      "longitude": 25.664329
+    }
+  },
+  {
+    "station_id": "24461",
+    "station_name": "kt81_Vaarala",
+    "station_location": {
+      "latitude": 66.518337,
+      "longitude": 25.874691
+    }
+  },
+  {
+    "station_id": "24462",
+    "station_name": "kt79_Yli-Kittilä",
+    "station_location": {
+      "latitude": 67.697206,
+      "longitude": 24.862719
+    }
+  },
+  {
+    "station_id": "24463",
+    "station_name": "vt5_Kemijärvi_Sipovaara",
+    "station_location": {
+      "latitude": 66.715658,
+      "longitude": 27.475598
+    }
+  },
+  {
+    "station_id": "24464",
+    "station_name": "vt4_Oijustie",
+    "station_location": {
+      "latitude": 66.490835,
+      "longitude": 25.698494
+    }
+  },
+  {
+    "station_id": "24465",
+    "station_name": "vt4_Vapaudentie",
+    "station_location": {
+      "latitude": 66.496536,
+      "longitude": 25.714153
+    }
+  },
+  {
+    "station_id": "24466",
+    "station_name": "vt4_Syväsenvaara",
+    "station_location": {
+      "latitude": 66.531851,
+      "longitude": 25.767627
+    }
+  },
+  {
+    "station_id": "24467",
+    "station_name": "kt78_Pöykkölä",
+    "station_location": {
+      "latitude": 66.480624,
+      "longitude": 25.744643
+    }
+  },
+  {
+    "station_id": "24468",
+    "station_name": "vt21_Muonio_Pahtonen",
+    "station_location": {
+      "latitude": 67.911098,
+      "longitude": 23.632721
+    }
+  },
+  {
+    "station_id": "24601",
+    "station_name": "vt1_Lakiamäki",
+    "station_location": {
+      "latitude": 60.372404,
+      "longitude": 23.37876
+    }
+  },
+  {
+    "station_id": "24602",
+    "station_name": "vt1_Kruusila",
+    "station_location": {
+      "latitude": 60.380726,
+      "longitude": 23.473695
+    }
+  },
+  {
+    "station_id": "24603",
+    "station_name": "vt1_Syvälampi",
+    "station_location": {
+      "latitude": 60.378167,
+      "longitude": 23.631862
+    }
+  },
+  {
+    "station_id": "24604",
+    "station_name": "vt1_Lahnajärvi",
+    "station_location": {
+      "latitude": 60.37636,
+      "longitude": 23.725723
+    }
+  },
+  {
+    "station_id": "24605",
+    "station_name": "vt1_Hauklampi",
+    "station_location": {
+      "latitude": 60.366762,
+      "longitude": 23.872018
+    }
+  },
+  {
+    "station_id": "24606",
+    "station_name": "vt1_Pitkämäki",
+    "station_location": {
+      "latitude": 60.325108,
+      "longitude": 23.94903
+    }
+  },
+  {
+    "station_id": "24607",
+    "station_name": "vt1_Karnainen",
+    "station_location": {
+      "latitude": 60.289063,
+      "longitude": 24.079464
+    }
+  }
 ]
-  
