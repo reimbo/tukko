@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const stationList: string[] = [];
 const stationLocation: { longitude: number, latitude: number, altitude: number }[] = [];
@@ -8,28 +8,37 @@ let isLoading = true;
 
 async function fetchStations() {
   try {
-    const response = await axios.get('https://tie.digitraffic.fi/api/tms/v1/stations');
-    const stationData = response.data.features.map((feature: any) => {
-      const { id, geometry, properties } = feature;
-      return { id, geometry, properties };
-    });
+    const cachedData = localStorage.getItem('stationData');
+    if (cachedData) {
+      const stationData = JSON.parse(cachedData);
+      processStationData(stationData);
+      console.log('Using cached station data');
+    } else {
+      const response = await axios.get('https://tie.digitraffic.fi/api/tms/v1/stations');
+      const stationData = response.data.features.map((feature: any) => {
+        const { id, geometry, properties } = feature;
+        return { id, geometry, properties };
+      });
+      processStationData(stationData);
 
-    // Extract the required data from stationData
-    for (const station of stationData) {
-      stationList.push(station.id.toString());
-      const [longitude, latitude, altitude] = station.geometry.coordinates;
-      stationLocation.push({ latitude, longitude, altitude });
-      stationName.push(station.properties.name);
+      // Store the updated data in local storage
+      localStorage.setItem('stationData', JSON.stringify(stationData));
+      console.log('Using fetched station data');
     }
-
-    // Store the updated data in local storage
-    // localStorage.setItem('stationData', JSON.stringify(stationData));
-
   } catch (error) {
     console.error('Error fetching station data:', error);
     throw error;
   } finally {
     isLoading = false;
+  }
+}
+
+function processStationData(stationData: any) {
+  for (const station of stationData) {
+    stationList.push(station.id.toString());
+    const [longitude, latitude, altitude] = station.geometry.coordinates;
+    stationLocation.push({ latitude, longitude, altitude });
+    stationName.push(station.properties.name);
   }
 }
 
