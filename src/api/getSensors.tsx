@@ -1,44 +1,91 @@
 import axios from 'axios';
 import stationData from '../routes/data/stationData.json';
 
-interface Station {
-  station_id: string;
-  station_name: string;
-  station_location:{
-    latitude: number;
-    longitude: number;
-  }
-}
-
-interface Sensor {
-  id: number;
+// Sensor data from the API
+interface SensorAPI {
+  id: string;
   name: string;
   unit: string;
-  value: number;
+  value: string;
+  stationId: string;
 }
 
-async function fetchSingleStation(stationID: string) {
+// Storing sensor data in this format
+interface Sensor {
+  sensor_id: string;
+  sensor_name: string;
+  sensor_unit: string;
+  sensor_value: string;
+  sensor_stationId: string;
+}
+
+// This is the API link to fetch sensor data
+const sensorsAPI = 'https://tie.digitraffic.fi/api/tms/v1/stations/';
+
+// Store the list of fetched sensors here
+const sensorList: Sensor[][] = [];
+
+async function fetchSingleStation(stationID: string): Promise<Sensor[]> {
   try {
-    const response = await axios.get(`https://tie.digitraffic.fi/api/tms/v1/stations/${stationID}/data`);
-    const sensorData: Sensor[] = response.data.sensorValues.map((sensor: Sensor) => {
-      const { id, name, unit, value } = sensor;
-      return { id, name, unit, value };
+    const response = await axios.get(`${sensorsAPI}${stationID}/data`);
+    const sensorData: Sensor[] = response.data.sensorValues.map((sensor: SensorAPI) => {
+      const { id, name, unit, value, stationId } = sensor;
+      return {
+        sensor_id: id,
+        sensor_name: name,
+        sensor_unit: unit,
+        sensor_value: value,
+        sensor_stationId: stationId,
+      };
     });
-    return sensorData[0];
+
+    return sensorData;
   } catch (error) {
     console.error('Error fetching station data:', error);
-    return undefined;
+    return [];
   }
 }
 
-export async function fetchAllStations() {
+async function fetchAllStations(): Promise<Sensor[][]> {
   try {
-    const promises = stationData.map((station: Station) => fetchSingleStation(station.station_id));
+    const promises = stationData.map((station) => fetchSingleStation(station.station_id));
     const sensorDataList = await Promise.all(promises);
-    const filteredSensorDataList = sensorDataList.filter(sensorData => sensorData !== undefined) as Sensor[];
+    const filteredSensorDataList = sensorDataList.filter((sensorData) => sensorData.length > 0);
     return filteredSensorDataList;
   } catch (error) {
     console.error('Error fetching station data:', error);
     return [];
   }
 }
+
+async function FetchSensors() {
+  try {
+    const cachedSensorData = localStorage.getItem('sensorData');
+
+    // Check if data exists in local storage before fetching
+    if (cachedSensorData) {
+      const sensorData = JSON.parse(cachedSensorData) as Sensor[][];
+      processSensorData(sensorData);
+      console.log('Using cached sensor data');
+    } else {
+      const response = await fetchAllStations();
+      console.log(JSON.stringify(response[0]))
+      if (response.length > 0) {
+        const sensorData = response;
+        
+        // Store the updated data in local storage
+        localStorage.setItem('sensorData', JSON.stringify(sensorData));
+        console.log('Using fetched sensor data');
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching sensor data:', error);
+    throw error;
+  } 
+}
+
+function processSensorData(sensorData: Sensor[][]) {
+  sensorList.push(...sensorData);
+}
+
+export { sensorList, FetchSensors };
