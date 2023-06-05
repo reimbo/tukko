@@ -12,26 +12,7 @@ import {useState, useEffect} from 'react';
 import stationData from '../routes/data/stationData.json';
 import sensorsData from '../routes/data/sensorsData.json';
 
-/**
- * Variables for the map
- * stationLocation: array of objects containing the coordinates of the stations
- *    stationLocation[0].latitude: latitude of the first station
- *    stationLocation[0].longitude: longitude of the first station
- * stationName: array of strings containing the names of the stations
- *    stationName[0]: name of the first station
- * stationList: array of strings containing the ids of the stations
- *    stationList[0]: id of the first station
- */
 
-/**
- * 
- * example marker popup with sensor data
- *  Station name: {stationName[0]} <br/>
- *  Station id: {stationList[0]} <br/>
- *  Sensor name: {sensorDataList[0].name} <br/>
- *  Unit: {sensorDataList[0].unit} <br/>
- *  Value: {sensorDataList[0].value}
- */
 function MapPlaceholder(): JSX.Element {
   return (
     <p>
@@ -88,6 +69,7 @@ const orangeIcon = new L.Icon({
 
 export default function Root(): JSX.Element {
 
+// The Sensor data model is defined here - use these to search or filter the data
   interface Sensor {
     sensor_id: string;
     sensor_name: string;
@@ -96,8 +78,10 @@ export default function Root(): JSX.Element {
     sensor_stationId: string;
   }
   
+  // The live data is fetched from the API and stored in the sensorList state
+  const [sensorDataList, setSensorDataList] = useState<Sensor[][]>([]);
 
-  const [sensorDataList, setSensorDataList] = useState<Sensor[]>([]);
+  // The status of the data fetching 
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
@@ -118,7 +102,6 @@ export default function Root(): JSX.Element {
       try {
         await FetchSensors();
         setSensorDataList(sensorList);
-        console.log(sensorList[0]);
       } catch (error) {
         console.error('Error fetching sensor data:', error);
       } finally {
@@ -133,9 +116,12 @@ export default function Root(): JSX.Element {
     return <p>Loading...</p>;
   }
   
-
+  // initialize a default first station location to check if data is available
   const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
-  console.log(sensorDataList[0].sensor_value);
+
+  console.log(sensorList[0]);
+  console.log("*********sensor list***************")
+
   const greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -166,14 +152,6 @@ export default function Root(): JSX.Element {
 
     <p className="overlay-title">Traffic Visualizer</p>
 
-    {/* <div className="overlay-filtering"> 
-      <p className="overlay-filtering-title">Data filtering</p>
-      <input type="radio" id="showMarkers" name="markers" checked />
-      <label>Show Markers</label><br/>
-      <input type="radio" id="hideMarkers" name="markers" />
-      <label >Hide Markers</label><br/>   
-    </div> */}
-
       <MapContainer
         center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
         maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
@@ -190,9 +168,9 @@ export default function Root(): JSX.Element {
           <Popup>
             Station name: {stationName[0]} <br/>
             Station id: {stationList[0]} <br/>
-            {/* Sensor name: {sensorDataList[0].name} <br/> */}
-            Unit: {sensorDataList[0].sensor_unit} <br/>
-            {/* Value: {sensorDataList[0].value} */}
+            {/* Sensor name: {sensorDataList[0][0].filter[KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1].sensor_name} <br/> */}
+            Unit: {sensorDataList[0][0].sensor_unit} <br/>
+            Value: {sensorDataList[0][0].sensor_value}
             </Popup>
         </Marker>
       <Geoman />
@@ -200,25 +178,28 @@ export default function Root(): JSX.Element {
 
       <LayersControl position="topright" collapsed={false} >
       <LayersControl.Overlay name="Show markers">
-        <LayerGroup>
-          {combinedData.stationList.map((stationId, index) => (
-            <Marker 
-              key={stationId}
-              position={[
-                combinedData.stationLocation[index].latitude,
-                combinedData.stationLocation[index].longitude
-              ]}
-              eventHandlers={{
-                mouseover: (event) => event.target.openPopup()
-              }}
-            >
-              <Popup>
-                Station name: {combinedData.stationName[index]} <br/>
-                Station id: {stationId} <br/>
-              </Popup>
-            </Marker>
-          ))}
-        </LayerGroup>
+      <LayerGroup>
+        {combinedData.stationList.map((stationId, index) => (
+          <Marker 
+            key={stationId}
+            position={[
+              combinedData.stationLocation[index].latitude,
+              combinedData.stationLocation[index].longitude
+            ]}
+            eventHandlers={{
+              mouseover: (event) => event.target.openPopup()
+            }}
+          >
+            <Popup>
+              Station name: {combinedData.stationName[index]} <br/>
+              Station id: {stationId} <br/>
+              Sensor name: {sensorList[index][8].sensor_name} <br/>
+              
+
+            </Popup>
+          </Marker>
+        ))}
+      </LayerGroup>
       </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 2">
