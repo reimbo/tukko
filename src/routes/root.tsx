@@ -119,9 +119,6 @@ export default function Root(): JSX.Element {
   // initialize a default first station location to check if data is available
   const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
 
-  console.log(sensorList[0]);
-  console.log("*********sensor list***************")
-
   const greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -170,7 +167,7 @@ export default function Root(): JSX.Element {
             Starting point !!! <br/>
             Station name: {stationName[0]} <br/>
             Station id: {stationList[0]} <br/>
-            {/* Sensor name: {sensorDataList[0][0].filter[KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1].sensor_name} <br/> */}
+            Sensor name: {sensorDataList[0][0].sensor_name} <br/>
             Unit: {sensorDataList[0][0].sensor_unit} <br/>
             Value: {sensorDataList[0][0].sensor_value}
             </Popup>
