@@ -5,10 +5,13 @@ import './root.css'
 import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
-import coordsData from "./data/coords.json"
+import coordsData from "./data/coords.json";
 import { stationLocation, stationName,stationList, fetchStations } from '../api/getStations';
 import { fetchAllStations } from '../api/getSensors';
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+
+
+
 
 /**
  * Variables for the map
@@ -84,6 +87,7 @@ const orangeIcon = new L.Icon({
 
 
 
+
 export default function Root(): JSX.Element {
   // update this variable to change the number of display stations
   // const displayStation = 50;
@@ -141,20 +145,12 @@ export default function Root(): JSX.Element {
   }
   
 
-  const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
+
   console.log(stationLocation.length+"locations***\n")
   console.log(stationName.length+"names***\n")
   // console.log(stationList.length+"ids***\n")
   console.log(sensorDataList.length+" sensor ***\n")
 
-  const greenIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-  });
 
 
   //The combined data is passed to the MapContainer as props
@@ -165,6 +161,7 @@ export default function Root(): JSX.Element {
     sensorDataList: sensorDataList,
 
   }
+
 
   return(
 
@@ -181,127 +178,117 @@ export default function Root(): JSX.Element {
     </div> */}
 
       <MapContainer
-        center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
+        center={[65.24144, 25.758846]}
         maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
         maxBoundsViscosity={0.9}
         zoomDelta={0}
-        zoom={12}
+        zoom={6}
+        minZoom={5}
         placeholder={<MapPlaceholder />}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
-          <Popup>
-            Station name: {stationName[0]} <br/>
-            Station id: {stationList[0]} <br/>
-            Sensor name: {sensorDataList[0].name} <br/>
-            Unit: {sensorDataList[0].unit} <br/>
-            Value: {sensorDataList[0].value}
-            </Popup>
-        </Marker>
+
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"          
+      />
+      
       <Geoman />
 
 
       <LayersControl position="topright" collapsed={false} >
-      <LayersControl.Overlay name="Show markers">
-        <LayerGroup>
-          {combinedData.stationList.map((stationId, index) => (
-            <Marker 
-              key={stationId}
-              position={[
-                combinedData.stationLocation[index].latitude,
-                combinedData.stationLocation[index].longitude
-              ]}
-              eventHandlers={{
-                mouseover: (event) => event.target.openPopup()
-              }}
-            >
-              <Popup>
-                Station name: {combinedData.stationName[index]} <br/>
-                Station id: {stationId} <br/>
-              </Popup>
-            </Marker>
-          ))}
-        </LayerGroup>
-      </LayersControl.Overlay>
+        <LayersControl.Overlay name="Show markers">
+          <LayerGroup>
+              {coordsData.map(coords => (
+                <Marker 
+                key = {coords.properties.id}
+                position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup(),
+                }}>
+                  <Popup>
+                    {coords.properties.tasks}
+                  </Popup>
+                </Marker>
+              ))}
+          </LayerGroup>
+        </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 2">
-          <LayerGroup>
-            {coordsData.map(coords => (
-              <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
-              icon={greenIcon}
-              eventHandlers={{
-                mouseover: (event) => event.target.openPopup(),
-              }}>
-                <Popup>
-                  {coords.properties.tasks}
-                </Popup>
-              </Marker>
-            ))}
-          </LayerGroup>
+            <LayerGroup>
+              {coordsData.map(coords => (
+                <Marker 
+                key = {coords.properties.id}
+                position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+                icon={greenIcon}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup(),
+                }}>
+                  <Popup>
+                    {coords.properties.tasks}
+                  </Popup>
+                </Marker>
+              ))}
+            </LayerGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 3">
-          <LayerGroup>
-            {coordsData.map(coords => (
-              <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
-              icon={redIcon}
-              eventHandlers={{
-                mouseover: (event) => event.target.openPopup(),
-              }}>
-                <Popup>
-                  {coords.properties.tasks}
-                </Popup>
-              </Marker>
-            ))}
-          </LayerGroup>
+            <LayerGroup>
+              {coordsData.map(coords => (
+                <Marker 
+                key = {coords.properties.id}
+                position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
+                icon={redIcon}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup(),
+                }}>
+                  <Popup>
+                    {coords.properties.tasks}
+                  </Popup>
+                </Marker>
+              ))}
+            </LayerGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Stations">
-          <LayerGroup>
-          {stationLocation.map(stations => (
+            <LayerGroup>
+            {combinedData.stationList.map((stationId, index) => (
               <Marker 
-              position={[stations.latitude, stations.longitude ]}
-              icon={orangeIcon}
-              eventHandlers={{
-                mouseover: (event) => event.target.openPopup(),
-              }}>
+                key={stationId}
+                position={[
+                  combinedData.stationLocation[index].latitude,
+                  combinedData.stationLocation[index].longitude
+                ]}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup()
+                }}
+                icon={orangeIcon}
+              >
                 <Popup>
-                  Station name:<br/>
-                  Station id: <br/>
-                  Unit: <br/>
-                  Value:
+                  Station name: {combinedData.stationName[index]} <br/>
+                  Station id: {stationId} <br/>
                 </Popup>
               </Marker>
             ))}
-          </LayerGroup>
+            </LayerGroup>
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Show markers 5">
-          <LayerGroup>
+            <LayerGroup>
             
-          </LayerGroup>
-        </LayersControl.Overlay>
+            </LayerGroup>
+          </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 6">
-          <LayerGroup>
-            
-          </LayerGroup>
+            <LayerGroup>
+              
+            </LayerGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 7">
-          <LayerGroup>
-            
-          </LayerGroup>
+            <LayerGroup>
+              
+            </LayerGroup>
         </LayersControl.Overlay>
-            
-      
-      </LayersControl>
+    </LayersControl>
 
 
     </MapContainer>
