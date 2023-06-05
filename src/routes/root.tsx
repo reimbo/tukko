@@ -7,8 +7,10 @@ import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import coordsData from "./data/coords.json"
 import { stationLocation, stationName,stationList, fetchStations } from '../api/getStations';
-import { fetchAllStations } from '../api/getSensors';
+import { fetchSensors } from '../api/getSensors';
 import {useState, useEffect} from 'react';
+import stationData from '../routes/data/stationData.json';
+import sensorsData from '../routes/data/sensorsData.json';
 
 /**
  * Variables for the map
@@ -88,12 +90,22 @@ export default function Root(): JSX.Element {
   // update this variable to change the number of display stations
   // const displayStation = 50;
 
+  //old type will not be used anymore
   type SensorData = {
     id: number;
     name: string;
     unit: string;
     value: number;
   };
+
+  // use this sensor type instead
+  interface Sensor {
+    sensor_id: string;
+    sensor_name: string;
+    sensor_unit: string;
+    sensor_value: number;
+    sensor_stationId: string;
+  }
 
   const [sensorDataList, setSensorDataList] = useState<SensorData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -122,7 +134,7 @@ export default function Root(): JSX.Element {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const stationDataResponse = await fetchAllStations();
+        const stationDataResponse = await fetchSensors();
         if (stationDataResponse && stationDataResponse.length > 0) {
           setSensorDataList(stationDataResponse);
         }
@@ -133,7 +145,7 @@ export default function Root(): JSX.Element {
       }
     };
 
-    fetchData();
+    // fetchData();
   }, []);
 
   if (isLoading) {
@@ -159,12 +171,18 @@ export default function Root(): JSX.Element {
 
   //The combined data is passed to the MapContainer as props
   const combinedData = {
-    stationLocation: stationLocation,
-    stationList: stationList,
-    stationName: stationName,
+    stationLocation: stationData.map((station) => station.station_location),
+    stationList: stationData.map((station) => station.station_id),
+    stationName: stationData.map((station) => station.station_name),
     sensorDataList: sensorDataList,
-
-  }
+    KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1: sensorsData.flatMap((data: any) =>
+      Array.isArray(data) ? data.filter((sensor: Sensor) =>
+        ['OHITUKSET_5MIN_LIUKUVA_SUUNTA1', 'OHITUKSET_5MIN_LIUKUVA_SUUNTA2'].some(
+          (name) => sensor.sensor_name === name
+        )
+      ) : []
+    )
+  };
 
   return(
 
@@ -196,9 +214,9 @@ export default function Root(): JSX.Element {
           <Popup>
             Station name: {stationName[0]} <br/>
             Station id: {stationList[0]} <br/>
-            Sensor name: {sensorDataList[0].name} <br/>
-            Unit: {sensorDataList[0].unit} <br/>
-            Value: {sensorDataList[0].value}
+            {/* Sensor name: {sensorDataList[0].name} <br/> */}
+            {/* Unit: {sensorDataList[0].unit} <br/> */}
+            {/* Value: {sensorDataList[0].value} */}
             </Popup>
         </Marker>
       <Geoman />
@@ -245,21 +263,29 @@ export default function Root(): JSX.Element {
           </LayerGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay name="Show markers 3">
+        <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
           <LayerGroup>
-            {coordsData.map(coords => (
-              <Marker 
-              key = {coords.properties.id}
-              position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
-              icon={redIcon}
+          {combinedData.stationList.map((stationId, index) => (
+            <Marker 
+              key={stationId}
+              position={[
+                combinedData.stationLocation[index].latitude,
+                combinedData.stationLocation[index].longitude
+              ]}
               eventHandlers={{
-                mouseover: (event) => event.target.openPopup(),
-              }}>
-                <Popup>
-                  {coords.properties.tasks}
-                </Popup>
-              </Marker>
-            ))}
+                mouseover: (event) => event.target.openPopup()
+              }}
+            >
+              <Popup>
+                Station name: {combinedData.stationName[index]} <br/>
+                Station id: {stationId} <br/>
+                Sensor id: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_id} <br/>
+                Name: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_name} <br/>
+                Value: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_value} <br/>
+                Unit: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_unit} <br/>
+              </Popup>
+            </Marker>
+          ))}
           </LayerGroup>
         </LayersControl.Overlay>
 
