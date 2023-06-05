@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
+    "@types/leaflet-geosearch": "^3.0.0",
     "leaflet": "^1.9.4",
+    "leaflet-geosearch": "^3.8.0",
     "leaflet.markercluster": "^1.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
