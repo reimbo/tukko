@@ -8,9 +8,11 @@ import { Fragment } from "react";
 import coordsData from "./data/coords.json"
 import { stationLocation, stationName,stationList, fetchStations } from '../api/getStations';
 import { sensorList,FetchSensors } from '../api/getSensors';
-import {useState, useEffect} from 'react';
 import stationData from '../routes/data/stationData.json';
 import sensorsData from '../routes/data/sensorsData.json';
+import React, {useState, useEffect, useRef} from 'react';
+import wimmaLabLogo from "./images/logo_round.png";
+import iotitudeLogo from "./images/logo-iotitude.png";
 
 
 function MapPlaceholder(): JSX.Element {
@@ -149,6 +151,18 @@ export default function Root(): JSX.Element {
     <Fragment>
 
     <p className="overlay-title">Traffic Visualizer</p>
+    <div className="logosContainer">
+      <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
+      <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
+    </div>
+
+    {/* <div className="overlay-filtering"> 
+      <p className="overlay-filtering-title">Data filtering</p>
+      <input type="radio" id="showMarkers" name="markers" checked />
+      <label>Show Markers</label><br/>
+      <input type="radio" id="hideMarkers" name="markers" />
+      <label >Hide Markers</label><br/>   
+    </div> */}
 
       <MapContainer
         center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
