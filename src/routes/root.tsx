@@ -10,7 +10,7 @@ import { stationLocation, stationName,stationList, fetchStations } from '../api/
 import { sensorList,FetchSensors } from '../api/getSensors';
 import stationData from '../routes/data/stationData.json';
 import sensorsData from '../routes/data/sensorsData.json';
-import React, {useState, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import wimmaLabLogo from "./images/logo_round.png";
 import iotitudeLogo from "./images/logo-iotitude.png";
 
