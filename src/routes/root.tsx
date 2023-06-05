@@ -78,7 +78,7 @@ export default function Root(): JSX.Element {
     sensor_stationId: string;
   }
   
-  // The live data is fetched from the API and stored in the sensorList state
+  // The real time sensor data is fetched from the API and stored in the sensorList state
   const [sensorDataList, setSensorDataList] = useState<Sensor[][]>([]);
 
   // The status of the data fetching 
@@ -132,7 +132,8 @@ export default function Root(): JSX.Element {
   });
 
 
-  //The combined data is passed to the MapContainer as props
+  // The combined data is passed to the MapContainer as props
+  // CAUTION: These are prefetched station and sensor data - not real time data
   const combinedData = {
     stationLocation: stationData.map((station) => station.station_location),
     stationList: stationData.map((station) => station.station_id),
@@ -166,6 +167,7 @@ export default function Root(): JSX.Element {
         />
         <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
           <Popup>
+            Starting point !!! <br/>
             Station name: {stationName[0]} <br/>
             Station id: {stationList[0]} <br/>
             {/* Sensor name: {sensorDataList[0][0].filter[KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1].sensor_name} <br/> */}
@@ -222,7 +224,7 @@ export default function Root(): JSX.Element {
 
         <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
           <LayerGroup>
-          {combinedData.stationList.map((stationId, index) => (
+          {combinedData.stationList.map((stationId:string, index:number) => (
             <Marker 
               key={stationId}
               position={[
