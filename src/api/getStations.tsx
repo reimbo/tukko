@@ -1,11 +1,16 @@
 import axios from 'axios';
-import { useEffect } from 'react';
 
+// Store the station data IDs in these arrays
 const stationList: string[] = [];
+
+// Store the station data location: long, lat and alt in these arrays
 const stationLocation: { longitude: number, latitude: number, altitude: number }[] = [];
+
+//Store the station data name in these arrays
 const stationName: string[] = [];
 let isLoading = true;
 
+// Main method to fetch the stations data - Will use the cached data if available
 async function fetchStations() {
   try {
     const cachedData = localStorage.getItem('stationData');
@@ -33,6 +38,7 @@ async function fetchStations() {
   }
 }
 
+// Process the station data and store it in the predefined arrays - which will be accessed in Root
 function processStationData(stationData: any) {
   for (const station of stationData) {
     stationList.push(station.id.toString());
@@ -42,20 +48,5 @@ function processStationData(stationData: any) {
   }
 }
 
-function useStationData() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetchStations();
-      } catch (error) {
-        console.error('Error fetching station data:', error);
-      } finally {
-        isLoading = false;
-      }
-    };
 
-    fetchData();
-  }, []);
-}
-
-export { stationLocation, isLoading, stationName, stationList, useStationData, fetchStations };
+export { stationLocation, isLoading, stationName, stationList, fetchStations };

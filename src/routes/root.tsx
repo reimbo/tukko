@@ -7,34 +7,14 @@ import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import coordsData from "./data/coords.json";
 import { stationLocation, stationName,stationList, fetchStations } from '../api/getStations';
-import { fetchAllStations } from '../api/getSensors';
+import { sensorList,FetchSensors } from '../api/getSensors';
+import stationData from '../routes/data/stationData.json';
+import sensorsData from '../routes/data/sensorsData.json';
 import React, {useState, useEffect, useRef} from 'react';
 import wimmaLabLogo from "./images/logo_round.png";
 import iotitudeLogo from "./images/logo-iotitude.png";
 
 
-
-
-/**
- * Variables for the map
- * stationLocation: array of objects containing the coordinates of the stations
- *    stationLocation[0].latitude: latitude of the first station
- *    stationLocation[0].longitude: longitude of the first station
- * stationName: array of strings containing the names of the stations
- *    stationName[0]: name of the first station
- * stationList: array of strings containing the ids of the stations
- *    stationList[0]: id of the first station
- */
-
-/**
- * 
- * example marker popup with sensor data
- *  Station name: {stationName[0]} <br/>
- *  Station id: {stationList[0]} <br/>
- *  Sensor name: {sensorDataList[0].name} <br/>
- *  Unit: {sensorDataList[0].unit} <br/>
- *  Value: {sensorDataList[0].value}
- */
 function MapPlaceholder(): JSX.Element {
   return (
     <p>
@@ -99,26 +79,21 @@ const orangeIcon = new L.Icon({
 
 
 export default function Root(): JSX.Element {
-  // update this variable to change the number of display stations
-  // const displayStation = 50;
 
-  type SensorData = {
-    id: number;
-    name: string;
-    unit: string;
-    value: number;
-  };
-
-  const [sensorDataList, setSensorDataList] = useState<SensorData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-
+// The Sensor data model is defined here - use these to search or filter the data
+  interface Sensor {
+    sensor_id: string;
+    sensor_name: string;
+    sensor_unit: string;
+    sensor_value: string;
+    sensor_stationId: string;
+  }
   
-  // console.log(stationLocation.length);
-  // console.log(stationName.length);
+  // The real time sensor data is fetched from the API and stored in the sensorList state
+  const [sensorDataList, setSensorDataList] = useState<Sensor[][]>([]);
 
-  // update this variable to change the display sensor
-  // const displaySensor = "23226";
+  // The status of the data fetching 
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     const fetchStationData = async () => {
@@ -136,10 +111,8 @@ export default function Root(): JSX.Element {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const stationDataResponse = await fetchAllStations();
-        if (stationDataResponse && stationDataResponse.length > 0) {
-          setSensorDataList(stationDataResponse);
-        }
+        await FetchSensors();
+        setSensorDataList(sensorList);
       } catch (error) {
         console.error('Error fetching sensor data:', error);
       } finally {
@@ -154,23 +127,25 @@ export default function Root(): JSX.Element {
     return <p>Loading...</p>;
   }
   
-
-
-  console.log(stationLocation.length+"locations***\n")
-  console.log(stationName.length+"names***\n")
-  // console.log(stationList.length+"ids***\n")
-  console.log(sensorDataList.length+" sensor ***\n")
+  // initialize a default first station location to check if data is available
+  const firstLocation = stationLocation.length > 0 ? stationLocation[0] : null;
 
 
 
-  //The combined data is passed to the MapContainer as props
+  // The combined data is passed to the MapContainer as props
+  // CAUTION: These are prefetched station and sensor data - not real time data
   const combinedData = {
-    stationLocation: stationLocation,
-    stationList: stationList,
-    stationName: stationName,
-    sensorDataList: sensorDataList,
-
-  }
+    stationLocation: stationData.map((station) => station.station_location),
+    stationList: stationData.map((station) => station.station_id),
+    stationName: stationData.map((station) => station.station_name),
+    KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1: sensorsData.flatMap((data: any) =>
+      Array.isArray(data) ? data.filter((sensor: Sensor) =>
+        ['OHITUKSET_5MIN_LIUKUVA_SUUNTA1', 'OHITUKSET_5MIN_LIUKUVA_SUUNTA2'].some(
+          (name) => sensor.sensor_name === name
+        )
+      ) : []
+    )
+  };
 
 
   return(
@@ -178,6 +153,10 @@ export default function Root(): JSX.Element {
     <Fragment>
 
     <p className="overlay-title">Traffic Visualizer</p>
+    <div className="logosContainer">
+      <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
+      <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
+    </div>
 
     <div className="logosContainer">
       <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
@@ -203,17 +182,50 @@ export default function Root(): JSX.Element {
         minZoom={5}
         placeholder={<MapPlaceholder />}
       >
-
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"          
-      />
-      
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
+          <Popup>
+            Starting point !!! <br/>
+            Station name: {stationName[0]} <br/>
+            Station id: {stationList[0]} <br/>
+            Sensor name: {sensorDataList[0][0].sensor_name} <br/>
+            Unit: {sensorDataList[0][0].sensor_unit} <br/>
+            Value: {sensorDataList[0][0].sensor_value}
+            </Popup>
+        </Marker>
       <Geoman />
 
 
       <LayersControl position="topright" collapsed={false} >
-        <LayersControl.Overlay name="Show markers">
+      <LayersControl.Overlay name="Show markers">
+      <LayerGroup>
+        {combinedData.stationList.map((stationId, index) => (
+          <Marker 
+            key={stationId}
+            position={[
+              combinedData.stationLocation[index].latitude,
+              combinedData.stationLocation[index].longitude
+            ]}
+            eventHandlers={{
+              mouseover: (event) => event.target.openPopup()
+            }}
+          >
+            <Popup>
+              Station name: {combinedData.stationName[index]} <br/>
+              Station id: {stationId} <br/>
+              Sensor name: {sensorList[index][8].sensor_name} <br/>
+              
+
+            </Popup>
+          </Marker>
+        ))}
+      </LayerGroup>
+      </LayersControl.Overlay>
+
+        <LayersControl.Overlay name="Show markers 2">
           <LayerGroup>
               {coordsData.map(coords => (
                 <Marker 
@@ -230,39 +242,30 @@ export default function Root(): JSX.Element {
           </LayerGroup>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay name="Show markers 2">
-            <LayerGroup>
-              {coordsData.map(coords => (
-                <Marker 
-                key = {coords.properties.id}
-                position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
-                eventHandlers={{
-                  mouseover: (event) => event.target.openPopup(),
-                }}>
-                  <Popup>
-                    {coords.properties.tasks}
-                  </Popup>
-                </Marker>
-              ))}
-            </LayerGroup>
-        </LayersControl.Overlay>
-
-        <LayersControl.Overlay name="Show markers 3">
-            <LayerGroup>
-              {coordsData.map(coords => (
-                <Marker 
-                key = {coords.properties.id}
-                position={[coords.geometry.coordinates[1], coords.geometry.coordinates[0]]}
-                icon={redIcon}
-                eventHandlers={{
-                  mouseover: (event) => event.target.openPopup(),
-                }}>
-                  <Popup>
-                    {coords.properties.tasks}
-                  </Popup>
-                </Marker>
-              ))}
-            </LayerGroup>
+        <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
+          <LayerGroup>
+          {combinedData.stationList.map((stationId:string, index:number) => (
+            <Marker 
+              key={stationId}
+              position={[
+                combinedData.stationLocation[index].latitude,
+                combinedData.stationLocation[index].longitude
+              ]}
+              eventHandlers={{
+                mouseover: (event) => event.target.openPopup()
+              }}
+            >
+              <Popup>
+                Station name: {combinedData.stationName[index]} <br/>
+                Station id: {stationId} <br/>
+                Sensor id: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_id} <br/>
+                Name: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_name} <br/>
+                Value: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_value} <br/>
+                Unit: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_unit} <br/>
+              </Popup>
+            </Marker>
+          ))}
+          </LayerGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Stations">
