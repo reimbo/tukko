@@ -14,7 +14,9 @@
   position: fixed;
   display: inline;
   z-index: 1000;
+  color: black;
 }
+
 
 .overlay-filtering {
   top: 50px;
@@ -25,6 +27,29 @@
   position: fixed;
   display: inline;
   z-index: 1000;
+}
+
+.logosContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: fixed;
+  display: inline;
+  z-index: 1000;
+  bottom: 20px;
+  right: 20px;
+}
+
+.wimmaLabLogo {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.iotitudeLogo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 13px;
 }
 
 
