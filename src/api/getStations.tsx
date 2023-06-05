@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 const stationList: string[] = [];
 const stationLocation: { longitude: number, latitude: number, altitude: number }[] = [];
@@ -42,20 +41,5 @@ function processStationData(stationData: any) {
   }
 }
 
-function useStationData() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetchStations();
-      } catch (error) {
-        console.error('Error fetching station data:', error);
-      } finally {
-        isLoading = false;
-      }
-    };
 
-    fetchData();
-  }, []);
-}
-
-export { stationLocation, isLoading, stationName, stationList, useStationData, fetchStations };
+export { stationLocation, isLoading, stationName, stationList, fetchStations };
