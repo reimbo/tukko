@@ -62,6 +62,7 @@ async function fetchAllStations(): Promise<Sensor[][]> {
 
 // Main method to fetch the sensors data - Will use the cached data if available
 async function FetchSensors() {
+  // localStorage.removeItem('sensorData');
   try {
     const cachedSensorData = localStorage.getItem('sensorData');
 

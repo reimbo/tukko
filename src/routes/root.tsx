@@ -88,6 +88,8 @@ export default function Root(): JSX.Element {
   // Map will not show unless finished loading
   const [isLoading, setIsLoading] = useState(true);
   
+  const [trafficDataList, setTrafficDataList] = useState<Sensor[][]>(generateRandomTrafficData(sensorList));
+
   // Fetch stations data from the API
   useEffect(() => {
     const fetchStationData = async () => {
@@ -117,6 +119,12 @@ export default function Root(): JSX.Element {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setTrafficDataList(generateRandomTrafficData(sensorList));
+    setIsLoading(false);
+  }, []);
+
+  
   // If data is still loading, show loading text
   if (isLoading) {
     return <p>Loading...</p>;
@@ -175,10 +183,20 @@ export default function Root(): JSX.Element {
   
     return null;
   }
+  
+  function generateRandomTrafficData(sensorList: Sensor[][]) {
+    return sensorList.map((sensors) =>
+      sensors.map((sensor) => ({
+        ...sensor,
+        sensor_traffic_value: Math.floor(Math.random() * 100) // Generate a random traffic value between 0 and 100
+      }))
+    );
+  }
 
+  
   return(
 
-    <Fragment>
+    <Fragment >
 
     <p className="overlay-title">Traffic Visualizer</p>
     <div className="logosContainer">
@@ -360,6 +378,7 @@ export default function Root(): JSX.Element {
 
 
     </MapContainer>
+    
 
     </Fragment>
 
