@@ -10,10 +10,10 @@ import { stationLocation, stationName,stationList, fetchStations } from '../api/
 import { sensorList,FetchSensors } from '../api/getSensors';
 import stationData from '../routes/data/stationData.json';
 import sensorsData from '../routes/data/sensorsData.json';
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import wimmaLabLogo from "./images/logo_round.png";
 import iotitudeLogo from "./images/logo-iotitude.png";
-
+import MarkerClusterGroup from 'react-leaflet-cluster'
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -40,9 +40,9 @@ function Geoman() {
 
 {/* https://github.com/pointhi/leaflet-color-markers */}
 
-const greenIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+const blueIcon = new L.Icon({
+  iconUrl: '/images/marker-icon-2x-blue.png',
+  shadowUrl: '/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -50,8 +50,8 @@ const greenIcon = new L.Icon({
 });
 
 const redIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconUrl: '/images/marker-icon-2x-red.png',
+  shadowUrl: '/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -60,7 +60,7 @@ const redIcon = new L.Icon({
 
 const orangeIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowUrl: '/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -80,12 +80,13 @@ export default function Root(): JSX.Element {
     sensor_stationId: string;
   }
   
-  // The real time sensor data is fetched from the API and stored in the sensorList state
+  // Fetch sensors data from the API and store in the sensorList
   const [sensorDataList, setSensorDataList] = useState<Sensor[][]>([]);
 
-  // The status of the data fetching 
+  // Map will not show unless finished loading
   const [isLoading, setIsLoading] = useState(true);
   
+  // Fetch stations data from the API
   useEffect(() => {
     const fetchStationData = async () => {
       try {
@@ -98,7 +99,7 @@ export default function Root(): JSX.Element {
     fetchStationData();
   }, []);
   
-
+  // Fetch sensors data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -114,6 +115,7 @@ export default function Root(): JSX.Element {
     fetchData();
   }, []);
 
+  // If data is still loading, show loading text
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -134,9 +136,13 @@ export default function Root(): JSX.Element {
   // The combined data is passed to the MapContainer as props
   // CAUTION: These are prefetched station and sensor data - not real time data
   const combinedData = {
+    // Store station longtitute and latitude data
     stationLocation: stationData.map((station) => station.station_location),
+    // Store station IDs
     stationList: stationData.map((station) => station.station_id),
+    // Store station names
     stationName: stationData.map((station) => station.station_name),
+    // Store KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1
     KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1: sensorsData.flatMap((data: any) =>
       Array.isArray(data) ? data.filter((sensor: Sensor) =>
         ['OHITUKSET_5MIN_LIUKUVA_SUUNTA1', 'OHITUKSET_5MIN_LIUKUVA_SUUNTA2'].some(
@@ -164,7 +170,7 @@ export default function Root(): JSX.Element {
       <label >Hide Markers</label><br/>   
     </div> */}
 
-      <MapContainer
+    <MapContainer
         center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
         maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
         maxBoundsViscosity={0.9}
@@ -176,7 +182,10 @@ export default function Root(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
+        
+        <MarkerClusterGroup>
+        <Marker
+            icon={blueIcon} position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
           <Popup>
             Starting point !!! <br/>
             Station name: {stationName[0]} <br/>
@@ -186,36 +195,46 @@ export default function Root(): JSX.Element {
             Value: {sensorDataList[0][0].sensor_value}
             </Popup>
         </Marker>
+        </MarkerClusterGroup>
       <Geoman />
 
 
       <LayersControl position="topright" collapsed={false} >
       <LayersControl.Overlay name="Show markers">
-      <LayerGroup>
-        {combinedData.stationList.map((stationId, index) => (
-          <Marker 
-            key={stationId}
-            position={[
-              combinedData.stationLocation[index].latitude,
-              combinedData.stationLocation[index].longitude
-            ]}
-            eventHandlers={{
-              mouseover: (event) => event.target.openPopup()
-            }}
-          >
-            <Popup>
-              Station name: {combinedData.stationName[index]} <br/>
-              Station id: {stationId} <br/>
-              Sensor name: {sensorList[index][8].sensor_name} <br/>
-              
+        
+        <MarkerClusterGroup>
+          <LayerGroup>
+            {combinedData.stationList.map((stationId, index) => (
+              <Marker 
+                key={stationId}
+                position={[
+                  combinedData.stationLocation[index].latitude,
+                  combinedData.stationLocation[index].longitude
+                ]}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup()
+                }}
+                icon={blueIcon}
+              >
+                <Popup>
+                  Station name: {combinedData.stationName[index]} <br/>
+                  Station id: {stationId} <br/>
+                  Sensor name: {sensorList[index][8].sensor_name} <br/>
+                  Sensor id: {sensorList[index][8].sensor_id} <br/>
+                  Sensor station: {sensorList[index][8].sensor_stationId} <br/>
+                  Sensor value: {sensorList[index][8].sensor_value} <br/>
+                  
 
-            </Popup>
-          </Marker>
-        ))}
-      </LayerGroup>
+                </Popup>
+              </Marker>
+            ))}
+          </LayerGroup>
+        </MarkerClusterGroup>
       </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 2">
+          
+        <MarkerClusterGroup>
           <LayerGroup>
             {coordsData.map(coords => (
               <Marker 
@@ -231,12 +250,15 @@ export default function Root(): JSX.Element {
               </Marker>
             ))}
           </LayerGroup>
+        </MarkerClusterGroup>
+          
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
-          <LayerGroup>
+        <MarkerClusterGroup>
+        <LayerGroup>
           {combinedData.stationList.map((stationId:string, index:number) => (
-            <Marker 
+          <Marker 
               key={stationId}
               position={[
                 combinedData.stationLocation[index].latitude,
@@ -245,6 +267,7 @@ export default function Root(): JSX.Element {
               eventHandlers={{
                 mouseover: (event) => event.target.openPopup()
               }}
+              icon={redIcon}
             >
               <Popup>
                 Station name: {combinedData.stationName[index]} <br/>
@@ -255,45 +278,56 @@ export default function Root(): JSX.Element {
                 Unit: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_unit} <br/>
               </Popup>
             </Marker>
+            
           ))}
           </LayerGroup>
+          
+        </MarkerClusterGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Stations">
-          <LayerGroup>
-          {stationLocation.map(stations => (
-              <Marker 
-              position={[stations.latitude, stations.longitude ]}
-              icon={orangeIcon}
-              eventHandlers={{
-                mouseover: (event) => event.target.openPopup(),
-              }}>
-                <Popup>
-                  Station name:<br/>
-                  Station id: <br/>
-                  Unit: <br/>
-                  Value:
-                </Popup>
-              </Marker>
-            ))}
-          </LayerGroup>
+          <MarkerClusterGroup>
+            <LayerGroup>
+            {stationLocation.map(stations => (
+                <Marker 
+                position={[stations.latitude, stations.longitude ]}
+                icon={orangeIcon}
+                eventHandlers={{
+                  mouseover: (event) => event.target.openPopup(),
+                }}>
+                  <Popup>
+                    Station name:<br/>
+                    Station id: <br/>
+                    Unit: <br/>
+                    Value:
+                  </Popup>
+                </Marker>
+              ))}
+            </LayerGroup>
+          </MarkerClusterGroup>
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Show markers 5">
-          <LayerGroup>
-            
-          </LayerGroup>
+          <MarkerClusterGroup>
+            <LayerGroup>
+              
+            </LayerGroup>
+          </MarkerClusterGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 6">
-          <LayerGroup>
-            
-          </LayerGroup>
+          <MarkerClusterGroup>
+            <LayerGroup>
+              
+            </LayerGroup>
+          </MarkerClusterGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Show markers 7">
-          <LayerGroup>
-            
-          </LayerGroup>
+          <MarkerClusterGroup>
+            <LayerGroup>
+              
+            </LayerGroup>
+          </MarkerClusterGroup>
         </LayersControl.Overlay>
             
       

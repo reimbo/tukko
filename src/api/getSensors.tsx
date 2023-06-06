@@ -25,6 +25,7 @@ const sensorsAPI = 'https://tie.digitraffic.fi/api/tms/v1/stations/';
 // Store the list of fetched sensors here
 const sensorList: Sensor[][] = [];
 
+// Fetch the sensor data for a single station
 async function fetchSingleStation(stationID: string): Promise<Sensor[]> {
   try {
     const response = await axios.get(`${sensorsAPI}${stationID}/data`);
@@ -46,6 +47,7 @@ async function fetchSingleStation(stationID: string): Promise<Sensor[]> {
   }
 }
 
+// Fetch the sensor data for a list of stations
 async function fetchAllStations(): Promise<Sensor[][]> {
   try {
     const promises = stationData.map((station) => fetchSingleStation(station.station_id));
@@ -58,6 +60,7 @@ async function fetchAllStations(): Promise<Sensor[][]> {
   }
 }
 
+// Main method to fetch the sensors data - Will use the cached data if available
 async function FetchSensors() {
   try {
     const cachedSensorData = localStorage.getItem('sensorData');
@@ -84,6 +87,7 @@ async function FetchSensors() {
   } 
 }
 
+// Process the sensor data and store it in the predefined arrays - which will be accessed in Root
 function processSensorData(sensorData: Sensor[][]) {
   sensorList.push(...sensorData);
 }
