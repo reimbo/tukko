@@ -12,6 +12,8 @@
   "dependencies": {
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
     "esri-leaflet-geocoder": "^3.1.4",
+    "leaflet-geosearch": "^3.8.0",
+    "react-leaflet-cluster": "^2.1.0",
     "react-router-dom": "^6.11.2"
   },
   "devDependencies": {
