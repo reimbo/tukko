@@ -17,6 +17,7 @@ interface Sensor {
   sensor_unit: string;
   sensor_value: string;
   sensor_stationId: string;
+  sensor_traffic_data?: string;
 }
 
 // This is the API link to fetch sensor data
@@ -62,6 +63,7 @@ async function fetchAllStations(): Promise<Sensor[][]> {
 
 // Main method to fetch the sensors data - Will use the cached data if available
 async function FetchSensors() {
+  // localStorage.removeItem('sensorData');
   try {
     const cachedSensorData = localStorage.getItem('sensorData');
 
@@ -72,10 +74,10 @@ async function FetchSensors() {
       console.log('Using cached sensor data');
     } else {
       const response = await fetchAllStations();
-      console.log(JSON.stringify(response[0]))
+      console.log(JSON.stringify(response[0][0].sensor_name))
       if (response.length > 0) {
         const sensorData = response;
-        
+        processSensorData(sensorData);
         // Store the updated data in local storage
         localStorage.setItem('sensorData', JSON.stringify(sensorData));
         console.log('Using fetched sensor data');

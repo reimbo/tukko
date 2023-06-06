@@ -12,6 +12,7 @@ let isLoading = true;
 
 // Main method to fetch the stations data - Will use the cached data if available
 async function fetchStations() {
+  // localStorage.removeItem('stationData');
   try {
     const cachedData = localStorage.getItem('stationData');
     if (cachedData) {

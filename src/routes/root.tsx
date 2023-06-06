@@ -80,6 +80,7 @@ export default function Root(): JSX.Element {
     sensor_unit: string;
     sensor_value: string;
     sensor_stationId: string;
+    sensor_traffic_value?: string;
   }
   
   // Fetch sensors data from the API and store in the sensorList
@@ -88,6 +89,9 @@ export default function Root(): JSX.Element {
   // Map will not show unless finished loading
   const [isLoading, setIsLoading] = useState(true);
   
+  const [trafficDataList, setTrafficDataList] = useState<Sensor[][]>([]);
+  
+
   // Fetch stations data from the API
   useEffect(() => {
     const fetchStationData = async () => {
@@ -107,6 +111,7 @@ export default function Root(): JSX.Element {
       try {
         await FetchSensors();
         setSensorDataList(sensorList);
+        setTrafficDataList(generateRandomTrafficData(sensorList));
       } catch (error) {
         console.error('Error fetching sensor data:', error);
       } finally {
@@ -116,7 +121,11 @@ export default function Root(): JSX.Element {
 
     fetchData();
   }, []);
-
+  function updateTrafficData() {
+    const randomTrafficData = generateRandomTrafficData(sensorDataList);
+    setTrafficDataList(sensorList);
+  }
+  
   // If data is still loading, show loading text
   if (isLoading) {
     return <p>Loading...</p>;
@@ -175,10 +184,20 @@ export default function Root(): JSX.Element {
   
     return null;
   }
-
+  
+  function generateRandomTrafficData(sensorList : Sensor[][]) {
+    return sensorList.map((sensors) =>
+      sensors.map((sensor) => ({
+        ...sensor,
+        sensor_traffic_value: (Math.floor(Math.random() * 100)).toString() // Generate a random traffic value between 0 and 100
+      }))
+    );
+  }
+  
+  
   return(
 
-    <Fragment>
+    <Fragment >
 
     <p className="overlay-title">Traffic Visualizer</p>
     <div className="logosContainer">
@@ -193,6 +212,7 @@ export default function Root(): JSX.Element {
       <input type="radio" id="hideMarkers" name="markers" />
       <label >Hide Markers</label><br/>   
     </div> */}
+    <button onClick={updateTrafficData}>Update Traffic Data</button>
 
     <MapContainer
         center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
@@ -216,7 +236,7 @@ export default function Root(): JSX.Element {
             Station id: {stationList[0]} <br/>
             Sensor name: {sensorDataList[0][0].sensor_name} <br/>
             Unit: {sensorDataList[0][0].sensor_unit} <br/>
-            Value: {sensorDataList[0][0].sensor_value}
+            Value: {trafficDataList[0][0].sensor_traffic_value}
             </Popup>
         </Marker>
         </MarkerClusterGroup>
@@ -360,6 +380,7 @@ export default function Root(): JSX.Element {
 
 
     </MapContainer>
+    
 
     </Fragment>
 
