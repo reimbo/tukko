@@ -10,7 +10,9 @@ import { stationLocation, stationName,stationList, fetchStations } from '../api/
 import { sensorList,FetchSensors } from '../api/getSensors';
 import stationData from '../routes/data/stationData.json';
 import sensorsData from '../routes/data/sensorsData.json';
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import "leaflet-geosearch/dist/geosearch.css";
+import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import wimmaLabLogo from "./images/logo_round.png";
 import iotitudeLogo from "./images/logo-iotitude.png";
 import MarkerClusterGroup from 'react-leaflet-cluster'
@@ -152,6 +154,28 @@ export default function Root(): JSX.Element {
     )
   };
 
+  function LeafletgeoSearch() {
+    const map = useMap();
+    useEffect(() => {
+      const provider = new OpenStreetMapProvider({
+        params: {
+          'accept-language': 'EN,FI', 
+          countrycodes: 'FI', 
+        },
+      });
+  
+      const searchControl = new GeoSearchControl({
+        provider,
+      });
+  
+      map.addControl(searchControl);
+  
+      return () => map.removeControl(searchControl);
+    }, []);
+  
+    return null;
+  }
+
   return(
 
     <Fragment>
@@ -198,6 +222,7 @@ export default function Root(): JSX.Element {
         </MarkerClusterGroup>
       <Geoman />
 
+      <LeafletgeoSearch />
 
       <LayersControl position="topright" collapsed={false} >
       <LayersControl.Overlay name="Show markers">
