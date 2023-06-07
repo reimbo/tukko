@@ -10,10 +10,6 @@ build:
     - docker:dind
 
   before_script:
-    - apt-get update && apt-get install
-    - curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-    - apt-get install -y docker-ce-cli
-    - apt-get install -y docker-compose
     - npm install 
     - docker -v
   only:
