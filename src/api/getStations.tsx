@@ -25,7 +25,9 @@ async function fetchStations() {
         const { id, geometry, properties } = feature;
         return { id, geometry, properties };
       });
+      console.log(stationData[0])
       processStationData(stationData);
+      console.log(stationName[0])
 
       // Store the updated data in local storage
       localStorage.setItem('stationData', JSON.stringify(stationData));
