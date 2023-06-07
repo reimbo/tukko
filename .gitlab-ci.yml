@@ -5,7 +5,7 @@ stages:
 
 build:
   stage: build
-  image: rancher/dind:latest 
+  image: docker:latest 
   services:
     - docker:dind
 
