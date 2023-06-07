@@ -5,7 +5,7 @@ stages:
 
 build:
   stage: build
-  image: docker:dind
+  image: node:latest
   services:
     - docker:dind
 
