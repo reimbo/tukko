@@ -1,17 +1,18 @@
-import { useMap, MapContainer, TileLayer, Marker, Popup, LayersControl, LayerGroup } from "react-leaflet";
-import L from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup, LayersControl, LayerGroup } from "react-leaflet";
 import './leaflet.css'
 import './root.css'
-import '@geoman-io/leaflet-geoman-free';
-import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
-import { Fragment } from "react";
+import { fetchStations }  from '../api/getStations';
 import { sensorList,FetchSensors } from '../api/getSensors';
 import stationData from '../routes/data/stationData.json';
 import sensorsData from '../routes/data/sensorsData.json';
-import {useState, useEffect} from 'react';
-import wimmaLabLogo from "./images/logo_round.png";
-import iotitudeLogo from "./images/logo-iotitude.png";
+import {useState, useEffect, Fragment} from 'react';
+import wimmaLabLogo from "/images/logo_round.png";
+import iotitudeLogo from "/images/logo-iotitude.png";
 import MarkerClusterGroup from 'react-leaflet-cluster'
+// Components
+import Geoman from "./components/Geoman"
+import { blueIcon, redIcon} from "./components/Icons"
+/* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -22,39 +23,10 @@ function MapPlaceholder(): JSX.Element {
   );
 }
 
-function Geoman() {
-  const map = useMap();
-  map.pm.addControls({
-    drawMarker: false,
-    rotateMode: false,
-    customControls: false,
-    drawText: false,
-    drawCircleMarker: false,
-    drawPolyline: false,
-    cutPolygon: false
-  });
-  return null;
-}
+
 
 {/* https://github.com/pointhi/leaflet-color-markers */}
 
-const blueIcon = new L.Icon({
-  iconUrl: '/images/marker-icon-2x-blue.png',
-  shadowUrl: '/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-
-const redIcon = new L.Icon({
-  iconUrl: '/images/marker-icon-2x-red.png',
-  shadowUrl: '/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
 
 
 
@@ -83,6 +55,7 @@ export default function Root(): JSX.Element {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        await fetchStations();
         await FetchSensors();
         setSensorDataList(sensorList);
       } catch (error) {
@@ -94,7 +67,6 @@ export default function Root(): JSX.Element {
 
     fetchData();
   }, []);
-
 
   // The combined data is passed to the MapContainer as props
   // CAUTION: These are prefetched station and sensor data - not real time data
@@ -168,13 +140,14 @@ export default function Root(): JSX.Element {
             </Popup>
         </Marker>
         </MarkerClusterGroup>
+        
       <Geoman />
 
       {/* <LeafletgeoSearch /> */}
 
       <LayersControl position="topright" collapsed={false} >
 
-        <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
+        <LayersControl.Overlay checked name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
           <MarkerClusterGroup>
           <LayerGroup>
             {combinedData.stationList.map((stationId:string, index:number) => (
