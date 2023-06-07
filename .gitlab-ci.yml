@@ -8,8 +8,6 @@ build:
   image: node:latest
   before_script:
     - npm install
-  only:
-    - main
   script:
     - docker build -t travis .
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
