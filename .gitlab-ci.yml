@@ -9,8 +9,8 @@ build:
   services:
     - docker:dind
   script:
-    - docker build -t travis .
+    - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
     - docker login gitlab.labranet.jamk.fi:4567
-    - docker push travis
+    - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
   tags: 
     - docker
