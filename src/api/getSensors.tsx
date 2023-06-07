@@ -1,24 +1,6 @@
 import axios from 'axios';
 import stationData from '../routes/data/stationData.json';
-
-// Sensor data from the API
-interface SensorAPI {
-  id: string;
-  name: string;
-  unit: string;
-  value: string;
-  stationId: string;
-}
-
-// Storing sensor data in this format
-interface Sensor {
-  sensor_id: string;
-  sensor_name: string;
-  sensor_unit: string;
-  sensor_value: string;
-  sensor_stationId: string;
-  sensor_traffic_data?: string;
-}
+import { Sensor, SensorAPI } from '../interfaces/sensorInterfaces';
 
 // This is the API link to fetch sensor data
 const sensorsAPI = 'https://tie.digitraffic.fi/api/tms/v1/stations/';
@@ -63,7 +45,7 @@ async function fetchAllStations(): Promise<Sensor[][]> {
 
 // Main method to fetch the sensors data - Will use the cached data if available
 async function FetchSensors() {
-  localStorage.removeItem('sensorData');
+  // localStorage.removeItem('sensorData');
   try {
     const cachedSensorData = localStorage.getItem('sensorData');
 
