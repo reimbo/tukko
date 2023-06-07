@@ -10,7 +10,7 @@ build:
     - docker:dind
   script:
     - docker build -t travis .
-    - echo "$CI_JOB_TOKEN" | docker login -u "$CI_REGISTRY_USER" --password-stdin "glpat-PTRMb9bmUZ2BuGDz8_9F"    
+    - docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY" <<< "$CI_JOB_TOKEN"  
     - docker push travis
   tags: 
     - docker
