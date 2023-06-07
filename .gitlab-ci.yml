@@ -4,6 +4,8 @@ stages:
   - build
 
 build:
+  tags: 
+    - general
   stage: build
   image: docker:latest
   services:
