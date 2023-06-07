@@ -11,8 +11,9 @@ import iotitudeLogo from "/images/logo-iotitude.png";
 import MarkerClusterGroup from 'react-leaflet-cluster'
 // Components
 import Geoman from "./components/Geoman"
-import { blueIcon, redIcon} from "./components/Icons"
+import {  redIcon} from "./components/Icons"
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
+import { DarkModeToggle } from "./components/DarkModeToggle";
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -25,7 +26,6 @@ function MapPlaceholder(): JSX.Element {
 
 
 
-{/* https://github.com/pointhi/leaflet-color-markers */}
 
 
 
@@ -44,7 +44,7 @@ export default function Root(): JSX.Element {
   }
   
   // Fetch sensors data from the API and store in the sensorList
-  const [sensorDataList, setSensorDataList] = useState<Sensor[][]>([]);
+  const [_sensorDataList, setSensorDataList] = useState<Sensor[][]>([]);
 
   // Map will not show unless finished loading
   const [isLoading, setIsLoading] = useState(true);
@@ -101,9 +101,6 @@ export default function Root(): JSX.Element {
     return <p>Loading...</p>;
   }
   
-  // initialize a default first station location to check if data is available
-  const firstLocation = combinedData.stationLocation[0];
-
   return(
 
     <Fragment >
@@ -115,11 +112,12 @@ export default function Root(): JSX.Element {
     </div>
 
     <MapContainer
-        center={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}
+        center={[65.24144, 25.758846]}
         maxBounds={[[70.182772, 18.506675], [59.712756, 32.559953]]}
         maxBoundsViscosity={0.9}
         zoomDelta={0}
-        zoom={12}
+        zoom={5}
+        minZoom={5}
         placeholder={<MapPlaceholder />}
       >
         <TileLayer
@@ -127,21 +125,11 @@ export default function Root(): JSX.Element {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        <MarkerClusterGroup>
-          
-        <Marker
-           icon={blueIcon} position={firstLocation ? [firstLocation.latitude, firstLocation.longitude] : [65.24144, 25.758846]}>
-          <Popup>
-            Starting point !!! <br/>
-            Station name: {combinedData.stationName[0]} <br/>
-            Station id: {combinedData.stationList[0]} <br/>
-            Sensor name: {sensorDataList[0][0].sensor_name} <br/>
-            Unit: {sensorDataList[0][0].sensor_unit} <br/>
-            </Popup>
-        </Marker>
-        </MarkerClusterGroup>
+       
         
       <Geoman />
+
+      <DarkModeToggle/>
 
       {/* <LeafletgeoSearch /> */}
 
