@@ -1,6 +1,6 @@
-import stationData from './routes/data/stationData.json';
-import sensorsData from './routes/data/sensorsData.json';
-import { Sensor } from './interfaces/sensorInterfaces';
+import stationData from '../data/stationData.json';
+import sensorsData from '../data/sensorsData.json';
+import { Sensor } from '../../interfaces/sensorInterfaces';
 
 export interface CombinedData {
     stationLocation: { latitude: number; longitude: number }[];

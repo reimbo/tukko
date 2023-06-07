@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FetchSensors } from '../api/getSensors';
+import { FetchSensors } from '../../api/getSensors';
 
 // Fetch sensors data from the API
 export function useSensorDataFetch() {
