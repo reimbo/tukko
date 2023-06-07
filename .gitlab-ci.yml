@@ -5,9 +5,9 @@ stages:
 
 build:
   stage: build
-  image: docker:latest
-  services:
-    - docker:dind
+  image: node:latest
+  before_script:
+    - npm install
   only:
     - main
   script:
