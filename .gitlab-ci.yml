@@ -8,10 +8,6 @@ build:
   image: node:latest
   services:
     - docker:dind
-
-  before_script:
-    - npm install 
-    - docker -v
   script:
     - docker build -t travis .
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
