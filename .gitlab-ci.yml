@@ -5,9 +5,16 @@ stages:
 
 build:
   stage: build
-  image: node:latest
+  image: node:latest  
+  services:
+    - docker:dind
+
   before_script:
-    - npm install
+    - npm install 
+    - docker -v
+  only:
+    - main
+
   script:
     - docker build -t travis .
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
