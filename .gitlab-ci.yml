@@ -9,7 +9,7 @@ build:
   services:
     - docker:dind
   script:
-    - docker login -u aa7776 -p $CI_PSS gitlab.labranet.jamk.fi:4567
+    - echo "$CI_PSS" | docker login -u "AA7776" --password-stdin gitlab.labranet.jamk.fi:4567
     - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
     - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
   tags: 
