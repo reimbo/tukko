@@ -20,6 +20,7 @@ build:
   services:
     - docker:dind
   script:
+    - echo "credentials checkkkkkkk ****  '%CI_REGISTRY_USER%' "
     - docker login registry.gitlab.com -u gitlab-ci-token -p $CI_JOB_TOKEN
     - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
     - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
