@@ -1,17 +1,7 @@
 # .gitlab-ci.yml
 
 stages:
-  - retrieve
   - build
-
-retrieve:
-  stage: retrieve
-  image: node:latest
-  script:
-    - echo "The job's stage is '$CI_PROJECT_DIR'"
-    - echo "${CI_REGISTRY_USER} ${CI_REGISTRY_PASSWORD} credentials '$CI_REGISTRY_USER' '$CI_REGISTRY_PASSWORD' '$CI_JOB_TOKEN'"
-  tags:
-    - general
 
 
 build:
