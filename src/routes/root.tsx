@@ -4,14 +4,16 @@ import './root.css';
 import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
-import { useSensorDataFetch } from "./sensorDataFetch";
+import { useSensorDataFetch } from "./scripts/sensorDataFetch";
 import wimmaLabLogo from "/images/logo_round.png";
 import iotitudeLogo from "/images/logo-iotitude.png";
-import { getCombinedData } from "../combinedData";
+// Components
 import Geoman from "./components/Geoman"
-import { redIcon} from "./components/Icons"
-
-import { MapLayers } from "./mapLayers";
+import {  redIcon} from "./components/Icons"
+/* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
+import { DarkModeToggle } from "./components/DarkModeToggle";
+import { getCombinedData } from "./scripts/combinedData";
+import { MapLayers } from "./components/mapLayers";
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -44,7 +46,7 @@ export default function Root(): JSX.Element {
           center={ [62.2426, 25.7473]}
           maxBounds={[[72.182772, 18.506675], [58.712756, 33.559953]]}
           maxBoundsViscosity={0.9}
-          zoomDelta={0}
+          zoomDelta={1}
           zoom={12}
           placeholder={<MapPlaceholder />}>
           <TileLayer
@@ -52,6 +54,7 @@ export default function Root(): JSX.Element {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
         <Geoman />
+        <DarkModeToggle/>
         <MapLayers combinedData={combinedData} redIcon={redIcon} />
       </MapContainer>
     </Fragment>

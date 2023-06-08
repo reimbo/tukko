@@ -1,3 +1,17 @@
+:root {
+  color: black
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: white
+  }
+}
+
+
+
+
 .leaflet-container {
   position: absolute;
   width: 100%;
@@ -61,16 +75,13 @@
   background-color: rgba(219, 17, 17, 0.5);
 }
 
-/* .leaflet-marker-pane, .leaflet-shadow-pane {
-  display: none;
-} */
 
-@media (prefers-color-scheme: dark) {
-  .leaflet-layer,
-  .leaflet-control-zoom-in,
-  .leaflet-control-zoom-out,
-  .leaflet-control-attribution {
-    filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.5);
-  }
 
+body.dark .leaflet-layer,
+body.dark .leaflet-control-attribution {
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.5);
+}
+
+body.dark .overlay-title {
+  color: white;
 }
