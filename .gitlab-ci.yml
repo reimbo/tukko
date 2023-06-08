@@ -6,8 +6,10 @@ stages:
 build:
   stage: build
   image: node:latest
+  only:
+    - main
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN% $CI_REGISTRY
+    - docker login -u %CI_REGISTRY_USER% -p %CI_JOB_TOKEN% %CI_REGISTRY%
     - docker build -t travis .
     - docker push travis
   tags: 
