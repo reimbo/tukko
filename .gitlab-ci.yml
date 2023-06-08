@@ -3,13 +3,12 @@
 stages:
   - build
 
-
 build:
   stage: build
   image: node:latest
   script:
-    - docker login -u %CI_REGISTRY_USER% -p %CI_JOB_TOKEN% %CI_REGISTRY%
-    - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
-    - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN% $CI_REGISTRY
+    - docker build -t travis .
+    - docker push travis
   tags: 
     - docker
