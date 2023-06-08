@@ -17,8 +17,6 @@ retrieve:
 build:
   stage: build
   image: node:latest
-  services:
-    - docker:dind
   script:
     - echo "credentials checkkkkkkk ****  '%CI_REGISTRY_USER%' "
   tags: 
