@@ -1,15 +1,16 @@
 import { MapContainer, TileLayer } from "react-leaflet";
-import L from "leaflet";
 import './leaflet.css';
 import './root.css';
 import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment } from "react";
 import { useSensorDataFetch } from "./sensorDataFetch";
-import wimmaLabLogo from "./images/logo_round.png";
-import iotitudeLogo from "./images/logo-iotitude.png";
+import wimmaLabLogo from "/images/logo_round.png";
+import iotitudeLogo from "/images/logo-iotitude.png";
 import { getCombinedData } from "../combinedData";
-import {Geoman} from './getGeoMan';
+import Geoman from "./components/Geoman"
+import { redIcon} from "./components/Icons"
+
 import { MapLayers } from "./mapLayers";
 
 function MapPlaceholder(): JSX.Element {
@@ -21,14 +22,6 @@ function MapPlaceholder(): JSX.Element {
   );
 }
 
-const redIcon = new L.Icon({
-  iconUrl: '/images/marker-icon-2x-red.png',
-  shadowUrl: '/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
 
 export default function Root(): JSX.Element {
   // Check if data is finished loading
