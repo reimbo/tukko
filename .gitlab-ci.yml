@@ -9,7 +9,7 @@ build:
   services:
     - docker:dind
   before_script:
-    - docker login gitlab.labranet.jamk.fi:4567
+    - docker login gitlab.labranet.jamk.fi:4567 --password-stdin $CI_PASSWORD
     - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
     - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
   script:
