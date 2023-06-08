@@ -9,8 +9,9 @@ build:
   services:
     - docker:dind
   script:
-    - docker build -t travis .
-    - curl "https://gitlab.example.com/api/v4/projects?private_token=glpat-PTRMb9bmUZ2BuGDz8_9F"    
-    - docker push travis
+    - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin gitlab.labranet.jamk.fi:4567
+    - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
   tags: 
     - docker
