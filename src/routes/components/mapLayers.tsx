@@ -4,7 +4,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 export function MapLayers({ combinedData, redIcon }: { combinedData: any, redIcon: any }) {
   return (
     <LayersControl position="topright" collapsed={false}>
-      <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1">
+      <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1" checked>
         <MarkerClusterGroup>
           <LayerGroup>
             {combinedData.stationList.map((stationId: string, index: number) => (

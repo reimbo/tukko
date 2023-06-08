@@ -48,6 +48,7 @@ export default function Root(): JSX.Element {
           maxBoundsViscosity={0.9}
           zoomDelta={1}
           zoom={12}
+          minZoom={5}
           placeholder={<MapPlaceholder />}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

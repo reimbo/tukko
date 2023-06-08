@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Toggle from "react-toggle";
 import { useMediaQuery } from 'react-responsive'
 import "./DarkModeToggle.css"
+import "react-toggle/style.css" 
+import { Fragment } from "react";
 
 export const DarkModeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -24,12 +26,13 @@ export const DarkModeToggle = () => {
   );
 
   return (
-    <Toggle
-      className="Toggle"
-      checked={isDark}
-      onChange={({ target }) => setIsDark(target.checked)}
-      icons={{ checked: "🌙", unchecked: "🔆" }}
-      aria-label="Dark mode toggle"
-    />
+    <Fragment>
+      <Toggle
+        className="Toggle"
+        checked={isDark}
+        onChange={({ target }) => setIsDark(target.checked)}
+        aria-label="Dark mode toggle"
+      />
+    </Fragment>
   );
 };

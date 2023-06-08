@@ -1,7 +1,11 @@
 .Toggle {
+    z-index: 1000;
+    top: 290px;
+    left: 4px;
     position: fixed;
     display: inline;
-    z-index: 1000;
-    top: 0px;
-    left: 100px;
 }   
+
+.custom-classname.react-toggle--checked .react-toggle-track {
+    background-color: #ab199f;
+  }

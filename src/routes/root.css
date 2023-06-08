@@ -79,9 +79,14 @@
 
 body.dark .leaflet-layer,
 body.dark .leaflet-control-attribution {
-  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.5);
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.6) brightness(0.5);
 }
 
 body.dark .overlay-title {
   color: white;
+}
+
+body.dark .iotitudeLogo,
+body.dark .wimmaLabLogo {
+  filter: brightness(1) invert(1) contrast(2) hue-rotate(200deg) saturate(3) brightness(01);
 }
