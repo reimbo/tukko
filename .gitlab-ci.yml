@@ -1,7 +1,18 @@
 # .gitlab-ci.yml
 
 stages:
+  - retrieve
   - build
+
+retrieve:
+  stage: retrieve
+  image: node:latest
+  script:
+    - echo "The job's stage is '$CI_PROJECT_DIR'"
+    - echo "${CI_REGISTRY_USER} ${CI_REGISTRY_PASSWORD} credentials '$CI_REGISTRY_USER' '$CI_REGISTRY_PASSWORD' '$CI_JOB_TOKEN'"
+  tags:
+    - general
+
 
 build:
   stage: build
@@ -9,9 +20,8 @@ build:
   services:
     - docker:dind
   script:
-    - echo "The job's stage is '$CI_PROJECT_DIR'"
     - docker login registry.gitlab.com -u gitlab-ci-token -p $CI_JOB_TOKEN
     - docker build -t gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer .
     - docker push gitlab.labranet.jamk.fi:4567/wimma-lab-2023/iotitude/traffic-visualizer
   tags: 
-    - general
+    - docker
