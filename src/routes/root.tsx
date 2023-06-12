@@ -44,10 +44,12 @@ export default function Root(): JSX.Element {
       </div>
       <MapContainer
           center={ [62.2426, 25.7473]}
-          maxBounds={[[72.182772, 18.506675], [58.712756, 33.559953]]}
+          maxBounds={[[71.09190036570573, 30.5869948880607], [59.8363114968474, 21.063569244498865]]}
           maxBoundsViscosity={0.9}
           zoomDelta={1}
           zoom={12}
+          minZoom={7}
+          maxZoom={12}
           placeholder={<MapPlaceholder />}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
