@@ -35,3 +35,19 @@ export function MapLayers({ combinedData, redIcon }: { combinedData: any, redIco
     </LayersControl>
   );
 }
+
+export function mouseOver() {
+  const overlayTitle = document.getElementById("overlay-title");
+  if (overlayTitle) {
+    overlayTitle.classList.add("hidden");
+  }
+}
+
+export function mouseOut() {
+  const overlayTitle = document.getElementById("overlay-title");
+  if (overlayTitle) {
+    setTimeout(() => {
+      overlayTitle.classList.remove("hidden");
+    }, 1000);
+  }
+}
