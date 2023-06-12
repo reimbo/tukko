@@ -13,7 +13,7 @@ import {  redIcon} from "./components/Icons"
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { getCombinedData } from "./scripts/combinedData";
-import { MapLayers } from "./components/mapLayers";
+import { MapLayers, mouseOver, mouseOut } from "./components/mapLayers";
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -37,7 +37,7 @@ export default function Root(): JSX.Element {
   
   return(
     <Fragment >
-      <p className="overlay-title">Traffic Visualizer</p>
+      <p onMouseOver={(e) => mouseOver()} onMouseOut={(e) => mouseOut()} id="overlay-title" className="overlay-title">Traffic Visualizer</p>
       <div className="logosContainer">
         <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
         <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>

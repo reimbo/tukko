@@ -75,6 +75,10 @@
   background-color: rgba(219, 17, 17, 0.5);
 }
 
+.hidden {
+  display: none;
+}
+
 
 
 body.dark .leaflet-layer,
