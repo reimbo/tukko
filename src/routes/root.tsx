@@ -14,8 +14,14 @@ import {  redIcon} from "./components/Icons"
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { getCombinedData } from "./scripts/combinedData";
+<<<<<<< src/routes/root.tsx
 import { MapLayers } from "./components/mapLayers";
+
+=======
+import { MapLayers, mouseOver, mouseOut } from "./components/mapLayers";
+import { FeedbackForm } from "./components/FeedbackForm";
 import { Loader } from "./components/Loader"
+>>>>>>> src/routes/root.tsx
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -39,18 +45,19 @@ export default function Root(): JSX.Element {
   
   return(
     <Fragment >
-      <p className="overlay-title">Traffic Visualizer</p>
+      <p onMouseOver={mouseOver} onMouseOut={mouseOut} id="overlay-title" className="overlay-title">Traffic Visualizer</p>
       <div className="logosContainer">
         <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
         <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
       </div>
       <MapContainer
           center={ [62.2426, 25.7473]}
-          maxBounds={[[72.182772, 18.506675], [58.712756, 33.559953]]}
+          maxBounds={[[71.09190036570573, 30.5869948880607], [59.8363114968474, 21.063569244498865]]}
           maxBoundsViscosity={0.9}
           zoomDelta={1}
           zoom={12}
-          minZoom={5}
+          minZoom={7}
+          maxZoom={17}
           placeholder={<MapPlaceholder />}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -58,6 +65,7 @@ export default function Root(): JSX.Element {
           />
         <Geoman />
         <DarkModeToggle/>
+        <FeedbackForm/>
         <MapLayers combinedData={combinedData} redIcon={redIcon} />
       </MapContainer>
     </Fragment>
