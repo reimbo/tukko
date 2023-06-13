@@ -46,7 +46,7 @@ export default function Root(): JSX.Element {
           center={ [62.2426, 25.7473]}
           maxBounds={[[72.182772, 18.506675], [58.712756, 33.559953]]}
           maxBoundsViscosity={0.9}
-          zoomDelta={0}
+          zoomDelta={1}
           zoom={12}
           minZoom={5}
           placeholder={<MapPlaceholder />}>
