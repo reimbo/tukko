@@ -26,7 +26,6 @@ export const FeedbackForm = () => {
     });
 
     const token = import.meta.env.VITE_PROJECT_ACCESS_TOKEN as string;
-    console.log(token);
 
     const headers = {
       'Private-Token': token
