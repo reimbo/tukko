@@ -1,6 +1,7 @@
 import { LayersControl, Marker, LayerGroup, Popup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 
+
 export function MapLayers({ combinedData, redIcon }: { combinedData: any, redIcon: any }) {
   return (
     <LayersControl position="topright" collapsed={false}>

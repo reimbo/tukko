@@ -2,6 +2,7 @@ import L from "leaflet";
 
 {/* https://github.com/pointhi/leaflet-color-markers */}
 
+
 const blueIcon = new L.Icon({
     iconUrl: '/images/marker-icon-2x-blue.png',
     shadowUrl: '/images/marker-shadow.png',

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Toggle from "react-toggle";
 import { useMediaQuery } from 'react-responsive'
-import "./DarkModeToggle.css"
+import "./css/DarkModeToggle.css"
 import "react-toggle/style.css" 
 import { Fragment } from "react";
 
