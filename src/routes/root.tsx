@@ -49,7 +49,7 @@ export default function Root(): JSX.Element {
           zoomDelta={1}
           zoom={12}
           minZoom={7}
-          maxZoom={12}
+          maxZoom={17}
           placeholder={<MapPlaceholder />}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
