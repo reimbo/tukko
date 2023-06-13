@@ -14,6 +14,7 @@ import {  redIcon} from "./components/Icons"
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { getCombinedData } from "./scripts/combinedData";
 import { MapLayers, mouseOver, mouseOut } from "./components/mapLayers";
+import { FeedbackForm } from "./components/FeedbackForm";
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -57,6 +58,7 @@ export default function Root(): JSX.Element {
           />
         <Geoman />
         <DarkModeToggle/>
+        <FeedbackForm/>
         <MapLayers combinedData={combinedData} redIcon={redIcon} />
       </MapContainer>
     </Fragment>

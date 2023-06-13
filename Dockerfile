@@ -10,4 +10,5 @@ RUN npm run build
 # OR
 # npm run prod
 FROM nginx:latest
+# ENV VITE_PROJECT_ACCESS_TOKEN=glpat-hdysjN7mEXLdcGZqT_W5
 COPY --from=build /app/dist /usr/share/nginx/html
