@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import "./FeedbackForm.css";
-// import dotenv from 'dotenv';
-// dotenv.config({ path: './project.env' });
 
 interface Inputs {
   title?: string;
