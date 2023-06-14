@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import "./FeedbackForm.css";
+import { useState, Fragment } from 'react';
+import "./css/FeedbackForm.css";
 
 interface Inputs {
   title?: string;
@@ -53,25 +53,31 @@ export const FeedbackForm = () => {
   };
 
   return (
-    <form className="FeedbackForm" onSubmit={handleSubmit}>
-      <label>
-        Enter the title:
-        <input
-          type="text"
-          name="title"
-          value={inputs.title || ''}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter the description:
-        <textarea
-          name="description"
-          value={inputs.description || ''}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit" />
-    </form>
+    <Fragment>
+      <form className="FeedbackForm" onSubmit={handleSubmit}>
+        <p className="FeedBackTitle">Give Feedback</p>
+        <label>
+          Enter the title:
+          <input
+            className='input'
+            type="text"
+            name="title"
+            value={inputs.title || ''}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Enter the description:
+          <textarea
+            className='input'
+            name="description"
+            value={inputs.description || ''}
+            onChange={handleChange}
+            rows={3}
+          />
+        </label>
+        <input type="submit" />
+      </form>
+    </Fragment>
   );
 };

@@ -14,14 +14,9 @@ import {  redIcon} from "./components/Icons"
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { getCombinedData } from "./scripts/combinedData";
-<<<<<<< src/routes/root.tsx
-import { MapLayers } from "./components/mapLayers";
-
-=======
 import { MapLayers, mouseOver, mouseOut } from "./components/mapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { Loader } from "./components/Loader"
->>>>>>> src/routes/root.tsx
 
 function MapPlaceholder(): JSX.Element {
   return (
