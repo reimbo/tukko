@@ -29,6 +29,7 @@
   display: inline;
   z-index: 1000;
   color: black;
+  pointer-events: none;
 }
 
 
