@@ -2,21 +2,18 @@
     z-index: 1000;
     top: 400px;
     left: 10px;
+    width: 200px;
     position: fixed;
     display: inline-block;
-    width: 180px;
-    height: 185px;
-    border: 1px black solid;
-    border-radius: 20px;
-    padding-left: 10px;
-    box-shadow: 10px;
     background-color: white;
     user-select: none; 
+    line-height: 1.7;
+    border: none;
 }   
 
-.FeedBackTitle {
+.FeedbackTitle {
     font-weight: bold;
-    margin-bottom: 5px;
+    line-height: 0;
 }
 
 .input 
