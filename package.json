@@ -11,9 +11,12 @@
     "prod": "docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
     "esri-leaflet-geocoder": "^3.1.4",
     "leaflet-geosearch": "^3.8.0",
+    "react-dark-mode-toggle": "^0.2.0",
     "react-leaflet-cluster": "^2.1.0",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.11.2",

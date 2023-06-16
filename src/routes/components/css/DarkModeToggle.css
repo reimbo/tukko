@@ -6,3 +6,15 @@
     display: inline;
 }   
 
+.dark .Toggle .react-toggle-track  {
+    background-color: #4AC7C1 !important; 
+  }
+
+
+.Toggle .react-toggle-thumb {
+    background-color: skyblue !important;
+}
+  
+  .Toggle .react-toggle-thumb {
+    background-color: white !important; 
+  }
