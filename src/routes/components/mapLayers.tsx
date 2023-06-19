@@ -3,7 +3,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { createMarker } from "./Icons";
 
 //Defines the layers drawn on the map
-export function MapLayers({ combinedData, icons}: { combinedData: any, icons: any }) {
+export function MapLayers({ combinedData }: { combinedData: any}) {
   return (
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1" checked>

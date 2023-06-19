@@ -60,7 +60,7 @@ export default function Root(): JSX.Element {
         <Geoman />
         <DarkModeToggle/>
         <FeedbackForm/>
-        <MapLayers combinedData={combinedData} icons />
+        <MapLayers combinedData={combinedData} />
       </MapContainer>
     </Fragment>
 
