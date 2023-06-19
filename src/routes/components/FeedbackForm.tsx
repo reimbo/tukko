@@ -1,6 +1,6 @@
 import { useState, Fragment } from 'react';
-import { Collapse } from "antd";
 import "./css/FeedbackForm.css";
+
 
 interface Inputs {
   title?: string;
@@ -53,38 +53,33 @@ export const FeedbackForm = () => {
     }
   };
 
-  const { Panel } = Collapse;
-
   return (
     <Fragment>
-      <Collapse className="FeedbackForm">
-        <Panel header="Give Feedback" key="1" showArrow={false}>
-            <form onSubmit={handleSubmit}>
-            <label>
-              Enter the title: <br/>
-              <input
-                className='input'
-                type="text"
-                name="title"
-                value={inputs.title || ''}
-                onChange={handleChange}
-              />
-            </label>
-            <br/>
-            <label>
-              Enter the description: <br/>
-              <textarea
-                className='input'
-                name="description"
-                value={inputs.description || ''}
-                onChange={handleChange}
-                rows={3}
-              />
-            </label> <br/>
-            <input type="submit" />
-          </form>
-        </Panel>
-      </Collapse>
-    </Fragment>
+    <form className="FeedbackForm" onSubmit={handleSubmit}>
+      <p className="FeedBackTitle">Give Feedback</p>
+      <label>
+        Enter the title:
+        <input
+          className='input'
+          type="text"
+          name="title"
+          value={inputs.title || ''}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Enter the description:
+        <textarea
+          className='input'
+          name="description"
+          value={inputs.description || ''}
+          onChange={handleChange}
+          rows={3}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  </Fragment>
+
   );
 };

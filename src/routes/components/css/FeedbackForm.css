@@ -1,22 +1,9 @@
 .FeedbackForm {
     z-index: 1000;
     top: 400px;
-    left: 10px;
-    width: 200px;
+    left: 4px;
     position: fixed;
     display: inline-block;
-    background-color: white;
-    user-select: none; 
-    line-height: 1.7;
-    border: none;
+    width: 150px;
+    height: 150px;
 }   
-
-.FeedbackTitle {
-    font-weight: bold;
-    line-height: 0;
-}
-
-.input 
-{
-    resize: none;
-}

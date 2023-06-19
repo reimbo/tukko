@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
-    "antd": "^5.6.1",
     "esri-leaflet-geocoder": "^3.1.4",
     "leaflet-geosearch": "^3.8.0",
     "react-leaflet-cluster": "^2.1.0",
