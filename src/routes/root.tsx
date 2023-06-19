@@ -40,7 +40,7 @@ export default function Root(): JSX.Element {
   
   return(
     <Fragment >
-      <p id="overlay-title" className="overlay-title">Travis</p>
+      <h1 id="overlay-title" className="overlay-title">Travis</h1>
       <div className="logosContainer">
         <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
         <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
