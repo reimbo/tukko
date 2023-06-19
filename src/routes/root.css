@@ -1,4 +1,5 @@
 :root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: black
   
 }
@@ -80,7 +81,15 @@
   display: none;
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-VariableFont_sInt,wght.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/MontserratAlternates-Bold.ttf')  format('truetype');
+}
 
 body.dark .leaflet-layer,
 body.dark .leaflet-control-attribution {

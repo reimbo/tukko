@@ -11,6 +11,7 @@
     "prod": "docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
