@@ -1,5 +1,9 @@
 import { useState, Fragment } from 'react';
 import "./css/FeedbackForm.css";
+import Collapsible from 'react-collapsible';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+
 
 
 interface Inputs {
@@ -54,30 +58,41 @@ export const FeedbackForm = () => {
 
   return (
     <Fragment>
-    <form className="FeedbackForm" onSubmit={handleSubmit}>
-      <p className="FeedBackTitle">Give Feedback</p>
-      <label>
-        Enter the title:
-        <input
-          className='input'
-          type="text"
-          name="title"
-          value={inputs.title || ''}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter the description:
-        <textarea
-          className='input'
-          name="description"
-          value={inputs.description || ''}
-          onChange={handleChange}
-          rows={3}
-        />
-      </label>
-      <input type="submit" />
-    </form>
+    <Collapsible 
+    className="collapsibleClosed" 
+    openedClassName='CollapsibleOpen' 
+    trigger={<FontAwesomeIcon
+              icon={faCommentAlt}
+              style={{ color: "#5b5b5b" }}
+              className="feedback-icon"
+            />}>
+      <div className="collapsibleContent">
+        <p className='FeedbackTitle'>Give Feedback</p>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Enter the title:
+            <input
+              className='input'
+              type="text"
+              name="title"
+              value={inputs.title || ''}
+              onChange={handleChange}
+            />
+          </label> <br/>
+          <label>
+            Enter the description:
+            <textarea
+              className='input'
+              name="description"
+              value={inputs.description || ''}
+              onChange={handleChange}
+              rows={3}
+            />
+          </label>
+          <input type="submit" />
+        </form>
+      </div>
+    </Collapsible>
   </Fragment>
 
   );
