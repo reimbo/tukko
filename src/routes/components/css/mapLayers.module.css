@@ -1,0 +1,14 @@
+.wrapper {
+  padding: 1rem 1.25rem;
+}
+.content {
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+.list > li {
+  padding: 2px;
+}
