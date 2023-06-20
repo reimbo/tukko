@@ -11,6 +11,7 @@ export function MapLayers({ combinedData }: { combinedData: any}) {
           <LayerGroup>
             {combinedData.stationList.map((stationId: string, index: number) => (
               <Marker
+                pmIgnore
                 key={stationId}
                 position={[
                   combinedData.stationLocation[index].latitude,
@@ -40,6 +41,7 @@ export function MapLayers({ combinedData }: { combinedData: any}) {
           <LayerGroup>
             {combinedData.stationList.map((stationId: string, index: number) => (
               <Marker
+                pmIgnore
                 key={stationId}
                 position={[
                   combinedData.stationLocation[index].latitude,
