@@ -1,15 +1,10 @@
-<<<<<<< HEAD
+
 import { useState, Fragment } from 'react';
 import "./css/FeedbackForm.css";
 import Collapsible from 'react-collapsible';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 
-
-=======
-import React, { useState } from "react";
-import "./FeedbackForm.css";
->>>>>>> 1ed5cc8215bed95b4c2559af7d703cb9c96a6c6a
 
 interface Inputs {
   title?: string;
@@ -63,7 +58,7 @@ export const FeedbackForm = () => {
   };
 
   return (
-<<<<<<< HEAD
+
     <Fragment>
     <Collapsible 
     className="CollapsibleClosed" 
@@ -101,29 +96,5 @@ export const FeedbackForm = () => {
       </div>
     </Collapsible>
   </Fragment>
-
-=======
-    <form className="FeedbackForm" onSubmit={handleSubmit}>
-      <label>
-        Enter the title:
-        <input
-          type="text"
-          name="title"
-          value={inputs.title || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter the description:
-        <textarea
-          name="description"
-          value={inputs.description || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit" />
-    </form>
->>>>>>> 1ed5cc8215bed95b4c2559af7d703cb9c96a6c6a
   );
 };
-
