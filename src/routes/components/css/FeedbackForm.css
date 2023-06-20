@@ -2,30 +2,33 @@
     z-index: 1000;    
     position: fixed;
     display: inline-block;
-    top: 400px;
-    left: 10px;
+    top: 324px;
+    left: 11px;
+    border-radius: 4px;
+    background-color: white;
+    cursor: default;
+    user-select: none; 
 }   
 
 .CollapsibleOpen {
-    top: 400px;
-    left: 10px;
     width: 180px;
     height: 200px;
-    background-color: white;
-    user-select: none; 
-    border: none;
-    cursor: default;
     border: 1px solid #5b5b5b;
-    border-radius: 10px;
     padding: 0px;
 }
 
-.collapsibleClosed {
+.CollapsibleClosed {
     width: 32px;
     height: 32px;
-    background-color: white;
     border: 1px solid #5b5b5b;
-    border-radius: 10px;
+}
+
+.Collapsible__contentOuter {
+    transition: 0.001ms !important;
+}
+
+.Collapsible__contentInner {
+    transition: 0.001ms !important;
 }
 
 .feedback-icon {

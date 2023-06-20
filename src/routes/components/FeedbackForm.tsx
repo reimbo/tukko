@@ -59,7 +59,7 @@ export const FeedbackForm = () => {
   return (
     <Fragment>
     <Collapsible 
-    className="collapsibleClosed" 
+    className="CollapsibleClosed" 
     openedClassName='CollapsibleOpen' 
     trigger={<FontAwesomeIcon
               icon={faCommentAlt}
