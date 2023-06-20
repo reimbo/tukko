@@ -1,0 +1,57 @@
+.Collapsible {
+    z-index: 1000;    
+    position: fixed;
+    display: inline-block;
+    top: 324px;
+    left: 11px;
+    border-radius: 4px;
+    background-color: white;
+    cursor: default;
+    user-select: none; 
+}   
+
+.CollapsibleOpen {
+    width: 180px;
+    height: 200px;
+    border: 1px solid #5b5b5b;
+    padding: 0px;
+}
+
+.CollapsibleClosed {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #5b5b5b;
+}
+
+.Collapsible__contentOuter {
+    transition: 0.001ms !important;
+}
+
+.Collapsible__contentInner {
+    transition: 0.001ms !important;
+}
+
+.feedback-icon {
+    font-size: 20px;
+    margin-left: 7px;
+    margin-top: 7px;
+}
+
+.FeedbackTitle {
+    font-weight: bold;
+    line-height: 0;
+    color: #5b5b5b;
+}
+
+.input 
+{
+    resize: none;
+}
+
+.collapsibleContent {
+    padding: 0px 5px 5px 5px;
+    line-height: 1.5;
+}
+
+
+
