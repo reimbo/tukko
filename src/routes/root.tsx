@@ -1,8 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import './leaflet.css';
 import './root.css';
-import '@geoman-io/leaflet-geoman-free';
-import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 import { Fragment, useEffect, useState } from "react";
 import wimmaLabLogo from "/images/logo_round.png";
 import iotitudeLogo from "/images/logo-iotitude.png";
