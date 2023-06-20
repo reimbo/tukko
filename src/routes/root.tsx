@@ -3,8 +3,7 @@ import './leaflet.css';
 import './root.css';
 import '@geoman-io/leaflet-geoman-free';
 import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
-import { Fragment } from "react";
-import { useSensorDataFetch } from "./scripts/sensorDataFetch";
+import { Fragment, useEffect, useState } from "react";
 import wimmaLabLogo from "/images/logo_round.png";
 import iotitudeLogo from "/images/logo-iotitude.png";
 
@@ -12,10 +11,12 @@ import iotitudeLogo from "/images/logo-iotitude.png";
 import Geoman from "./components/Geoman"
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 import { DarkModeToggle } from "./components/DarkModeToggle";
-import { getCombinedData } from "./scripts/combinedData";
 import { MapLayers } from "./components/mapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { Loader } from "./components/Loader"
+
+import { fetchData } from "./scripts/dataFetch";
+import { Station } from "../interfaces/sensorInterfaces";
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -26,17 +27,29 @@ function MapPlaceholder(): JSX.Element {
   );
 }
 
-
 export default function Root(): JSX.Element {
-  // Check if data is finished loading
-  const isLoading = useSensorDataFetch();
-  const combinedData = getCombinedData();
-  
-  // If data is still loading, show loading text
-  if (isLoading) {
-    return <Loader/>;
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Station[] | null>(null);
+
+  useEffect(() => {
+    const data = async () => {
+      try {
+        const res: Station[] = await fetchData();
+        setData(res);
+      } catch (err) {
+        console.log(err);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    data();
+  }, []);
+
+  if (loading) {
+    return <Loader />;
   }
-  
   return(
     <Fragment >
       <h1 id="overlay-title" className="overlay-title">Travis</h1>
@@ -60,9 +73,8 @@ export default function Root(): JSX.Element {
         <Geoman />
         <DarkModeToggle/>
         <FeedbackForm/>
-        <MapLayers combinedData={combinedData} />
+        <MapLayers data={data} />
       </MapContainer>
     </Fragment>
-
   )
 }
