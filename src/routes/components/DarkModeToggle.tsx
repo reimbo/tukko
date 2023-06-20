@@ -4,9 +4,10 @@ import { useMediaQuery } from "react-responsive";
 import "./css/DarkModeToggle.css";
 import "react-toggle/style.css";
 import { Fragment } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
+
+//Assets
+import sunIcon from "../../assets/toggleIcons/sun.svg";
+import moonIcon from "../../assets/toggleIcons/moon.svg";
 
 export const DarkModeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -36,18 +37,10 @@ export const DarkModeToggle = () => {
         aria-label="Dark mode toggle"
         icons={{
           checked: (
-            <FontAwesomeIcon
-              icon={faSun}
-              style={{ color: "#FBE106" }}
-              className="toggle-icon"
-            />
+            <img src={sunIcon} alt="Sun Icon" className="toggle-icon" />
           ),
           unchecked: (
-            <FontAwesomeIcon
-              icon={faMoon}
-              style={{ color: "white" }}
-              className="toggle-icon"
-            />
+            <img src={moonIcon} alt="Moon Icon" className="toggle-icon" />
           ),
         }}
       />

@@ -10,7 +10,6 @@ import iotitudeLogo from "/images/logo-iotitude.png";
 
 // Components
 import Geoman from "./components/Geoman"
-import {  redIcon} from "./components/Icons"
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { getCombinedData } from "./scripts/combinedData";
@@ -61,7 +60,7 @@ export default function Root(): JSX.Element {
         <Geoman />
         <DarkModeToggle/>
         <FeedbackForm/>
-        <MapLayers combinedData={combinedData} redIcon={redIcon} />
+        <MapLayers combinedData={combinedData} />
       </MapContainer>
     </Fragment>
 
