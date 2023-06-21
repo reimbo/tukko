@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prod": "docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest"
+    "prod": "docker stop container_name 2>/dev/null || true && docker rm travis --force 2>/dev/null || true && docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
