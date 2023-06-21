@@ -30,7 +30,7 @@ export default function Root(): JSX.Element {
   const [data, setData] = useState<Station[] | null>(null);
 
   useEffect(() => {
-    const data = async () => {
+    (async () => {
       try {
         const res: Station[] = await fetchData();
         setData(res);
@@ -40,15 +40,11 @@ export default function Root(): JSX.Element {
       } finally {
         setLoading(false);
       }
-    };
-
-    data();
+    })();
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-  return(
+  if (loading) return <Loader />;
+  else return(
     <Fragment >
       <h1 id="overlay-title" className="overlay-title">Travis</h1>
       <div className="logosContainer">
