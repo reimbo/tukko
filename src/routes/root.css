@@ -78,16 +78,6 @@
   display: none;
 }
 
-@font-face {
-  font-family: 'Inter';
-  src: url('../assets/fonts/Inter-VariableFont_sInt,wght.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../assets/fonts/MontserratAlternates-Bold.ttf')  format('truetype');
-}
-
 body.dark .leaflet-layer,
 body.dark .leaflet-control-attribution {
   filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.6) brightness(0.5);

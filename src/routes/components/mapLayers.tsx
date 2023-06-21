@@ -1,69 +1,42 @@
 import { LayersControl, Marker, LayerGroup, Popup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { createMarker } from "./Icons";
+import { Station } from "../../interfaces/sensorInterfaces";
+import styles from "./css/mapLayers.module.css"
 
-//Defines the layers drawn on the map
-export function MapLayers({ combinedData }: { combinedData: any}) {
+export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
+  const MarkerList = data?.map(
+    (station) => {
+      if (station.sensorValues.length > 0) return (
+        <Marker
+          key={station.id}
+          position={[
+            station.coordinates[0],
+            station.coordinates[1]
+          ]}
+          icon={createMarker('red')}
+          >
+          <Popup offset={[0,0]} maxWidth={500} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
+            <ul className={styles.list}>
+            <li>Station name: {station.name}</li>
+            <li>Station id: {station.id}</li>
+            {station.sensorValues.map((sensor) => {
+              const unit = sensor.unit === "***" ? "%" : sensor.unit
+              return <li key={sensor.name}>{sensor.name}: {sensor.value} {unit}</li>
+            })}
+            </ul>
+          </Popup>
+          </Marker>
+      )
+    }
+  )
+
   return (
     <LayersControl position="topright" collapsed={false}>
-      <LayersControl.Overlay name="Show KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1" checked>
+      <LayersControl.Overlay name="Show station data" checked>
         <MarkerClusterGroup>
           <LayerGroup>
-            {combinedData.stationList.map((stationId: string, index: number) => (
-              <Marker
-                pmIgnore
-                key={stationId}
-                position={[
-                  combinedData.stationLocation[index].latitude,
-                  combinedData.stationLocation[index].longitude
-                ]}
-                eventHandlers={{
-                  mouseover: (event) => event.target.openPopup()
-                }}
-                //Gets icons from Icons.ts
-                icon={createMarker('red')}
-              >
-                <Popup>
-                  Station name: {combinedData.stationName[index]} <br />
-                  Station id: {stationId} <br />
-                  Sensor id: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_id} <br />
-                  Name: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_name} <br />
-                  Value: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_value} <br />
-                  Unit: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_unit} <br />
-                </Popup>
-              </Marker>
-            ))}
-          </LayerGroup>
-        </MarkerClusterGroup>
-      </LayersControl.Overlay>
-      <LayersControl.Overlay name="Show GREEN" checked>
-        <MarkerClusterGroup>
-          <LayerGroup>
-            {combinedData.stationList.map((stationId: string, index: number) => (
-              <Marker
-                pmIgnore
-                key={stationId}
-                position={[
-                  combinedData.stationLocation[index].latitude,
-                  combinedData.stationLocation[index].longitude
-                ]}
-                eventHandlers={{
-                  mouseover: (event) => event.target.openPopup()
-                }}
-
-                //Gets icons from Icons.ts
-                icon={createMarker('green')}
-              >
-                <Popup>
-                  Station name: {combinedData.stationName[index]} <br />
-                  Station id: {stationId} <br />
-                  Sensor id: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_id} <br />
-                  Name: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_name} <br />
-                  Value: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_value} <br />
-                  Unit: {combinedData.KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1[index].sensor_unit} <br />
-                </Popup>
-              </Marker>
-            ))}
+            {MarkerList}
           </LayerGroup>
         </MarkerClusterGroup>
       </LayersControl.Overlay>
