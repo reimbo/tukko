@@ -7,12 +7,11 @@
     border-radius: 4px;
     background-color: white;
     cursor: default;
-    user-select: none; 
 }   
 
 .CollapsibleOpen {
-    width: 180px;
-    height: 210px;
+    width: 190px;
+    height: 245px;
     border: 1px solid #5b5b5b;
     padding: 0px;
 }
@@ -30,7 +29,7 @@
 
 .feedback-icon {
     font-size: 20px;
-    margin-left: 7px;
+    margin-left: 6px;
     margin-top: 7px;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .collapsibleContent {
-    padding: 0px 5px 5px 5px;
+    padding: 0px 5px 5px 10px;
     line-height: 1.5;
 }
 
