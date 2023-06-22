@@ -25,27 +25,18 @@ export const FeedbackForm = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const url = "https://gitlab.labranet.jamk.fi/api/v4/projects/23409/issues";
-    const params = new URLSearchParams({
-      title: inputs.title || "",
-      description: inputs.description || "",
-      labels: "Customer Feedback",
-    });
-
-    const token = import.meta.env.VITE_PROJECT_ACCESS_TOKEN as string;
-
-    const headers = {
-      "Private-Token": token,
-    };
-
     try {
-      const response = await fetch(`${url}?${params}`, {
+      const response = await fetch("localhost:3001/tms/feedback", {
         method: "POST",
-        headers: headers,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
       });
 
       if (response.ok) {
+        const responseData = await response.json();
+        console.log("Success:", responseData);
         alert("Issue created successfully!");
         setInputs(initialInputs);
       } else {
