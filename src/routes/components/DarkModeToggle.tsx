@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Toggle from "react-toggle";
 import { useMediaQuery } from "react-responsive";
-import "./css/DarkModeToggle.css";
 import "react-toggle/style.css";
+import "./css/DarkModeToggle.css";
 import { Fragment } from "react";
 
 // Imports icon assets

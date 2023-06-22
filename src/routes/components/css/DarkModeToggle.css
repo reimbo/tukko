@@ -25,3 +25,6 @@
     color: black;
   }
 
+  .react-toggle-track {
+    background-color: rgb(91,91,91) !important /* Override the background color with your desired color */
+  }
