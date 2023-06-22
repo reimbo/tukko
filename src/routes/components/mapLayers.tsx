@@ -9,6 +9,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
     (station) => {
       if (station.sensorValues.length > 0) return (
         <Marker
+          pmIgnore
           key={station.id}
           position={[
             station.coordinates[0],
