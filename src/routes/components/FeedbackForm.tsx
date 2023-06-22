@@ -91,7 +91,7 @@ export const FeedbackForm = () => {
               rows={3}
             />
           </label>
-          <input type="submit" />
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     </Collapsible>
