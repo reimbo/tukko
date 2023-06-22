@@ -6,17 +6,22 @@
     display: inline;
 }   
 
-/*   Changes the color of the dark mode button  */
-.dark .Toggle .react-toggle-track  {
-    background-color: #4AC7C1 !important; 
+.dark .leaflet-control-layers-expanded {        /** Marker display color **/
+    padding: 6px 10px 6px 6px;
+    color: #333;
+    background: #E0E0E0;
   }
 
 
-.Toggle .react-toggle-thumb {
-    background-color: skyblue !important;
-}
-  
-.Toggle .react-toggle-thumb {
-    background-color: white !important; 
+.dark .leaflet-bar a,.leaflet-bar a:hover {     /** Geoman colors **/
+    background-color: #E0E0E0;
+    border-bottom: 1px solid #ccc;
+    width: 31x;
+    height: 30px;
+    line-height: 30x;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
   }
 
