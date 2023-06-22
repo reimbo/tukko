@@ -13,6 +13,8 @@ function Geoman() {
     drawPolyline: false,
     cutPolygon: false,
   });
+
+  
   return null;
 }
 

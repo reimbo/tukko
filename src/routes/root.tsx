@@ -64,10 +64,12 @@ export default function Root(): JSX.Element {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+
         <Geoman />
         <DarkModeToggle/>
         <FeedbackForm/>
         <MapLayers data={data} />
+        
       </MapContainer>
     </Fragment>
   )

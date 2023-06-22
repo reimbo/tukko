@@ -71,27 +71,23 @@ export const FeedbackForm = () => {
       <div className="collapsibleContent">
         <p className='FeedbackTitle'>Give Feedback</p>
         <form onSubmit={handleSubmit}>
-          <label>
-            Enter the title:
+          <label htmlFor="title">Enter the title:</label> <br/>
             <input
               className='input'
               type="text"
               name="title"
               value={inputs.title || ''}
               onChange={handleChange}
-            />
-          </label> <br/>
-          <label>
-            Enter the description:
+            /> <br/>
+          <label htmlFor='description'>Enter the description:</label> <br/>
             <textarea
               className='input'
               name="description"
               value={inputs.description || ''}
               onChange={handleChange}
-              rows={3}
-            />
-          </label>
-          <input type="submit" />
+              rows={5}
+            /> <br/>
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     </Collapsible>

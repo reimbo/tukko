@@ -5,13 +5,14 @@ import "./css/DarkModeToggle.css";
 import "react-toggle/style.css";
 import { Fragment } from "react";
 
-//Assets
+// Imports icon assets
 import sunIcon from "../../assets/toggleIcons/sun.svg";
 import moonIcon from "../../assets/toggleIcons/moon.svg";
 
 export const DarkModeToggle = () => {
   const [isDark, setIsDark] = useState(false);
 
+  // Adds/removes css class "dark" from body element when isDark updates
   useEffect(() => {
     if (isDark) {
       document.body.classList.add("dark");
@@ -20,6 +21,7 @@ export const DarkModeToggle = () => {
     }
   }, [isDark]);
 
+  // Checks users system color scheme preference
   useMediaQuery(
     {
       query: "(prefers-color-scheme: dark)",
@@ -32,6 +34,8 @@ export const DarkModeToggle = () => {
     <Fragment>
       <Toggle
         className="Toggle"
+
+        // Updates "isDark" state on click
         checked={isDark}
         onChange={({ target }) => setIsDark(target.checked)}
         aria-label="Dark mode toggle"

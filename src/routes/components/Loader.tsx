@@ -1,5 +1,7 @@
 import "./css/Loader.css"
 
+// this component returns loading screen for travis
+
 export const Loader = () => {
 return (
     <div className="loaderContainer">
