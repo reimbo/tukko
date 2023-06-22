@@ -18,7 +18,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
           icon={createMarker('red')}
           >
           <Popup offset={[0,0]} maxWidth={500} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
-            <ul className={styles.list}>
+            <ul className={"marker-popup"}>
             <li>Station name: {station.name}</li>
             <li>Station id: {station.id}</li>
             {station.sensorValues.map((sensor) => {

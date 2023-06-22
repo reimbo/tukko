@@ -67,6 +67,17 @@ body.dark .wimmaLabLogo {
   filter: brightness(1) invert(0.7) contrast(2) hue-rotate(200deg) saturate(3) brightness(01);
 }
 
+/* Changes the color of the marker's popup box and text in dark mode */
+body.dark .marker-popup {
+  background-color: #1f1f1f;
+  color: #e5e5e5; 
+}
+
+body.dark .leaflet-popup-content-wrapper {
+  background-color: #1f1f1f;
+  color: #e5e5e5; 
+}
+
 
 /*  Changes the color of the clusters when in dark mode  */
 .dark .marker-cluster-small {
