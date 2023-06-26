@@ -19,7 +19,7 @@ import { Station } from "../interfaces/sensorInterfaces";
 function MapPlaceholder(): JSX.Element {
   return (
     <p>
-      Traffic Visualizer
+      Travis - Traffic Visualizer
       <noscript>You need to enable JavaScript to see this map.</noscript>
     </p>
   );
