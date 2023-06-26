@@ -1,9 +1,10 @@
 import { useMap } from "react-leaflet";
+import { Map, Layer, Polygon, Polyline, Circle } from "leaflet";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 
 function Geoman() {
-  const map = useMap();
+  const map: Map = useMap();
 
   map.pm.addControls({
     drawMarker: false,
@@ -15,10 +16,13 @@ function Geoman() {
     cutPolygon: false,
   });
 
-  map.on("pm:create", function (e: any) {
-    map.fitBounds(e.layer.getBounds());
+  map.on("pm:create", function (e: { layer: Layer }) {
+    const { layer } = e;
+
+    if (layer instanceof Polygon || layer instanceof Polyline || layer instanceof Circle) {
+      map.fitBounds(layer.getBounds());
+    }
   });
-  
 
   return null;
 }
