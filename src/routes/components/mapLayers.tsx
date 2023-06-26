@@ -35,7 +35,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
   return (
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.Overlay name="Show station data" checked>
-        <MarkerClusterGroup>
+        <MarkerClusterGroup pmIgnore>
           <LayerGroup>
             {MarkerList}
           </LayerGroup>
