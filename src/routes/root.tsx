@@ -51,7 +51,7 @@ export default function Root(): JSX.Element {
         <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
         <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
       </div>
-
+      <FeedbackForm/>
       <DarkModeToggle/>
       <MapContainer
           center={ [62.2426, 25.7473]}
@@ -68,7 +68,6 @@ export default function Root(): JSX.Element {
           />
 
         <Geoman />
-        <FeedbackForm/>
         <MapLayers data={data} />
         
       </MapContainer>
