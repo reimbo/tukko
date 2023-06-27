@@ -18,29 +18,39 @@ function Geoman() {
   });
 
   map.on("pm:create", e => {
-    const shape = (e.layer as Polygon).getBounds()
-    const markers: Marker[] = [] 
-    
+    const shape = (e.layer as Polygon).getBounds();
+  
+    const markers: Marker[] = [];
+    selectedLayer.eachLayer(l => {
+      if (l instanceof Marker) markers.push(l);
+      else if ('getAllChildMarkers' in l) markers.push(...(l as MarkerCluster).getAllChildMarkers());
+    });
+  
+    markers.forEach(marker => {
+      if (!shape.contains(marker.getLatLng())) selectedLayer.removeLayer(marker);
+    });
+  
+    const newMarkers: Marker[] = [];
     map.eachLayer(l => {
-      if (l instanceof Marker && l.getElement()?.tagName === "IMG" ) markers.push(l)
-      else if ('getAllChildMarkers' in l) markers.push(...(l as MarkerCluster).getAllChildMarkers())
-    })
-
-    markers.forEach((marker: Marker) => {
-      if ( shape.contains(marker.getLatLng()) ) marker.addTo(selectedLayer)
-    })
-
+      if (l instanceof Marker && l.getElement()?.tagName === "IMG") newMarkers.push(l);
+      else if ('getAllChildMarkers' in l) newMarkers.push(...(l as MarkerCluster).getAllChildMarkers());
+    });
+  
+    newMarkers.forEach(marker => {
+      if (shape.contains(marker.getLatLng())) marker.addTo(selectedLayer);
+    });
+  
     document.querySelectorAll<HTMLInputElement>('.leaflet-control-layers-selector:checked').forEach(el => {
-      el.click()
-      el.checked = false
-      el.dataset.lastActive = 'true'
-      el.disabled = true
-    })
-    console.log(selectedLayer);
-    
-    if ( !(map.hasLayer(selectedLayer)) ) map.addLayer(selectedLayer)
-    map.fitBounds(shape)
-  })
+      el.click();
+      el.checked = false;
+      el.dataset.lastActive = 'true';
+      el.disabled = true;
+    });
+  
+    if (!map.hasLayer(selectedLayer)) map.addLayer(selectedLayer);
+    map.fitBounds(shape);
+  });
+  
 
   map.on("pm:remove", () => {
     document.querySelectorAll<HTMLInputElement>('.leaflet-control-layers-selector[data-last-active="true"]').forEach(el => {
@@ -51,8 +61,9 @@ function Geoman() {
     })
     selectedLayer.getLayers().forEach(l => selectedLayer.removeLayer(l))
   })
-
+  
   return null;
 }
+
 
 export default Geoman;
