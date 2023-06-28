@@ -1,0 +1,54 @@
+.place-name {
+    font-size: 15px;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
+.grid-top-left {
+    border-right: 1px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.grid-top-right {
+    border-left: 1px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.grid-bottom-left {
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+    border-right: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.grid-bottom-right {
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+    border-left: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.tooltop-div {
+    font-size: 18px;
+}
+
+.tooltip-icon-left {
+        width: 50px;
+}
+
+.tooltip-icon-right {
+    width: 42px;
+}
+
+.tooltip-icon-reverse {
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);  
+}
