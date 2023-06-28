@@ -7,11 +7,8 @@ import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeh
 // Components
 import { createMarker } from "./Icons";
 import { Station } from "../../interfaces/sensorInterfaces";
-<<<<<<< src/routes/components/mapLayers.tsx
-=======
 import styles from "./css/mapLayers.module.css"
 import { useTranslation } from "react-i18next";
->>>>>>> src/routes/components/mapLayers.tsx
 
 
 export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
