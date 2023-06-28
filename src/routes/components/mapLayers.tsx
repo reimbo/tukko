@@ -1,6 +1,5 @@
 import { LayersControl, Marker, LayerGroup, Popup, Tooltip} from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import styles from "./css/mapLayers.module.css"
 import "./css/Tooltip.css"
 import carIcon from "../../assets/tooltipIcons/car-side-solid.svg";
 import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeholder icon
@@ -8,9 +7,15 @@ import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeh
 // Components
 import { createMarker } from "./Icons";
 import { Station } from "../../interfaces/sensorInterfaces";
+<<<<<<< src/routes/components/mapLayers.tsx
+=======
+import styles from "./css/mapLayers.module.css"
+import { useTranslation } from "react-i18next";
+>>>>>>> src/routes/components/mapLayers.tsx
 
 
 export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
+  const { t } = useTranslation('sensors')
   const MarkerList = data?.map(
     (station) => {
       console.log(station)
@@ -24,13 +29,14 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
           ]}
           icon={createMarker('red')}
           >
-          <Popup offset={[0,0]} maxWidth={500} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
-            <ul className={"marker-popup"}>
-            <li>Station name: {station.name}</li>
-            <li>Station id: {station.id}</li>
+          <Popup offset={[0,0]} maxWidth={550} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
+            <h3>{station.name}</h3>
+            <small>{station.id}</small>
+            <ul className={styles.list}>
             {station.sensorValues.map((sensor) => {
+              // Digitraffic lists all its relative units as '***', I assume for compatibility?
               const unit = sensor.unit === "***" ? "%" : sensor.unit
-              return <li key={sensor.name}>{sensor.name}: {sensor.value} {unit}</li>
+              return <li key={sensor.name}>{t(sensor.name)}: {sensor.value} {unit}</li>
             })}
             </ul>
           </Popup>
@@ -63,7 +69,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
   return (
     <LayersControl position="topright" collapsed={false}>
       <LayersControl.Overlay name="Show station data" checked>
-        <MarkerClusterGroup>
+        <MarkerClusterGroup pmIgnore>
           <LayerGroup>
             {MarkerList}
           </LayerGroup>

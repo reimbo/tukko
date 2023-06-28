@@ -100,3 +100,27 @@ body.dark .leaflet-popup-content-wrapper {
 .dark .marker-cluster-large div {
   background-color: rgba(192, 101, 15, 0.6);
     }
+
+  
+.dark .leaflet-control-layers-expanded {        /** Marker display color **/
+  padding: 6px 10px 6px 6px;
+  color: #333;
+  background: #E0E0E0;
+}
+
+
+.dark .leaflet-bar a,.leaflet-bar a:hover {     /** Leaflet button colors **/
+  background-color: #352a2a;
+  border-bottom: 1px solid #807a7a;
+  width: 31x;
+  height: 30px;
+  line-height: 30x;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.react-toggle-track {
+  background-color: rgb(91,91,91) !important /* Override the background color with your desired color */;
+}
