@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import './leaflet.css';
 import './root.css';
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, Suspense, useEffect, useState } from "react";
 import wimmaLabLogo from "/images/logo_round.png";
 import iotitudeLogo from "/images/logo-iotitude.png";
 
@@ -26,7 +26,6 @@ function MapPlaceholder(): JSX.Element {
 }
 
 export default function Root(): JSX.Element {
-  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Station[] | null>(null);
 
   useEffect(() => {
@@ -37,40 +36,38 @@ export default function Root(): JSX.Element {
       } catch (err) {
         console.log(err);
         setData(null);
-      } finally {
-        setLoading(false);
       }
     })();
   }, []);
 
-  if (loading) return <Loader />;
-  else return(
-    <Fragment >
-      <h1 id="overlay-title" className="overlay-title">Travis</h1>
-      <div className="logosContainer">
-        <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
-        <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
-      </div>
-      <FeedbackForm/>
-      <DarkModeToggle/>
-      <MapContainer
-          center={ [62.2426, 25.7473]}
-          maxBounds={[[71.09190036570573, 30.5869948880607], [59.8363114968474, 21.063569244498865]]}
-          maxBoundsViscosity={0.9}
-          zoomDelta={1}
-          zoom={12}
-          minZoom={7}
-          maxZoom={17}
-          placeholder={<MapPlaceholder />}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+  return (
+      <Fragment >
+        <h1 id="overlay-title" className="overlay-title">Travis</h1>
+        <div className="logosContainer">
+          <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo"/></a>
+          <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo"/></a>
+        </div>
+        <MapContainer
+            center={ [62.2426, 25.7473]}
+            maxBounds={[[71.09190036570573, 30.5869948880607], [59.8363114968474, 21.063569244498865]]}
+            maxBoundsViscosity={0.9}
+            zoomDelta={1}
+            zoom={12}
+            minZoom={7}
+            maxZoom={17}
+            placeholder={<MapPlaceholder />}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
 
-        <Geoman />
-        <MapLayers data={data} />
-        
-      </MapContainer>
-    </Fragment>
+          <Geoman />
+          <DarkModeToggle/>
+          <FeedbackForm/>
+          <Suspense fallback={<Loader />}>
+            <MapLayers data={data} />
+          </Suspense>
+        </MapContainer>
+      </Fragment>
   )
 }

@@ -3,8 +3,11 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { createMarker } from "./Icons";
 import { Station } from "../../interfaces/sensorInterfaces";
 import styles from "./css/mapLayers.module.css"
+import { useTranslation } from "react-i18next";
+
 
 export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
+  const { t } = useTranslation('sensors')
   const MarkerList = data?.map(
     (station) => {
       if (station.sensorValues.length > 0) return (
@@ -17,15 +20,14 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
           ]}
           icon={createMarker('red')}
           >
-          <Popup offset={[0,0]} maxWidth={500} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
-            <ul className={"marker-popup"}>
-            <li>Station name: {station.name}</li>
-            <li>Station id: {station.id}</li>
-            <li>{station.coordinates.join(", ")}</li>
+          <Popup offset={[0,0]} maxWidth={550} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
+            <h3>{station.name}</h3>
+            <small>{station.id}</small>
+            <ul className={styles.list}>
             {station.sensorValues.map((sensor) => {
               // Digitraffic lists all its relative units as '***', I assume for compatibility?
               const unit = sensor.unit === "***" ? "%" : sensor.unit
-              return <li key={sensor.name}>{sensor.name}: {sensor.value} {unit}</li>
+              return <li key={sensor.name}>{t(sensor.name)}: {sensor.value} {unit}</li>
             })}
             </ul>
           </Popup>
