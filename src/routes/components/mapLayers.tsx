@@ -14,7 +14,6 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
   const { t } = useTranslation('sensors')
   const MarkerList = data?.map(
     (station) => {
-      console.log(station)
       if (station.sensorValues.length > 0) return (
         <Marker
           pmIgnore
