@@ -1,0 +1,15 @@
+.languageToggle {
+    cursor: pointer;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.languageToggle:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.langText {    
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+    margin: -10px;
+}

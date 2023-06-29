@@ -9,6 +9,7 @@
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .overlay-title {
@@ -46,6 +47,18 @@
   margin-bottom: 13px;
 }
 
+.langContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: fixed;
+  display: inline;
+  z-index: 1000;
+  bottom: 40px;
+  right: 200px;
+  pointer-events: auto;
+  cursor: pointer;
+}
 
 /* DARK MODE CSS */
 
