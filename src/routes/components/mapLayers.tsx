@@ -1,14 +1,12 @@
-import { LayersControl, Marker, LayerGroup, Popup, Tooltip } from "react-leaflet";
+import { LayersControl, Marker, LayerGroup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import carIcon from "../../assets/tooltipIcons/car-side-solid.svg";
-import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeholder icon
 
 // Components
+import StationTooltip from "./Tooltip";
 import { createMarker } from "./Icons";
 import { Station } from "../../interfaces/sensorInterfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
-import "./css/Tooltip.css";
 
 const sensors = new Set([
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1",
@@ -52,27 +50,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
             })}
             </ul>
           </Popup>
-          <Tooltip>
-            <h1 className="place-name">{station.name}</h1>
-                  <div className="grid-container">
-                      <div className="grid-item grid-top-left">
-                          <img src={carIcon} alt="Car icon" className="tooltip-icon-left tooltip-icon-reverse" />
-                          <div className="tooltip-div tooltip-div-car">XXXX <br/> cars/h</div>
-                      </div>
-                      <div className="grid-item grid-top-right">
-                          <img src={compassIcon} alt="Car icon" className="tooltip-icon-right tooltip-icon-reverse" />
-                          <div className="tooltip-div">Towards <br/> direction1</div>
-                      </div>
-                      <div className="grid-item grid-bottom-left">
-                          <img src={carIcon} alt="Car icon" className="tooltip-icon-left" />
-                          <div className="tooltip-div tooltip-div-car">XXX <br/> cars/h</div>
-                      </div>
-                      <div className="grid-item grid-bottom-right">
-                          <img src={compassIcon} alt="Car icon" className="tooltip-icon-right" />
-                          <div className="tooltip-div">Towards <br/> direction2</div>
-                      </div>
-                  </div>
-          </Tooltip>
+          <StationTooltip station={station} />
           </Marker>
       )
     }
