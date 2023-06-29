@@ -31,7 +31,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
             {station.sensorValues.map((sensor) => {
               // Digitraffic lists all its relative units as '***', I assume for compatibility?
               const unit = sensor.unit === "***" ? "%" : sensor.unit
-              return <li key={sensor.name}>{t(sensor.name)}: {sensor.value} {unit}</li>
+              return <li className={styles.li} key={sensor.name}>{t(sensor.name)}: {sensor.value} {unit}</li>
             })}
             </ul>
           </Popup>
