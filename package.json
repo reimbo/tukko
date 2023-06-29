@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
     "esri-leaflet-geocoder": "^3.1.4",
+    "flag-icons": "^6.7.0",
     "i18next": "^23.2.3",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.2.1",
@@ -25,7 +26,7 @@
     "react-i18next": "^13.0.1",
     "react-leaflet-cluster": "^2.1.0",
     "react-responsive": "^9.0.2",
-    "react-router-dom": "^6.11.2",
+    "react-router-dom": "^6.14.0",
     "react-toggle": "^4.1.3"
   },
   "devDependencies": {

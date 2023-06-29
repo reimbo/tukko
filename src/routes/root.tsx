@@ -15,6 +15,8 @@ import { Loader } from "./components/Loader"
 
 import { fetchData } from "./scripts/dataFetch";
 import { Station } from "../interfaces/sensorInterfaces";
+import { LangToggle  } from "./components/LangSelect"
+
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -65,9 +67,11 @@ export default function Root(): JSX.Element {
           <DarkModeToggle/>
           <FeedbackForm/>
           <Suspense fallback={<Loader />}>
-            <MapLayers data={data} />
+            
+        <MapLayers data={data} />
           </Suspense>
         </MapContainer>
-      </Fragment>
+        <div className="langContainer"><LangToggle/></div>
+    </Fragment>
   )
 }
