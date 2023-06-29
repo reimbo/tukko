@@ -13,11 +13,11 @@ i18n
     'fi-FI': ['fi'],
     default: ['en']
     },
-    debug: true,
-    ns:['sensors'],
+    ns:['sensors', 'units'],
     interpolation: {
       escapeValue: false
-    }
+    },
+    keySeparator: false
   })
 
 export default i18n
