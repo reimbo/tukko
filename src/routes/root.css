@@ -3,6 +3,8 @@
   color: black
 }
 
+
+
 .leaflet-container {
   position: absolute;
   width: 100%;
@@ -54,8 +56,8 @@
   position: fixed;
   display: inline;
   z-index: 1000;
-  bottom: 40px;
-  right: 200px;
+  bottom: 35px;
+  right: 195px;
   pointer-events: auto;
   cursor: pointer;
 }
@@ -123,7 +125,7 @@ body.dark .leaflet-popup-content-wrapper {
 
 
 .dark .leaflet-bar a,.leaflet-bar a:hover {     /** Leaflet button colors **/
-  background-color: #352a2a;
+  background-color: #302828;
   border-bottom: 1px solid #807a7a;
   width: 31x;
   height: 30px;
@@ -136,4 +138,29 @@ body.dark .leaflet-popup-content-wrapper {
 
 .react-toggle-track {
   background-color: rgb(91,91,91) !important /* Override the background color with your desired color */;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .wimmaLabLogo {
+    width: 30px;
+    height: auto;
+  }
+
+  .iotitudeLogo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 8px;
+  }
+
+  .overlay-title {
+    font-size: 28px;
+    left: 57px;
+  }
+
+  .langContainer {
+    bottom: 26px;
+    right: 130px;
+  }
+
 }

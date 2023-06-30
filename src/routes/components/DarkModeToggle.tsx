@@ -34,7 +34,6 @@ export const DarkModeToggle = () => {
     <Fragment>
       <Toggle
         className="Toggle"
-
         // Updates "isDark" state on click
         checked={isDark}
         onChange={({ target }) => setIsDark(target.checked)}

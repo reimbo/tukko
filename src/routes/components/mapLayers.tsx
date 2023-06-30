@@ -8,7 +8,7 @@ import { createMarker } from "./Icons";
 import { Station } from "../../interfaces/sensorInterfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
-import "./css/Tooltip.css";
+import "./css/MapTooltip.css";
 
 export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
   const { t } = useTranslation(['sensors', 'tooltip']);
