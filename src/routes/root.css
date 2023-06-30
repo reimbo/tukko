@@ -13,8 +13,8 @@
 }
 
 .overlay-title {
-  top: 0px;
-  left: 100px;
+  top: -15px;
+  left: 50px;
   font-size: 40px;
   width: 400px;
   position: fixed;
