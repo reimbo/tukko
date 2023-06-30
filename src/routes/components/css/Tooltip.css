@@ -1,3 +1,7 @@
+.Tooltip {
+    transition: opacity 4.0s linear;
+}
+
 .place-name {
     font-size: 15px;
     text-align: center;

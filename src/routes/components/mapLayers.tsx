@@ -6,8 +6,8 @@ import { Station } from "../../interfaces/sensorInterfaces";
 import StationTooltip from "./Tooltip";
 import { createMarker } from "./Icons";
 
-
-export function MapLayers({ data }: { data: Station[] | null }): JSX.Element | null {
+export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
+  const { t } = useTranslation(['sensors', 'tooltip']);
   const MarkerList = data?.map(
     (station) => {
       if (station.sensorValues.length > 0) return (
@@ -27,7 +27,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element | n
             {station.sensorValues.map((sensor) => {
               // Digitraffic lists all its relative units as '***', I assume for compatibility?
               const unit = sensor.unit === "***" ? "%" : sensor.unit
-              return <li className={styles.li} key={sensor.name}>{t(sensor.name)}: {sensor.value} {unit}</li>
+              return <li className={styles.li} key={sensor.name}>{t(sensor.name, {ns: "sensors"})}: {sensor.value} {unit}</li>
             })}
             </ul>
           </Popup>
@@ -36,19 +36,19 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element | n
                   <div className="grid-container">
                       <div className="grid-item grid-top-left">
                           <img src={carIcon} alt="Car icon" className="tooltip-icon-left tooltip-icon-reverse" />
-                          <div className="tooltip-div tooltip-div-car">XXXX <br/> cars/h</div>
+                          <div className="tooltip-div tooltip-div-car">XXXX <br/> {t("cars/h", {ns: "tooltip"})}</div>
                       </div>
                       <div className="grid-item grid-top-right">
                           <img src={compassIcon} alt="Car icon" className="tooltip-icon-right tooltip-icon-reverse" />
-                          <div className="tooltip-div">Towards <br/> direction1</div>
+                          <div className="tooltip-div">{t("direction", {ns: "tooltip"})} <br/> direction1</div>
                       </div>
                       <div className="grid-item grid-bottom-left">
                           <img src={carIcon} alt="Car icon" className="tooltip-icon-left" />
-                          <div className="tooltip-div tooltip-div-car">XXX <br/> cars/h</div>
+                          <div className="tooltip-div tooltip-div-car">XXX <br/> {t("cars/h", {ns: "tooltip"})}</div>
                       </div>
                       <div className="grid-item grid-bottom-right">
                           <img src={compassIcon} alt="Car icon" className="tooltip-icon-right" />
-                          <div className="tooltip-div">Towards <br/> direction2</div>
+                          <div className="tooltip-div">{t("direction", {ns: "tooltip"})} <br/> direction2</div>
                       </div>
                   </div>
           </Tooltip>
