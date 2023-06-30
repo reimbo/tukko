@@ -47,7 +47,7 @@ export default function Root(): JSX.Element {
         Travis
       </h1>
       <div className="logosContainer">
-        <a href="https://www.wimmalab.org/fi" target="_blank">
+        <a href="https://www.wimmalab.org" target="_blank">
           <img
             className="wimmaLabLogo"
             src={wimmaLabLogo}
