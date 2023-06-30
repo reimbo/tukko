@@ -1,10 +1,13 @@
 import { LayersControl, Marker, LayerGroup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import { Station } from "../../interfaces/sensorInterfaces";
 
 // Components
 import StationTooltip from "./Tooltip";
 import { createMarker } from "./Icons";
+import { Station } from "../../interfaces/sensorInterfaces";
+import { useTranslation } from "react-i18next";
+import styles from "./css/mapLayers.module.css";
+import "./css/MapTooltip.css";
 
 export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
   const { t } = useTranslation(['sensors', 'tooltip']);

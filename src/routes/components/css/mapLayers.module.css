@@ -31,14 +31,3 @@
   }
 
 }
-
-@media (max-height: 520px){
-
-  .list {
-    height: 120px;
-    max-width: 400px;
-    overflow: auto;
-  }
-
-}
-
