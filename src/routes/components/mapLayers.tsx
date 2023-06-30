@@ -24,7 +24,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
           ]}
           icon={createMarker('red')}
           >
-          <Popup offset={[0,0]} maxWidth={550} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
+          <Popup offset={[0,0]} maxWidth={400} maxHeight={400} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
             <h3>{station.name}</h3>
             <small>{station.id}</small>
             <ul className={styles.list}>
