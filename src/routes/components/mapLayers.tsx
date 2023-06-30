@@ -18,6 +18,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
         <Marker
           pmIgnore
           key={station.id}
+          alt={station.name.replaceAll("_", " ")}
           position={[
             station.coordinates[0],
             station.coordinates[1]
