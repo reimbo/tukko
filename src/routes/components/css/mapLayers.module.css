@@ -20,13 +20,23 @@
   padding-bottom: 5px;
 }
 
-@media (max-width: 480px){
+@media (max-width: 520px){
   .wrapper{
-    width: 300px;
+    width: 280px;
   }
   
   .list {
     height: 320px;
+    overflow: auto;
+  }
+
+}
+
+@media (max-height: 520px){
+
+  .list {
+    height: 120px;
+    max-width: 400px;
     overflow: auto;
   }
 
