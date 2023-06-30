@@ -14,7 +14,7 @@ i18n
     default: ['en']
     },
     debug: true,
-    ns:['sensors'],
+    ns:['sensors','geoman'],
     interpolation: {
       escapeValue: false
     }
