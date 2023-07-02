@@ -28,7 +28,7 @@ const ModalData: React.FC = () => {
   };
 
   return (
-    <div className="app">
+    <div className="modal">
       <h1>Modal Example</h1>
       <button onClick={openModal}>Open Modal</button>
       {showModal && <Modal onClose={closeModal} />}
