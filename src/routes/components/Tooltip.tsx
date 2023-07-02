@@ -5,6 +5,7 @@ import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeh
 import "./css/Tooltip.css";
 import DirectionPopup from "./Popup";
 import { Tooltip as TT } from 'leaflet';
+import React, { useState } from 'react';
 
 export default function StationTooltip({station}: {station: Station}): JSX.Element {
   const [direction, setDirection] = useState(1)
