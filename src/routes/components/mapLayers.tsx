@@ -8,6 +8,7 @@ import { Station } from "../../interfaces/sensorInterfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
 import "./css/MapTooltip.css";
+import ModalData from "./ModalData";
 
 export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
   const { t } = useTranslation(['sensors', 'tooltip']);
@@ -27,6 +28,7 @@ export function MapLayers({ data }: { data: Station[] | null }): JSX.Element {
           <Popup offset={[0,0]} maxWidth={400} maxHeight={400} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
             <h3>{station.name}</h3>
             <small>{station.id}</small>
+            <ModalData />
             <ul className={styles.list}>
             {station.sensorValues.map((sensor) => {
               // Digitraffic lists all its relative units as '***', I assume for compatibility?
