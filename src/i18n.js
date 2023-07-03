@@ -14,10 +14,11 @@ i18n
     default: ['en']
     },
     debug: true,
-    ns:['sensors','geoman'],
+    ns:['sensors','geoman', 'units'],
     interpolation: {
       escapeValue: false
-    }
+    },
+    keySeparator: false
   })
 
 export default i18n
