@@ -4,7 +4,7 @@ import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeh
 import styles from "./css/tooltip.module.css"
 import DirectionPopup from "./Popup";
 import { useState } from "react";
-import { Marker, Tooltip as T } from "leaflet";
+import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet"
 
 export default function StationTooltip({station, marker}: {station: Station, marker: Marker}): JSX.Element {
