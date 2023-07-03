@@ -92,7 +92,7 @@
 /* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
 .leaflet-overlay-pane svg {
 	-moz-user-select: none;
-	}
+}
 
 .leaflet-pane         { z-index: 400; }
 
@@ -578,6 +578,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	pointer-events: none;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
 	}
+.leaflet-interactive {
+  cursor: pointer;
+  pointer-events: auto;
+}
 .leaflet-tooltip.leaflet-clickable {
 	cursor: pointer;
 	pointer-events: auto;
