@@ -1,5 +1,15 @@
+
+
 .modal-content {
-    max-height: 400px; /* Set a maximum height for the modal content */
-    overflow-y: auto; /* Enable vertical scrollbar when content exceeds the container height */
-  }
-  
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  width: 45vw;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+}

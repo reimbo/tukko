@@ -38,7 +38,38 @@ const generateRandomData = () => {
   return data;
 };
 
-const ModalData: React.FC<ModalProps> = ({ onClose }) => {
+const ModalData: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <div className={"modal"}>
+      <h2>Modal Example</h2>
+      <button onClick={openModal}>Open Modal</button>
+      {showModal && <Modal onClose={closeModal} />}
+    </div>
+  );
+};
+
+const Modal: React.FC<ModalProps> = ({ onClose }) => {
+  return (
+    <div className='modal-data-container'>
+      <div>
+        {/* <button onClick={onClose}>Close</button> */}
+        <ModalDashBoard onClose={onClose}/>
+      </div>
+    </div>
+  );
+};    
+
+const ModalDashBoard: React.FC<ModalProps> = ({onClose}) => {
   const [timeRange, setTimeRange] = useState<string>(''); // Selected time range
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Selected sensors
   const [chartData, setChartData] = useState<any[]>([]); // Chart data
@@ -64,7 +95,6 @@ const ModalData: React.FC<ModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="modal">
       <div className="modal-content">
         <h2>Traffic Visualizer Dashboard</h2>
         <div>
@@ -108,7 +138,6 @@ const ModalData: React.FC<ModalProps> = ({ onClose }) => {
           </ResponsiveContainer>
         </div>
       </div>
-    </div>
   );
 };
 
