@@ -27,7 +27,8 @@
     "react-leaflet-cluster": "^2.1.0",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.14.0",
-    "react-toggle": "^4.1.3"
+    "react-toggle": "^4.1.3",
+    "recharts": "^2.7.2"
   },
   "devDependencies": {
     "@types/esri-leaflet-geocoder": "^2.2.3",
