@@ -76,33 +76,33 @@
     }
   
 .marker-cluster-medium {
-  background-color: #006eff5b !important;
-  width: 44px !important;
-  height: 44px !important;
+  background-color: #006eff54 !important;
+  width: 35px !important;
+  height: 37px !important;
   
     }
 .marker-cluster-medium div {
   background-color: #31a0e0 !important;
-  width: 34px !important;
-  height: 34px !important;
+  width: 25px !important;
+  height: 27px !important;
     }
   
 .marker-cluster-large {
   background-color: #006eff5b !important;
-  width: 45px !important;
+  width: 35px !important;
   height: 37px !important;
     }
 .marker-cluster-large div {
   background-color: #31a0e0 !important;
-  width: 55px !important;
-  height: 57px !important;
+  width: 25px !important;
+  height: 27px !important;
     }
 
 
 
 /* DARK MODE CSS */
 
-/* Changes the color of the maå when in dark mode */
+/* Changes the color of the maa when in dark mode */
 
 body.dark .leaflet-layer,
 body.dark .leaflet-control-attribution {
@@ -134,38 +134,38 @@ body.dark .leaflet-popup-content-wrapper {
 
 /*  Changes the color of the clusters when in dark mode  */
 .dark .marker-cluster-small {
-  background-color: #006eff5b !important;
+  background-color: #082f63 !important;
   width: 35px !important;
   height: 37px !important;
     }
 .dark .marker-cluster-small div {
-  background-color: #1051b4 !important;
+  background-color: #084299 !important;
   width: 25px !important;
   height: 27px !important;
   color: #ffffffb4;
     }
   
 .dark .marker-cluster-medium {
-  background-color: #006eff5b !important;
-  width: 44px !important;
-  height: 44px !important;
+  background-color: #082f63 !important;
+  width: 35px !important;
+  height: 37px !important;
     }
 .dark .marker-cluster-medium div {
-  background-color: #1051b4 !important;
-  width: 34px !important;
-  height: 34px !important;
+  background-color: #084299 !important;
+  width: 25px !important;
+  height: 27px !important;
   color: #ffffffb4;
     }
   
 .dark .marker-cluster-large {
-  background-color: #006eff5b !important;
-  width: 45px !important;
+  background-color: #082f63 !important;
+  width: 35px !important;
   height: 37px !important;
     }
 .dark .marker-cluster-large div {
-  background-color: #1051b4 !important;
-  width: 55px !important;
-  height: 57px !important;
+  background-color: #084299 !important;
+  width: 25px !important;
+  height: 27px !important;
   color: #ffffffb4;
     }
 
