@@ -1,5 +1,5 @@
 // import axios, { AxiosResponse } from "axios";
-import test from '../data/combined.json';
+import test from '../../data/combined.json';
 import { Station, StationData } from '../../interfaces/sensorInterfaces.ts'
 
 export const fetchData = async (): Promise<Station[]> => {
