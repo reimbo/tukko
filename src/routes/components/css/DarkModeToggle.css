@@ -10,25 +10,6 @@
   margin-top: -2px; /* Adjust the value as needed */
 }
 
-.dark .leaflet-control-layers-expanded {        /** Marker display color **/
-    padding: 6px 10px 6px 6px;
-    color: #333;
-    background: #E0E0E0;
-  }
-
-
-.dark .leaflet-bar a,.leaflet-bar a:hover {     /** Geoman colors **/
-    background-color: #E0E0E0;
-    border-bottom: 1px solid #ccc;
-    width: 31x;
-    height: 30px;
-    line-height: 30x;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-  }
-
-  .react-toggle-track {
-    background-color: rgb(91,91,91) !important /* Override the background color with your desired color */
-  }
+.react-toggle-track {
+  background-color: rgb(91,91,91) !important; /* Override the background color with your desired color */
+}

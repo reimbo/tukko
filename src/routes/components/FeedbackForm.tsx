@@ -63,7 +63,7 @@ export const FeedbackForm = () => {
       <div className="collapsibleContent">
         <p className='FeedbackTitle'>Give Feedback</p>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Enter the title:</label> <br/>
+          <label htmlFor="title" className='label'>Enter the title:</label> <br/>
             <input
               className='input'
               type="text"
@@ -71,7 +71,7 @@ export const FeedbackForm = () => {
               value={inputs.title || ''}
               onChange={handleChange}
             /> <br/>
-          <label htmlFor='description'>Enter the description:</label> <br/>
+          <label htmlFor='description' className='label'>Enter the description:</label> <br/>
             <textarea
               className='input'
               name="description"

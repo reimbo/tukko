@@ -26,7 +26,6 @@
     transition: 0.001ms !important;
 }
 
-
 .feedback-icon {
     font-size: 20px;
     margin-left: 6px;
@@ -39,8 +38,14 @@
     color: #5b5b5b;
 }
 
+.label {
+    color: #5b5b5b;
+}
+
 .input 
 {
+    color: black;
+    background-color: #fff;
     resize: none;
 }
 
@@ -48,6 +53,9 @@
     padding: 0px 5px 5px 10px;
     line-height: 1.5;
 }
+
+
+/* DARK MODE CSS */
 
 .dark .Collapsible {
     background-color: #E0E0E0;
