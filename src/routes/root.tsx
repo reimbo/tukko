@@ -11,7 +11,6 @@ import Geoman from "./components/Geoman";
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { MapLayers } from "./components/mapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
-import { Loader } from "./components/Loader";
 
 import { fetchData } from "./scripts/dataFetch";
 import { Station } from "../interfaces/sensorInterfaces";
@@ -66,7 +65,9 @@ export default function Root(): JSX.Element {
             />
 
         <Geoman />
-        <Suspense fallback={<Loader />}>
+        <DarkModeToggle />
+        <FeedbackForm />
+        <Suspense>
           <MapLayers data={data} />
         </Suspense>
         <div className="langContainer">

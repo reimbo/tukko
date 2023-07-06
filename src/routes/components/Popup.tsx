@@ -1,5 +1,5 @@
 import { Popup } from "react-leaflet"
-import { Station } from "../../interfaces/sensorInterfaces"
+import StationTooltip from "../../interfaces/Station";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
 
@@ -21,13 +21,13 @@ const sensors2 = new Set([
   "OHITUKSET_5MIN_LIUKUVA_SUUNTA2_MS2"
 ])
 
-export default function DirectionPopup( {station, direction} :{station: Station, direction: number}): JSX.Element { 
-  const { t } = useTranslation(['sensors', 'units'])
+export default function DirectionPopup( {station, direction} :{station: StationTooltip, direction: number}): JSX.Element { 
+  const { t, i18n } = useTranslation(['sensors', 'units'])
   return (
     <Popup offset={[0,0]} maxWidth={550} autoPanPadding={[100,100]} closeButton={false} className={styles.wrapper}>
-      <h3>{station.name}</h3>
+      <h3>{station.names[(i18n.language as keyof StationTooltip['names'])]}</h3>
       <ul className={styles.list}>
-      {station.sensorValues.map((sensor) => {
+      {station.sensors.map((sensor) => {
         // Digitraffic lists all its relative units as '***', I assume for compatibility?
         const unit = sensor.unit === "***" ? "%" : sensor.unit
         const sensors = direction === 1 ? sensors1 : sensors2
