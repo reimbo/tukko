@@ -7,7 +7,7 @@
 
 ## WIMMA Lab
 
-<div style="max-width: 150px;"><img src="logo_round.png" alt="wimma lab logo")</div>
+<img style="width: 150px;" src="logo_round.png" alt="wimma lab logo">
 
 * WIMMA Lab is a learning environment where students solve assignments in multidisciplinary project teams.
 * Read more at [wimmalab.org](https://www.wimmalab.org/)
@@ -53,25 +53,52 @@ git pull git@github.com:reimbo/tukko.git
 git pull git@github.com:reimbo/tukko-backend.git
 
 # Change working directory to tukkos folder
-cd ~/folder
+cd traffic-visualizer
+cd traffic-visualizer-backend
 
-# Install node dependencies with npm
+# Install node dependencies with npm for both
 npm install
 
-# Run development environment with vite
+# Run frontend development environment with vite
+# For backend the same and it runs "npm-run-all -p compose:dev debug"
 npm run dev
 ```
 
 ## Production (Docker)
 
 ```bash
-# Does the build and makes a Docker image and runs it
+# For backend install npm-run-all
+sudo npm install -g npm-run-all
+
+# Build and run backend containers
+# "npm-run-all -p build compose:prod"
+npm run prod
+
+# Does the build and makes a Docker image for the frontend and runs it
+# localhost:5173
+# "docker stop container_name 2>/dev/null || true && docker rm travis --force 2>/dev/null || true && docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest"
 npm run prod
 ```
 
+### Redis need initialization
+* Open Redis UI [http://localhost:8001](http://localhost:8001)
+
+![Check "I have read and understood the Terms" and Submit](redis1.png)
+
+* Check "I have read and understood the Terms" and **Submit**
+
+![Redis](redis2.png)
+
+* Username: **default**
+* Password: **travis_is_the_best**
+* Click **Apply changes** (a couple of times)
+
+
 ## Usage
 
-![../assets/tukko-ui.png](tukko-ui.png)
+* [http://localhost:5173/](http://localhost:5173/)
+* Frontend should be running on port 5173. Go and enjoy!
+![Tukko UI](tukko-ui.png)
 * Click around! Go crazy!
 
 ## Contributing
