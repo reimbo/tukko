@@ -326,11 +326,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	border-bottom-left-radius: 2px;
 	border-bottom-right-radius: 2px;
 	}
-
 /* zoom control */
 
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
+	color: #e3e3e3;
 	font: bold 18px 'Lucida Console', Monaco, monospace;
 	text-indent: 1px;
 	}
@@ -338,6 +338,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
 	font-size: 22px;
 	}
+
 
 
 /* layers control */
@@ -643,3 +644,66 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	border-right-color: #fff;
 	}
 
+/* DARK MODE CSS*/
+
+/* toolbar styles */
+.dark .leaflet-pm-icon-drag {
+	background-image: url(../assets/darkButtonIcons/drag.svg) !important;
+}
+.dark .leaflet-pm-icon-delete {
+	background-image: url(../assets/darkButtonIcons/delete.svg) !important;
+}
+.dark .leaflet-pm-icon-edit {
+	background-image: url(../assets/darkButtonIcons/edit.svg) !important;
+}
+.dark .leaflet-pm-icon-circle {
+	background-image: url(../assets/darkButtonIcons/circle.svg) !important;
+}
+.dark .leaflet-pm-icon-polygon {
+	background-image: url(../assets/darkButtonIcons/polygon.svg) !important;
+}
+.dark .leaflet-pm-icon-rectangle {
+	background-image: url(../assets/darkButtonIcons/rectangle.svg) !important;
+}
+
+.dark .leaflet-control-layers-expanded {        /* Marker display color */
+    padding: 6px 10px 6px 6px;
+    color: #333;
+    background: #E0E0E0;
+  }
+
+.dark .leaflet-bar a {     /* Geoman colors */
+    background-color: #313131;
+  }
+
+/* layers control */
+.dark .leaflet-control-layers-expanded {        /** Marker display color **/
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #E0E0E0;
+}
+
+/* zoom control */
+.dark .leaflet-control-zoom-in,
+.dark .leaflet-control-zoom-out {
+   color: #e3e3e3;
+   font: bold 18px 'Lucida Console', Monaco, monospace;
+   text-indent: 1px;
+}
+
+.dark .leaflet-touch .leaflet-control-zoom-in, .dark .leaflet-touch .leaflet-control-zoom-out  {
+	font-size: 22px;
+	color: #ccc;
+}
+
+/* Changes the color of the map when in dark mode */
+
+body.dark .leaflet-layer,
+body.dark .leaflet-control-attribution {
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.6) brightness(0.5);
+}
+
+body.dark .leaflet-popup-content-wrapper {
+	background-color: #1f1f1f;
+	color: #e5e5e5; 
+}

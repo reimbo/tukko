@@ -3,8 +3,6 @@
   color: black
 }
 
-
-
 .leaflet-container {
   position: absolute;
   width: 100%;
@@ -98,97 +96,6 @@
   height: 27px !important;
     }
 
-
-
-/* DARK MODE CSS */
-
-/* Changes the color of the maa when in dark mode */
-
-body.dark .leaflet-layer,
-body.dark .leaflet-control-attribution {
-  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.6) brightness(0.5);
-}
-
-/* Changes the color of title and logos when in dark mode */
-
-body.dark .overlay-title {
-  color: #c9cfee;
-}
-
-body.dark .iotitudeLogo,
-body.dark .wimmaLabLogo {
-  filter: brightness(1) invert(0.7) contrast(2) hue-rotate(200deg) saturate(3) brightness(01);
-}
-
-/* Changes the color of the marker's popup box and text in dark mode */
-body.dark .marker-popup {
-  background-color: #1f1f1f;
-  color: #e5e5e5; 
-}
-
-body.dark .leaflet-popup-content-wrapper {
-  background-color: #1f1f1f;
-  color: #e5e5e5; 
-}
-
-
-/*  Changes the color of the clusters when in dark mode  */
-.dark .marker-cluster-small {
-  background-color: #082f63 !important;
-  width: 35px !important;
-  height: 37px !important;
-    }
-.dark .marker-cluster-small div {
-  background-color: #084299 !important;
-  width: 25px !important;
-  height: 27px !important;
-  color: #ffffffb4;
-    }
-  
-.dark .marker-cluster-medium {
-  background-color: #082f63 !important;
-  width: 35px !important;
-  height: 37px !important;
-    }
-.dark .marker-cluster-medium div {
-  background-color: #084299 !important;
-  width: 25px !important;
-  height: 27px !important;
-  color: #ffffffb4;
-    }
-  
-.dark .marker-cluster-large {
-  background-color: #082f63 !important;
-  width: 35px !important;
-  height: 37px !important;
-    }
-.dark .marker-cluster-large div {
-  background-color: #084299 !important;
-  width: 25px !important;
-  height: 27px !important;
-  color: #ffffffb4;
-    }
-
-  
-.dark .leaflet-control-layers-expanded {        /** Marker display color **/
-  padding: 6px 10px 6px 6px;
-  color: #333;
-  background: #E0E0E0;
-}
-
-
-.dark .leaflet-bar a,.leaflet-bar a:hover {     /** Leaflet button colors **/
-  background-color: #302828;
-  border-bottom: 1px solid #807a7a;
-  width: 31x;
-  height: 30px;
-  line-height: 30x;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  color: white;
-}
-
 .react-toggle-track {
   background-color: rgb(91,91,91) !important /* Override the background color with your desired color */;
 }
@@ -216,4 +123,65 @@ body.dark .leaflet-popup-content-wrapper {
     right: 130px;
   }
 
+}
+
+/* DARK MODE CSS */
+
+/* Changes the color of title and logos when in dark mode */
+body.dark .overlay-title {
+  color: #c9cfee;
+}
+
+body.dark .leaflet-layer,
+body.dark .leaflet-control-attribution {
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.6) brightness(0.5);
+}
+
+/* Logos */
+body.dark .iotitudeLogo,
+body.dark .wimmaLabLogo {
+  filter: brightness(1) invert(0.7) contrast(2) hue-rotate(200deg) saturate(3) brightness(01);
+}
+
+/* Changes the color of the marker's popup box and text in dark mode */
+body.dark .marker-popup {
+  background-color: #1f1f1f;
+  color: #e5e5e5; 
+}
+
+/*  Changes the color of the clusters when in dark mode  */
+.dark .marker-cluster-small {
+  background-color: #082f63 !important;
+  width: 35px !important;
+  height: 37px !important;
+}
+.dark .marker-cluster-small div {
+  background-color: #084299 !important;
+  width: 25px !important;
+  height: 27px !important;
+  color: #ffffffb4;
+}
+  
+.dark .marker-cluster-medium {
+  background-color: #082f63 !important;
+  width: 35px !important;
+  height: 37px !important;
+    }
+.dark .marker-cluster-medium div {
+  background-color: #084299 !important;
+  width: 25px !important;
+  height: 27px !important;
+  color: #ffffffb4;
+}
+  
+.dark .marker-cluster-large {
+  background-color: #082f63 !important;
+  width: 35px !important;
+  height: 37px !important;
+}
+.dark .marker-cluster-large div {
+  background-color: #084299 !important;
+  width: 25px !important;
+  height: 27px !important;
+  color: #ffffffb4;
 }
