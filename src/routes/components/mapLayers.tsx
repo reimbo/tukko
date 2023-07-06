@@ -80,8 +80,8 @@ export function MapLayers({
       />      
       </svg>`,
       className: "customMarker",
-      iconSize: [31, 40],
-      iconAnchor: [12, 20],
+      iconSize: [24, 40],
+      iconAnchor: [20, 40],
     });
     if (station.sensorValues.length > 0)
       return (
