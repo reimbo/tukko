@@ -53,11 +53,11 @@ body:global(.dark) .tooltip {
     font-size: 18px;
 }
 
-.tooltip-icon-left {
+.tooltip-icon-car {
     width: 50px;
 }
 
-.tooltip-icon-right {
+.tooltip-icon {
     width: 42px;
 }
 
