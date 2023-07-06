@@ -31,7 +31,7 @@
 | [Otto Nordling](https://gitlab.labranet.jamk.fi/AA4431) | Junior Developer / Tester | IoTitude /  Testing | [LinkedIn](https://www.linkedin.com/in/otto-nordling-67901b277/) |
 | [Alan Ousi](https://gitlab.labranet.jamk.fi/AB8823) | Junior Developer / Tester | IoTitude /  Testing | [LinkedIn](https://www.linkedin.com/in/alan-ousi-241218277/) |
 
-![Team](/documents/assets/Iotitude-removebg-preview.png)
+![Team](iotitude.png)
 
 # Tukko
 
@@ -77,7 +77,7 @@ npm run prod
 
 ## Usage
 
-![../assets/tukko-ui.png](../assets/tukko-ui.png)
+![../assets/tukko-ui.png](tukko-ui.png)
 * Click around! Go crazy!
 
 ## Contributing
