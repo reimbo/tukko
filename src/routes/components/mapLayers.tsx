@@ -20,10 +20,11 @@ export function MapLayers({
   >(null);
   const [marker, setMarker] = useState<null | M>(null);
 
+  let originalColors: string[] = [];
   const MarkerList = data?.map((station) => {
-    //console.log(station.sensorValues)
     let colorDirection1 = "gray";
     let colorDirection2 = "gray";
+    let colorHover = "hsl(100,50%,100%)";
 
     const findSensorValue = (sensorId: number): number | undefined => {
       return station.sensorValues.find((value) => value.id === sensorId)?.value;
@@ -79,8 +80,8 @@ export function MapLayers({
       />      
       </svg>`,
       className: "customMarker",
-      iconSize: [24, 40],
-      iconAnchor: [20, 40],
+      iconSize: [31, 40],
+      iconAnchor: [12, 20],
     });
     if (station.sensorValues.length > 0)
       return (
@@ -111,6 +112,38 @@ export function MapLayers({
                 setSelectedStation(null);
                 setMarker(null);
                 setShowTooltip(false);
+              }
+            },
+
+            mouseover: (e) => {
+              const markerElement = e.target.getElement();
+              const svgElement = markerElement.getElementsByTagName(
+                "svg"
+              )[0] as SVGSVGElement;
+
+              const pathElements = svgElement.getElementsByTagName("path");
+              originalColors = Array.from(pathElements).map(
+                (pathElement) => pathElement.style.fill
+              );
+              originalColors = Array.from(pathElements).map(
+                (pathElement) => pathElement.style.fill
+              );
+
+              for (let i = 0; i < pathElements.length; i++) {
+                const pathElement = pathElements[i] as SVGPathElement;
+                pathElement.style.fill = colorHover;
+              }
+            },
+            mouseout: (e) => {
+              const markerElement = e.target.getElement();
+              const svgElement = markerElement.getElementsByTagName(
+                "svg"
+              )[0] as SVGSVGElement;
+              const pathElements = svgElement.getElementsByTagName("path");
+              // Restore the original colors
+              for (let i = 0; i < pathElements.length; i++) {
+                const pathElement = pathElements[i] as SVGPathElement;
+                pathElement.style.fill = originalColors[i];
               }
             },
           }))()}
