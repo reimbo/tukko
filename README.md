@@ -83,11 +83,11 @@ npm run prod
 ### Redis need initialization
 * Open Redis UI [http://localhost:8001](http://localhost:8001)
 
-![Check "I have read and understood the Terms" and Submit](redis1.png)
+![Check "I have read and understood the Terms" and Submit](redis2.png)
 
 * Check "I have read and understood the Terms" and **Submit**
 
-![Redis](redis2.png)
+![Redis](redis1.png)
 
 * Username: **default**
 * Password: **travis_is_the_best**
