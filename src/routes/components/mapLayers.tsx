@@ -1,7 +1,7 @@
 import { LayersControl, Marker, LayerGroup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { Station } from "../../interfaces/sensorInterfaces";
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 
 // Components
 const StationTooltip = React.lazy(() => import("./Tooltip"));
@@ -153,10 +153,8 @@ export function MapLayers({
           position={[station.coordinates[0], station.coordinates[1]]}
           icon={svgIcon}
         >
-          {showTooltip && station.id === selectedStation && marker && (
-            <Suspense>
-              <StationTooltip station={station} marker={marker} />
-            </Suspense>
+          {showTooltip && station.id && station.id === selectedStation && marker && (
+            <StationTooltip id={station.id} marker={marker} />
           )}
         </Marker>
       );
