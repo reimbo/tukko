@@ -11,7 +11,7 @@
 
 .CollapsibleOpen {
     width: 190px;
-    height: 245px;
+    height: 255px;
     border: 1px solid #5b5b5b;
     padding: 0px;
 }
@@ -28,8 +28,15 @@
 
 .feedback-icon {
     font-size: 20px;
-    margin-left: 6px;
-    margin-top: 7px;
+    width: 1.2em;
+    margin-top: 0.2em;
+    margin-left: 0.20em;
+    filter: invert(40%);
+}
+
+.submitButton {
+    color: black;
+    background-color: lightgray;
 }
 
 .FeedbackTitle {
@@ -57,12 +64,27 @@
 
 /* DARK MODE CSS */
 
+.dark .feedback-icon{
+    filter: invert(80%);
+}
 .dark .Collapsible {
-    background-color: #E0E0E0;
-}   
-
-.dark .input {
-    background-color: #E0E0E0;
+    background-color: #313131;
 }
 
+.dark .FeedbackTitle {
+    color: #e3e3e3;
+}
 
+.dark .label {
+    color: #e3e3e3;
+}
+
+.dark .input {
+    color: #e3e3e3;
+    background-color: #0f0f0f;
+}
+
+.dark .submitButton{
+    color: #e3e3e3;
+    background-color: #262626;
+}

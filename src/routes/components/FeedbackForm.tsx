@@ -2,6 +2,7 @@
 import { useState, Fragment } from 'react';
 import "./css/FeedbackForm.css";
 import Collapsible from 'react-collapsible';
+import feedback from "../../assets/darkButtonIcons/feedback.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -55,11 +56,9 @@ export const FeedbackForm = () => {
     <Collapsible 
     className="CollapsibleClosed" 
     openedClassName='CollapsibleOpen' 
-    trigger={<FontAwesomeIcon
-              icon={faCommentAlt}
-              style={{ color: "#5b5b5b" }}
-              className="feedback-icon"
-            />}>
+    trigger={
+      <img className="feedback-icon" src={feedback} alt="feedback"/>
+    }>
       <div className="collapsibleContent">
         <p className='FeedbackTitle'>Give Feedback</p>
         <form onSubmit={handleSubmit}>
@@ -79,7 +78,7 @@ export const FeedbackForm = () => {
               onChange={handleChange}
               rows={5}
             /> <br/>
-          <input type="submit" value="Submit"/>
+          <input type="submit" value="Submit" className='submitButton'/>
         </form>
       </div>
     </Collapsible>
