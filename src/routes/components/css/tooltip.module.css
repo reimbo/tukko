@@ -61,8 +61,8 @@ body:global(.dark) .tooltip {
     width: 42px;
 }
 
-body:global(.dark) .tooltip-icon-left,
-body:global(.dark) .tooltip-icon-right {
+body:global(.dark) .tooltip-icon-car,
+body:global(.dark) .tooltip-icon {
   filter: invert(100%) sepia(66%) saturate(2%) hue-rotate(247deg) brightness(113%) contrast(101%);
 }
 
