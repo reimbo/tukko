@@ -3,8 +3,6 @@ import { useState, Fragment } from 'react';
 import "./css/FeedbackForm.css";
 import Collapsible from 'react-collapsible';
 import feedback from "../../assets/darkButtonIcons/feedback.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 
 
 
