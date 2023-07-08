@@ -1,4 +1,4 @@
-import Station from '../../interfaces/Station.ts';
+import { Station } from '../../interfaces/Interfaces.ts';
 import carIcon from "../../assets/tooltipIcons/car-side-solid.svg";
 import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeholder icon
 import styles from "./css/tooltip.module.css"
