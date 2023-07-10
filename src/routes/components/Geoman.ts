@@ -154,7 +154,7 @@ function Geoman() {
 
     const newMarkers: Marker[] = [];
     map.eachLayer(l => {
-      if (l instanceof Marker && l.getElement()?.tagName === "IMG") {
+      if (l instanceof Marker && l.getElement()?.classList.contains("customMarker")) {
         newMarkers.push(l);
       } else if ('getAllChildMarkers' in l) {
         newMarkers.push(...(l as MarkerCluster).getAllChildMarkers());
