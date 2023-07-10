@@ -3,25 +3,14 @@ import carIcon from "../../assets/tooltipIcons/car-side-solid.svg";
 import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeholder icon
 import styles from "./css/tooltip.module.css"
 import DirectionPopup from "./Popup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet"
-import fetchStation from "../scripts/fetchStation";
 import { useTranslation } from 'react-i18next';
 
-export default function StationTooltip({id, marker}: {id: number, marker: Marker}): JSX.Element {
+export default function StationTooltip({station, marker}: {station: Station, marker: Marker}): JSX.Element {
   const [direction, setDirection] = useState(1)
-  const [station, setStation] = useState<Station | undefined>(undefined)
   const { t, i18n } = useTranslation('tooltip')
-
-  useEffect(() => {
-  const fetchStationData = async () => {
-    const stationData = await fetchStation(id);
-    setStation(stationData);
-  };
-
-  fetchStationData();
-}, [id]);
 
   if (station === undefined) return <p>Loading</p>
   else return (

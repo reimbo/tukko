@@ -88,7 +88,7 @@ export function MarkerContent({ station }: { station: Station; }): JSX.Element |
         >
             {showTooltip && station.id === selectedStation && marker && (
                 <Suspense>
-                    <StationTooltip id={station.id} marker={marker} />
+                    <StationTooltip station={station} marker={marker} />
                 </Suspense>
             )}
         </Marker>
