@@ -127,6 +127,12 @@
 
 /* DARK MODE CSS */
 
+/* Changes color leaflet background when in dark mode */
+
+body.dark .leaflet-container {
+  background: #202020;
+}
+
 /* Changes the color of title and logos when in dark mode */
 body.dark .overlay-title {
   color: #c9cfee;
