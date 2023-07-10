@@ -10,8 +10,8 @@
 }   
 
 .CollapsibleOpen {
-    width: 190px;
-    height: 255px;
+    width: fit-content;
+    height: fit-content;
     border: 1px solid #5b5b5b;
     padding: 0px;
 }
@@ -27,10 +27,10 @@
 }
 
 .feedback-icon {
-    font-size: 20px;
+    font-size: 18px;
     width: 1.2em;
-    margin-top: 0.2em;
-    margin-left: 0.20em;
+    margin-top: 0.32em;
+    margin-left: 0.32em;
     filter: invert(40%);
 }
 
@@ -54,10 +54,13 @@
     color: black;
     background-color: #fff;
     resize: none;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .collapsibleContent {
-    padding: 0px 5px 5px 10px;
+    margin: 3px;
+    padding: 5px;
     line-height: 1.5;
 }
 
