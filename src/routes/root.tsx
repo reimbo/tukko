@@ -35,7 +35,7 @@ export default function Root(): JSX.Element {
       <FeedbackForm />
       <MapContainer
         center={[62.2426, 25.7473]}
-        maxBounds={[[71.09190036570573, 30.5869948880607], [59.8363114968474, 21.063569244498865]]}
+        maxBounds={[[71.00, 40.00], [60.00, 15.00]]}
         maxBoundsViscosity={0.9}
         zoomDelta={1}
         zoom={12}
