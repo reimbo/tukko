@@ -8,17 +8,28 @@ import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet"
 import { useTranslation } from 'react-i18next';
 
+
 export default function StationTooltip({station, marker}: {station: Station, marker: Marker}): JSX.Element {
   const [direction, setDirection] = useState(1)
   const { t, i18n } = useTranslation('tooltip')
+  let fadeTimeout: number;
 
+  const delayFade = () => {
+    fadeTimeout = setTimeout(() => {
+      marker.closeTooltip();
+    }, 1000);
+  };
+  
   if (station === undefined) return <p>Loading</p>
   else return (
     <Tooltip className={styles.tooltip} permanent interactive
       eventHandlers = {
         (() => ({
           mouseout: () => {
-            marker.closeTooltip()
+            delayFade()
+          },
+          mouseover: () => {
+            clearTimeout(fadeTimeout);
           }
       }))()
       }
