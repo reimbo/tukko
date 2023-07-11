@@ -8,6 +8,7 @@ export interface Station {
     sv: string;
     en: string;
   },
+  collectionStatus: string,
   coordinates: {
     longitude: number,
     latitude: number
@@ -26,7 +27,7 @@ export interface Station {
   direction2MunicipalityCode: number,
   freeFlowSpeed1: number,
   freeFlowSpeed2: number,
-  sensors: Sensor[]
+  sensors?: Sensor[]
 }
 
 export interface Sensor {
