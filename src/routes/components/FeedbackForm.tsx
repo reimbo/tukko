@@ -2,8 +2,7 @@
 import { useState, Fragment } from 'react';
 import "./css/FeedbackForm.css";
 import Collapsible from 'react-collapsible';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+import feedback from "../../assets/darkButtonIcons/feedback.svg";
 
 
 
@@ -55,15 +54,13 @@ export const FeedbackForm = () => {
     <Collapsible 
     className="CollapsibleClosed" 
     openedClassName='CollapsibleOpen' 
-    trigger={<FontAwesomeIcon
-              icon={faCommentAlt}
-              style={{ color: "#5b5b5b" }}
-              className="feedback-icon"
-            />}>
+    trigger={
+      <img className="feedback-icon" src={feedback} alt="feedback"/>
+    }>
       <div className="collapsibleContent">
         <p className='FeedbackTitle'>Give Feedback</p>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Enter the title:</label> <br/>
+          <label htmlFor="title" className='label'>Enter the title:</label> <br/>
             <input
               className='input'
               type="text"
@@ -71,7 +68,7 @@ export const FeedbackForm = () => {
               value={inputs.title || ''}
               onChange={handleChange}
             /> <br/>
-          <label htmlFor='description'>Enter the description:</label> <br/>
+          <label htmlFor='description' className='label'>Enter the description:</label> <br/>
             <textarea
               className='input'
               name="description"
@@ -79,7 +76,7 @@ export const FeedbackForm = () => {
               onChange={handleChange}
               rows={5}
             /> <br/>
-          <input type="submit" value="Submit"/>
+          <input type="submit" value="Submit" className='submitButton'/>
         </form>
       </div>
     </Collapsible>

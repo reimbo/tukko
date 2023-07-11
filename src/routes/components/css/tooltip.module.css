@@ -53,16 +53,16 @@ body:global(.dark) .tooltip {
     font-size: 18px;
 }
 
-.tooltip-icon-left {
+.tooltip-icon-car {
     width: 50px;
 }
 
-.tooltip-icon-right {
+.tooltip-icon {
     width: 42px;
 }
 
-body:global(.dark) .tooltip-icon-left,
-body:global(.dark) .tooltip-icon-right {
+body:global(.dark) .tooltip-icon-car,
+body:global(.dark) .tooltip-icon {
   filter: invert(100%) sepia(66%) saturate(2%) hue-rotate(247deg) brightness(113%) contrast(101%);
 }
 
