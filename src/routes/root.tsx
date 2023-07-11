@@ -25,23 +25,44 @@ function MapPlaceholder(): JSX.Element {
 
 export default function Root(): JSX.Element {
   return (
-    <Fragment >
-      <h1 id="overlay-title" className="overlay-title">Tukko</h1>
+    <Fragment>
+      <h1 id="overlay-title" className="overlay-title">
+        Tukko
+      </h1>
       <div className="logosContainer">
-        <a href="https://www.wimmalab.org/fi" target="_blank"><img className="wimmaLabLogo" src={wimmaLabLogo} alt="WIMMA Lab Logo" /></a>
-        <a href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/" target="_blank"><img className="iotitudeLogo" src={iotitudeLogo} alt="IoTitude Logo" /></a>
+        <a href="https://www.wimmalab.org/fi" target="_blank">
+          <img
+            className="wimmaLabLogo"
+            src={wimmaLabLogo}
+            alt="WIMMA Lab Logo"
+          />
+        </a>
+        <a
+          href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/"
+          target="_blank"
+        >
+          <img
+            className="iotitudeLogo"
+            src={iotitudeLogo}
+            alt="IoTitude Logo"
+          />
+        </a>
       </div>
       <DarkModeToggle />
       <FeedbackForm />
       <MapContainer
         center={[62.2426, 25.7473]}
-        maxBounds={[[71.00, 40.00], [60.00, 15.00]]}
+        maxBounds={[
+          [71.0, 40.0],
+          [59.5, 15.0],
+        ]}
         maxBoundsViscosity={0.9}
         zoomDelta={1}
         zoom={12}
         minZoom={7}
         maxZoom={17}
-        placeholder={<MapPlaceholder />}>
+        placeholder={<MapPlaceholder />}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
