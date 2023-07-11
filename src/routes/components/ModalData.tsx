@@ -1,45 +1,104 @@
-import React, { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React, { useEffect, useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './css/Modal.css';
+import { Station } from '../../interfaces/sensorInterfaces';
+import { fetchStation } from '../scripts/dataFetch';
+
 interface ModalProps {
   onClose: () => void;
+  dateList: string[];
+  sensors: stationData[];
+  setChartData: React.Dispatch<React.SetStateAction<any[]>>;
+  chartData: any[];
 }
 
 interface SensorOption {
-  value: string;
+  value: number;
   label: string;
+  id: string; // Changed to string type for random ID
+}
+interface stationData {
+  date: string;
+  data: SensorOption[];
 }
 
-const sensors: SensorOption[] = [
-  { value: 'sensor1', label: 'Sensor 1' },
-  { value: 'sensor2', label: 'Sensor 2' },
-  { value: 'sensor3', label: 'Sensor 3' },
-  // Add more sensor options here
-];
+const stationID = "20002";
 
-const generateRandomData = () => {
-  const data = [];
-
-  for (let i = 0; i < 10; i++) {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-
-    const dataPoint = {
-      date: date.toISOString().slice(0, 10),
-    };
-
-    sensors.forEach((sensor) => {
-      dataPoint[sensor.value] = Math.floor(Math.random() * 100); // Generate random data value for each sensor
-    });
-
-    data.push(dataPoint);
-  }
-
-  return data;
+// Utility function to generate a random ID
+const generateRandomId = (): string => {
+  return Math.random().toString(36).substr(2, 9);
 };
 
 const ModalData: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const [stations, setStations] = useState<[]>([]);
+  const [sensors, setSensors] = useState<[]>([]);
+  const [chartData, setChartData] = useState<any[] | null>(null);
+  const [dateList, setDateList] = useState<string[]>([]);
+  const [separatedData, setSeparatedData] = useState<Record<string, Station[]>>({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedData: { stations: Station[] }[] = await fetchStation(stationID);
+        
+        if (fetchedData && fetchedData.length > 0) {
+          const stationData: Station[] = fetchedData.flatMap((data) => data.stations);
+  
+          setStations(stationData);
+        } else {
+          console.error('Empty or undefined data received from the API.');
+        }
+      } catch (error) {
+        console.error('Error fetching station data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  // let separatedData = {} as Record<string, Station[]>;
+  useEffect(() => {
+    const updatedSeparatedData: Record<string, Station[]> = {};
+  
+    for (const obj of stations) {
+      const dataUpdatedTime: string = obj.dataUpdatedTime?.toString(); // Convert to string
+  
+      if (dataUpdatedTime) {
+        if (updatedSeparatedData[dataUpdatedTime]) {
+          updatedSeparatedData[dataUpdatedTime].push(obj);
+        } else {
+          updatedSeparatedData[dataUpdatedTime] = [obj];
+        }
+      }
+    }
+  
+    setSeparatedData(updatedSeparatedData);
+    setDateList(Object.keys(updatedSeparatedData));
+  }, [stations]);
+  
+  useEffect(() => {
+
+    const filteredSensors: Array<{ date: string; data: SensorOption[] }> = [];
+  
+    for (const date of dateList) {
+      const selectedData = separatedData[date];
+  
+      const sensorList = selectedData.map((sensor) => ({
+        value: sensor.sensorValues.value,
+        label: sensor.sensorValues.name,
+        id: generateRandomId(), // Generate random ID
+      }));
+  
+      const dateData = {
+        date: date,
+        data: sensorList,
+      };
+  
+      filteredSensors.push(dateData);
+    }
+  
+    setSensors(filteredSensors);
+  }, [dateList, separatedData]);
 
   const openModal = () => {
     setShowModal(true);
@@ -48,97 +107,169 @@ const ModalData: React.FC = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
+  
   return (
-    <div className={"modal"}>
+    <div className="modal">
       <h2>Modal Example</h2>
       <button onClick={openModal}>Open Modal</button>
-      {showModal && <Modal onClose={closeModal} />}
+      {showModal && <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />}
     </div>
   );
 };
 
-const Modal: React.FC<ModalProps> = ({ onClose }) => {
-  return (
-    <div className='modal-data-container'>
-      <div>
-        {/* <button onClick={onClose}>Close</button> */}
-        <ModalDashBoard onClose={onClose}/>
-      </div>
-    </div>
-  );
-};    
-
-const ModalDashBoard: React.FC<ModalProps> = ({onClose}) => {
-  const [timeRange, setTimeRange] = useState<string>(''); // Selected time range
-  const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Selected sensors
-  const [chartData, setChartData] = useState<any[]>([]); // Chart data
+const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList, chartData }) => {
+  const [timeRange, setTimeRange] = useState<number>(0);
+  const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
 
   const handleTimeRangeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setTimeRange(event.target.value);
+    const selectedTimeRange = event.target.value;
+    // Update the chart data based on the selected time range
+    if (selectedTimeRange === 'yesterday') {
+      setTimeRange(1);
+    }
+    if (selectedTimeRange === 'last-week') {
+      setTimeRange(2);
+    }
+    if (selectedTimeRange === 'last-month') {
+      setTimeRange(3);
+    } 
   };
 
   const handleSensorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
+    const sensorId = event.target.value;
     const isChecked = event.target.checked;
 
-    if (isChecked) {
-      setSelectedSensors((prevSelectedSensors) => [...prevSelectedSensors, value]);
+    setSelectedSensors((prevSelectedSensors) => {
+      if (isChecked) {
+        return [...prevSelectedSensors, sensorId];
+      } else {
+        return prevSelectedSensors.filter((id) => id !== sensorId);
+      }
+    });
+  };
+  
+  
+  const handleGenerateGraph = () => {
+    if (selectedSensors.length > 0) {
+      const generatedData: any[] = [];
+      const finalSensors = () => {
+        if (timeRange === 1) {
+          return sensors.slice(sensors.length - 3, sensors.length - 1);
+        } else if (timeRange === 2 && dateList.length > 7) {
+          return sensors.slice(sensors.length - 8, sensors.length - 1);
+        } else if (timeRange === 3 && dateList.length > 31) {
+          return sensors.slice(sensors.length - 31, sensors.length - 1);
+        } else {
+          return sensors;
+        }
+      };
+      for (const sensor of finalSensors()) {
+        const selectedSensorData = sensor.data.filter((data) =>
+          selectedSensors.includes(data.label)
+        );
+  
+        generatedData.push({
+          date: sensor.date,
+          ...selectedSensorData.reduce((obj, data) => {
+            obj[data.label] = data.value;
+            return obj;
+          }, {}),
+        });
+      }
+      setChartData(generatedData);
     } else {
-      setSelectedSensors((prevSelectedSensors) => prevSelectedSensors.filter((sensor) => sensor !== value));
+      setChartData([]);
     }
   };
+  
 
-  const handleGenerateGraph = () => {
-    const generatedData = generateRandomData();
-    setChartData(generatedData);
+  useEffect(() => {
+    handleGenerateGraph();
+  }, [selectedSensors]);
+
+  if (!sensors || sensors.length === 0) {
+    return null; // Return null or a fallback component when sensors is empty or undefined
+  }
+  const modalSensorList = () => {
+    return sensors[0].data.map((sensor, index) => (
+      <div key={index}>
+        <input
+          type="checkbox"
+          id={sensor.label}
+          value={sensor.label}
+          checked={selectedSensors.includes(sensor.label)}
+          onChange={handleSensorChange}
+        />
+        <label htmlFor={sensor.id}>{sensor.label}</label>
+      </div>
+    ));
   };
-
+  const lineColors = [
+    '#1f77b4', // Blue
+    '#ff7f0e', // Orange
+    '#2ca02c', // Green
+    '#d62728', // Red
+    '#9467bd', // Purple
+    '#8c564b', // Brown
+    '#e377c2', // Pink
+    '#7f7f7f', // Gray
+    '#bcbd22', // Yellow-green
+    '#17becf', // Cyan
+    '#aec7e8', // Light blue
+    '#ffbb78', // Light orange
+    '#98df8a', // Light green
+    '#ff9896', // Light red
+    '#c5b0d5', // Light purple
+    '#c49c94', // Light brown
+    '#f7b6d2', // Light pink
+    '#c7c7c7'  // Light gray
+  ];
   return (
+    <div className="modal-data-container">
       <div className="modal-content">
         <h2>Traffic Visualizer Dashboard</h2>
         <div>
           <label htmlFor="time-range-select">Time Range:</label>
           <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
             <option value="">Select Time Range</option>
-            <option value="yesterday">Yesterday</option>
+          <option value="yesterday">Yesterday</option>
             <option value="last-week">Last Week</option>
             <option value="last-month">Last Month</option>
           </select>
         </div>
         <div>
           <label>Sensors:</label>
-          {sensors.map((sensor) => (
-            <div key={sensor.value}>
-              <input
-                type="checkbox"
-                id={sensor.value}
-                value={sensor.value}
-                checked={selectedSensors.includes(sensor.value)}
-                onChange={handleSensorChange}
-              />
-              <label htmlFor={sensor.value}>{sensor.label}</label>
-            </div>
-          ))}
+          {modalSensorList()}
         </div>
         <button onClick={handleGenerateGraph}>Generate Graph</button>
         <button onClick={onClose}>Close</button>
         <div className="graph-container">
-          {/* Render the graph using the selected data */}
+        {chartData && chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
               <YAxis />
               <Tooltip />
-              {selectedSensors.map((sensor) => (
-                <Line key={sensor} type="monotone" dataKey={sensor} stroke="#8884d8" />
+              <Legend />
+              {selectedSensors.map((sensorId, index) => (
+                <Line
+                  key={sensorId}
+                  type="monotone"
+                  dataKey={sensorId}
+                  name={sensorId}
+                  stroke={lineColors[index % lineColors.length]}
+                  strokeWidth={2}
+                />
               ))}
             </LineChart>
           </ResponsiveContainer>
-        </div>
+        ) : (
+          <p>No chart data available</p>
+        )}
       </div>
+      </div>
+    </div>
   );
 };
-
 export default ModalData;
