@@ -1,0 +1,72 @@
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  transition: opacity 0.25s linear;
+}
+
+body:global(.dark) .tooltip {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgba(225,225,225)
+}
+
+.place-name {
+    font-size: 15px;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
+.grid-top-left {
+    border-right: 1px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.grid-top-right {
+    border-left: 1px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.grid-bottom-left {
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+    border-right: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.grid-bottom-right {
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+    border-left: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.tooltip-div {
+    font-size: 18px;
+}
+
+.tooltip-icon-left {
+    width: 50px;
+}
+
+.tooltip-icon-right {
+    width: 42px;
+}
+
+body:global(.dark) .tooltip-icon-left,
+body:global(.dark) .tooltip-icon-right {
+  filter: invert(100%) sepia(66%) saturate(2%) hue-rotate(247deg) brightness(113%) contrast(101%);
+}
+
+.tooltip-icon-reverse {
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);  
+}

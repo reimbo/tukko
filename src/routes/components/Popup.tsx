@@ -2,6 +2,7 @@ import { Popup } from "react-leaflet"
 import { Station } from "../../interfaces/Interfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
+import ModalData from "./ModalData";
 
 const sensors1 = new Set([
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1",
@@ -27,6 +28,7 @@ export default function DirectionPopup({ station, direction }: { station: Statio
     <Popup offset={[0, 0]} maxWidth={550} autoPanPadding={[100, 100]} closeButton={false} className={styles.wrapper}>
       <h3>{station.names[(i18n.language as keyof Station['names'])]}</h3>
       <ul className={styles.list}>
+        <ModalData targetID={station.id.toString()}/>
         {station.sensors?.map((sensor) => {
           // Digitraffic lists all its relative units as '***', I assume for compatibility?
           const unit = sensor.unit === "***" ? "%" : sensor.unit

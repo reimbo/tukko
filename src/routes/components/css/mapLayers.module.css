@@ -1,5 +1,6 @@
 .wrapper {
   padding: 0.25rem 1.25rem;
+  display: flex;
 }
 
 .content {
@@ -23,6 +24,7 @@
 @media (max-width: 520px){
   .wrapper{
     width: 280px;
+    display: flex;
   }
   
   .list {
