@@ -8,7 +8,7 @@ export function getSwgImage(station: Station) {
         let colorDirection2 = "gray";
 
         const findSensorValue = (sensorId: number): number | undefined => {
-            return station.sensors.find((sensor) => sensor.id === sensorId)?.value;
+            return station.sensors?.find((sensor) => sensor.id === sensorId)?.value;
         };
         const sensorValue5158 = findSensorValue(5158);
         if (sensorValue5158 !== undefined) {

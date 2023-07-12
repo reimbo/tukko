@@ -3,8 +3,8 @@
   "OHITUKSET_60MIN_KIINTEA_SUUNTA2": "- Edeltävä tunti",
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA1": "- Edeltävä tunti",
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA2": "- Edeltävä tunti",
-  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA1_VVAPAAS1": "- Liikenteen sujuvuus {{indicator}}",
-  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA2_VVAPAAS2": "- Liikenteen sujuvuus {{indicator}}",
+  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA1_VVAPAAS1": "- Liikenteen sujuvuus",
+  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA2_VVAPAAS2": "- Liikenteen sujuvuus",
   "OHITUKSET_5MIN_KIINTEA_SUUNTA1_MS1": "Relative vehicle count in previous 5 minute span to direction 1",
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1_MS1": "Relative vehicle count in previous 60 minute span to direction 1",
   "OHITUKSET_5MIN_KIINTEA_SUUNTA2_MS2": "Relative vehicle count in previous 5 minute span to direction 2",
@@ -17,8 +17,8 @@
   "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA2": "- Keskiarvo 5min",
   "KESKINOPEUS_5MIN_KIINTEA_SUUNTA1": "Average speed in previous 5 minute span to direction 1",
   "KESKINOPEUS_5MIN_KIINTEA_SUUNTA2": "Average speed in previous 5 minute span to direction 2",
-  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1_VVAPAAS1": "- Liikenteen sujuvuus {{indicator}}",
-  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA2_VVAPAAS2": "- Liikenteen sujuvuus {{indicator}}",
-  "OHITUKSET_5MIN_LIUKUVA_SUUNTA1_MS1": "- Liikenteen määrä {{indicator}}",
-  "OHITUKSET_5MIN_LIUKUVA_SUUNTA2_MS2": "- Liikenteen määrä {{indicator}}"
+  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1_VVAPAAS1": "- Liikenteen sujuvuus",
+  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA2_VVAPAAS2": "- Liikenteen sujuvuus",
+  "OHITUKSET_5MIN_LIUKUVA_SUUNTA1_MS1": "- Liikenteen määrä",
+  "OHITUKSET_5MIN_LIUKUVA_SUUNTA2_MS2": "- Liikenteen määrä"
 }

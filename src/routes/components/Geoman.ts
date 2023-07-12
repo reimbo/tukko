@@ -96,7 +96,6 @@ function isMarkerInsidePolygon(marker: Marker, polygon: Polygon): boolean {
 
     j = i;
   }
-
   return isInside;
 }
 
@@ -123,6 +122,10 @@ function Geoman() {
     drawCircleMarker: false,
     drawPolyline: false,
     cutPolygon: false,
+    // Until we can find a better way to use edit and drag modes, 
+    // disable them
+    dragMode: false,
+    editMode: false,
   });
 
   map.on("pm:create", e => {
@@ -135,9 +138,17 @@ function Geoman() {
       shape = e.layer;
     }
 
+    if (shape === null) {
+      throw new Error("Invalid shape");
+    }
+
+    const bounds = shape.getBounds();
+    map.fitBounds(bounds);
+
     const markers: Marker[] = [];
-    selectedLayer.eachLayer(l => {
-      if (l instanceof Marker) {
+    map.eachLayer(l => {
+      if (!(l instanceof Marker)) return
+      if (l.getElement()?.classList.contains("customMarker")) {
         markers.push(l);
       } else if ('getAllChildMarkers' in l) {
         markers.push(...(l as MarkerCluster).getAllChildMarkers());
@@ -147,25 +158,8 @@ function Geoman() {
     markers.forEach(marker => {
       const isInside = isMarkerInsideShape(marker, shape as Triangle | Polygon | Circle);
 
-      if (!isInside) {
-        selectedLayer.removeLayer(marker);
-      }
-    });
-
-    const newMarkers: Marker[] = [];
-    map.eachLayer(l => {
-      if (l instanceof Marker && l.getElement()?.classList.contains("customMarker")) {
-        newMarkers.push(l);
-      } else if ('getAllChildMarkers' in l) {
-        newMarkers.push(...(l as MarkerCluster).getAllChildMarkers());
-      }
-    });
-
-    newMarkers.forEach(marker => {
-      const isInside = isMarkerInsideShape(marker, shape as Triangle | Polygon | Circle);
-
       if (isInside) {
-        marker.addTo(selectedLayer);
+        marker.addTo(selectedLayer)
       }
     });
 
@@ -179,18 +173,13 @@ function Geoman() {
     });
 
     if (!map.hasLayer(selectedLayer)) {
-      map.addLayer(selectedLayer);
+      selectedLayer.addTo(map);
     }
-
-    if (shape === null) {
-      throw new Error("Invalid shape");
-    }
-
-    const bounds = shape.getBounds();
-    map.fitBounds(bounds);
   });
 
   map.on("pm:remove", () => {
+    selectedLayer.getLayers().forEach(l => selectedLayer.removeLayer(l));
+    selectedLayer.removeFrom(map)
     document.querySelectorAll<HTMLInputElement>(
       '.leaflet-control-layers-selector[data-last-active="true"]'
     ).forEach(el => {
@@ -198,8 +187,6 @@ function Geoman() {
       el.click();
       el.dataset.lastActive = 'false';
     });
-
-    selectedLayer.getLayers().forEach(l => selectedLayer.removeLayer(l));
   });
 
   return null;

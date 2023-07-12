@@ -3,8 +3,8 @@
   "OHITUKSET_60MIN_KIINTEA_SUUNTA2": "- Past hour",
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA1": "- Past hour",
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA2": "- Past hour",
-  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA1_VVAPAAS1": "- Traffic flow {{indicator}}",
-  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA2_VVAPAAS2": "- Traffic flow {{indicator}}",
+  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA1_VVAPAAS1": "- Traffic flow",
+  "KESKINOPEUS_5MIN_KIINTEA_SUUNTA2_VVAPAAS2": "- Traffic flow",
   "OHITUKSET_5MIN_KIINTEA_SUUNTA1_MS1": "Relative vehicle count in previous 5 minute span to direction 1",
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1_MS1": "Relative vehicle count in previous 60 minute span to direction 1",
   "OHITUKSET_5MIN_KIINTEA_SUUNTA2_MS2": "Relative vehicle count in previous 5 minute span to direction 2",
@@ -17,8 +17,8 @@
   "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA2": "- Avg/5min",
   "KESKINOPEUS_5MIN_KIINTEA_SUUNTA1": "Average speed in previous 5 minute span to direction 1",
   "KESKINOPEUS_5MIN_KIINTEA_SUUNTA2": "Average speed in previous 5 minute span to direction 2",
-  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1_VVAPAAS1": "- Traffic flow {{indicator}}",
-  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA2_VVAPAAS2": "- Traffic flow {{indicator}}",
-  "OHITUKSET_5MIN_LIUKUVA_SUUNTA1_MS1": "- Traffic amount {{indicator}}",
-  "OHITUKSET_5MIN_LIUKUVA_SUUNTA2_MS2": "- Traffic amount {{indicator}}"
+  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA1_VVAPAAS1": "- Traffic flow",
+  "KESKINOPEUS_5MIN_LIUKUVA_SUUNTA2_VVAPAAS2": "- Traffic flow",
+  "OHITUKSET_5MIN_LIUKUVA_SUUNTA1_MS1": "- Traffic amount",
+  "OHITUKSET_5MIN_LIUKUVA_SUUNTA2_MS2": "- Traffic amount"
 }

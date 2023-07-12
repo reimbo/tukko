@@ -8,17 +8,28 @@ import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet"
 import { useTranslation } from 'react-i18next';
 
+
 export default function StationTooltip({station, marker}: {station: Station, marker: Marker}): JSX.Element {
   const [direction, setDirection] = useState(1)
   const { t, i18n } = useTranslation('tooltip')
+  let fadeTimeout: any;
 
+  const delayFade = () => {
+    fadeTimeout = setTimeout(() => {
+      marker.closeTooltip();
+    }, 1000);
+  };
+  
   if (station === undefined) return <p>Loading</p>
   else return (
     <Tooltip className={styles.tooltip} permanent interactive
       eventHandlers = {
         (() => ({
           mouseout: () => {
-            marker.closeTooltip()
+            delayFade()
+          },
+          mouseover: () => {
+            clearTimeout(fadeTimeout);
           }
       }))()
       }
@@ -37,11 +48,11 @@ export default function StationTooltip({station, marker}: {station: Station, mar
       <div className={styles['grid-container']}>
         <div onClick={() => setDirection(1)} className={`${styles["grid-item"]} ${styles["grid-bottom-left"]}`}>
           <img src={carIcon} alt="Car icon" className={styles["tooltip-icon-car"]} />
-          <div className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}>{station.sensors.find(e => e.id == 5116)?.value}<br/>{t('unit')}</div>
+          <div className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}>{station.sensors?.find(e => e.id == 5116)?.value}<br/>{t('unit')}</div>
         </div>
         <div onClick={() => setDirection(2)} className={`${styles["grid-item"]} ${styles["grid-bottom-right"]}`}>
           <img src={carIcon} alt="Car icon" className={styles["tooltip-icon-car"]} />
-          <div className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}>{station.sensors.find(e => e.id == 5119)?.value}<br/>{t('unit')}</div>
+          <div className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}>{station.sensors?.find(e => e.id == 5119)?.value}<br/>{t('unit')}</div>
         </div>
       </div>
       <DirectionPopup station={station} direction={direction}/>

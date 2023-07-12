@@ -13,11 +13,8 @@ i18n
     'fi-FI': ['fi'],
     default: ['en']
     },
-    debug: true,
-    ns:['sensors','geoman', 'units'],
-    interpolation: {
-      escapeValue: false
-    },
+    debug: false,
+    ns:['sensors', 'units'],
     keySeparator: false
   })
 

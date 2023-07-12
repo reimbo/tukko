@@ -29,7 +29,7 @@ export default function DirectionPopup({ station, direction }: { station: Statio
       <h3>{station.names[(i18n.language as keyof Station['names'])]}</h3>
       <ul className={styles.list}>
         <ModalData targetID={station.id.toString()}/>
-        {station.sensors.map((sensor) => {
+        {station.sensors?.map((sensor) => {
           // Digitraffic lists all its relative units as '***', I assume for compatibility?
           const unit = sensor.unit === "***" ? "%" : sensor.unit
           const sensors = direction === 1 ? sensors1 : sensors2
