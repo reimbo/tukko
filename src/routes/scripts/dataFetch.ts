@@ -17,9 +17,11 @@ export const fetchData = async (): Promise<Station[]> => {
     return [];
   }
 }
-export const fetchStation = async (stationId: string): Promise<StationData[]> => {
+
+// StationData interface has been changed dramatically so using type any temporary for now
+export const fetchStation = async (stationId: string): Promise<any[]> => {
   const baseUrl = "http://localhost:3001/tms/station/" + stationId;
-  const response: AxiosResponse<StationData[]> = await axios.get(baseUrl);
-  const data: StationData[] = response.data;
+  const response: AxiosResponse<any[]> = await axios.get(baseUrl);
+  const data: any[] = response.data;
   return data;
 };

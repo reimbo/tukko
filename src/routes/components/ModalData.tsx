@@ -1,15 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './css/Modal.css';
-import { Station } from '../../interfaces/sensorInterfaces';
 import { fetchStation } from '../scripts/dataFetch';
+
+export interface Sensor {
+  id?: number;
+  stationId?: number;
+  name: string;
+  shortName: string;
+  timeWindowStart?: Date | string;
+  timeWindowEnd?: Date | string;
+  measuredTime: Date | string;
+  unit: string;
+  sensorValueDescriptionFi?: string;
+  sensorValueDescriptionEn?: string;
+  value: number;
+}
+
+export interface Station {
+  id?: number;
+  tmsNumber: number;
+  coordinates: number[];
+  name: string;
+  dataUpdatedTime?: Date | string;
+  sensorValues: Sensor[];
+}
 
 interface ModalProps {
   onClose: () => void;
   dateList: string[];
-  sensors: stationData[];
-  setChartData: React.Dispatch<React.SetStateAction<any[]>>;
-  chartData: any[];
+  sensors: StationData[];
+  setChartData: any;
+  chartData: any[] | null;
 }
 
 interface SensorOption {
@@ -17,34 +39,35 @@ interface SensorOption {
   label: string;
   id: string; // Changed to string type for random ID
 }
-interface stationData {
+
+interface StationData {
   date: string;
   data: SensorOption[];
 }
 
-const stationID = "20002";
+let stationID = "20002";
 
 // Utility function to generate a random ID
 const generateRandomId = (): string => {
   return Math.random().toString(36).substr(2, 9);
 };
 
-const ModalData: React.FC = () => {
+const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   const [showModal, setShowModal] = useState(false);
-  const [stations, setStations] = useState<[]>([]);
-  const [sensors, setSensors] = useState<[]>([]);
+  const [stations, setStations] = useState<Station[]>([]);
+  const [sensors, setSensors] = useState<StationData[]>([]);
   const [chartData, setChartData] = useState<any[] | null>(null);
   const [dateList, setDateList] = useState<string[]>([]);
   const [separatedData, setSeparatedData] = useState<Record<string, Station[]>>({});
-
+  stationID = targetID.toString();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const fetchedData: { stations: Station[] }[] = await fetchStation(stationID);
-        
+
         if (fetchedData && fetchedData.length > 0) {
-          const stationData: Station[] = fetchedData.flatMap((data) => data.stations);
-  
+          const stationData = fetchedData.flatMap((data) => data.stations);
+
           setStations(stationData);
         } else {
           console.error('Empty or undefined data received from the API.');
@@ -53,16 +76,16 @@ const ModalData: React.FC = () => {
         console.error('Error fetching station data:', error);
       }
     };
-  
+
     fetchData();
   }, []);
-  // let separatedData = {} as Record<string, Station[]>;
+
   useEffect(() => {
     const updatedSeparatedData: Record<string, Station[]> = {};
-  
+
     for (const obj of stations) {
-      const dataUpdatedTime: string = obj.dataUpdatedTime?.toString(); // Convert to string
-  
+      const dataUpdatedTime: string = obj.dataUpdatedTime?.toString() ?? '';
+
       if (dataUpdatedTime) {
         if (updatedSeparatedData[dataUpdatedTime]) {
           updatedSeparatedData[dataUpdatedTime].push(obj);
@@ -71,32 +94,31 @@ const ModalData: React.FC = () => {
         }
       }
     }
-  
+
     setSeparatedData(updatedSeparatedData);
     setDateList(Object.keys(updatedSeparatedData));
   }, [stations]);
-  
-  useEffect(() => {
 
-    const filteredSensors: Array<{ date: string; data: SensorOption[] }> = [];
-  
+  useEffect(() => {
+    const filteredSensors: StationData[] = [];
+
     for (const date of dateList) {
       const selectedData = separatedData[date];
-  
-      const sensorList = selectedData.map((sensor) => ({
+
+      const sensorList = selectedData.map((sensor: any) => ({
         value: sensor.sensorValues.value,
         label: sensor.sensorValues.name,
         id: generateRandomId(), // Generate random ID
       }));
-  
+
       const dateData = {
         date: date,
         data: sensorList,
       };
-  
+
       filteredSensors.push(dateData);
     }
-  
+
     setSensors(filteredSensors);
   }, [dateList, separatedData]);
 
@@ -107,12 +129,14 @@ const ModalData: React.FC = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-  
+
   return (
     <div className="modal">
       <h2>Modal Example</h2>
       <button onClick={openModal}>Open Modal</button>
-      {showModal && <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />}
+      {showModal && (
+        <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+      )}
     </div>
   );
 };
@@ -132,7 +156,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
     }
     if (selectedTimeRange === 'last-month') {
       setTimeRange(3);
-    } 
+    }
   };
 
   const handleSensorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,8 +171,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
       }
     });
   };
-  
-  
+
   const handleGenerateGraph = () => {
     if (selectedSensors.length > 0) {
       const generatedData: any[] = [];
@@ -164,16 +187,14 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
         }
       };
       for (const sensor of finalSensors()) {
-        const selectedSensorData = sensor.data.filter((data) =>
-          selectedSensors.includes(data.label)
-        );
-  
+        const selectedSensorData = sensor.data.filter((data) => selectedSensors.includes(data.label));
+
         generatedData.push({
           date: sensor.date,
           ...selectedSensorData.reduce((obj, data) => {
             obj[data.label] = data.value;
             return obj;
-          }, {}),
+          }, {} as Record<string, number>),
         });
       }
       setChartData(generatedData);
@@ -181,7 +202,6 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
       setChartData([]);
     }
   };
-  
 
   useEffect(() => {
     handleGenerateGraph();
