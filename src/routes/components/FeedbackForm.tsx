@@ -1,8 +1,9 @@
-
-import { useState, Fragment } from 'react';
+import { useState, Fragment } from "react";
 import "./css/FeedbackForm.css";
 import Collapsible from 'react-collapsible';
 import feedback from "../../assets/darkButtonIcons/feedback.svg";
+import { Tooltip } from 'react-tooltip'
+
 
 
 
@@ -51,13 +52,18 @@ export const FeedbackForm = () => {
 
   
   return (
-
     <Fragment>
     <Collapsible 
     className="CollapsibleClosed" 
     openedClassName='CollapsibleOpen' 
     trigger={
-      <img className="feedback-icon" src={feedback} alt="feedback"/>
+      <img 
+      className="feedback-icon" 
+      src={feedback} 
+      alt="feedback" 
+      data-tooltip-id="feedback-tooltip"
+      data-tooltip-content="Feedback"
+      data-tooltip-place="right"/>
     }>
       <div className="collapsibleContent">
         <p className='FeedbackTitle'>Give Feedback</p>
@@ -82,6 +88,7 @@ export const FeedbackForm = () => {
         </form>
       </div>
     </Collapsible>
+    <Tooltip id="feedback-tooltip"/>
   </Fragment>
   );
 };

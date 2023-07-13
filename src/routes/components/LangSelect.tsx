@@ -3,6 +3,7 @@ import i18next from "i18next";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import "./css/LanguageToggle.css";
 import { useMap } from "react-leaflet";
+import { Tooltip } from 'react-tooltip'
 
 export const LangToggle = () => {
   const [language, setLanguage] = useState(i18next.language);
@@ -23,11 +24,15 @@ export const LangToggle = () => {
         className={`languageToggle ${iconClass}`}
         onClick={handleLanguageChange}
         aria-label="Language toggle"
+        data-tooltip-id="local-tooltip"
+        data-tooltip-content="Change language"
+        data-tooltip-place="top"
       >
         <p aria-label="Language abbreviation" className={"langText"}>
           {kieli}
         </p>
       </button>
+      <Tooltip id="local-tooltip"/>
     </Fragment>
   );
 };
