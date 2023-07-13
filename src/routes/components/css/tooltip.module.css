@@ -21,6 +21,10 @@ body:global(.dark) .tooltip {
     grid-template-columns: auto auto;
 }
 
+.grid-column:hover {
+    background-color: #dbdbdb;
+}
+
 .grid-item {
   padding: 20px;
   font-size: 30px;
@@ -64,6 +68,10 @@ body:global(.dark) .tooltip {
 body:global(.dark) .tooltip-icon-car,
 body:global(.dark) .tooltip-icon {
   filter: invert(100%) sepia(66%) saturate(2%) hue-rotate(247deg) brightness(113%) contrast(101%);
+}
+
+body:global(.dark) .grid-column:hover {
+    background-color: #3b3b3b;
 }
 
 .tooltip-icon-reverse {
