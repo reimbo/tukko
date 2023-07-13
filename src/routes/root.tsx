@@ -3,14 +3,13 @@ import "./leaflet.css";
 import "./root.css";
 import { Fragment, Suspense } from "react";
 
-
 // Components
 import Geoman from "./components/Geoman";
 /* import LeafletgeoSearch from "./components/LeafletgeoSearch"; */
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { MapLayers } from "./components/MapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
-import { LogosContainer } from "./components/LogosContainer"
+import { LogosContainer } from "./components/LogosContainer";
 
 import { LangToggle } from "./components/LangSelect";
 
