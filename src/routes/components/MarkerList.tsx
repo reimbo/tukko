@@ -32,9 +32,7 @@ export function MarkerList(): JSX.Element | null {
   useEffect(() => {
     // Call fetch initially
     loadStations();
-    setTimeout(() => {
-      loadRoadworks();
-    }, 1500); // Delay by 1.5s in order to render markers faster on first load
+    loadRoadworks();
 
     // Call fetch every 60 seconds
     const intervalId = setInterval(() => {
