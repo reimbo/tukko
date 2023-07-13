@@ -28,7 +28,7 @@ export const FeedbackForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/tms/feedback", {
+      const response = await fetch(`${window.API_URL}/tms/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
