@@ -1,7 +1,4 @@
-.modal h3{
-  
-  color: blue;
-}
+
 .modal-content {
   background-color: #fff;
   /* right: 0;
@@ -57,7 +54,9 @@
   align-items: center;
   justify-content: left;
 }
-
+.modal-content h2{
+  color: burlywood;
+}
 .modal-content button{
   display: inine-block;
   position: relative;
@@ -74,14 +73,16 @@
   margin: auto;
   left: 45%;
   margin-bottom: 2.5vh;
-  color: blue;
   font-size: 1.5rem;
 }
 .sensor-groups h3 {
   display: flex;
   position: relative;
   margin: auto;
-  color: blue;
   padding: 0;
   left: 1vw;
+}
+.dark .modal-content {
+  background-color: #333;
+  color: #ddd;
 }
