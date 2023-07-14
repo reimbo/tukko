@@ -95,6 +95,16 @@ npm run prod
 * Password: **travis_is_the_best**
 * Click **Apply changes** (a couple of times)
 
+### Access token on the .env 
+
+If you want to connect your Github/Gitlab ticketing system to the feedback form, create an access token with api-rights and add the token here.
+```bash
+VITE_PROJECT_ACCESS_TOKEN=your_github_or_gitlab_access_token_here
+VITE_BACKEND_BASE_URL="http://localhost:3001"
+```
+Backend default URL is localhost:3001
+
+
 
 ## Usage
 
