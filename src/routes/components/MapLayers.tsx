@@ -1,7 +1,6 @@
 import { LayersControl, LayerGroup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { MarkerList } from "./MarkerList";
-import { Modal } from "react-native";
 
 export function MapLayers(): JSX.Element | null {
   return (
