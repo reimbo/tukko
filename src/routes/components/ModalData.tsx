@@ -28,6 +28,7 @@ export interface Station {
 
 interface ModalProps {
   onClose: () => void;
+  stationName: string;
   dateList: string[];
   sensors: StationData[];
   setChartData: any;
@@ -139,17 +140,17 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   return (
     <div className="modal">
       <h2> {stationName} <br/> Traffic Dashboard</h2>
-      <button onClick={openModal}>Show Dashboard</button>
+      <button className='modal-show' onClick={openModal}>Show Dashboard</button>
       {!isFetched && <p>There is currently no data available for this station. Please switch to other stations</p>}
       {showModal && (
-        <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+        <Modal onClose={closeModal} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
 
       )}
     </div>
   );
 };
 
-const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList, chartData }) => {
+const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartData, dateList, chartData }) => {
   const [timeRange, setTimeRange] = useState<number>(0);
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
@@ -256,7 +257,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
     const sensorList : JSX.Element[] = [];
     for (const groupName in sensorGroups) {
       sensorList.push(
-        <div key={groupName}>
+        <div className='sensor-groups' key={groupName}>
           <h3>{groupName}</h3>
           {sensorGroups[groupName].map((sensor: SensorOption, index: number) => (
             <div key={index}>
@@ -311,8 +312,9 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
             <option value="last-month">Last Month</option>
           </select>
         </div>
+        <h3 className='s-name'>{stationName}</h3>
         <div className='modal-sensor-list'>
-          <label>Sensors:</label>
+          
           {modalSensorList()}
         </div>
         <button onClick={handleGenerateGraph}>Generate Graph</button>
