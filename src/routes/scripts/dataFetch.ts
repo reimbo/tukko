@@ -8,7 +8,6 @@ export const fetchData = async (): Promise<Station[]> => {
     const response: AxiosResponse = await axios.get(url, {
       params: { collectionStatus: "GATHERING" },
     });
-
     // const fetchedData: StationData = test
     // const data: Station[] = Array.from(Object.values(fetchedData.stations))
 
@@ -22,7 +21,7 @@ export const fetchData = async (): Promise<Station[]> => {
 
 // StationData interface has been changed dramatically so using type any temporary for now
 export const fetchStation = async (stationId: string): Promise<any[]> => {
-  const baseUrl = `${window.API_URL}/tms/station/` + stationId;
+  const baseUrl = window.API_URL + `/tms/station/` + stationId;
   const response: AxiosResponse<any[]> = await axios.get(baseUrl);
   const data: any[] = response.data;
   return data;
