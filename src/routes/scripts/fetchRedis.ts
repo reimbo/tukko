@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-async function fetchStationUpdateTimestamp() {
+async function fetchStationLastUpdated() {
   try {
     const url = window.API_URL + "/stations";
     const response: AxiosResponse = await axios.get(url, {
@@ -16,9 +16,7 @@ async function fetchStationUpdateTimestamp() {
 async function fetchStations() {
   try {
     const url = window.API_URL + "/stations";
-    const response: AxiosResponse = await axios.get(url, {
-      params: { collectionStatus: "GATHERING" },
-    });
+    const response: AxiosResponse = await axios.get(url);
     return response.data;
   } catch (error: any) {
     console.log("Error fetching stations:", error.message);
@@ -37,7 +35,7 @@ async function fetchStationById(stationId: number) {
   }
 }
 
-async function fetchSensorUpdateTimestamp() {
+async function fetchSensorLastUpdated() {
   try {
     const url = window.API_URL + "/sensors";
     const response: AxiosResponse = await axios.get(url, {
@@ -88,10 +86,10 @@ async function fetchRoadworks() {
 }
 
 export default {
-  fetchStationUpdateTimestamp,
+  fetchStationLastUpdated,
   fetchStations,
   fetchStationById,
-  fetchSensorUpdateTimestamp,
+  fetchSensorLastUpdated,
   fetchSensorsByIds,
   fetchSensorsByStationId,
   fetchRoadworks,

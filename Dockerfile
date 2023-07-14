@@ -5,8 +5,8 @@ RUN npm i
 COPY . .
 RUN npm run build
 
-# docker build -t travis:latest .
-# docker run -d --name travis -p 5173:80 travis:latest
+# docker build -t tukko:latest .
+# docker run -d --name tukko -p 5173:80 tukko:latest
 # OR
 # npm run prod
 FROM nginx:latest

@@ -1,4 +1,4 @@
-import { Station, Roadwork } from "../../interfaces/Interfaces.ts";
+import { Station } from "../../interfaces/Interfaces.ts";
 import carIcon from "../../assets/tooltipIcons/car-side-solid.svg";
 import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeholder icon
 import styles from "./css/tooltip.module.css";
@@ -8,14 +8,13 @@ import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet";
 import { useTranslation } from "react-i18next";
 import redis from "../scripts/fetchRedis";
+import { format } from "date-fns";
 
 export default function StationTooltip({
   station,
-  roadworks,
   marker,
 }: {
   station: Station;
-  roadworks: Roadwork[];
   marker: Marker;
 }): JSX.Element {
   const [direction, setDirection] = useState(1);
@@ -35,6 +34,7 @@ export default function StationTooltip({
       const sensors = await redis.fetchSensorsByStationId(station.id);
       if (!sensors && sensors.length == 0) return;
       newStation.sensors = sensors;
+      newStation.roadworks = station.roadworks;
       setStation(newStation);
     };
 
@@ -131,15 +131,28 @@ export default function StationTooltip({
           </div>
         </div>
         <DirectionPopup station={newStation} direction={direction} />
-        {roadworks.length !== 0 && (
+        {newStation.roadworks && newStation.roadworks.length !== 0 && (
           <div>
             <h3>Road Works</h3>
-            {roadworks.map((roadwork) => (
+            {station.roadworks?.map((roadwork) => (
               <ul key={roadwork.id}>
                 <h4>ID: {roadwork.id}</h4>
+                Start Date: {format(new Date(roadwork.startTime), "yyyy-MM-dd")}
+                {"; "}
+                End Date: {format(new Date(roadwork.endTime), "yyyy-MM-dd")}
+                <h4>Work Types:</h4>
                 {roadwork.workTypes.map((workType) => (
                   <li>
                     {workType.type}: {workType.description}
+                  </li>
+                ))}
+                <h4>Restrictions:</h4>
+                {roadwork.restrictions.map((restriction) => (
+                  <li>
+                    {restriction.type}: {restriction.name}
+                    {" ("}
+                    {restriction.quantity} {restriction.unit}
+                    {")"}
                   </li>
                 ))}
               </ul>

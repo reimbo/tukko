@@ -2,9 +2,10 @@ import { Station, Sensor, Roadwork } from "../../interfaces/Interfaces";
 import { useState, useEffect } from "react";
 import redis from "../scripts/fetchRedis";
 import { MarkerContent } from "./MarkerContent";
+import { getStationRoadworks } from "../scripts/getStationRoadworks";
 
-let stationLastUpdatedTimestamp = new Date(0);
-let sensorLastUpdatedTimestamp = new Date(0);
+let stationLastUpdated = new Date(0);
+let sensorLastUpdated = new Date(0);
 const sensorIds = [5158, 5161];
 
 export function MarkerList(): JSX.Element | null {
@@ -14,11 +15,9 @@ export function MarkerList(): JSX.Element | null {
 
   async function loadStations() {
     try {
-      const fetchedUpdateTimestamp = new Date(
-        await redis.fetchStationUpdateTimestamp()
-      );
-      if (fetchedUpdateTimestamp > stationLastUpdatedTimestamp) {
-        stationLastUpdatedTimestamp = fetchedUpdateTimestamp;
+      const lastUpdated = new Date(await redis.fetchStationLastUpdated());
+      if (lastUpdated > stationLastUpdated) {
+        stationLastUpdated = lastUpdated;
         const stations: Station[] = await redis.fetchStations();
         if (stations) {
           setStations(stations);
@@ -31,11 +30,9 @@ export function MarkerList(): JSX.Element | null {
 
   async function loadSensors() {
     try {
-      const fetchedUpdateTimestamp = new Date(
-        await redis.fetchSensorUpdateTimestamp()
-      );
-      if (fetchedUpdateTimestamp > sensorLastUpdatedTimestamp) {
-        sensorLastUpdatedTimestamp = fetchedUpdateTimestamp;
+      const lastUpdated = new Date(await redis.fetchSensorLastUpdated());
+      if (lastUpdated > sensorLastUpdated) {
+        sensorLastUpdated = lastUpdated;
         const sensors: Sensor[] = await redis.fetchSensorsByIds(sensorIds);
         if (sensors) {
           setSensors(sensors);
@@ -76,17 +73,14 @@ export function MarkerList(): JSX.Element | null {
 
   const updatedStations = stations?.map((station) => {
     const stationSensors = sensors?.filter((s) => s.stationId === station.id);
-    return { ...station, sensors: stationSensors };
+    const stationRoadworks = getStationRoadworks(station, roadworks);
+    return { ...station, sensors: stationSensors, roadworks: stationRoadworks };
   });
 
   return (
     <div>
       {updatedStations?.map((station) => (
-        <MarkerContent
-          key={station.id}
-          station={station}
-          roadworks={roadworks}
-        />
+        <MarkerContent key={station.id} station={station} />
       ))}
     </div>
   );

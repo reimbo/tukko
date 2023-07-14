@@ -8,7 +8,6 @@ export interface Station {
     sv: string;
     en: string;
   };
-  collectionStatus: string;
   coordinates: {
     longitude: number;
     latitude: number;
@@ -28,6 +27,7 @@ export interface Station {
   freeFlowSpeed1: number;
   freeFlowSpeed2: number;
   sensors?: Sensor[];
+  roadworks?: Roadwork[];
 }
 
 export interface Sensor {

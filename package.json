@@ -8,15 +8,16 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "docker:rm": "docker stop travis && docker rm -v travis",
-    "prod:windows": "docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest",
-    "prod": "docker stop container_name 2>/dev/null || true && docker rm travis --force 2>/dev/null || true && docker build -t travis:latest . && docker run -d --name travis -p 5173:80 travis:latest"
+    "docker:rm": "docker stop tukko && docker rm -v tukko",
+    "prod:windows": "docker build -t tukko:latest . && docker run -d --name tukko -p 5173:80 tukko:latest",
+    "prod": "docker stop container_name 2>/dev/null || true && docker rm tukko --force 2>/dev/null || true && docker build -t tukko:latest . && docker run -d --name tukko -p 5173:80 tukko:latest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
+    "date-fns": "^2.30.0",
     "esri-leaflet-geocoder": "^3.1.4",
     "flag-icons": "^6.7.0",
     "i18next": "^23.2.3",
