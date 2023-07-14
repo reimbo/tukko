@@ -117,7 +117,7 @@ export default function StationTooltip({
           </div>
         </div>
         <DirectionPopup station={station} direction={direction} />
-        {roadworks && (
+        {roadworks.length !== 0 && (
           <div>
             <h3>Road Works</h3>
             {roadworks.map((roadwork) => (
