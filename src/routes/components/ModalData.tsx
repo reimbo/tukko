@@ -45,7 +45,7 @@ interface StationData {
   data: SensorOption[];
 }
 
-let stationID = "20002";
+let stationID = "20002"; // initialize a default station ID
 
 // Utility function to generate a random ID
 const generateRandomId = (): string => {
@@ -59,6 +59,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   const [chartData, setChartData] = useState<any[] | null>(null);
   const [dateList, setDateList] = useState<string[]>([]);
   const [separatedData, setSeparatedData] = useState<Record<string, Station[]>>({});
+  const [stationName, setStationName] = useState<string>(stationID);
   stationID = targetID.toString();
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +68,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
         if (fetchedData && fetchedData.length > 0) {
           const stationData = fetchedData.flatMap((data) => data.stations);
-
+          setStationName(stationData[0].name);
           setStations(stationData);
         } else {
           console.error('Empty or undefined data received from the API.');
@@ -132,10 +133,12 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
   return (
     <div className="modal">
-      <h2>Modal Example</h2>
-      <button onClick={openModal}>Open Modal</button>
+      <h2> {stationName} <br/> Traffic Dashboard</h2>
+      <button onClick={openModal}>Show Dashboard</button>
       {showModal && (
-        <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+        <div className="fullscreen-modal">
+          <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+        </div>
       )}
     </div>
   );
