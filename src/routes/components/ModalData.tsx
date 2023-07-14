@@ -140,7 +140,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   return (
     <div className="modal">
       <h2> {stationName} <br/> Traffic Dashboard</h2>
-      <button className='modal-show' onClick={openModal}>Show Dashboard</button>
+      <button className='modal-show-btn' onClick={openModal}>Show Dashboard</button>
       {!isFetched && <p>There is currently no data available for this station. Please switch to other stations</p>}
       {showModal && (
         <Modal onClose={closeModal} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
@@ -303,22 +303,24 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
     <div className="modal-data-container">
       <div className="modal-content">
         <h2>Traffic Visualizer Dashboard</h2>
-        <div>
+        <div className='time-range'>
           <label htmlFor="time-range-select">Time Range:</label>
           <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
             <option value="">Select Time Range</option>
-          <option value="yesterday">Yesterday</option>
+            <option value="yesterday">Yesterday</option>
             <option value="last-week">Last Week</option>
             <option value="last-month">Last Month</option>
           </select>
         </div>
-        <h3 className='s-name'>{stationName}</h3>
+        <h3 className='station-name'>{stationName}</h3>
         <div className='modal-sensor-list'>
-          
           {modalSensorList()}
         </div>
-        <button onClick={handleGenerateGraph}>Generate Graph</button>
-        <button onClick={onClose}>Close</button>
+        <div className='modal-btn-group'>
+          <button onClick={handleGenerateGraph}>Generate Graph</button>
+          <button onClick={onClose}>Close</button>
+        </div>
+        
         <div className="graph-container">
         {chartData && chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>

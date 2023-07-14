@@ -1,33 +1,77 @@
 
+/* Trigger Modal Dashboard btn */
+.modal-show-btn {
+  border: oldlace;
+  border-style: double;
+  color: bisque;
+}
+
+/* Traffic Dashboard Container */
+.modal-data-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 86vw;
+  height: 96vh;
+  max-height: 98vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Example background color */
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: oldlace;
+  border-style: double;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dashboard Content */
 .modal-content {
   background-color: #fff;
-  /* right: 0;
-  bottom: 0; */
-  /* position: absolute; */
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-style: double;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(185, 121, 32, 0.396);
   overflow: auto;
   display: block;
   position: fixed;
   top: 0;
   left: 0;
-  width: 90vw;
-  height: 100vh;
+  width: 85vw;
+  height: 95vh;
   z-index: 9999;
   align-items: center;
 }
-.modal-show {
+.time-range label{
   border: oldlace;
-  border-style: double;
+  /* border-style: double; */
   color: bisque;
+  margin: 0 2px;
+  padding: 7.7px;
+  border-radius: 5px;
+  background-color: darkslateblue;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+#time-range-select{
+  border: oldlace;
+  color: bisque;
+  border-style: double;
+  margin: 0 2px;
+  padding: 4px;
+  text-align: center;
+  /* background-color: darkslateblue; */
 }
 .modal-content h2 {
   vertical-align: top;
-  
+  text-align: center;
+  padding: 1rem;
+  color: burlywood;
+  background-color: darkslateblue;
+  width: 25.5vw;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
 }
 .modal-sensor-list{
-  
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,53 +79,62 @@
   flex-wrap: wrap;
   margin: auto;
 }
-.modal-data-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  top: 0;
-  left: 0;
-  width: 90vw;
-  height: 90vh;
-  background-color: rgba(0, 0, 0, 0.8); /* Example background color */
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-}
 .sensor-groups {
   display: block;
   align-items: center;
   justify-content: left;
 }
-.modal-content h2{
+.modal-btn-group{
+  vertical-align: top;
+  text-align: center;
+  padding: 1rem;
   color: burlywood;
+  width: 15vw;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+  margin: auto;
+
 }
 .modal-content button{
   display: inine-block;
   position: relative;
   margin: auto;
-  left: 15%;
+  /* left: 26.65vw; */
   height: 2.5rem;
   border: oldlace;
   border-style: double;
   color: bisque;
+  margin: 1rem .27rem;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
 }
-.s-name {
+.station-name {
   display: flex;
   position: relative;
   margin: auto;
-  left: 45%;
+  padding: 1rem;
+  left: 0;
   margin-bottom: 2.5vh;
-  font-size: 1.5rem;
+  font-size: 1.6vw;
+  text-align: center;
+  width: 20vw;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+.sensor-groups{
+  display: block;
+  margin: auto;
+  font-size: 1vw;
 }
 .sensor-groups h3 {
   display: flex;
   position: relative;
-  margin: auto;
+  margin: 1rem auto;
   padding: 0;
-  left: 1vw;
+  width: 6vw;
+  left: 0;
+  text-align: center;
+  /* box-shadow: 0 0 10px rgba(214, 143, 43, 0.613); */
 }
+
+/* Modal Dark Mode */
 .dark .modal-content {
   background-color: #333;
   color: #ddd;
