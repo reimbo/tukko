@@ -68,7 +68,7 @@ export function getSwgImage(station: Station, roadworks: Roadwork[]) {
               id="path404"
               style="
                 fill: ${colorDirection2};
-                opacity: 1;
+                opacity: 0.70;
                 stroke: #000000;
                 stroke-width: 1mm;
                 stroke-dasharray: none;
