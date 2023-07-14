@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import './css/Modal.css';
 import { fetchStation } from '../scripts/dataFetch';
 
-export interface Sensor {
+interface Sensor {
   id?: number;
   stationId?: number;
   name: string;
@@ -17,7 +17,7 @@ export interface Sensor {
   value: number;
 }
 
-export interface Station {
+interface Station {
   id?: number;
   tmsNumber: number;
   coordinates: number[];
@@ -343,7 +343,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <p>No chart data available</p>
+          <p>Waiting for User query</p>
         )}
       </div>
       </div>

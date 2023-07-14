@@ -1,12 +1,19 @@
-
-/* Trigger Modal Dashboard btn */
-.modal-show-btn {
+/* Common Styles */
+.modal-show-btn,
+.modal-data-container,
+.modal-content,
+.modal-content h2,
+.modal-sensor-list,
+.modal-btn-group,
+.modal-content button {
   border: oldlace;
-  border-style: double;
   color: bisque;
 }
 
-/* Traffic Dashboard Container */
+.modal-show-btn {
+  border-style: double;
+}
+
 .modal-data-container {
   position: fixed;
   top: 0;
@@ -15,17 +22,14 @@
   width: 86vw;
   height: 96vh;
   max-height: 98vh;
-  background-color: rgba(0, 0, 0, 0.8); /* Example background color */
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 9999;
   align-items: center;
   justify-content: center;
   border-radius: 1rem;
-  border: oldlace;
-  border-style: double;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Dashboard Content */
 .modal-content {
   background-color: #fff;
   padding: 1rem;
@@ -42,26 +46,7 @@
   z-index: 9999;
   align-items: center;
 }
-.time-range label{
-  border: oldlace;
-  /* border-style: double; */
-  color: bisque;
-  margin: 0 2px;
-  padding: 7.7px;
-  border-radius: 5px;
-  background-color: darkslateblue;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
-}
-#time-range-select{
-  border: oldlace;
-  color: bisque;
-  border-style: double;
-  margin: 0 2px;
-  padding: 4px;
-  text-align: center;
-  /* background-color: darkslateblue; */
-}
+
 .modal-content h2 {
   vertical-align: top;
   text-align: center;
@@ -71,7 +56,8 @@
   width: 25.5vw;
   box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
 }
-.modal-sensor-list{
+
+.modal-sensor-list {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -79,12 +65,8 @@
   flex-wrap: wrap;
   margin: auto;
 }
-.sensor-groups {
-  display: block;
-  align-items: center;
-  justify-content: left;
-}
-.modal-btn-group{
+
+.modal-btn-group {
   vertical-align: top;
   text-align: center;
   padding: 1rem;
@@ -92,20 +74,18 @@
   width: 15vw;
   box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
   margin: auto;
-
 }
-.modal-content button{
-  display: inine-block;
+
+.modal-content button {
+  display: inline-block;
   position: relative;
   margin: auto;
-  /* left: 26.65vw; */
   height: 2.5rem;
-  border: oldlace;
   border-style: double;
-  color: bisque;
-  margin: 1rem .27rem;
+  margin: 1rem 0.27rem;
   box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
 }
+
 .station-name {
   display: flex;
   position: relative;
@@ -117,12 +97,16 @@
   text-align: center;
   width: 20vw;
   box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+  color: black;
 }
-.sensor-groups{
+
+.sensor-groups {
   display: block;
   margin: auto;
   font-size: 1vw;
+  color: black;
 }
+
 .sensor-groups h3 {
   display: flex;
   position: relative;
@@ -131,11 +115,49 @@
   width: 6vw;
   left: 0;
   text-align: center;
-  /* box-shadow: 0 0 10px rgba(214, 143, 43, 0.613); */
 }
 
-/* Modal Dark Mode */
+/* Specific Styles */
+.modal-show-btn {
+  color: bisque;
+}
+
+.modal-data-container,
+.modal-content {
+  border: oldlace;
+  border-style: double;
+}
+
+.modal-content button,
+.modal-show-btn {
+  color: bisque;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+
+.time-range label {
+  margin: 0 2px;
+  padding: 7.7px;
+  border-radius: 5px;
+  background-color: darkslateblue;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+
+#time-range-select {
+  border-style: double;
+  margin: 0 2px;
+  padding: 4px;
+  text-align: center;
+}
+.graph-container p {
+  color: black
+}
 .dark .modal-content {
   background-color: #333;
+  color: #ddd;
+}
+.dark .sensor-groups, 
+.dark .station-name,
+.graph-container p {
   color: #ddd;
 }
