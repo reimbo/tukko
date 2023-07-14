@@ -1,27 +1,31 @@
 import L from "leaflet";
 import getTrafficColor from "../scripts/colourSpectrum";
-import { Station } from "../../interfaces/Interfaces";
+import { Roadwork, Station } from "../../interfaces/Interfaces";
+import { createMarker } from "./Icons";
 
-export function getSwgImage(station: Station) {
-    try {
-        let colorDirection1 = "gray";
-        let colorDirection2 = "gray";
+export function getSwgImage(station: Station, roadworks: Roadwork[]) {
+  try {
+    let colorDirection1 = "gray";
+    let colorDirection2 = "gray";
 
-        const findSensorValue = (sensorId: number): number | undefined => {
-            return station.sensors?.find((sensor) => sensor.id === sensorId)?.value;
-        };
-        const sensorValue5158 = findSensorValue(5158);
-        if (sensorValue5158 !== undefined) {
-            colorDirection1 = getTrafficColor(sensorValue5158);
-        }
+    if (roadworks.length !== 0) {
+      return createMarker("violet");
+    } else {
+      const findSensorValue = (sensorId: number): number | undefined => {
+        return station.sensors?.find((sensor) => sensor.id === sensorId)?.value;
+      };
+      const sensorValue5158 = findSensorValue(5158);
+      if (sensorValue5158 !== undefined) {
+        colorDirection1 = getTrafficColor(sensorValue5158);
+      }
 
-        const sensorValue5161 = findSensorValue(5161);
-        if (sensorValue5161 !== undefined) {
-            colorDirection2 = getTrafficColor(sensorValue5161);
-        }
+      const sensorValue5161 = findSensorValue(5161);
+      if (sensorValue5161 !== undefined) {
+        colorDirection2 = getTrafficColor(sensorValue5161);
+      }
 
-        return L.divIcon({
-            html: `
+      return L.divIcon({
+        html: `
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="31px" height="40px" viewBox="0 0 102.30963 133.72514" version="1.1" id="svg5">
               <g id="g450" transform="translate(-76.460176,-68.607115)">
               <path
@@ -51,12 +55,12 @@ export function getSwgImage(station: Station) {
               "
             />      
             </svg>`,
-            className: "customMarker",
-            iconSize: [24, 40],
-            iconAnchor: [20, 40],
-          });
-      
-    } catch (error: any) {
-        console.log(error.message);
+        className: "customMarker",
+        iconSize: [24, 40],
+        iconAnchor: [20, 40],
+      });
     }
+  } catch (error: any) {
+    console.log(error.message);
+  }
 }

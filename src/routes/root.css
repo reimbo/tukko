@@ -24,29 +24,6 @@
   pointer-events: none;
 }
 
-.logosContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  position: fixed;
-  display: inline;
-  z-index: 1000;
-  bottom: 20px;
-  right: 20px;
-}
-
-.wimmaLabLogo {
-  width: 50px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.iotitudeLogo {
-  width: 100px;
-  height: auto;
-  margin-bottom: 13px;
-}
-
 .langContainer {
   display: flex;
   flex-wrap: wrap;
@@ -60,9 +37,13 @@
   cursor: pointer;
 }
 
+.marker-cluster div {
+  font: 18px "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
 
 .marker-cluster-small {
-  background-color: #006eff5b !important;
+  background-color: #31a0e0 !important;
+  border: 1px solid #1a3419;
   width: 35px !important;
   height: 37px !important;
     }
@@ -74,7 +55,8 @@
     }
   
 .marker-cluster-medium {
-  background-color: #006eff54 !important;
+  background-color: #31a0e0 !important;
+  border: 1px solid #1a3419;
   width: 35px !important;
   height: 37px !important;
   
@@ -86,7 +68,8 @@
     }
   
 .marker-cluster-large {
-  background-color: #006eff5b !important;
+  background-color: #31a0e0 !important;
+  border: 1px solid #1a3419;
   width: 35px !important;
   height: 37px !important;
     }
@@ -95,6 +78,7 @@
   width: 25px !important;
   height: 27px !important;
     }
+
 
 .react-toggle-track {
   background-color: rgb(91,91,91) !important /* Override the background color with your desired color */;
@@ -157,7 +141,8 @@ body.dark .marker-popup {
 
 /*  Changes the color of the clusters when in dark mode  */
 .dark .marker-cluster-small {
-  background-color: #082f63 !important;
+  background-color: #084299 !important;
+  border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
 }
@@ -169,7 +154,8 @@ body.dark .marker-popup {
 }
   
 .dark .marker-cluster-medium {
-  background-color: #082f63 !important;
+  background-color: #084299 !important;
+  border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
     }
@@ -181,7 +167,8 @@ body.dark .marker-popup {
 }
   
 .dark .marker-cluster-large {
-  background-color: #082f63 !important;
+  background-color: #084299 !important;
+  border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
 }

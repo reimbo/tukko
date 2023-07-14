@@ -5,11 +5,21 @@ export default function getTrafficColor(trafficPercentage: number): string {
   // Clamp traffic percentage between 0 and 100
   const clampedPercentage = Math.min(Math.max(trafficPercentage, min), max);
 
-  // Calculate hue value based on the clamped percentage
-  const hue = (clampedPercentage / max) * 120; // Range: 0-120
+  let color: string;
 
-  // Convert hue value to HSL color format
-  const hslColor = `hsl(${hue}, 100%, 40%)`;
+  if (clampedPercentage >= 90) {
+    color = 'green';
+  } else if (clampedPercentage >= 80) {
+    color = '#32CD32';
+  } else if (clampedPercentage >= 70) {
+    color = 'yellow';
+  } else if (clampedPercentage >= 60) {
+    color = 'orange';
+  } else if (clampedPercentage >= 50) {
+    color = '#ff3700';
+  }else {
+    color = '#c50000';
+  }
 
-  return hslColor;
+  return color;
 }

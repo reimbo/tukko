@@ -189,6 +189,10 @@ function Geoman() {
     });
   });
 
+  map.on("pm:globaldrawmodetoggled", (e) => {
+    if (e.enabled) map.pm.getGeomanDrawLayers()[0].remove() && map.fire("pm:remove")
+  })
+
   return null;
 }
 

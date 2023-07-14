@@ -43,3 +43,30 @@ export interface Sensor {
   sensorValueDescriptionEn?: string
   value: number
 }
+
+export interface Roadwork {
+  id: number,
+  primaryPointRoadNumber: number,
+  primaryPointRoadSection: number,
+  secondaryPointRoadNumber: number,
+  secondaryPointRoadSection: number,
+  direction: string,
+  startTime: Date,
+  endTime: Date,
+  severity: string,
+  workingHours: {
+    weekday: string;
+    startTime: string;
+    endTime: string;
+  }[];
+  workTypes: {
+    type: string;
+    description: string;
+  }[];
+  restrictions: {
+    type: string;
+    name: string;
+    quantity?: string;
+    unit?: string;
+  }[];
+}

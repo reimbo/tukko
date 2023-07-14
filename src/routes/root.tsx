@@ -2,8 +2,6 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "./leaflet.css";
 import "./root.css";
 import { Fragment, Suspense } from "react";
-import wimmaLabLogo from "/images/logo_round.png";
-import iotitudeLogo from "/images/logo-iotitude.png";
 
 // Components
 import Geoman from "./components/Geoman";
@@ -11,6 +9,7 @@ import Geoman from "./components/Geoman";
 import { DarkModeToggle } from "./components/DarkModeToggle";
 import { MapLayers } from "./components/MapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
+import { LogosContainer } from "./components/LogosContainer";
 
 import { LangToggle } from "./components/LangSelect";
 
@@ -29,32 +28,12 @@ export default function Root(): JSX.Element {
       <h1 id="overlay-title" className="overlay-title">
         Tukko
       </h1>
-      <div className="logosContainer">
-        <a href="https://www.wimmalab.org/fi" target="_blank">
-          <img
-            className="wimmaLabLogo"
-            src={wimmaLabLogo}
-            alt="WIMMA Lab Logo"
-          />
-        </a>
-        <a
-          href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/"
-          target="_blank"
-        >
-          <img
-            className="iotitudeLogo"
-            src={iotitudeLogo}
-            alt="IoTitude Logo"
-          />
-        </a>
-      </div>
-      <DarkModeToggle />
-      <FeedbackForm />
+      <LogosContainer />
       <MapContainer
         center={[62.2426, 25.7473]}
         maxBounds={[
-          [71.0, 40.0],
-          [59.5, 15.0],
+          [71.09190036570573, 30.5869948880607],
+          [59.8363114968474, 21.063569244498865],
         ]}
         maxBoundsViscosity={0.9}
         zoomDelta={1}
