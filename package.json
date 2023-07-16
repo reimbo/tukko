@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
+    "compression": "^1.7.4",
     "date-fns": "^2.30.0",
     "esri-leaflet-geocoder": "^3.1.4",
     "flag-icons": "^6.7.0",

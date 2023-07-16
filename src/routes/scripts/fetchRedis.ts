@@ -1,50 +1,61 @@
 import axios, { AxiosResponse } from "axios";
+import { Roadwork, Sensor, Station } from "../../interfaces/Interfaces";
 
-async function fetchStationLastUpdated() {
+async function fetchStationLastUpdated(): Promise<Date | null> {
   try {
     const url = window.API_URL + "/stations";
     const response: AxiosResponse = await axios.get(url, {
+      decompress: true,
       params: { lastUpdated: "true" },
     });
-    return response.data;
-  } catch (error: any) {
-    console.log("Error fetching station update timpestamp:", error.message);
-    return [];
+    const data: Date = new Date(response.data)
+    return data;
+  } catch (error) {
+    console.error("Error fetching station update timestamp:", (error as Error).message);
+    return null;
   }
 }
 
-async function fetchStations() {
+async function fetchStations(): Promise<Station[] | []> {
   try {
     const url = window.API_URL + "/stations";
-    const response: AxiosResponse = await axios.get(url);
-    return response.data;
-  } catch (error: any) {
-    console.log("Error fetching stations:", error.message);
+    const response: AxiosResponse = await axios.get(url, {
+      decompress: true
+    });
+    const data: Station[] = response.data
+    return data;
+  } catch (error) {
+    console.error("Error fetching stations:", (error as Error).message);
     return [];
   }
 }
 
-async function fetchStationById(stationId: number) {
+async function fetchStationById(stationId: number): Promise<Station | []> {
   try {
     const url = window.API_URL + "/stations/" + stationId;
-    const response: AxiosResponse = await axios.get(url);
-    return response.data;
-  } catch (error: any) {
-    console.log("Error fetching a station:", error.message);
+    const response: AxiosResponse = await axios.get(url, {
+      decompress: true
+    });
+    const data: Station = response.data;
+    return data;
+  } catch (error) {
+    console.error("Error fetching a station:", (error as Error).message);
     return [];
   }
 }
 
-async function fetchSensorLastUpdated() {
+async function fetchSensorLastUpdated(): Promise<Date | null> {
   try {
     const url = window.API_URL + "/sensors";
     const response: AxiosResponse = await axios.get(url, {
+      decompress: true,
       params: { lastUpdated: "true" },
     });
-    return response.data;
-  } catch (error: any) {
-    console.log("Error fetching sensor update timpestamp:", error.message);
-    return [];
+    const data: Date = new Date(response.data)
+    return data;
+  } catch (error) {
+    console.error("Error fetching sensor update timestamp:", (error as Error).message);
+    return null;
   }
 }
 
@@ -52,11 +63,13 @@ async function fetchSensorsByIds(sensorIds: number[]) {
   try {
     const url = window.API_URL + "/sensors";
     const response: AxiosResponse = await axios.get(url, {
+      decompress: true,
       params: { id: sensorIds },
     });
-    return response.data;
-  } catch (error: any) {
-    console.log("Error fetching sensors:", error.message);
+    const data: Sensor[] = response.data
+    return data;
+  } catch (error) {
+    console.error("Error fetching sensors:", (error as Error).message);
     return [];
   }
 }
@@ -65,11 +78,13 @@ async function fetchSensorsByStationId(stationId: number) {
   try {
     const url = window.API_URL + "/sensors";
     const response: AxiosResponse = await axios.get(url, {
+      decompress: true,
       params: { stationId: stationId },
     });
-    return response.data;
-  } catch (error: any) {
-    console.log("Error fetching sensors:", error.message);
+    const data: Sensor[] = response.data
+    return data;
+  } catch (error) {
+    console.error("Error fetching sensors:", (error as Error).message);
     return [];
   }
 }
@@ -77,10 +92,13 @@ async function fetchSensorsByStationId(stationId: number) {
 async function fetchRoadworks() {
   try {
     const url = window.API_URL + "/roadworks";
-    const response: AxiosResponse = await axios.get(url);
-    return response.data;
-  } catch (error: any) {
-    console.error("Error fetching roadworks:", error.message);
+    const response: AxiosResponse = await axios.get(url, {
+      decompress: true
+    });
+    const data: Roadwork[] = response.data
+    return data;
+  } catch (error) {
+    console.error("Error fetching roadworks:", (error as Error).message);
     return [];
   }
 }

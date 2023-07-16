@@ -20,7 +20,7 @@ export default function StationTooltip({
   const [direction, setDirection] = useState(1);
   const [newStation, setStation] = useState<Station | undefined>(undefined);
   const { t, i18n } = useTranslation("tooltip");
-  let fadeTimeout: any;
+  let fadeTimeout: ReturnType<typeof setTimeout>;
 
   const delayFade = () => {
     fadeTimeout = setTimeout(() => {
@@ -32,7 +32,7 @@ export default function StationTooltip({
     const fetchStationData = async () => {
       const newStation = station;
       const sensors = await redis.fetchSensorsByStationId(station.id);
-      if (!sensors && sensors.length == 0) return;
+      if (sensors && sensors.length == 0) return;
       newStation.sensors = sensors;
       newStation.roadworks = station.roadworks;
       setStation(newStation);
