@@ -4,9 +4,9 @@ import redis from "../scripts/fetchRedis";
 import { MarkerContent } from "./MarkerContent";
 import { getStationRoadworks } from "../scripts/getStationRoadworks";
 
-let stationLastUpdated = new Date(0);
-let sensorLastUpdated = new Date(0);
-const sensorIds = [5158, 5161];
+let stationLastUpdated: Date = new Date(0);
+let sensorLastUpdated: Date = new Date(0);
+const sensorIds: number[] = [5158, 5161];
 
 export function MarkerList(): JSX.Element | null {
   const [stations, setStations] = useState<Station[]>([]);
@@ -15,8 +15,9 @@ export function MarkerList(): JSX.Element | null {
 
   async function loadStations() {
     try {
-      const lastUpdated = new Date(await redis.fetchStationLastUpdated());
-      if (lastUpdated > stationLastUpdated) {
+      const lastUpdated = await redis.fetchStationLastUpdated();
+      
+      if (lastUpdated && lastUpdated > stationLastUpdated) {
         stationLastUpdated = lastUpdated;
         const stations: Station[] = await redis.fetchStations();
         if (stations) {
@@ -30,8 +31,8 @@ export function MarkerList(): JSX.Element | null {
 
   async function loadSensors() {
     try {
-      const lastUpdated = new Date(await redis.fetchSensorLastUpdated());
-      if (lastUpdated > sensorLastUpdated) {
+      const lastUpdated = await redis.fetchSensorLastUpdated();
+      if (lastUpdated && lastUpdated > sensorLastUpdated) {
         sensorLastUpdated = lastUpdated;
         const sensors: Sensor[] = await redis.fetchSensorsByIds(sensorIds);
         if (sensors) {
@@ -56,9 +57,9 @@ export function MarkerList(): JSX.Element | null {
 
   useEffect(() => {
     // Call fetch initially
+    loadRoadworks();
     loadStations();
     loadSensors();
-    loadRoadworks();
 
     // Call fetch every 60 seconds
     const intervalId = setInterval(() => {
@@ -73,6 +74,8 @@ export function MarkerList(): JSX.Element | null {
 
   const updatedStations = stations?.map((station) => {
     const stationSensors = sensors?.filter((s) => s.stationId === station.id);
+    console.log(roadworks);
+    
     const stationRoadworks = getStationRoadworks(station, roadworks);
     return { ...station, sensors: stationSensors, roadworks: stationRoadworks };
   });
