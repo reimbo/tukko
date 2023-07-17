@@ -32,8 +32,8 @@ export default function Root(): JSX.Element {
       <MapContainer
         center={[62.2426, 25.7473]}
         maxBounds={[
-          [71.09190036570573, 30.5869948880607],
-          [59.8363114968474, 21.063569244498865],
+          [71.0, 40.0],
+          [59.5, 17.0],
         ]}
         maxBoundsViscosity={0.9}
         zoomDelta={1}

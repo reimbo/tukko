@@ -1,22 +1,19 @@
 import { Marker } from "react-leaflet";
-import { Station, Roadwork } from "../../interfaces/Interfaces";
+import { Station } from "../../interfaces/Interfaces";
 import React, { useState, Suspense } from "react";
 import { getSwgImage } from "./MarkerIcon";
 
 // Components
 const StationTooltip = React.lazy(() => import("./Tooltip"));
 import { Marker as M } from "leaflet";
-import { getStationRoadworks } from "../scripts/getStationRoadworks";
 
 let originalColors: string[] = [];
 const colorHover = "hsl(100,50%,100%)";
 
 export function MarkerContent({
   station,
-  roadworks,
 }: {
   station: Station;
-  roadworks: Roadwork[];
 }): JSX.Element | null {
   const [showTooltip, setShowTooltip] = useState(false);
   const [selectedStation, setSelectedStation] = useState<
@@ -24,11 +21,9 @@ export function MarkerContent({
   >(null);
   const [marker, setMarker] = useState<null | M>(null);
 
-  const stationRoadworks = getStationRoadworks(station, roadworks);
-
   if (
     (!station.sensors || station.sensors?.length === 0) &&
-    stationRoadworks.length === 0
+    (!station.roadworks || station.roadworks.length === 0)
   )
     return null;
 
@@ -99,15 +94,11 @@ export function MarkerContent({
         key={station.id}
         alt={station.name.replaceAll("_", " ")}
         position={[station.coordinates.latitude, station.coordinates.longitude]}
-        icon={getSwgImage(station, stationRoadworks)}
+        icon={getSwgImage(station)}
       >
         {showTooltip && station.id === selectedStation && marker && (
           <Suspense>
-            <StationTooltip
-              station={station}
-              roadworks={stationRoadworks}
-              marker={marker}
-            />
+            <StationTooltip station={station} marker={marker} />
           </Suspense>
         )}
       </Marker>

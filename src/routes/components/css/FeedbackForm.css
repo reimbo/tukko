@@ -39,6 +39,14 @@
     background-color: lightgray;
 }
 
+  .input.error {
+    border: 1px solid red; 
+  }
+
+body .error {
+    color: red;
+}
+  
 .FeedbackTitle {
     font-weight: bold;
     line-height: 0;
@@ -52,6 +60,7 @@
 .input 
 {
     color: black;
+    border: 1px solid black;
     background-color: #fff;
     resize: none;
     margin-left: 5px;
@@ -95,3 +104,7 @@
     color: #e3e3e3;
     background-color: #262626;
 }
+
+body.dark .error {
+    color: #ff8080; /* Adjust the color for dark mode */
+  }

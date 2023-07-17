@@ -1,25 +1,26 @@
-import { Station, Roadwork } from "../../interfaces/Interfaces.ts";
+import { Station } from "../../interfaces/Interfaces.ts";
 import carIcon from "../../assets/tooltipIcons/car-side-solid.svg";
 import compassIcon from "../../assets/tooltipIcons/compass-solid.svg"; // placeholder icon
 import styles from "./css/tooltip.module.css";
 import DirectionPopup from "./Popup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet";
 import { useTranslation } from "react-i18next";
+import redis from "../scripts/fetchRedis";
+import { format } from "date-fns";
 
 export default function StationTooltip({
   station,
-  roadworks,
   marker,
 }: {
   station: Station;
-  roadworks: Roadwork[];
   marker: Marker;
 }): JSX.Element {
   const [direction, setDirection] = useState(1);
+  const [newStation, setStation] = useState<Station | undefined>(undefined);
   const { t, i18n } = useTranslation("tooltip");
-  let fadeTimeout: any;
+  let fadeTimeout: ReturnType<typeof setTimeout>;
 
   const delayFade = () => {
     fadeTimeout = setTimeout(() => {
@@ -27,7 +28,20 @@ export default function StationTooltip({
     }, 1000);
   };
 
-  if (station === undefined) return <p>Loading</p>;
+  useEffect(() => {
+    const fetchStationData = async () => {
+      const newStation = station;
+      const sensors = await redis.fetchSensorsByStationId(station.id);
+      if (sensors && sensors.length == 0) return;
+      newStation.sensors = sensors;
+      newStation.roadworks = station.roadworks;
+      setStation(newStation);
+    };
+
+    fetchStationData();
+  }, [station]);
+
+  if (newStation === undefined) return <p>Loading</p>;
   else
     return (
       <Tooltip
@@ -44,7 +58,7 @@ export default function StationTooltip({
         }))()}
       >
         <h1 className={styles["place-name"]}>
-          {station.names[i18n.language as keyof Station["names"]]}
+          {newStation.names[i18n.language as keyof Station["names"]]}
         </h1>
         <div className={styles["grid-container"]}>
           <div className={styles["grid-column"]}>
@@ -60,7 +74,7 @@ export default function StationTooltip({
               <div className={styles["tooltip-div"]}>
                 {t("direction")}
                 <br />
-                {station.direction1Municipality}
+                {newStation.direction1Municipality}
               </div>
             </div>
             <div
@@ -75,7 +89,7 @@ export default function StationTooltip({
               <div
                 className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}
               >
-                {station.sensors?.find((e) => e.id == 5116)?.value}
+                {newStation.sensors?.find((e) => e.id == 5116)?.value}
                 <br />
                 {t("unit")}
               </div>
@@ -94,7 +108,7 @@ export default function StationTooltip({
               <div className={styles["tooltip-div"]}>
                 {t("direction")}
                 <br />
-                {station.direction2Municipality}
+                {newStation.direction2Municipality}
               </div>
             </div>
             <div
@@ -109,23 +123,36 @@ export default function StationTooltip({
               <div
                 className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}
               >
-                {station.sensors?.find((e) => e.id == 5119)?.value}
+                {newStation.sensors?.find((e) => e.id == 5119)?.value}
                 <br />
                 {t("unit")}
               </div>
             </div>
           </div>
         </div>
-        <DirectionPopup station={station} direction={direction} />
-        {roadworks && (
+        <DirectionPopup station={newStation} direction={direction} />
+        {newStation.roadworks && newStation.roadworks.length !== 0 && (
           <div>
             <h3>Road Works</h3>
-            {roadworks.map((roadwork) => (
+            {station.roadworks?.map((roadwork) => (
               <ul key={roadwork.id}>
                 <h4>ID: {roadwork.id}</h4>
+                Start Date: {format(new Date(roadwork.startTime), "yyyy-MM-dd")}
+                {"; "}
+                End Date: {format(new Date(roadwork.endTime), "yyyy-MM-dd")}
+                <h4>Work Types:</h4>
                 {roadwork.workTypes.map((workType) => (
                   <li>
                     {workType.type}: {workType.description}
+                  </li>
+                ))}
+                <h4>Restrictions:</h4>
+                {roadwork.restrictions.map((restriction) => (
+                  <li>
+                    {restriction.type}: {restriction.name}
+                    {" ("}
+                    {restriction.quantity} {restriction.unit}
+                    {")"}
                   </li>
                 ))}
               </ul>
