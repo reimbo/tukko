@@ -74,7 +74,6 @@ export function MarkerList(): JSX.Element | null {
 
   const updatedStations = stations?.map((station) => {
     const stationSensors = sensors?.filter((s) => s.stationId === station.id);
-    console.log(roadworks);
     
     const stationRoadworks = getStationRoadworks(station, roadworks);
     return { ...station, sensors: stationSensors, roadworks: stationRoadworks };
