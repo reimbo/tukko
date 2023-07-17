@@ -1,13 +1,192 @@
-.modal-content {
-  background-color: #fff;
+/* Common Styles */
+.modal-show-btn,
+.modal-data-container,
+.modal-content,
+.modal-content h2,
+.modal-sensor-list,
+.modal-btn-group,
+.modal-content button {
+  border: oldlace;
+  color: bisque;
+}
+
+.modal-show-btn {
+  border-style: double;
+}
+
+.modal-data-container {
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  width: 45vw;
-  padding: 20px;
-  border-radius: 4px;
+  display: flex;
+  width: 86vw;
+  height: 96vh;
+  max-height: 98vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 1rem;
+  border-style: double;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(185, 121, 32, 0.396);
   overflow: auto;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85vw;
+  height: 95vh;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.modal-content h2 {
+  vertical-align: top;
+  text-align: center;
+  padding: 1rem;
+  color: burlywood;
+  background-color: darkslateblue;
+  width: 25.5vw;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+
+.modal-sensor-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.modal-btn-group {
+  display: flex;
+  vertical-align: top;
+  text-align: center;
+  padding: 1rem;
+  color: burlywood;
+  height: 6.5vh;
+  width: 15vw;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-btn-group button {
+  display: inline-block;
+  position: relative;
+  margin: auto;
+  height: 5.6vh;
+  width: auto;
+  max-width: 12vw;
+  font-size: .94rem;
+  border-style: double;
+  background-color: darkred;
+  margin: 1rem 0.27rem;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+  border-radius: 15px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  
+}
+
+
+.modal-btn-group button:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.station-name {
+  display: flex;
+  position: relative;
+  margin: auto;
+  padding: 1rem;
+  left: 0;
+  margin-bottom: 2.5vh;
+  font-size: 1.6vw;
+  text-align: center;
+  width: 20vw;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+  color: black;
+}
+
+.sensor-groups {
+  display: block;
+  margin: auto;
+  font-size: 1vw;
+  color: black;
+}
+
+.sensor-groups h3 {
+  display: flex;
+  position: relative;
+  margin: 1rem auto;
+  padding: 0;
+  width: 6vw;
+  left: 0;
+  text-align: center;
+}
+
+/* Specific Styles */
+.modal-show-btn {
+  color: bisque;
+}
+
+.modal-data-container,
+.modal-content {
+  border: oldlace;
+  border-style: double;
+}
+
+.modal-content button,
+.modal-show-btn {
+  color: bisque;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+
+.time-range label {
+  margin: 0 2px;
+  padding: 7.7px;
+  border-radius: 5px;
+  background-color: darkslateblue;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+}
+
+#time-range-select {
+  border-style: double;
+  margin: 0 2px;
+  padding: 4px;
+  text-align: center;
+}
+.graph-container p {
+  color: black
+}
+.dark .modal-content {
+  background-color: #333;
+  color: #ddd;
+}
+.dark .sensor-groups, 
+.dark .station-name,
+.graph-container p {
+  color: #ddd;
 }

@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import './css/Modal.css';
 import { fetchStation } from '../scripts/dataFetch';
 
-export interface Sensor {
+interface Sensor {
   id?: number;
   stationId?: number;
   name: string;
@@ -17,7 +17,7 @@ export interface Sensor {
   value: number;
 }
 
-export interface Station {
+interface Station {
   id?: number;
   tmsNumber: number;
   coordinates: number[];
@@ -28,6 +28,7 @@ export interface Station {
 
 interface ModalProps {
   onClose: () => void;
+  stationName: string;
   dateList: string[];
   sensors: StationData[];
   setChartData: any;
@@ -45,7 +46,6 @@ interface StationData {
   data: SensorOption[];
 }
 
-let stationID = "20002";
 
 // Utility function to generate a random ID
 const generateRandomId = (): string => {
@@ -59,7 +59,10 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   const [chartData, setChartData] = useState<any[] | null>(null);
   const [dateList, setDateList] = useState<string[]>([]);
   const [separatedData, setSeparatedData] = useState<Record<string, Station[]>>({});
-  stationID = targetID.toString();
+  const [stationName, setStationName] = useState<string>(`Station ${targetID} data is not available`);
+  const [isFetched, setIsFetched] = useState<boolean>(false);
+  
+  const stationID = targetID.toString();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -67,7 +70,8 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
         if (fetchedData && fetchedData.length > 0) {
           const stationData = fetchedData.flatMap((data) => data.stations);
-
+          setIsFetched(true);
+          setStationName(stationData[0].name);
           setStations(stationData);
         } else {
           console.error('Empty or undefined data received from the API.');
@@ -123,7 +127,10 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   }, [dateList, separatedData]);
 
   const openModal = () => {
-    setShowModal(true);
+    if(isFetched)
+    {
+      setShowModal(true);
+    }
   };
 
   const closeModal = () => {
@@ -132,18 +139,21 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
   return (
     <div className="modal">
-      <h2>Modal Example</h2>
-      <button onClick={openModal}>Open Modal</button>
+      <h2> {stationName} <br/> Traffic Dashboard</h2>
+      <button className='modal-show-btn' onClick={openModal}>Show Dashboard</button>
+      {!isFetched && <p>There is currently no data available for this station. Please switch to other stations</p>}
       {showModal && (
-        <Modal onClose={closeModal} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+        <Modal onClose={closeModal} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+
       )}
     </div>
   );
 };
 
-const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList, chartData }) => {
+const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartData, dateList, chartData }) => {
   const [timeRange, setTimeRange] = useState<number>(0);
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
+  
 
   const handleTimeRangeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedTimeRange = event.target.value;
@@ -210,20 +220,65 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
   if (!sensors || sensors.length === 0) {
     return null; // Return null or a fallback component when sensors is empty or undefined
   }
-  const modalSensorList = () => {
-    return sensors[0].data.map((sensor, index) => (
-      <div key={index}>
-        <input
-          type="checkbox"
-          id={sensor.label}
-          value={sensor.label}
-          checked={selectedSensors.includes(sensor.label)}
-          onChange={handleSensorChange}
-        />
-        <label htmlFor={sensor.id}>{sensor.label}</label>
-      </div>
-    ));
+  
+  const sortSensorNames = (a : string, b : string) => {
+    const prefixOrder = ['OHITUKSET', 'KESKINOPEUS'];
+    const [prefixA, suffixA] = a.split('_');
+    const [prefixB, suffixB] = b.split('_');
+  
+    if (prefixA !== prefixB) {
+      return prefixOrder.indexOf(prefixA) - prefixOrder.indexOf(prefixB);
+    } else if (suffixA && suffixB) {
+      return suffixA.localeCompare(suffixB);
+    } else {
+      return a.localeCompare(b);
+    }
   };
+  
+  
+  const modalSensorList = (): JSX.Element[] => {
+    const sensorGroups : Record<string, SensorOption[]> = {};
+  
+    // Group sensors based on their categories
+    for (const sensor of sensors[0].data) {
+      const groupName = sensor.label.split('_')[0]; // Extract the prefix from the sensor label
+      if (!sensorGroups[groupName]) {
+        sensorGroups[groupName] = [];
+      }
+      sensorGroups[groupName].push(sensor);
+    }
+  
+    // Sort the sensors within each group
+    for (const groupName in sensorGroups) {
+      sensorGroups[groupName].sort((a, b) => sortSensorNames(a.label, b.label));
+    }
+  
+    // Generate the JSX for grouped sensors
+    const sensorList : JSX.Element[] = [];
+    for (const groupName in sensorGroups) {
+      sensorList.push(
+        <div className='sensor-groups' key={groupName}>
+          <h3>{groupName}</h3>
+          {sensorGroups[groupName].map((sensor: SensorOption, index: number) => (
+            <div key={index}>
+              <input
+                type="checkbox"
+                id={sensor.label}
+                value={sensor.label}
+                checked={selectedSensors.includes(sensor.label)}
+                onChange={handleSensorChange}
+              />
+              <label htmlFor={sensor.id}>{sensor.label}</label>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  
+    return sensorList;
+  };
+  
+  
   const lineColors = [
     '#1f77b4', // Blue
     '#ff7f0e', // Orange
@@ -248,21 +303,24 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
     <div className="modal-data-container">
       <div className="modal-content">
         <h2>Traffic Visualizer Dashboard</h2>
-        <div>
+        <div className='time-range'>
           <label htmlFor="time-range-select">Time Range:</label>
           <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
             <option value="">Select Time Range</option>
-          <option value="yesterday">Yesterday</option>
+            <option value="yesterday">Yesterday</option>
             <option value="last-week">Last Week</option>
             <option value="last-month">Last Month</option>
           </select>
         </div>
-        <div>
-          <label>Sensors:</label>
+        <h3 className='station-name'>{stationName}</h3>
+        <div className='modal-sensor-list'>
           {modalSensorList()}
         </div>
-        <button onClick={handleGenerateGraph}>Generate Graph</button>
-        <button onClick={onClose}>Close</button>
+        <div className='modal-btn-group'>
+          <button onClick={handleGenerateGraph}>Generate Graph</button>
+          <button onClick={onClose}>Close</button>
+        </div>
+        
         <div className="graph-container">
         {chartData && chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>
@@ -285,7 +343,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, sensors, setChartData, dateList,
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <p>No chart data available</p>
+          <p>Waiting for User query</p>
         )}
       </div>
       </div>
