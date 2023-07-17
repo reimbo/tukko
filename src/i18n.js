@@ -14,7 +14,7 @@ i18n
     default: ['en']
     },
     debug: false,
-    ns:['sensors', 'units'],
+    defaultNS: false,
     keySeparator: false
   })
 

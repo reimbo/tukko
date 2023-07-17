@@ -8,7 +8,16 @@ import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet";
 import { useTranslation } from "react-i18next";
 import redis from "../scripts/fetchRedis";
-import { format } from "date-fns";
+
+declare global {
+  interface String {
+    toProperCase(this: string): string;
+  }
+}
+
+String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
 
 export default function StationTooltip({
   station,
@@ -19,7 +28,7 @@ export default function StationTooltip({
 }): JSX.Element {
   const [direction, setDirection] = useState(1);
   const [newStation, setStation] = useState<Station | undefined>(undefined);
-  const { t, i18n } = useTranslation("tooltip");
+  const { t, i18n } = useTranslation(["tooltip", "roadworks"]);
   let fadeTimeout: ReturnType<typeof setTimeout>;
 
   const delayFade = () => {
@@ -72,7 +81,7 @@ export default function StationTooltip({
                 className={`${styles["tooltip-icon"]}`}
               />
               <div className={styles["tooltip-div"]}>
-                {t("direction")}
+                {t("direction")} 
                 <br />
                 {newStation.direction1Municipality}
               </div>
@@ -87,11 +96,11 @@ export default function StationTooltip({
                 className={styles["tooltip-icon-car"]}
               />
               <div
-                className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}
+                className={styles["tooltip-div"]}
               >
-                {newStation.sensors?.find((e) => e.id == 5116)?.value}
+                {newStation.sensors?.find((e) => e.id == 5116)?.value} {t("amount")}
                 <br />
-                {t("unit")}
+                {newStation.sensors?.find((e) => e.id == 5122)?.value} {t("speed")}
               </div>
             </div>
           </div>
@@ -121,11 +130,11 @@ export default function StationTooltip({
                 className={styles["tooltip-icon-car"]}
               />
               <div
-                className={`${styles["tooltip-div"]} ${styles["tooltip-div-car"]}`}
+                className={styles["tooltip-div"]}
               >
-                {newStation.sensors?.find((e) => e.id == 5119)?.value}
+                {newStation.sensors?.find((e) => e.id == 5119)?.value} {t("amount")}
                 <br />
-                {t("unit")}
+                {newStation.sensors?.find((e) => e.id == 5125)?.value} {t("speed")}
               </div>
             </div>
           </div>
@@ -133,26 +142,23 @@ export default function StationTooltip({
         <DirectionPopup station={newStation} direction={direction} />
         {newStation.roadworks && newStation.roadworks.length !== 0 && (
           <div>
-            <h3>Road Works</h3>
+            <h3>{t("title", {ns:"roadworks"})}:</h3>
             {station.roadworks?.map((roadwork) => (
               <ul key={roadwork.id}>
-                <h4>ID: {roadwork.id}</h4>
-                Start Date: {format(new Date(roadwork.startTime), "yyyy-MM-dd")}
-                {"; "}
-                End Date: {format(new Date(roadwork.endTime), "yyyy-MM-dd")}
-                <h4>Work Types:</h4>
+                <p style={{marginTop:0,marginBottom:'1.33em'}}>
+                  {new Date(roadwork.startTime).toLocaleDateString('fi-FI')} - {new Date(roadwork.endTime).toLocaleDateString('fi-FI')}
+                </p>
+                <h4 style={{marginBottom:0}}>{t("worktypes",{ns:"roadworks"})}:</h4>
                 {roadwork.workTypes.map((workType) => (
                   <li>
-                    {workType.type}: {workType.description}
+                    {(i18n.language === "fi") ? (workType.description !== "" ? workType.description : "Muu") : workType.type.replaceAll("_"," ").toProperCase()}
                   </li>
                 ))}
-                <h4>Restrictions:</h4>
+                <h4 style={{marginBottom:0}}>{t("restrictions",{ns:"roadworks"})}</h4>
                 {roadwork.restrictions.map((restriction) => (
                   <li>
-                    {restriction.type}: {restriction.name}
-                    {" ("}
-                    {restriction.quantity} {restriction.unit}
-                    {")"}
+                    {(i18n.language === "fi") ? restriction.name : restriction.type.replaceAll("_"," ").toProperCase()}
+                    {restriction.quantity && restriction.unit ? " (" + restriction.quantity + " " + restriction.unit+")" : null}
                   </li>
                 ))}
               </ul>

@@ -1,4 +1,5 @@
 {
-    "direction" : "Suunta:",
-    "unit" : "ajoneuvoa/h"
+    "direction" : "Suunta",
+    "amount" : "kpl/h",
+    "speed": "km/h"
 }

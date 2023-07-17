@@ -1,9 +1,12 @@
 .tooltip {
+  box-sizing: border-box;
   position: absolute;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
   color: black;
   transition: opacity 0.25s linear;
+  max-width: 276px;
+  white-space: normal;
 }
 
 body:global(.dark) .tooltip {
@@ -12,57 +15,54 @@ body:global(.dark) .tooltip {
 }
 
 .place-name {
-    font-size: 15px;
-    text-align: center;
+  font-size: 16px;
+  text-align: center;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
 .grid-column:hover {
-    background-color: #dbdbdb;
+  background-color: #dbdbdb;
 }
 
 .grid-item {
   padding: 20px;
-  font-size: 30px;
   text-align: center;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
+}
+
+.grid-item img {
+  width: 55%;
 }
 
 .grid-top-left {
-    border-right: 1px solid rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-right: 1px solid rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .grid-top-right {
-    border-left: 1px solid rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-left: 1px solid rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .grid-bottom-left {
-    border-top: 1px solid rgba(0, 0, 0, 0.8);
-    border-right: 1px solid rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(0, 0, 0, 0.8);
+  border-right: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .grid-bottom-right {
-    border-top: 1px solid rgba(0, 0, 0, 0.8);
-    border-left: 1px solid rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(0, 0, 0, 0.8);
+  border-left: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .tooltip-div {
-    font-size: 18px;
-}
-
-.tooltip-icon-car {
-    width: 50px;
-}
-
-.tooltip-icon {
-    width: 42px;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 -26px;
 }
 
 body:global(.dark) .tooltip-icon-car,
@@ -71,11 +71,11 @@ body:global(.dark) .tooltip-icon {
 }
 
 body:global(.dark) .grid-column:hover {
-    background-color: #3b3b3b;
+  background-color: #3b3b3b;
 }
 
 .tooltip-icon-reverse {
-    -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);  
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);  
 }
 
