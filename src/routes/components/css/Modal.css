@@ -156,7 +156,6 @@
   border: oldlace;
   border-style: double;
 }
-
 .modal-content button,
 .modal-show-btn {
   color: bisque;
@@ -187,6 +186,105 @@
 }
 .dark .sensor-groups, 
 .dark .station-name,
-.graph-container p {
+.dark .graph-container p {
   color: #ddd;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .modal-data-container {
+    width: 69vw;
+    height: 90vh;
+    max-height: 100%;
+  }
+  .modal-content {
+    width: 68vw;
+    height: 70vh;
+  }
+  .modal-content h2 {
+    width: 100%;
+  }
+  .modal-btn-group {
+    width: 26vw;
+    height: 5vh;
+    padding: 0;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .modal-btn-group button {
+    max-width: 35vw;
+    font-size: 2vh;
+    height: 6vh;
+    width: 26vw;
+    padding: 0;
+    margin: 0;
+  }
+  .station-name {
+    font-size: .7rem;
+    width: 43.33%;
+    margin-top: 1rem;
+  }
+  .sensor-groups {
+    font-size: 2vw;
+    width: 70vw;
+    max-width: 75vw;
+    margin: auto;
+  }
+  .sensor-groups h3 {
+    width: 97%;
+  }
+  .graph-container {
+    width: 100%;
+    height: 100%;
+    font-size: .5rem;
+  }
+}
+/* Mobile Responsive */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  .modal-data-container {
+    width: 69vw;
+    height: 90vh;
+    max-height: 100%;
+  }
+  .modal-content {
+    width: 78vw;
+    height: 70vh;
+  }
+  .modal-content h2 {
+    width: 100%;
+  }
+  .modal-btn-group {
+    width: 26vw;
+    height: 5vh;
+    padding: 0;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .modal-btn-group button {
+    max-width: 35vw;
+    font-size: 2vh;
+    height: 6vh;
+    width: 26vw;
+    padding: 0;
+    margin: 0;
+  }
+  .station-name {
+    font-size: 1.2rem;
+    width: 33.33%;
+  }
+  .sensor-groups {
+    font-size: 1.1rem;
+    width: 65vw;
+    max-width: 70vw;
+  }
+  .sensor-groups h3 {
+    width: 97%;
+  }
+  .graph-container {
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+  }
 }

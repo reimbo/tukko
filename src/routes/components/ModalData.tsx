@@ -46,7 +46,6 @@ interface StationData {
   data: SensorOption[];
 }
 
-
 // Utility function to generate a random ID
 const generateRandomId = (): string => {
   return Math.random().toString(36).substr(2, 9);
@@ -56,12 +55,11 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   const [showModal, setShowModal] = useState(false);
   const [stations, setStations] = useState<Station[]>([]);
   const [sensors, setSensors] = useState<StationData[]>([]);
-  const [chartData, setChartData] = useState<any[] | null>(null);
+  const [chartData, setChartData] = useState<StationData[] | null>(null);
   const [dateList, setDateList] = useState<string[]>([]);
   const [separatedData, setSeparatedData] = useState<Record<string, Station[]>>({});
   const [stationName, setStationName] = useState<string>(`Station ${targetID} data is not available`);
   const [isFetched, setIsFetched] = useState<boolean>(false);
-  
   const stationID = targetID.toString();
   useEffect(() => {
     const fetchData = async () => {
@@ -105,11 +103,9 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
   useEffect(() => {
     const filteredSensors: StationData[] = [];
-
     for (const date of dateList) {
       const selectedData = separatedData[date];
-
-      const sensorList = selectedData.map((sensor: any) => ({
+      const sensorList = selectedData.map((sensor: any) :SensorOption => ({
         value: sensor.sensorValues.value,
         label: sensor.sensorValues.name,
         id: generateRandomId(), // Generate random ID
@@ -151,24 +147,30 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 };
 
 const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartData, dateList, chartData }) => {
-  const [timeRange, setTimeRange] = useState<number>(0);
+  const [timeRange, setTimeRange] = useState<string>('');
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
-
+  const filteredDates = [...new Set(dateList.map((date) => date.split('T')[0]))]
   const handleTimeRangeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedTimeRange = event.target.value;
     // Update the chart data based on the selected time range
-    if (selectedTimeRange === 'yesterday') {
-      setTimeRange(1);
-    }
-    if (selectedTimeRange === 'last-week') {
-      setTimeRange(2);
-    }
-    if (selectedTimeRange === 'last-month') {
-      setTimeRange(3);
-    }
+    setTimeRange(selectedTimeRange);
   };
 
+  const getTimeRangeValue = (selectedTimeRange: string) => {
+      switch (selectedTimeRange) {
+        case 'today':
+          return 1;
+        case 'yesterday':
+          return 2;
+        case 'last-week':
+          return 3;
+        case 'last-month':
+          return 4;
+        default:
+          return 0;
+      }
+    }
   const handleSensorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const sensorId = event.target.value;
     const isChecked = event.target.checked;
@@ -185,20 +187,47 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
   const handleGenerateGraph = () => {
     if (selectedSensors.length > 0) {
       const generatedData: any[] = [];
-      const finalSensors = () => {
-        if (timeRange === 1) {
-          return sensors.slice(sensors.length - 3, sensors.length - 1);
-        } else if (timeRange === 2 && dateList.length > 7) {
-          return sensors.slice(sensors.length - 8, sensors.length - 1);
-        } else if (timeRange === 3 && dateList.length > 31) {
-          return sensors.slice(sensors.length - 31, sensors.length - 1);
+      const timeRangeValue = getTimeRangeValue(timeRange); // Get numerical value for sorting
+      const todayDate = new Date().toISOString().split('T')[0];
+
+      // Replace this with the desired date you want to find sensors for
+      const desiredDate = new Date().toISOString().split('T')[0];
+
+      const sensorsWithinTimeFrame = ( timeFrame:string) : StationData[] => {
+        return sensors.filter((sensor) => {
+          const sensorToDate = new Date(sensor.date).toISOString().split('T')[0];
+          const sensorYesterday = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0];
+          const sensorOneWeekAgo = new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0];
+          const sensorOneMonthAgo = new Date(new Date().setDate(new Date().getDate() - 30)).toISOString().split('T')[0];
+          if(timeFrame === 'today'){
+            return sensorToDate === desiredDate;
+          }else if(timeFrame === 'yesterday'){
+            return sensorToDate === desiredDate || sensorToDate === sensorYesterday;
+          }else if(timeFrame === 'last-week'){
+            return sensorToDate >= sensorOneWeekAgo && sensorToDate <= todayDate;
+          }else if(timeFrame === 'last-month'){
+            return sensorToDate >= sensorOneMonthAgo && sensorToDate <= todayDate;
+          }
+          return sensor;
+        });
+      };
+      // Get the final sensors based on the selected time range
+      const finalSensors = () : StationData[] => {
+        if (timeRangeValue === 1 && filteredDates.length > 0) {
+          return sensorsWithinTimeFrame('today');
+        } else if (timeRangeValue === 2 && filteredDates.length > 1) {
+          return sensorsWithinTimeFrame('yesterday');
+        }else if (timeRangeValue === 3 && filteredDates.length > 6) {
+          return sensorsWithinTimeFrame('last-week');
+        } else if (timeRangeValue === 4 && filteredDates.length > 29) {
+          return sensorsWithinTimeFrame('last-month');
         } else {
           return sensors;
         }
       };
-      for (const sensor of finalSensors()) {
-        const selectedSensorData = sensor.data.filter((data) => selectedSensors.includes(data.label));
 
+      for (const sensor of finalSensors()) {
+        const selectedSensorData : SensorOption[] = sensor.data.filter((data) => selectedSensors.includes(data.label));
         generatedData.push({
           date: sensor.date,
           ...selectedSensorData.reduce((obj, data) => {
@@ -215,7 +244,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
 
   useEffect(() => {
     handleGenerateGraph();
-  }, [selectedSensors]);
+  }, [selectedSensors, timeRange]);
 
   if (!sensors || sensors.length === 0) {
     return null; // Return null or a fallback component when sensors is empty or undefined
@@ -235,7 +264,6 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
     }
   };
   
-  
   const modalSensorList = (): JSX.Element[] => {
     const sensorGroups : Record<string, SensorOption[]> = {};
   
@@ -252,7 +280,18 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
     for (const groupName in sensorGroups) {
       sensorGroups[groupName].sort((a, b) => sortSensorNames(a.label, b.label));
     }
-  
+    const handleLabelClick = (label: string) => {
+      setSelectedSensors((prevSelectedSensors) => {
+        if (prevSelectedSensors.includes(label)) {
+          // If the label is already in the selectedSensors array, remove it
+          return prevSelectedSensors.filter((sensorLabel) => sensorLabel !== label);
+        } else {
+          // If the label is not in the selectedSensors array, add it
+          return [...prevSelectedSensors, label];
+        }
+      });
+    };
+    
     // Generate the JSX for grouped sensors
     const sensorList : JSX.Element[] = [];
     for (const groupName in sensorGroups) {
@@ -268,7 +307,9 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
                 checked={selectedSensors.includes(sensor.label)}
                 onChange={handleSensorChange}
               />
-              <label htmlFor={sensor.id}>{sensor.label}</label>
+              <label htmlFor={sensor.id} onClick={() => handleLabelClick(sensor.label)}>
+                {sensor.label}
+              </label>
             </div>
           ))}
         </div>
@@ -307,6 +348,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
           <label htmlFor="time-range-select">Time Range:</label>
           <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
             <option value="">Select Time Range</option>
+            <option value="today">Today</option>
             <option value="yesterday">Yesterday</option>
             <option value="last-week">Last Week</option>
             <option value="last-month">Last Month</option>
@@ -317,7 +359,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
           {modalSensorList()}
         </div>
         <div className='modal-btn-group'>
-          <button onClick={handleGenerateGraph}>Generate Graph</button>
+          {/* <button onClick={handleGenerateGraph}>Generate Graph</button> */}
           <button onClick={onClose}>Close</button>
         </div>
         
