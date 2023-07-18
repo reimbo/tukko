@@ -74,9 +74,8 @@ export default function StationTooltip({
           {newStation.names[i18n.language as keyof Station["names"]]}
         </h1>
         <div className={styles["grid-container"]}>
-          <div className={styles["grid-column"]}>
+          <div className={styles["grid-column"]} onClick={() => setDirection(1)}>
             <div
-              onClick={() => setDirection(1)}
               className={`${styles["grid-item"]} ${styles["grid-top-left"]}`}
             >
               <img
@@ -91,7 +90,6 @@ export default function StationTooltip({
               </div>
             </div>
             <div
-              onClick={() => setDirection(1)}
               className={`${styles["grid-item"]} ${styles["grid-bottom-left"]}`}
             >
               <img
@@ -108,9 +106,8 @@ export default function StationTooltip({
               </div>
             </div>
           </div>
-          <div className={styles["grid-column"]}>
+          <div className={styles["grid-column"]} onClick={() => setDirection(2)}>
             <div
-              onClick={() => setDirection(2)}
               className={`${styles["grid-item"]} ${styles["grid-top-right"]}`}
             >
               <img
@@ -125,7 +122,6 @@ export default function StationTooltip({
               </div>
             </div>
             <div
-              onClick={() => setDirection(2)}
               className={`${styles["grid-item"]} ${styles["grid-bottom-right"]}`}
             >
               <img
@@ -147,7 +143,7 @@ export default function StationTooltip({
           <DirectionPopup station={newStation} direction={direction} />
         : ""}
         {newStation.roadworks && newStation.roadworks.length !== 0 && (
-          <div>
+          <div className={styles["roadwork-div"]}>
             <h3>{t("title", {ns:"roadworks"})}:</h3>
             {station.roadworks?.map((roadwork) => (
               <ul key={roadwork.id}>

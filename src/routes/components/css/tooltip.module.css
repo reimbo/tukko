@@ -65,6 +65,15 @@ body:global(.dark) .tooltip {
   margin: 0 -26px;
 }
 
+.roadwork-div {
+    font-size: 12px;
+    padding-left: 0px;
+}
+
+.roadwork-div ul {
+  padding-left: 2em;
+}
+
 body:global(.dark) .tooltip-icon-car,
 body:global(.dark) .tooltip-icon {
   filter: invert(100%) sepia(66%) saturate(2%) hue-rotate(247deg) brightness(113%) contrast(101%);
@@ -79,3 +88,34 @@ body:global(.dark) .grid-column:hover {
   transform: scaleX(-1);  
 }
 
+@media only screen and (max-width: 600px) {
+    .grid-item {
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+        width: 60px;
+        height: 60px;
+      }
+
+      .tooltip-div {
+        font-size: 13px;
+        
+    }
+    
+    .place-name {
+        font-size: 12px;
+    }
+
+    .tooltip-icon {
+        width: 30px;
+        
+    }
+
+    .tooltip-icon-car {
+        width: 38px;
+    }
+
+    .roadwork-div {
+        font-size: 10px;
+    }
+}
