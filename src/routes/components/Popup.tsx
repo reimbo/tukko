@@ -35,7 +35,7 @@ export default function DirectionPopup({ station, direction }: { station: Statio
           const sensors = direction === 1 ? sensors1 : sensors2
           const sensorName = sensor.name
           if (!(sensors.has(sensorName))) return null
-          return <li className={styles.li} key={sensorName}>{sensor.value} {t(unit, { ns: "units" })} {t(sensorName, { ns: "sensors" })}</li>
+          return <li className={styles.li} key={sensorName}>{sensor.value || "-"} {t(unit, { ns: "units" })} {t(sensorName, { ns: "sensors" })}</li>
         })}
       </ul>
     </Popup>

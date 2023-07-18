@@ -22,11 +22,13 @@ String.prototype.toProperCase = function () {
 export default function StationTooltip({
   station,
   marker,
+  empty
 }: {
   station: Station;
   marker: Marker;
+  empty: boolean;
 }): JSX.Element {
-  const [direction, setDirection] = useState(1);
+  const [direction, setDirection] = useState<number | null>(null);
   const [newStation, setStation] = useState<Station | undefined>(undefined);
   const { t, i18n } = useTranslation(["tooltip", "roadworks"]);
   let fadeTimeout: ReturnType<typeof setTimeout>;
@@ -40,15 +42,17 @@ export default function StationTooltip({
   useEffect(() => {
     const fetchStationData = async () => {
       const newStation = station;
-      const sensors = await redis.fetchSensorsByStationId(station.id);
-      if (sensors && sensors.length == 0) return;
-      newStation.sensors = sensors;
-      newStation.roadworks = station.roadworks;
+      if (!empty) {
+        const sensors = await redis.fetchSensorsByStationId(station.id);
+        if (sensors && sensors.length == 0) return;
+        newStation.sensors = sensors;
+        newStation.roadworks = station.roadworks;
+      }
       setStation(newStation);
     };
 
     fetchStationData();
-  }, [station]);
+  }, [station, empty]);
 
   if (newStation === undefined) return <p>Loading</p>;
   else
@@ -83,7 +87,7 @@ export default function StationTooltip({
               <div className={styles["tooltip-div"]}>
                 {t("direction")} 
                 <br />
-                {newStation.direction1Municipality}
+                {newStation.direction1Municipality || "-"}
               </div>
             </div>
             <div
@@ -98,9 +102,9 @@ export default function StationTooltip({
               <div
                 className={styles["tooltip-div"]}
               >
-                {newStation.sensors?.find((e) => e.id == 5116)?.value} {t("amount")}
+                {newStation.sensors?.find((e) => e.id == 5116)?.value || "-"} {t("amount")}
                 <br />
-                {newStation.sensors?.find((e) => e.id == 5122)?.value} {t("speed")}
+                {newStation.sensors?.find((e) => e.id == 5122)?.value || "-"} {t("speed")}
               </div>
             </div>
           </div>
@@ -117,7 +121,7 @@ export default function StationTooltip({
               <div className={styles["tooltip-div"]}>
                 {t("direction")}
                 <br />
-                {newStation.direction2Municipality}
+                {newStation.direction2Municipality || "-"}
               </div>
             </div>
             <div
@@ -132,14 +136,16 @@ export default function StationTooltip({
               <div
                 className={styles["tooltip-div"]}
               >
-                {newStation.sensors?.find((e) => e.id == 5119)?.value} {t("amount")}
+                {newStation.sensors?.find((e) => e.id == 5119)?.value || "-"} {t("amount")}
                 <br />
-                {newStation.sensors?.find((e) => e.id == 5125)?.value} {t("speed")}
+                {newStation.sensors?.find((e) => e.id == 5125)?.value || "-"} {t("speed")}
               </div>
             </div>
           </div>
         </div>
-        <DirectionPopup station={newStation} direction={direction} />
+        {direction ? 
+          <DirectionPopup station={newStation} direction={direction} />
+        : ""}
         {newStation.roadworks && newStation.roadworks.length !== 0 && (
           <div>
             <h3>{t("title", {ns:"roadworks"})}:</h3>
