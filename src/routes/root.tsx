@@ -28,6 +28,7 @@ export default function Root(): JSX.Element {
       <h1 id="overlay-title" className="overlay-title">
         Tukko
       </h1>
+      <h2 className="overlay2-title">Traffic Visualizer</h2>
       <LogosContainer />
       <MapContainer
         center={[60.2, 24.9]}
