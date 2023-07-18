@@ -41,6 +41,7 @@
   font: 18px "Helvetica Neue", Arial, Helvetica, sans-serif !important;
 }
 
+
 .marker-cluster-small {
   background-color: #31a0e0 !important;
   border: 1px solid #1a3419;
@@ -79,6 +80,10 @@
   height: 27px !important;
     }
 
+.marker-cluster:hover,
+.marker-cluster:hover div {
+  background-color: hsl(100, 50%, 100%) !important;
+}
 
 .react-toggle-track {
   background-color: rgb(91,91,91) !important /* Override the background color with your desired color */;
@@ -141,39 +146,39 @@ body.dark .marker-popup {
 
 /*  Changes the color of the clusters when in dark mode  */
 .dark .marker-cluster-small {
-  background-color: #084299 !important;
+  background-color: #084299;
   border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
 }
 .dark .marker-cluster-small div {
-  background-color: #084299 !important;
+  background-color: #084299;
   width: 25px !important;
   height: 27px !important;
   color: #ffffffb4;
 }
   
 .dark .marker-cluster-medium {
-  background-color: #084299 !important;
+  background-color: #084299;
   border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
     }
 .dark .marker-cluster-medium div {
-  background-color: #084299 !important;
+  background-color: #084299;
   width: 25px !important;
   height: 27px !important;
   color: #ffffffb4;
 }
   
 .dark .marker-cluster-large {
-  background-color: #084299 !important;
+  background-color: #084299;
   border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
 }
 .dark .marker-cluster-large div {
-  background-color: #084299 !important;
+  background-color: #084299;
   width: 25px !important;
   height: 27px !important;
   color: #ffffffb4;
