@@ -6,6 +6,9 @@
   color: black;
   transition: opacity 0.25s linear;
   max-width: 276px;
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   white-space: normal;
 }
 
@@ -66,7 +69,7 @@ body:global(.dark) .tooltip {
 }
 
 .roadwork-div {
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 0px;
 }
 

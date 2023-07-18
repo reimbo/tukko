@@ -1,4 +1,4 @@
-import { Marker } from "react-leaflet";
+import { Marker, useMap } from "react-leaflet";
 import { Station } from "../../interfaces/Interfaces";
 import React, { useState, Suspense } from "react";
 import { getSwgImage } from "./MarkerIcon";
@@ -20,6 +20,7 @@ export function MarkerContent({
     null | number | undefined
   >(null);
   const [marker, setMarker] = useState<null | M>(null);
+  const map = useMap()
 
   if (
     (!station.sensors || station.sensors?.length === 0) &&
@@ -36,6 +37,7 @@ export function MarkerContent({
             setSelectedStation(station.id);
             setMarker(m);
             setShowTooltip(true);
+            map.scrollWheelZoom.disable()
             m.openTooltip();
           },
           tooltipclose: (e) => {
@@ -43,6 +45,7 @@ export function MarkerContent({
             if (!m.isPopupOpen()) {
               setSelectedStation(null);
               setMarker(null);
+              map.scrollWheelZoom.enable()
               setShowTooltip(false);
             }
           },
