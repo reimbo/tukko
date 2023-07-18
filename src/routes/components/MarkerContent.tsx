@@ -46,6 +46,7 @@ export function MarkerContent({
               setMarker(null);
               setShowTooltip(false);
             }
+            if (!map.scrollWheelZoom.enabled()) map.scrollWheelZoom.enable()
           },
           popupopen: (e) => {
             const m = e.target as M;
@@ -58,6 +59,7 @@ export function MarkerContent({
               setMarker(null);
               setShowTooltip(false);
             }
+            if (!map.scrollWheelZoom.enabled()) map.scrollWheelZoom.enable()
           },
           mouseover: (e) => {
             const markerElement = e.target.getElement();
