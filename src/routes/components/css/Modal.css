@@ -226,9 +226,10 @@
     margin-top: 1rem;
   }
   .sensor-groups {
-    font-size: .5rem;
-    width: 60vw;
-    max-width: 70vw;
+    font-size: 2vw;
+    width: 70vw;
+    max-width: 75vw;
+    margin: auto;
   }
   .sensor-groups h3 {
     width: 97%;
