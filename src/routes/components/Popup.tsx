@@ -3,6 +3,8 @@ import { Station } from "../../interfaces/Interfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
 import ModalData from "./ModalData";
+import Close from "./Close";
+import { Marker } from "leaflet";
 
 const sensors1 = new Set([
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1",
@@ -22,11 +24,12 @@ const sensors2 = new Set([
   "OHITUKSET_5MIN_LIUKUVA_SUUNTA2_MS2"
 ])
 
-export default function DirectionPopup({ station, direction }: { station: Station, direction: number }): JSX.Element {
+export default function DirectionPopup({ station, direction, marker }: { station: Station, direction: number, marker: Marker }): JSX.Element {
   const { t, i18n } = useTranslation(['sensors', 'units'])
   return (
-    <Popup offset={[0, 0]} maxWidth={550} autoPanPadding={[100, 100]} closeButton={false} className={styles.wrapper}>
-      <h3>{station.names[(i18n.language as keyof Station['names'])]}</h3>
+    <Popup offset={[0, 0]} maxWidth={276} autoPanPadding={[100, 100]} closeButton={false} className={styles.wrapper}>
+      <Close marker={marker} parent="popup" />
+      <h3 className={styles.placename}>{station.names[(i18n.language as keyof Station['names'])]}</h3>
       <ul className={styles.list}>
         <ModalData targetID={station.id.toString()}/>
         {station.sensors?.map((sensor) => {
@@ -35,7 +38,7 @@ export default function DirectionPopup({ station, direction }: { station: Statio
           const sensors = direction === 1 ? sensors1 : sensors2
           const sensorName = sensor.name
           if (!(sensors.has(sensorName))) return null
-          return <li className={styles.li} key={sensorName}>{sensor.value} {t(unit, { ns: "units" })} {t(sensorName, { ns: "sensors" })}</li>
+          return <li className={styles.li} key={sensorName}>{sensor.value || "-"} {t(unit, { ns: "units" })} {t(sensorName, { ns: "sensors" })}</li>
         })}
       </ul>
     </Popup>

@@ -1,6 +1,9 @@
 .wrapper {
-  padding: 0.25rem 1.25rem;
   display: flex;
+}
+
+.wrapper > div {
+  border-radius: 3px;
 }
 
 .content {
@@ -21,15 +24,23 @@
   padding-bottom: 5px;
 }
 
-@media (max-width: 520px){
+.wrapper > div:last-child {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
   .wrapper{
     width: 280px;
     display: flex;
   }
   
   .list {
-    height: 320px;
+    height: 250px;
     overflow: auto;
+    font-size: 12px
   }
 
+  .placename {
+    font-size: 12px;
+  }
 }

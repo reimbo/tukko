@@ -1,0 +1,8 @@
+{
+  "giveFeedback": "Give Feedback",
+  "title": "Enter the title:",
+  "enterDescription": "Enter the description:",
+  "fillRequiredFields": "Please fill in all required fields.",
+  "submit": "Submit",
+  "issueCreatedSuccessfully": "Issue created successfully!"
+}
