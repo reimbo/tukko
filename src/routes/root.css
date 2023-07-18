@@ -14,7 +14,7 @@
 
 .overlay-title {
   top: -15px;
-  left: 50px;
+  left: 60px;
   font-size: 40px;
   width: 400px;
   position: fixed;
@@ -22,6 +22,18 @@
   z-index: 1000;
   color: black;
   pointer-events: none;
+}
+
+.overlay2-title {
+  top: 34px;
+  left: 68px;
+  font-size: 17px;
+  position: fixed;
+  display: inline;
+  z-index: 1000;
+  color: black;
+  pointer-events: none;
+  font-weight: 250;
 }
 
 .langContainer {
@@ -47,38 +59,41 @@
   border: 1px solid #1a3419;
   width: 35px !important;
   height: 37px !important;
-    }
+}
+
 .marker-cluster-small div {
   background-color: #31a0e0 !important;
   width: 25px !important;
   height: 27px !important;
-  
-    }
-  
+
+}
+
 .marker-cluster-medium {
   background-color: #31a0e0 !important;
   border: 1px solid #1a3419;
   width: 35px !important;
   height: 37px !important;
-  
-    }
+
+}
+
 .marker-cluster-medium div {
   background-color: #31a0e0 !important;
   width: 25px !important;
   height: 27px !important;
-    }
-  
+}
+
 .marker-cluster-large {
   background-color: #31a0e0 !important;
   border: 1px solid #1a3419;
   width: 35px !important;
   height: 37px !important;
-    }
+}
+
 .marker-cluster-large div {
   background-color: #31a0e0 !important;
   width: 25px !important;
   height: 27px !important;
-    }
+}
 
 .marker-cluster:hover,
 .marker-cluster:hover div {
@@ -86,7 +101,9 @@
 }
 
 .react-toggle-track {
-  background-color: rgb(91,91,91) !important /* Override the background color with your desired color */;
+  background-color: rgb(91, 91, 91) !important
+    /* Override the background color with your desired color */
+  ;
 }
 
 @media only screen and (max-width: 600px) {
@@ -141,7 +158,7 @@ body.dark .wimmaLabLogo {
 /* Changes the color of the marker's popup box and text in dark mode */
 body.dark .marker-popup {
   background-color: #1f1f1f;
-  color: #e5e5e5; 
+  color: #e5e5e5;
 }
 
 /*  Changes the color of the clusters when in dark mode  */
@@ -151,32 +168,35 @@ body.dark .marker-popup {
   width: 35px !important;
   height: 37px !important;
 }
+
 .dark .marker-cluster-small div {
   background-color: #084299;
   width: 25px !important;
   height: 27px !important;
   color: #ffffffb4;
 }
-  
+
 .dark .marker-cluster-medium {
   background-color: #084299;
   border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
-    }
+}
+
 .dark .marker-cluster-medium div {
   background-color: #084299;
   width: 25px !important;
   height: 27px !important;
   color: #ffffffb4;
 }
-  
+
 .dark .marker-cluster-large {
   background-color: #084299;
   border: 1px solid #b6c7e1;
   width: 35px !important;
   height: 37px !important;
 }
+
 .dark .marker-cluster-large div {
   background-color: #084299;
   width: 25px !important;
