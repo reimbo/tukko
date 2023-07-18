@@ -30,11 +30,7 @@ export default function Root(): JSX.Element {
       </h1>
       <LogosContainer />
       <MapContainer
-        center={[62.2426, 25.7473]}
-        maxBounds={[
-          [71.0, 40.0],
-          [59.5, 17.0],
-        ]}
+        center={[60.2, 24.9]}
         maxBoundsViscosity={0.9}
         zoomDelta={1}
         zoom={12}
@@ -49,8 +45,8 @@ export default function Root(): JSX.Element {
 
         <Geoman />
         <DarkModeToggle />
-        <FeedbackForm />
         <Suspense>
+          <FeedbackForm />
           <MapLayers />
         </Suspense>
         <div className="langContainer">
