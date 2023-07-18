@@ -1,8 +1,9 @@
-import { useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import "./css/FeedbackForm.css";
-import Collapsible from 'react-collapsible';
+import Collapsible from "react-collapsible";
 import feedback from "../../assets/darkButtonIcons/feedback.svg";
-import { Tooltip } from 'react-tooltip'
+import { Tooltip } from "react-tooltip";
+import { useTranslation } from "react-i18next";
 
 interface Inputs {
   title?: string;
@@ -10,10 +11,11 @@ interface Inputs {
 }
 
 export const FeedbackForm = () => {
+  const { t } = useTranslation(["feedback"]);
   const initialInputs: Inputs = {};
   const [inputs, setInputs] = useState<Inputs>(initialInputs);
   const [error, setError] = useState<string | null>(null);
-  const [formSubmitted, setFormSubmitted] = useState(false); // Track if form has been submitted
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,8 +28,8 @@ export const FeedbackForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!inputs.title || !inputs.description) {
-      setError("Please fill in all required fields.");
-      setFormSubmitted(true); // Set formSubmitted to true when there is an error
+      setError(t("fillRequiredFields"));
+      setFormSubmitted(true);
       return;
     }
 
@@ -43,10 +45,10 @@ export const FeedbackForm = () => {
       if (response.ok) {
         const responseData = await response.json();
         console.log("Success:", responseData);
-        alert("Issue created successfully!");
+        alert(t("issueCreatedSuccessfully"));
         setInputs(initialInputs);
         setError(null);
-        setFormSubmitted(false); // Reset formSubmitted after successful submission
+        setFormSubmitted(false);
       } else {
         const error = await response.json();
         setError(`Error: ${error.message}`);
@@ -57,48 +59,64 @@ export const FeedbackForm = () => {
   };
 
   const isFieldEmpty = (fieldName: keyof Inputs) => {
-    return !inputs[fieldName] && formSubmitted; // Check if form has been submitted
+    return !inputs[fieldName] && formSubmitted;
   };
 
   return (
     <Fragment>
-      <Collapsible 
-        className="CollapsibleClosed" 
-        openedClassName='CollapsibleOpen' 
+      <Collapsible
+        className="CollapsibleClosed"
+        openedClassName="CollapsibleOpen"
         trigger={
-          <img 
-            className="feedback-icon" 
-            src={feedback} 
-            alt="feedback" 
+          <img
+            className="feedback-icon"
+            src={feedback}
+            alt="feedback"
             data-tooltip-id="feedback-tooltip"
             data-tooltip-content="Feedback"
-            data-tooltip-place="right"/>
-        }>
+            data-tooltip-place="right"
+          />
+        }
+      >
         <div className="collapsibleContent">
-          <p className='FeedbackTitle'>Give Feedback</p>
+          <p className="FeedbackTitle">{t("giveFeedback")}</p>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="title" className={`label ${isFieldEmpty("title") ? "error" : ""}`}>Enter the title:</label> <br/>
+            <label
+              htmlFor="title"
+              className={`label ${isFieldEmpty("title") ? "error" : ""}`}
+            >
+              {t("title")}
+            </label>
+            <br />
             <input
               className={`input ${isFieldEmpty("title") ? "error" : ""}`}
               type="text"
               name="title"
-              value={inputs.title || ''}
+              value={inputs.title || ""}
               onChange={handleChange}
-            /> <br/>
-            <label htmlFor='description' className={`label ${isFieldEmpty("description") ? "error" : ""}`}>Enter the description:</label> <br/>
+            />{" "}
+            <br />
+            <label
+              htmlFor="description"
+              className={`label ${isFieldEmpty("description") ? "error" : ""}`}
+            >
+              {t("enterDescription")}
+            </label>
+            <br />
             <textarea
               className={`input ${isFieldEmpty("description") ? "error" : ""}`}
               name="description"
-              value={inputs.description || ''}
+              value={inputs.description || ""}
               onChange={handleChange}
               rows={5}
-            /> <br/>
+            />{" "}
+            <br />
             {error && <p className="error">{error}</p>}
-            <input type="submit" value="Submit" className='submitButton'/>
+            <input type="submit" value={t("submit")} className="submitButton" />
           </form>
         </div>
       </Collapsible>
-      <Tooltip id="feedback-tooltip"/>
+      <Tooltip id="feedback-tooltip" />
     </Fragment>
   );
 };
