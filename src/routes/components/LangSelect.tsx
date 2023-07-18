@@ -8,8 +8,8 @@ import { Tooltip } from 'react-tooltip'
 export const LangToggle = () => {
   const [language, setLanguage] = useState(i18next.language);
   const map = useMap();
-  let kieli = language === "en" ? "EN" : "FI";
-  let iconClass = language === "en" ? "fi fi-gb" : "fi fi-fi";
+  const kieli = language === "en" ? "EN" : "FI";
+  const iconClass = language === "en" ? "fi fi-gb" : "fi fi-fi";
 
   const handleLanguageChange = () => {
     const newLanguage = language === "en" ? "fi" : "en";
@@ -27,6 +27,7 @@ export const LangToggle = () => {
         data-tooltip-id="local-tooltip"
         data-tooltip-content="Change language"
         data-tooltip-place="top"
+        type="button"
       >
         <p aria-label="Language abbreviation" className={"langText"}>
           {kieli}
