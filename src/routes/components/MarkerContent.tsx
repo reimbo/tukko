@@ -37,7 +37,6 @@ export function MarkerContent({
             setSelectedStation(station.id);
             setMarker(m);
             setShowTooltip(true);
-            map.scrollWheelZoom.disable()
             m.openTooltip();
           },
           tooltipclose: (e) => {
@@ -45,7 +44,6 @@ export function MarkerContent({
             if (!m.isPopupOpen()) {
               setSelectedStation(null);
               setMarker(null);
-              map.scrollWheelZoom.enable()
               setShowTooltip(false);
             }
           },

@@ -5,7 +5,7 @@ import styles from "./css/tooltip.module.css";
 import DirectionPopup from "./Popup";
 import { useEffect, useState } from "react";
 import { Marker } from "leaflet";
-import { Tooltip } from "react-leaflet";
+import { Tooltip, useMap } from "react-leaflet";
 import { useTranslation } from "react-i18next";
 import redis from "../scripts/fetchRedis";
 
@@ -31,6 +31,7 @@ export default function StationTooltip({
   const [direction, setDirection] = useState<number | null>(null);
   const [newStation, setStation] = useState<Station | undefined>(undefined);
   const { t, i18n } = useTranslation(["tooltip", "roadworks"]);
+  const map = useMap();
   let fadeTimeout: ReturnType<typeof setTimeout>;
 
   const delayFade = () => {
@@ -64,9 +65,11 @@ export default function StationTooltip({
         eventHandlers={(() => ({
           mouseout: () => {
             delayFade();
+            map.scrollWheelZoom.enable()
           },
           mouseover: () => {
             clearTimeout(fadeTimeout);
+            map.scrollWheelZoom.disable()
           },
         }))()}
       >
