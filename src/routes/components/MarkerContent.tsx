@@ -98,7 +98,9 @@ export function MarkerContent({
       >
         {showTooltip && station.id === selectedStation && marker && (
           <Suspense>
-            <StationTooltip station={station} marker={marker} />
+            <StationTooltip station={station} marker={marker} 
+              empty={station.sensors?.length === 0}
+            />
           </Suspense>
         )}
       </Marker>
