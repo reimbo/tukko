@@ -1,6 +1,9 @@
 .wrapper {
-  padding: 0.25rem 1.25rem;
   display: flex;
+}
+
+.wrapper > div {
+  border-radius: 3px;
 }
 
 .content {
@@ -19,6 +22,10 @@
 .li{
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.wrapper > div:last-child {
+  visibility: hidden;
 }
 
 @media only screen and (max-width: 600px) {
