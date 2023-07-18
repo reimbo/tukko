@@ -105,10 +105,9 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
   useEffect(() => {
     const filteredSensors: StationData[] = [];
-
     for (const date of dateList) {
       const selectedData = separatedData[date];
-
+      
       const sensorList = selectedData.map((sensor: any) => ({
         value: sensor.sensorValues.value,
         label: sensor.sensorValues.name,
@@ -151,24 +150,28 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 };
 
 const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartData, dateList, chartData }) => {
-  const [timeRange, setTimeRange] = useState<number>(0);
+  const [timeRange, setTimeRange] = useState<string>('');
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
-
+  
   const handleTimeRangeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedTimeRange = event.target.value;
     // Update the chart data based on the selected time range
-    if (selectedTimeRange === 'yesterday') {
-      setTimeRange(1);
-    }
-    if (selectedTimeRange === 'last-week') {
-      setTimeRange(2);
-    }
-    if (selectedTimeRange === 'last-month') {
-      setTimeRange(3);
-    }
+    setTimeRange(selectedTimeRange);
   };
 
+  const getTimeRangeValue = (selectedTimeRange: string) => {
+      switch (selectedTimeRange) {
+        case 'yesterday':
+          return 1;
+        case 'last-week':
+          return 2;
+        case 'last-month':
+          return 3;
+        default:
+          return 0;
+      }
+    }
   const handleSensorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const sensorId = event.target.value;
     const isChecked = event.target.checked;
@@ -185,17 +188,31 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
   const handleGenerateGraph = () => {
     if (selectedSensors.length > 0) {
       const generatedData: any[] = [];
+      const timeRangeValue = getTimeRangeValue(timeRange); // Get numerical value for sorting
+
       const finalSensors = () => {
-        if (timeRange === 1) {
+        if (timeRangeValue === 1) {
           return sensors.slice(sensors.length - 3, sensors.length - 1);
-        } else if (timeRange === 2 && dateList.length > 7) {
+        } else if (timeRangeValue === 2 && dateList.length > 7) {
           return sensors.slice(sensors.length - 8, sensors.length - 1);
-        } else if (timeRange === 3 && dateList.length > 31) {
+        } else if (timeRangeValue === 3 && dateList.length > 31) {
           return sensors.slice(sensors.length - 31, sensors.length - 1);
         } else {
           return sensors;
         }
       };
+      // Replace this with the desired date you want to find sensors for
+      const desiredDate = '2023-07-16';
+
+      // Find sensors with the same date
+      const sensorsWithSameDate = sensors.filter((sensor) => {
+        // Extract the date part from the date string
+        const sensorDate = new Date(sensor.date).toISOString().split('T')[0];
+        return sensorDate === desiredDate;
+      });
+      console.log("aaaaaaaaaaaaaaaaaa")
+      console.log(sensorsWithSameDate);
+
       for (const sensor of finalSensors()) {
         const selectedSensorData = sensor.data.filter((data) => selectedSensors.includes(data.label));
 
@@ -215,7 +232,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
 
   useEffect(() => {
     handleGenerateGraph();
-  }, [selectedSensors]);
+  }, [selectedSensors, timeRange]);
 
   if (!sensors || sensors.length === 0) {
     return null; // Return null or a fallback component when sensors is empty or undefined
@@ -252,7 +269,18 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
     for (const groupName in sensorGroups) {
       sensorGroups[groupName].sort((a, b) => sortSensorNames(a.label, b.label));
     }
-  
+    const handleLabelClick = (label: string) => {
+      setSelectedSensors((prevSelectedSensors) => {
+        if (prevSelectedSensors.includes(label)) {
+          // If the label is already in the selectedSensors array, remove it
+          return prevSelectedSensors.filter((sensorLabel) => sensorLabel !== label);
+        } else {
+          // If the label is not in the selectedSensors array, add it
+          return [...prevSelectedSensors, label];
+        }
+      });
+    };
+    
     // Generate the JSX for grouped sensors
     const sensorList : JSX.Element[] = [];
     for (const groupName in sensorGroups) {
@@ -268,7 +296,9 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
                 checked={selectedSensors.includes(sensor.label)}
                 onChange={handleSensorChange}
               />
-              <label htmlFor={sensor.id}>{sensor.label}</label>
+              <label htmlFor={sensor.id} onClick={() => handleLabelClick(sensor.label)}>
+                {sensor.label}
+              </label>
             </div>
           ))}
         </div>
