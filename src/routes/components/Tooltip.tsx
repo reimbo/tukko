@@ -8,6 +8,7 @@ import { Marker } from "leaflet";
 import { Tooltip } from "react-leaflet";
 import { useTranslation } from "react-i18next";
 import redis from "../scripts/fetchRedis";
+import Close from "./Close.tsx";
 
 declare global {
   interface String {
@@ -70,6 +71,7 @@ export default function StationTooltip({
           },
         }))()}
       >
+        <Close marker={marker} parent="tooltip"/>
         <h1 className={styles["place-name"]}>
           {newStation.names[i18n.language as keyof Station["names"]]}
         </h1>
@@ -140,11 +142,11 @@ export default function StationTooltip({
           </div>
         </div>
         {direction ? 
-          <DirectionPopup station={newStation} direction={direction} />
+          <DirectionPopup station={newStation} direction={direction} marker={marker}/>
         : ""}
         {newStation.roadworks && newStation.roadworks.length !== 0 && (
           <div className={styles["roadwork-div"]}>
-            <h3>{t("title", {ns:"roadworks"})}:</h3>
+            <h3>{t("title", {ns:"roadworks"})}: </h3>
             {station.roadworks?.map((roadwork) => (
               <ul key={roadwork.id}>
                 <p style={{marginTop:0,marginBottom:'1.33em'}}>

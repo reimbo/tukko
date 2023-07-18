@@ -10,7 +10,9 @@
   overflow-x: hidden;
   overflow-y: scroll;
   white-space: normal;
+  cursor: default;
 }
+
 
 body:global(.dark) .tooltip {
   background-color: rgba(0, 0, 0, 0.6);
@@ -32,10 +34,13 @@ body:global(.dark) .tooltip {
 }
 
 .grid-item {
+  background-color: rgba(0, 0, 0, 0.05);
   padding: 20px;
   text-align: center;
   width: 90px;
   height: 90px;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .grid-item img {
@@ -69,8 +74,12 @@ body:global(.dark) .tooltip {
 }
 
 .roadwork-div {
+    margin-top: 0.5rem;
+    position: relative;
     font-size: 14px;
-    padding-left: 0px;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid black;
 }
 
 .roadwork-div ul {
