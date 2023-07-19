@@ -14,6 +14,7 @@ export default function Close({marker, parent}:{marker: Marker, parent: "tooltip
       margin: parent === 'tooltip' ? '-6px 0 0 -6px' : '',
       top: parent === 'tooltip' ? '-6px' : '0',
       right: parent === 'popup' ? '0' : '',
+      zIndex: '1',
       color: 'white',
       backgroundColor: hover ? 'rgb(200, 0, 0)' : 'black',
       padding: '3px',
