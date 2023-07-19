@@ -9,21 +9,19 @@ export default function Close({marker, parent}:{marker: Marker, parent: "tooltip
   
   const style = {
     close: {
-      position: 'absolute',
       display: 'flex',
+      position: parent === 'tooltip' ? 'sticky' : 'absolute',
+      margin: parent === 'tooltip' ? '-6px 0 0 -6px' : '',
+      top: parent === 'tooltip' ? '-6px' : '0',
+      right: parent === 'popup' ? '0' : '',
       color: 'white',
       backgroundColor: hover ? 'rgb(200, 0, 0)' : 'black',
-      top: '-1px',
-      right: '-1px',
       padding: '3px',
       cursor: 'pointer',
       width: '16px',
       height: '16px',
-      aspectRatio: '1 / 1',
-      borderRadius: '0 3px 0 0',
-      hover: {
-        backgroundColor: 'rgb(200, 0, 0)'
-      },
+      border: '1px solid black',
+      borderRadius: parent === 'tooltip' ? '3px 0 0 0' : '0 3px 0 0',
       svg: {
         display: 'flex',
         width: '100%',

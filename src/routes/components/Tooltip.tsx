@@ -59,7 +59,6 @@ export default function StationTooltip({
   if (newStation === undefined) return <p>Loading</p>;
   else
     return (<>
-      
       <Tooltip
         className={styles.tooltip}
         permanent
