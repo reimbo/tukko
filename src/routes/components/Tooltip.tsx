@@ -58,7 +58,8 @@ export default function StationTooltip({
 
   if (newStation === undefined) return <p>Loading</p>;
   else
-    return (
+    return (<>
+      
       <Tooltip
         className={styles.tooltip}
         permanent
@@ -144,9 +145,7 @@ export default function StationTooltip({
             </div>
           </div>
         </div>
-        {direction ? 
-          <DirectionPopup station={newStation} direction={direction} marker={marker}/>
-        : ""}
+
         {newStation.roadworks && newStation.roadworks.length !== 0 && (
           <div className={styles["roadwork-div"]}>
             <h3>{t("title", {ns:"roadworks"})}: </h3>
@@ -173,5 +172,8 @@ export default function StationTooltip({
           </div>
         )}
       </Tooltip>
+
+      <DirectionPopup station={newStation} direction={direction} marker={marker}/>
+      </>
     );
 }
