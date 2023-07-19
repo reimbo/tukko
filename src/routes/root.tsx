@@ -49,10 +49,10 @@ export default function Root(): JSX.Element {
         <Suspense>
           <FeedbackForm />
           <MapLayers />
+          <div className="langContainer">
+            <LangToggle />
+          </div>
         </Suspense>
-        <div className="langContainer">
-          <LangToggle />
-        </div>
       </MapContainer>
     </Fragment>
   );
