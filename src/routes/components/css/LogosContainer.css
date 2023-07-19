@@ -20,3 +20,23 @@
     height: auto;
     margin-bottom: 13px;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .logosContainer {
+        bottom: 32px;
+        right: 10px;
+      }
+
+    .wimmaLabLogo {
+      width: 40px;
+      height: auto;
+    }
+  
+    .iotitudeLogo {
+      width: 70px;
+      height: auto;
+      margin-bottom: 13px;
+    }
+  
+  }
