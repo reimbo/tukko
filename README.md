@@ -29,7 +29,7 @@
 
 # Tukko
 
-Tukko ([*"clog"*](https://en.wiktionary.org/wiki/tukko)) is a traffic visualizer web application build with [React](https://react.dev/)
+Tukko ([*"clog"*](https://en.wiktionary.org/wiki/tukko)) is a traffic visualizer web application built with [React](https://react.dev/)
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)[![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)[![Expess.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
