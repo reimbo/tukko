@@ -1,7 +1,8 @@
 import { MapContainer, TileLayer } from "react-leaflet";
+import { Map } from "leaflet";
 import "./leaflet.css";
 import "./root.css";
-import { Fragment, Suspense } from "react";
+import { Fragment, Suspense, useRef } from "react";
 
 // Components
 import Geoman from "./components/Geoman";
@@ -10,7 +11,6 @@ import { DarkModeToggle } from "./components/DarkModeToggle";
 import { MapLayers } from "./components/MapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { LogosContainer } from "./components/LogosContainer";
-
 import { LangToggle } from "./components/LangSelect";
 
 function MapPlaceholder(): JSX.Element {
@@ -23,6 +23,19 @@ function MapPlaceholder(): JSX.Element {
 }
 
 export default function Root(): JSX.Element {
+const mapRef = useRef<Map | null>(null);
+
+  window.addEventListener("touchstart", (e) => {
+    if (!mapRef.current) return
+    const pane: HTMLDivElement | null = document.querySelector('.leaflet-tooltip-pane')
+    if (pane && pane.contains((e.target as HTMLElement))) mapRef.current.dragging.disable()
+  })
+
+  window.addEventListener("touchend", () => {
+    if (!mapRef.current) return
+    if (!mapRef.current.dragging.enabled()) mapRef.current.dragging.enable()
+  })
+
   return (
     <Fragment>
       <h1 id="overlay-title" className="overlay-title">
@@ -39,12 +52,12 @@ export default function Root(): JSX.Element {
         maxZoom={17}
         placeholder={<MapPlaceholder />}
         doubleClickZoom={false}
+        ref={mapRef}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a target="_blank" href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/80-Documents-and-reporting/gdpr-statement/">GDPR</a> | <a target="_blank" href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/80-Documents-and-reporting/user-guide/">User Guide for Tukko</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
         <Geoman />
         <DarkModeToggle />
         <Suspense>
