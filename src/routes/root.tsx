@@ -38,6 +38,7 @@ export default function Root(): JSX.Element {
         minZoom={7}
         maxZoom={17}
         placeholder={<MapPlaceholder />}
+        doubleClickZoom={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a target="_blank" href="https://wimma-lab-2023.pages.labranet.jamk.fi/iotitude/core-traffic-visualizer/80-Documents-and-reporting/gdpr-statement/">GDPR</a>'
