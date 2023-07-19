@@ -190,7 +190,15 @@ function Geoman() {
   });
 
   map.on("pm:globaldrawmodetoggled", (e) => {
-    if (e.enabled) map.pm.getGeomanDrawLayers()[0].remove() && map.fire("pm:remove")
+    if (e.enabled && map.pm.getGeomanDrawLayers().length > 0) map.pm.getGeomanDrawLayers()[0].remove() && 
+      map.fire("pm:remove")
+  })
+
+  map.on("pm:globalremovalmodetoggled", (e) => {
+    if (e.enabled)
+      map.pm.disableGlobalRemovalMode()
+    if (map.pm.getGeomanDrawLayers().length > 0) 
+      map.pm.getGeomanDrawLayers()[0].remove() && map.fire("pm:remove")
   })
 
   return null;
