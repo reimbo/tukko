@@ -5,6 +5,7 @@ import { fetchStation } from '../scripts/dataFetch';
 import { StationContext, Context } from '../../context/StationContext';
 import Close from './Close';
 import { useTranslation } from 'react-i18next';
+import { Station as S } from '../../interfaces/Interfaces';
 
 interface Sensor {
   id?: number;
@@ -124,12 +125,13 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   }, [dateList, separatedData]);
 
   return (
-    <Modal onClose={() => updateStation('0')} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+    <Modal onClose={() => updateStation(null)} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
   );
 };
 
 const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateList, chartData }) => {
-  const { t } = useTranslation(['modal'])
+  const { station } = useContext(StationContext) as Context
+  const { t, i18n } = useTranslation(['modal'])
   const [timeRange, setTimeRange] = useState<string>('');
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
@@ -233,36 +235,8 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
     return null; // Return null or a fallback component when sensors is empty or undefined
   }
   
-  const sortSensorNames = (a : string, b : string) => {
-    const prefixOrder = ['OHITUKSET', 'KESKINOPEUS'];
-    const [prefixA, suffixA] = a.split('_');
-    const [prefixB, suffixB] = b.split('_');
-  
-    if (prefixA !== prefixB) {
-      return prefixOrder.indexOf(prefixA) - prefixOrder.indexOf(prefixB);
-    } else if (suffixA && suffixB) {
-      return suffixA.localeCompare(suffixB);
-    } else {
-      return a.localeCompare(b);
-    }
-  };
-  
   const modalSensorList = (): JSX.Element[] => {
-    const sensorGroups : Record<string, SensorOption[]> = {};
   
-    // Group sensors based on their categories
-    for (const sensor of sensors[0].data) {
-      const groupName = sensor.label.split('_')[0]; // Extract the prefix from the sensor label
-      if (!sensorGroups[groupName]) {
-        sensorGroups[groupName] = [];
-      }
-      sensorGroups[groupName].push(sensor);
-    }
-  
-    // Sort the sensors within each group
-    for (const groupName in sensorGroups) {
-      sensorGroups[groupName].sort((a, b) => sortSensorNames(a.label, b.label));
-    }
     const handleLabelClick = (label: string) => {
       setSelectedSensors((prevSelectedSensors) => {
         if (prevSelectedSensors.includes(label)) {
@@ -275,12 +249,22 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
       });
     };
     
+    const sensorGroups: SensorOption[][] = [[],[]]
+
+    for (const sensor of sensors[0].data) {
+      sensor.label.slice(-1) === "1" 
+        ? sensorGroups[0].push(sensor)
+        : sensorGroups[1].push(sensor)
+    }
+
     // Generate the JSX for grouped sensors
     const sensorList : JSX.Element[] = [];
     for (const groupName in sensorGroups) {
       sensorList.push(
         <div className='sensor-groups' key={groupName}>
-          <h3>{groupName}</h3>
+          <h3>{i18n.language === "en" ? "Direction: " : "Suunta: "}
+            {station[(`direction${parseInt(groupName)+1}Municipality` as keyof S)]}
+          </h3>
           {sensorGroups[groupName].map((sensor: SensorOption, index: number) => (
             <div key={index}>
               <input
@@ -338,7 +322,7 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
             <option value="last-month">Last Month</option>
           </select>
         </div>
-        <h3 className='station-name'>{stationName}</h3>
+        <h3 className='station-name'>{station.names[i18n.language as keyof S["names"]]}</h3>
         <div className='modal-sensor-list'>
           {modalSensorList()}
         </div>

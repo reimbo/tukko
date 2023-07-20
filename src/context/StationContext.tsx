@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { Station } from '../interfaces/Interfaces';
 
 export interface Context {
-  station: string;
-  updateStation: (id: string) => void;
+  station: Station | null;
+  updateStation: (station: Station | null) => void;
 }
 
 type Props = {
@@ -12,9 +13,9 @@ type Props = {
 export const StationContext = React.createContext<Context | null>(null)
 
 const Provider: React.FC<Props> = ({ children }: {children: React.ReactNode}): JSX.Element => {
-  const [station, setStation] = React.useState<string>('0')
+  const [station, setStation] = React.useState<Station|null>(null)
 
-  const updateStation = (id: string) => setStation(id)
+  const updateStation = (station: Station | null) => setStation(station)
 
   return (
     <StationContext.Provider value={{station, updateStation}}>

@@ -40,7 +40,7 @@ export default function Close({marker, parent}:{marker?: Marker, parent: "toolti
     onClick={() => 
       parent === "tooltip" && marker ? marker.closeTooltip() :
       parent === "popup" && marker ? marker.closePopup() :
-      updateStation("0")}>
+      updateStation(null)}>
     <FontAwesomeIcon style={style.close.svg} icon={faX} />
   </span>
 }

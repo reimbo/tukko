@@ -20,7 +20,7 @@
   border-radius: 3px;
   overflow: auto;
   width: 85%;
-  height: 85%;
+  max-height: 85%;
 }
 
 .modal-content h2 {

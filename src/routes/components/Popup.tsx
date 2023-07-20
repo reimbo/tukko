@@ -34,7 +34,7 @@ export default function DirectionPopup({ station, direction, marker }: { station
       <Close marker={marker} parent="popup" />
       <h3 className={styles.placename}>{station.names[(i18n.language as keyof Station['names'])]}</h3>
       <ul className={styles.list}>
-        <button type="button" onClick={() => updateStation(station.id.toString())}>Open historical data</button>
+        <button type="button" onClick={() => updateStation(station)}>Open historical data</button>
         {station.sensors?.map((sensor) => {
           // Digitraffic lists all its relative units as '***', I assume for compatibility?
           const unit = sensor.unit === "***" ? "%" : sensor.unit
