@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './css/Modal.css';
 import { fetchStation } from '../scripts/dataFetch';
+import { StationContext, Context } from '../../context/StationContext';
 
 interface Sensor {
   id?: number;
@@ -52,14 +53,13 @@ const generateRandomId = (): string => {
 };
 
 const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
-  const [showModal, setShowModal] = useState(false);
+  const { updateStation } = useContext(StationContext) as Context
   const [stations, setStations] = useState<Station[]>([]);
   const [sensors, setSensors] = useState<StationData[]>([]);
   const [chartData, setChartData] = useState<StationData[] | null>(null);
   const [dateList, setDateList] = useState<string[]>([]);
   const [separatedData, setSeparatedData] = useState<Record<string, Station[]>>({});
   const [stationName, setStationName] = useState<string>(`Station ${targetID} data is not available`);
-  const [isFetched, setIsFetched] = useState<boolean>(false);
   const stationID = targetID.toString();
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +68,6 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 
         if (fetchedData && fetchedData.length > 0) {
           const stationData = fetchedData.flatMap((data) => data.stations);
-          setIsFetched(true);
           setStationName(stationData[0].name);
           setStations(stationData);
         } else {
@@ -122,27 +121,8 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
     setSensors(filteredSensors);
   }, [dateList, separatedData]);
 
-  const openModal = () => {
-    if(isFetched)
-    {
-      setShowModal(true);
-    }
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
   return (
-    <div className="modal">
-      <h2> {stationName} <br/> Traffic Dashboard</h2>
-      <button className='modal-show-btn' onClick={openModal}>Show Dashboard</button>
-      {!isFetched && <p>There is currently no data available for this station. Please switch to other stations</p>}
-      {showModal && (
-        <Modal onClose={closeModal} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
-
-      )}
-    </div>
+    <Modal onClose={() => updateStation('0')} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
   );
 };
 
@@ -341,7 +321,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
     '#c7c7c7'  // Light gray
   ];
   return (
-    <div className="modal-data-container">
+    <dialog className="modal-data-container">
       <div className="modal-content">
         <h2>Traffic Visualizer Dashboard</h2>
         <div className='time-range'>
@@ -389,7 +369,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
         )}
       </div>
       </div>
-    </div>
+    </dialog>
   );
 };
 export default ModalData;
