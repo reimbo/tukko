@@ -2,7 +2,8 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { Map } from "leaflet";
 import "./leaflet.css";
 import "./root.css";
-import { Fragment, Suspense, useRef } from "react";
+import { Fragment, Suspense, useContext, useRef } from "react";
+import { StationContext, Context} from "../context/StationContext";
 
 // Components
 import Geoman from "./components/Geoman";
@@ -12,6 +13,7 @@ import { MapLayers } from "./components/MapLayers";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { LogosContainer } from "./components/LogosContainer";
 import { LangToggle } from "./components/LangSelect";
+import ModalData from "./components/ModalData";
 
 function MapPlaceholder(): JSX.Element {
   return (
@@ -23,7 +25,8 @@ function MapPlaceholder(): JSX.Element {
 }
 
 export default function Root(): JSX.Element {
-const mapRef = useRef<Map | null>(null);
+  const { station } = useContext(StationContext) as Context
+  const mapRef = useRef<Map | null>(null);
 
   window.addEventListener("touchstart", (e) => {
     if (!mapRef.current) return
@@ -68,6 +71,7 @@ const mapRef = useRef<Map | null>(null);
           </div>
         </Suspense>
       </MapContainer>
+      {station !== "0" && <ModalData targetID={station} />}
     </Fragment>
   );
 }

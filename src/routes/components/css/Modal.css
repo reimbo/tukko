@@ -1,52 +1,25 @@
-/* Common Styles */
-.modal-show-btn,
-.modal-data-container,
-.modal-content,
-.modal-content h2,
-.modal-sensor-list,
-.modal-btn-group,
-.modal-content button {
-  border: oldlace;
-  color: bisque;
-}
-
-.modal-show-btn {
-  border-style: double;
-}
-
 .modal-data-container {
   position: fixed;
+  display: grid;
   top: 0;
   left: 0;
-  display: flex;
-  width: 86vw;
-  height: 96vh;
-  max-height: 98vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
   z-index: 9999;
+  border: none;
   align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  justify-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
+  display: block;
   background-color: #fff;
   padding: 1rem;
-  border-style: double;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(185, 121, 32, 0.396);
   overflow: auto;
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 85vw;
-  height: 95vh;
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+  width: 85%;
+  height: 85%;
 }
 
 .modal-content h2 {
@@ -151,11 +124,6 @@
   color: bisque;
 }
 
-.modal-data-container,
-.modal-content {
-  border: oldlace;
-  border-style: double;
-}
 .modal-content button,
 .modal-show-btn {
   color: bisque;

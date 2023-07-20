@@ -1,8 +1,9 @@
+import { useContext } from 'react'
+import { StationContext, Context } from '../../context/StationContext';
 import { Popup } from "react-leaflet"
 import { Station } from "../../interfaces/Interfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
-import ModalData from "./ModalData";
 import Close from "./Close";
 import { Marker } from "leaflet";
 
@@ -25,6 +26,7 @@ const sensors2 = new Set([
 ])
 
 export default function DirectionPopup({ station, direction, marker }: { station: Station, direction: number | null, marker: Marker }): JSX.Element {
+  const { updateStation } = useContext(StationContext) as Context
   const { t, i18n } = useTranslation(['sensors', 'units'])
     return (<>
     {direction ? 
@@ -32,7 +34,7 @@ export default function DirectionPopup({ station, direction, marker }: { station
       <Close marker={marker} parent="popup" />
       <h3 className={styles.placename}>{station.names[(i18n.language as keyof Station['names'])]}</h3>
       <ul className={styles.list}>
-        <ModalData targetID={station.id.toString()}/>
+        <button type="button" onClick={() => updateStation(station.id.toString())}>Open historical data</button>
         {station.sensors?.map((sensor) => {
           // Digitraffic lists all its relative units as '***', I assume for compatibility?
           const unit = sensor.unit === "***" ? "%" : sensor.unit
