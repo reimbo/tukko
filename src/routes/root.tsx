@@ -71,7 +71,9 @@ export default function Root(): JSX.Element {
           </div>
         </Suspense>
       </MapContainer>
-      {station !== "0" && <ModalData targetID={station} />}
+      <Suspense>
+        {station !== "0" && <ModalData targetID={station} />}
+      </Suspense>
     </Fragment>
   );
 }

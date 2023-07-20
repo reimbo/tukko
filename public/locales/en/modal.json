@@ -1,0 +1,8 @@
+{ 
+  "OHITUKSET_60MIN_KIINTEA_SUUNTA1": "Vehicle count",
+  "OHITUKSET_60MIN_KIINTEA_SUUNTA2": "Vehicle count",
+  "KESKINOPEUS_60MIN_KIINTEA_SUUNTA1": "Average speed",
+  "KESKINOPEUS_60MIN_KIINTEA_SUUNTA2": "Average speed",
+  "OHITUKSET_60MIN_KIINTEA_SUUNTA1_MS1": "Vehicle count relative to capacity",
+  "OHITUKSET_60MIN_KIINTEA_SUUNTA2_MS2": "vehicle count relative to capacity"
+}
