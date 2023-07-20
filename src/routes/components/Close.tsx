@@ -1,11 +1,13 @@
 import { Marker } from "leaflet";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { StationContext, Context } from "../../context/StationContext";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-export default function Close({marker, parent}:{marker: Marker, parent: "tooltip" | "popup"}): JSX.Element {
+export default function Close({marker, parent}:{marker?: Marker, parent: "tooltip" | "popup" | "dashboard"}): JSX.Element {
   const [hover, setHover] = useState<boolean>(false)
+  const { updateStation } = useContext(StationContext) as Context
   
   const style = {
     close: {
@@ -13,7 +15,7 @@ export default function Close({marker, parent}:{marker: Marker, parent: "tooltip
       position: parent === 'tooltip' ? 'sticky' : 'absolute',
       margin: parent === 'tooltip' ? '-6px 0 0 -6px' : '',
       top: parent === 'tooltip' ? '-6px' : '0',
-      right: parent === 'popup' ? '0' : '',
+      right: parent === 'tooltip' ? '' : '0',
       zIndex: '1',
       color: 'white',
       backgroundColor: hover ? 'rgb(200, 0, 0)' : 'black',
@@ -35,7 +37,10 @@ export default function Close({marker, parent}:{marker: Marker, parent: "tooltip
   return <span style={style.close} 
     onMouseEnter={() => setHover(true)} 
     onMouseLeave={() => setHover(false)} 
-    onClick={() => parent === "tooltip" ? marker.closeTooltip() : marker.closePopup()}>
+    onClick={() => 
+      parent === "tooltip" && marker ? marker.closeTooltip() :
+      parent === "popup" && marker ? marker.closePopup() :
+      updateStation("0")}>
     <FontAwesomeIcon style={style.close.svg} icon={faX} />
   </span>
 }

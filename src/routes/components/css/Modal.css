@@ -13,10 +13,11 @@
 }
 
 .modal-content {
+  position: relative;
   display: block;
   background-color: #fff;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 3px;
   overflow: auto;
   width: 85%;
   height: 85%;
