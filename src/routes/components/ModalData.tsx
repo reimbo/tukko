@@ -4,6 +4,7 @@ import './css/Modal.css';
 import { fetchStation } from '../scripts/dataFetch';
 import { StationContext, Context } from '../../context/StationContext';
 import Close from './Close';
+import { useTranslation } from 'react-i18next';
 
 interface Sensor {
   id?: number;
@@ -128,6 +129,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
 };
 
 const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateList, chartData }) => {
+  const { t } = useTranslation(['modal'])
   const [timeRange, setTimeRange] = useState<string>('');
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
@@ -289,7 +291,7 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
                 onChange={handleSensorChange}
               />
               <label htmlFor={sensor.id} onClick={() => handleLabelClick(sensor.label)}>
-                {sensor.label}
+                {t(sensor.label, {ns: 'modal'})}
               </label>
             </div>
           ))}
@@ -355,7 +357,7 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
                   key={sensorId}
                   type="monotone"
                   dataKey={sensorId}
-                  name={sensorId}
+                  name={t(sensorId, {ns:'modal'})}
                   stroke={lineColors[index % lineColors.length]}
                   strokeWidth={2}
                 />
