@@ -129,7 +129,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   );
 };
 
-const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateList, chartData }) => {
+const Modal: React.FC<ModalProps> = ({ sensors, setChartData, dateList, chartData }) => {
   const { station } = useContext(StationContext) as Context
   const { t, i18n } = useTranslation(['modal'])
   const [timeRange, setTimeRange] = useState<string>('');
@@ -262,8 +262,9 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
     for (const groupName in sensorGroups) {
       sensorList.push(
         <div className='sensor-groups' key={groupName}>
-          <h3>{i18n.language === "en" ? "Direction: " : "Suunta: "}
-            {station[(`direction${parseInt(groupName)+1}Municipality` as keyof S)]}
+          <h3>
+            {i18n.language === "en" ? "Direction: " : "Suunta: "}
+            {station ? station[(`direction${parseInt(groupName)+1}Municipality` as keyof S)]?.toString() : null}
           </h3>
           {sensorGroups[groupName].map((sensor: SensorOption, index: number) => (
             <div key={index}>
@@ -322,7 +323,7 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
             <option value="last-month">Last Month</option>
           </select>
         </div>
-        <h3 className='station-name'>{station.names[i18n.language as keyof S["names"]]}</h3>
+        <h3 className='station-name'>{station ? station.names[i18n.language as keyof S["names"]]?.toString() : null}</h3>
         <div className='modal-sensor-list'>
           {modalSensorList()}
         </div>
