@@ -3,6 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import './css/Modal.css';
 import { fetchStation } from '../scripts/dataFetch';
 import { StationContext, Context } from '../../context/StationContext';
+import Close from './Close';
 
 interface Sensor {
   id?: number;
@@ -126,7 +127,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   );
 };
 
-const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartData, dateList, chartData }) => {
+const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateList, chartData }) => {
   const [timeRange, setTimeRange] = useState<string>('');
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
@@ -323,6 +324,7 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
   return (
     <dialog className="modal-data-container">
       <div className="modal-content">
+      <Close parent='dashboard'/>
         <h2>Traffic Visualizer Dashboard</h2>
         <div className='time-range'>
           <label htmlFor="time-range-select">Time Range:</label>
@@ -337,10 +339,6 @@ const Modal: React.FC<ModalProps> = ({ onClose,stationName, sensors, setChartDat
         <h3 className='station-name'>{stationName}</h3>
         <div className='modal-sensor-list'>
           {modalSensorList()}
-        </div>
-        <div className='modal-btn-group'>
-          {/* <button onClick={handleGenerateGraph}>Generate Graph</button> */}
-          <button onClick={onClose}>Close</button>
         </div>
         
         <div className="graph-container">
