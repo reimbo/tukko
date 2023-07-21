@@ -39,7 +39,7 @@ export default function DirectionPopup({ station, direction, marker }: { station
           marker.closePopup()
           marker.closeTooltip()
         }}>
-          Open historical data
+          {i18n.language === "fi" ? "Avaa Historia Data" : "Open Historical Data"}
         </button>
         {station.sensors?.map((sensor) => {
           // Digitraffic lists all its relative units as '***', I assume for compatibility?
