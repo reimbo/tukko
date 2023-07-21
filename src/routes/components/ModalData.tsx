@@ -321,13 +321,13 @@ const Modal: React.FC<ModalProps> = ({ sensors, setChartData, dateList, chartDat
         <h3 className='station-name'>{station ? station.names[i18n.language as keyof S["names"]]?.toString() : null}</h3>
         <div className='modal-sensor-list'>
           <div className='time-range'>
-            <label htmlFor="time-range-select">Time Range:</label>
+            <label htmlFor="time-range-select">{t("range")}</label>
             <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
-              <option value="">Select Time Range</option>
-              <option value="today">Today</option>
-              <option value="yesterday">Yesterday</option>
-              <option value="last-week">Last Week</option>
-              <option value="last-month">Last Month</option>
+              <option value="">{t("selrange")}</option>
+              <option value="today">{t("t")}</option>
+              <option value="yesterday">{t("y")}</option>
+              <option value="last-week">{t("lw")}</option>
+              <option value="last-month">{t("lm")}</option>
             </select>
           </div>
           {modalSensorList()}
@@ -355,7 +355,7 @@ const Modal: React.FC<ModalProps> = ({ sensors, setChartData, dateList, chartDat
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <p>Waiting for User query</p>
+          <p>{t("waiting")}</p>
         )}
       </div>
       </div>

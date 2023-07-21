@@ -4,5 +4,12 @@
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA1": "Keskinopeus",
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA2": "Keskinopeus",
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1_MS1": "Ajoneuvo määrä suhteessa kapasiteettiin",
-  "OHITUKSET_60MIN_KIINTEA_SUUNTA2_MS2": "Ajoneuvo määrä suhteessa kapasiteettiin"
+  "OHITUKSET_60MIN_KIINTEA_SUUNTA2_MS2": "Ajoneuvo määrä suhteessa kapasiteettiin",
+  "range": "Ajanjakso:",
+  "t": "Tänään",
+  "y": "Eilen",
+  "lw": "Viimeinen viikko",
+  "lm": "Viimeinen kuukausi",
+  "selrange": "Valitse ajanjakso",
+  "waiting": "Odotetaan valintaa"
 }
