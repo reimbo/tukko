@@ -74,6 +74,7 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
           setStationName(stationData[0].name);
           setStations(stationData);
         } else {
+          updateStation(null)
           console.error('Empty or undefined data received from the API.');
         }
       } catch (error) {
