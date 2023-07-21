@@ -14,6 +14,16 @@
   padding: 0.4rem;
 }
 
+.list > button {
+  background-color: #020202;
+  width:100%
+}
+
+.list > .warning {
+  background-color: #2f0202;
+  border: 2px red solid;
+}
+
 .list > h3 {
   padding: 0;
   margin: 0;
@@ -27,6 +37,7 @@
 .wrapper > div:last-child {
   visibility: hidden;
 }
+
 
 @media only screen and (max-width: 600px) {
   .wrapper{

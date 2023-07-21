@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Close({marker, parent}:{marker?: Marker, parent: "tooltip" | "popup" | "dashboard"}): JSX.Element {
   const [hover, setHover] = useState<boolean>(false)
-  const { updateStation } = useContext(StationContext) as Context
+  const { updateStation, stationError, updateError } = useContext(StationContext) as Context
   
   const style = {
     close: {
@@ -37,10 +37,13 @@ export default function Close({marker, parent}:{marker?: Marker, parent: "toolti
   return <span style={style.close} 
     onMouseEnter={() => setHover(true)} 
     onMouseLeave={() => setHover(false)} 
-    onClick={() => 
-      parent === "tooltip" && marker ? marker.closeTooltip() :
+    onClick={() => {
+      (parent === "tooltip" && marker ? marker.closeTooltip() :
       parent === "popup" && marker ? marker.closePopup() :
-      updateStation(null)}>
+      updateStation(null));
+      if (stationError) updateError(false)
+    }}
+  >
     <FontAwesomeIcon style={style.close.svg} icon={faX} />
   </span>
 }

@@ -1,6 +1,7 @@
 import { Marker, useMap } from "react-leaflet";
+import { StationContext, Context } from "../../context/StationContext";
 import { Station } from "../../interfaces/Interfaces";
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useContext } from "react";
 import { getSwgImage } from "./MarkerIcon";
 
 // Components
@@ -20,6 +21,7 @@ export function MarkerContent({
     null | number | undefined
   >(null);
   const [marker, setMarker] = useState<null | M>(null);
+  const { updateMarker, stationError, updateError } = useContext(StationContext) as Context
   const map = useMap()
 
   if (
@@ -36,8 +38,9 @@ export function MarkerContent({
             const m = e.target as M;
             setSelectedStation(station.id);
             setMarker(m);
+            updateMarker(m)
             setShowTooltip(true);
-            m.openTooltip();
+            m.openTooltip ();
           },
           tooltipclose: (e) => {
             const m = e.target as M;
@@ -50,6 +53,7 @@ export function MarkerContent({
           },
           popupopen: (e) => {
             const m = e.target as M;
+            m.getTooltip()?.setOpacity(0)
             m.closeTooltip();
           },
           popupclose: (e) => {
@@ -59,7 +63,9 @@ export function MarkerContent({
               setMarker(null);
               setShowTooltip(false);
             }
+            m.getTooltip()?.setOpacity(0)
             if (!map.scrollWheelZoom.enabled()) map.scrollWheelZoom.enable()
+            if (stationError) updateError(false)
           },
           mouseover: (e) => {
             const markerElement = e.target.getElement();
@@ -101,7 +107,9 @@ export function MarkerContent({
       >
         {showTooltip && station.id === selectedStation && marker && (
           <Suspense>
-            <StationTooltip station={station} marker={marker} 
+            <StationTooltip 
+              station={station} 
+              marker={marker} 
               empty={station.sensors?.length === 0}
             />
           </Suspense>

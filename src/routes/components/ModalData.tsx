@@ -56,7 +56,7 @@ const generateRandomId = (): string => {
 };
 
 const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
-  const { updateStation } = useContext(StationContext) as Context
+  const { updateStation, marker, updateError } = useContext(StationContext) as Context
   const [stations, setStations] = useState<Station[]>([]);
   const [sensors, setSensors] = useState<StationData[]>([]);
   const [chartData, setChartData] = useState<StationData[] | null>(null);
@@ -73,8 +73,13 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
           const stationData = fetchedData.flatMap((data) => data.stations);
           setStationName(stationData[0].name);
           setStations(stationData);
+          if (marker) {
+            marker.closePopup()
+            marker.closeTooltip()
+          }
         } else {
           updateStation(null)
+          updateError(true)
           console.error('Empty or undefined data received from the API.');
         }
       } catch (error) {
