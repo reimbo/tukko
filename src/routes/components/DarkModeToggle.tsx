@@ -4,7 +4,6 @@ import Toggle from "react-toggle";
 import { useMediaQuery } from "react-responsive";
 import "react-toggle/style.css";
 import "./css/DarkModeToggle.css";
-import { Fragment } from "react";
 
 // Imports icon assets
 import sunIcon from "../../assets/toggleIcons/sun.svg";
