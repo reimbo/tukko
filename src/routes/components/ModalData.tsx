@@ -312,19 +312,18 @@ const Modal: React.FC<ModalProps> = ({ sensors, setChartData, dateList, chartDat
     <dialog className="modal-data-container">
       <div className="modal-content">
       <Close parent='dashboard'/>
-        <h2>Traffic Visualizer Dashboard</h2>
-        <div className='time-range'>
-          <label htmlFor="time-range-select">Time Range:</label>
-          <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
-            <option value="">Select Time Range</option>
-            <option value="today">Today</option>
-            <option value="yesterday">Yesterday</option>
-            <option value="last-week">Last Week</option>
-            <option value="last-month">Last Month</option>
-          </select>
-        </div>
         <h3 className='station-name'>{station ? station.names[i18n.language as keyof S["names"]]?.toString() : null}</h3>
         <div className='modal-sensor-list'>
+          <div className='time-range'>
+            <label htmlFor="time-range-select">Time Range:</label>
+            <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
+              <option value="">Select Time Range</option>
+              <option value="today">Today</option>
+              <option value="yesterday">Yesterday</option>
+              <option value="last-week">Last Week</option>
+              <option value="last-month">Last Month</option>
+            </select>
+          </div>
           {modalSensorList()}
         </div>
         
