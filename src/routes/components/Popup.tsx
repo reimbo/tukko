@@ -5,6 +5,7 @@ import { Station } from "../../interfaces/Interfaces";
 import { useTranslation } from "react-i18next";
 import styles from "./css/mapLayers.module.css";
 import Close from "./Close";
+import Back from "./Back"
 import { Marker } from "leaflet";
 
 const sensors1 = new Set([
@@ -31,6 +32,7 @@ export default function DirectionPopup({ station, direction, marker }: { station
     return (<>
     {direction ? 
     <Popup offset={[0, 0]} maxWidth={276} autoPanPadding={[100, 100]} closeButton={false} className={styles.wrapper}>
+      <Back marker={marker} />
       <Close marker={marker} parent="popup" />
       <h3 className={styles.placename}>{station.names[(i18n.language as keyof Station['names'])]}</h3>
       <ul className={styles.list}>
