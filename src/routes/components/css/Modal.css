@@ -195,7 +195,7 @@
     margin-top: 1rem;
   }
   .sensor-groups {
-    font-size: 2vw;
+    font-size: 0.6rem;
   }
   .sensor-groups h3 {
     width: 100%;
@@ -211,6 +211,7 @@
   .time-range {
     width: 100%;
     align-items: center;
+    flex-direction: row;
   }
   .time-range > * {
     width: 50%;
