@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useMap } from "react-leaflet";
 import Toggle from "react-toggle";
 import { useMediaQuery } from "react-responsive";
 import "react-toggle/style.css";
@@ -30,8 +31,14 @@ export const DarkModeToggle = () => {
     (isSystemDark) => setIsDark(isSystemDark)
   );
 
+  const map = useMap()
+
   return (
-    <Fragment>
+    <div
+        id="toggleContainer"
+        onMouseEnter={() => map.dragging.disable() && map.scrollWheelZoom.disable()}
+        onMouseLeave={() => map.dragging.enable() && map.scrollWheelZoom.enable()}
+    >
       <Toggle
         className="Toggle"
         // Updates "isDark" state on click
@@ -47,6 +54,6 @@ export const DarkModeToggle = () => {
           ),
         }}
       />
-    </Fragment>
+    </div>
   );
 };

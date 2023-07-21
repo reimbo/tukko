@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import { useMap } from 'react-leaflet'
 import "./css/FeedbackForm.css";
 import Collapsible from "react-collapsible";
 import feedback from "../../assets/darkButtonIcons/feedback.svg";
@@ -16,6 +17,7 @@ export const FeedbackForm = () => {
   const [inputs, setInputs] = useState<Inputs>(initialInputs);
   const [error, setError] = useState<string | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const map = useMap()
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -78,7 +80,10 @@ export const FeedbackForm = () => {
           />
         }
       >
-        <div className="collapsibleContent">
+        <div 
+          className="collapsibleContent"         
+          onMouseEnter={() => map.dragging.disable() && map.scrollWheelZoom.disable()}
+          onMouseLeave={() => map.dragging.enable() && map.scrollWheelZoom.enable()}>
           <p className="FeedbackTitle">{t("giveFeedback")}</p>
           <form onSubmit={handleSubmit}>
             <label
