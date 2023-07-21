@@ -10,10 +10,11 @@ i18n
 .use(initReactI18next)
 .init({
     fallbackLng: {
-    'fi-FI': ['fi'],
-    default: ['en']
+      'fi-FI': ['fi'],
+      default: ['en']
     },
     debug: false,
+    ns: [],
     defaultNS: false,
     keySeparator: false
   })
