@@ -31,7 +31,11 @@ export default function Root(): JSX.Element {
   window.addEventListener("touchstart", (e) => {
     if (!mapRef.current) return
     const pane: HTMLDivElement | null = document.querySelector('.leaflet-tooltip-pane')
-    if (pane && pane.contains((e.target as HTMLElement))) mapRef.current.dragging.disable()
+    const feedback: HTMLDivElement | null = document.querySelector('.Collapsible')
+    const toggle: HTMLElement | null = document.getElementById('toggleContainer')
+    for (const div of [pane, feedback, toggle]) {
+        if (div && div.contains(e.target as HTMLElement)) mapRef.current.dragging.disable()
+    }
   })
 
   window.addEventListener("touchend", () => {
