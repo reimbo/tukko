@@ -4,5 +4,12 @@
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA1": "Average speed",
   "KESKINOPEUS_60MIN_KIINTEA_SUUNTA2": "Average speed",
   "OHITUKSET_60MIN_KIINTEA_SUUNTA1_MS1": "Vehicle count relative to capacity",
-  "OHITUKSET_60MIN_KIINTEA_SUUNTA2_MS2": "vehicle count relative to capacity"
+  "OHITUKSET_60MIN_KIINTEA_SUUNTA2_MS2": "vehicle count relative to capacity",
+  "range": "Time Range:",
+  "t": "Today",
+  "y": "Yesterday",
+  "lw": "Last week",
+  "lm": "Last month",
+  "selrange": "Select time range",
+  "waiting": "Waiting for user query"
 }
