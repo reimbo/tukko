@@ -213,8 +213,14 @@ const Modal: React.FC<ModalProps> = ({ sensors, setChartData, dateList, chartDat
 
       for (const sensor of finalSensors()) {
         const selectedSensorData : SensorOption[] = sensor.data.filter((data) => selectedSensors.includes(data.label));
+        const dateOps: Intl.DateTimeFormatOptions = {
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit"
+        } 
         generatedData.push({
-          date: sensor.date,
+          date: new Date(sensor.date).toLocaleString(i18n.language === "fi" ? 'fi-FI' : 'en-US', dateOps),
           ...selectedSensorData.reduce((obj, data) => {
             obj[data.label] = data.value;
             return obj;
