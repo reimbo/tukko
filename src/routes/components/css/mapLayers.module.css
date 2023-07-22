@@ -6,12 +6,29 @@
   border-radius: 3px;
 }
 
+.placename {
+  display: block;
+  text-align: center;
+  margin: 0px 4px;
+}
+
 .content {
   margin: 0;
 }
 
 .list {
   padding: 0.4rem;
+}
+
+.list > button {
+  background-color: #020202;
+  width: 100%;
+  color: #f0f0f0;
+}
+
+.list > .warning {
+  background-color: #2f0202;
+  border: 2px red solid;
 }
 
 .list > h3 {
@@ -28,19 +45,13 @@
   visibility: hidden;
 }
 
+
 @media only screen and (max-width: 600px) {
   .wrapper{
-    width: 280px;
     display: flex;
   }
   
   .list {
-    height: 250px;
     overflow: auto;
-    font-size: 12px
-  }
-
-  .placename {
-    font-size: 12px;
   }
 }

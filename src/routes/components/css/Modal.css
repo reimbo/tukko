@@ -1,8 +1,13 @@
+dialog {
+  color: unset;
+}
+
 .modal-data-container {
   position: fixed;
   display: grid;
   top: 0;
   left: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   z-index: 9999;
@@ -20,7 +25,8 @@
   border-radius: 3px;
   overflow: auto;
   width: 85%;
-  height: 85%;
+  min-height: 510px;
+  max-height: 85%;
 }
 
 .modal-content h2 {
@@ -90,32 +96,29 @@
 }
 
 .station-name {
-  display: flex;
+  display: block;
   position: relative;
   margin: auto;
-  padding: 1rem;
   left: 0;
-  margin-bottom: 2.5vh;
-  font-size: 1.6vw;
+  margin-bottom: 1vh;
+  font-size: 2rem;
   text-align: center;
-  width: 20vw;
-  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
+  width: 100%;
   color: black;
 }
 
 .sensor-groups {
   display: block;
-  margin: auto;
-  font-size: 1vw;
+  font-size: 1rem;
   color: black;
 }
 
 .sensor-groups h3 {
-  display: flex;
+  display: block;
   position: relative;
-  margin: 1rem auto;
+  margin: 1rem 0;
   padding: 0;
-  width: 6vw;
+  width: 100%;
   left: 0;
   text-align: center;
 }
@@ -131,13 +134,19 @@
   box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
 }
 
+.time-range {
+  display: flex;
+  flex-direction: column;
+}
+.time-range > * {
+  width: 100%;
+}
+
 .time-range label {
   margin: 0 2px;
   padding: 7.7px;
   border-radius: 5px;
-  background-color: darkslateblue;
   text-align: center;
-  box-shadow: 0 0 10px rgba(214, 143, 43, 0.613);
 }
 
 #time-range-select {
@@ -161,12 +170,7 @@
 
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
-  .modal-data-container {
-    width: 69vw;
-    height: 90vh;
-    max-height: 100%;
-  }
-  .modal-content {
+  .modal .modal-content {
     width: 68vw;
     height: 70vh;
   }
@@ -190,18 +194,14 @@
     margin: 0;
   }
   .station-name {
-    font-size: .7rem;
-    width: 43.33%;
+    font-size: 1.2rem;
     margin-top: 1rem;
   }
   .sensor-groups {
-    font-size: 2vw;
-    width: 70vw;
-    max-width: 75vw;
-    margin: auto;
+    font-size: 0.6rem;
   }
   .sensor-groups h3 {
-    width: 97%;
+    width: 100%;
   }
   .graph-container {
     width: 100%;
@@ -210,12 +210,23 @@
   }
 }
 /* Mobile Responsive */
-@media screen and (min-width: 768px) and (max-width: 1024px){
-  .modal-data-container {
-    width: 69vw;
-    height: 90vh;
-    max-height: 100%;
+@media screen and (max-width: 950px) {
+  .time-range {
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
   }
+  .time-range > * {
+    width: 50%;
+  }
+
+  .recharts-default-legend {
+    font-size: 0.8rem
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
   .modal-content {
     width: 78vw;
     height: 70vh;
@@ -241,15 +252,12 @@
   }
   .station-name {
     font-size: 1.2rem;
-    width: 33.33%;
   }
   .sensor-groups {
     font-size: 1.1rem;
-    width: 65vw;
-    max-width: 70vw;
   }
   .sensor-groups h3 {
-    width: 97%;
+    width: 100%;
   }
   .graph-container {
     width: 100%;

@@ -5,6 +5,7 @@ import { fetchStation } from '../scripts/dataFetch';
 import { StationContext, Context } from '../../context/StationContext';
 import Close from './Close';
 import { useTranslation } from 'react-i18next';
+import { Station as S } from '../../interfaces/Interfaces';
 
 interface Sensor {
   id?: number;
@@ -55,7 +56,7 @@ const generateRandomId = (): string => {
 };
 
 const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
-  const { updateStation } = useContext(StationContext) as Context
+  const { updateStation, marker, updateError } = useContext(StationContext) as Context
   const [stations, setStations] = useState<Station[]>([]);
   const [sensors, setSensors] = useState<StationData[]>([]);
   const [chartData, setChartData] = useState<StationData[] | null>(null);
@@ -72,7 +73,13 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
           const stationData = fetchedData.flatMap((data) => data.stations);
           setStationName(stationData[0].name);
           setStations(stationData);
+          if (marker) {
+            marker.closePopup()
+            marker.closeTooltip()
+          }
         } else {
+          updateStation(null)
+          updateError(true)
           console.error('Empty or undefined data received from the API.');
         }
       } catch (error) {
@@ -124,12 +131,13 @@ const ModalData: React.FC<{ targetID: string }> = ({ targetID }) =>{
   }, [dateList, separatedData]);
 
   return (
-    <Modal onClose={() => updateStation('0')} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
+    <Modal onClose={() => updateStation(null)} stationName= {stationName} sensors={sensors} dateList={dateList} setChartData={setChartData} chartData={chartData} />
   );
 };
 
-const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateList, chartData }) => {
-  const { t } = useTranslation(['modal'])
+const Modal: React.FC<ModalProps> = ({ sensors, setChartData, dateList, chartData }) => {
+  const { station } = useContext(StationContext) as Context
+  const { t, i18n } = useTranslation(['modal'])
   const [timeRange, setTimeRange] = useState<string>('');
   const [selectedSensors, setSelectedSensors] = useState<string[]>([]); // Changed to string type for random ID
   
@@ -211,8 +219,14 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
 
       for (const sensor of finalSensors()) {
         const selectedSensorData : SensorOption[] = sensor.data.filter((data) => selectedSensors.includes(data.label));
+        const dateOps: Intl.DateTimeFormatOptions = {
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit"
+        } 
         generatedData.push({
-          date: sensor.date,
+          date: new Date(sensor.date).toLocaleString(i18n.language === "fi" ? 'fi-FI' : 'en-US', dateOps),
           ...selectedSensorData.reduce((obj, data) => {
             obj[data.label] = data.value;
             return obj;
@@ -233,36 +247,8 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
     return null; // Return null or a fallback component when sensors is empty or undefined
   }
   
-  const sortSensorNames = (a : string, b : string) => {
-    const prefixOrder = ['OHITUKSET', 'KESKINOPEUS'];
-    const [prefixA, suffixA] = a.split('_');
-    const [prefixB, suffixB] = b.split('_');
-  
-    if (prefixA !== prefixB) {
-      return prefixOrder.indexOf(prefixA) - prefixOrder.indexOf(prefixB);
-    } else if (suffixA && suffixB) {
-      return suffixA.localeCompare(suffixB);
-    } else {
-      return a.localeCompare(b);
-    }
-  };
-  
   const modalSensorList = (): JSX.Element[] => {
-    const sensorGroups : Record<string, SensorOption[]> = {};
   
-    // Group sensors based on their categories
-    for (const sensor of sensors[0].data) {
-      const groupName = sensor.label.split('_')[0]; // Extract the prefix from the sensor label
-      if (!sensorGroups[groupName]) {
-        sensorGroups[groupName] = [];
-      }
-      sensorGroups[groupName].push(sensor);
-    }
-  
-    // Sort the sensors within each group
-    for (const groupName in sensorGroups) {
-      sensorGroups[groupName].sort((a, b) => sortSensorNames(a.label, b.label));
-    }
     const handleLabelClick = (label: string) => {
       setSelectedSensors((prevSelectedSensors) => {
         if (prevSelectedSensors.includes(label)) {
@@ -275,12 +261,23 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
       });
     };
     
+    const sensorGroups: SensorOption[][] = [[],[]]
+
+    for (const sensor of sensors[0].data) {
+      sensor.label.slice(-1) === "1" 
+        ? sensorGroups[0].push(sensor)
+        : sensorGroups[1].push(sensor)
+    }
+
     // Generate the JSX for grouped sensors
     const sensorList : JSX.Element[] = [];
     for (const groupName in sensorGroups) {
       sensorList.push(
         <div className='sensor-groups' key={groupName}>
-          <h3>{groupName}</h3>
+          <h3>
+            {i18n.language === "en" ? "Direction: " : "Suunta: "}
+            {station ? station[(`direction${parseInt(groupName)+1}Municipality` as keyof S)]?.toString() : null}
+          </h3>
           {sensorGroups[groupName].map((sensor: SensorOption, index: number) => (
             <div key={index}>
               <input
@@ -327,19 +324,18 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
     <dialog className="modal-data-container">
       <div className="modal-content">
       <Close parent='dashboard'/>
-        <h2>Traffic Visualizer Dashboard</h2>
-        <div className='time-range'>
-          <label htmlFor="time-range-select">Time Range:</label>
-          <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
-            <option value="">Select Time Range</option>
-            <option value="today">Today</option>
-            <option value="yesterday">Yesterday</option>
-            <option value="last-week">Last Week</option>
-            <option value="last-month">Last Month</option>
-          </select>
-        </div>
-        <h3 className='station-name'>{stationName}</h3>
+        <h3 className='station-name'>{station ? station.names[i18n.language as keyof S["names"]]?.toString() : null}</h3>
         <div className='modal-sensor-list'>
+          <div className='time-range'>
+            <label htmlFor="time-range-select">{t("range")}</label>
+            <select id="time-range-select" value={timeRange} onChange={handleTimeRangeChange}>
+              <option value="">{t("selrange")}</option>
+              <option value="today">{t("t")}</option>
+              <option value="yesterday">{t("y")}</option>
+              <option value="last-week">{t("lw")}</option>
+              <option value="last-month">{t("lm")}</option>
+            </select>
+          </div>
           {modalSensorList()}
         </div>
         
@@ -365,7 +361,7 @@ const Modal: React.FC<ModalProps> = ({ stationName, sensors, setChartData, dateL
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <p>Waiting for User query</p>
+          <p>{t("waiting")}</p>
         )}
       </div>
       </div>

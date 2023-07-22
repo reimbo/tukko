@@ -154,14 +154,14 @@ export default function StationTooltip({
                   {new Date(roadwork.startTime).toLocaleDateString('fi-FI')} - {new Date(roadwork.endTime).toLocaleDateString('fi-FI')}
                 </p>
                 <h4 style={{marginBottom:0}}>{t("worktypes",{ns:"roadworks"})}:</h4>
-                {roadwork.workTypes.map((workType) => (
-                  <li>
+                {roadwork.workTypes.map((workType, index) => (
+                  <li key={index}>
                     {(i18n.language === "fi") ? (workType.description !== "" ? workType.description : "Muu") : workType.type.replaceAll("_"," ").toProperCase()}
                   </li>
                 ))}
                 <h4 style={{marginBottom:0}}>{t("restrictions",{ns:"roadworks"})}</h4>
-                {roadwork.restrictions.map((restriction) => (
-                  <li>
+                {roadwork.restrictions.map((restriction, index) => (
+                  <li key={index}>
                     {(i18n.language === "fi") ? restriction.name : restriction.type.replaceAll("_"," ").toProperCase()}
                     {restriction.quantity && restriction.unit ? " (" + restriction.quantity + " " + restriction.unit+")" : null}
                   </li>
