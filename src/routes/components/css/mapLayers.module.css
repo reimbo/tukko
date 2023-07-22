@@ -22,7 +22,8 @@
 
 .list > button {
   background-color: #020202;
-  width:100%
+  width: 100%;
+  color: #f0f0f0;
 }
 
 .list > .warning {
