@@ -1,1 +1,1 @@
-window.API_URL="http://api.tukko.iotitude.broseidon.wimmalab.org"
+window.API_URL="https://api.tukko.iotitude.broseidon.wimmalab.org"
