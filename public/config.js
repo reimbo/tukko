@@ -1,1 +1,1 @@
-window.API_URL=import.meta.env.VITE_BACKEND_BASE_URL
+window.API_URL="http://api.tukko.iotitude.broseidon.wimmalab.org"
