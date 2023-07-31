@@ -9,6 +9,7 @@ i18n
 .use(LanguageDetector)
 .use(initReactI18next)
 .init({
+    supportedLngs: ['fi', 'en'],
     fallbackLng: {
       'fi-FI': ['fi'],
       default: ['en']
@@ -16,7 +17,8 @@ i18n
     debug: false,
     ns: [],
     defaultNS: false,
-    keySeparator: false
+    keySeparator: false,
+    lowerCaseLng: true
   })
 
 export default i18n
