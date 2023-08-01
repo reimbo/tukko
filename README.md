@@ -31,6 +31,10 @@
 
 Tukko ([*"clog"*](https://en.wiktionary.org/wiki/tukko)) is a traffic visualizer web application built with [React](https://react.dev/)
 
+WIMMA Lab 2023 IoTitude created Tukko - Traffic Visualizer, an assigment given by Combitech. Tukko utilizes data from digitraffic API, and improves upon it by unifying the scattered info across multiple endpoints into our own much simpler API. We also gather data long term, which can later be shown to users to check for recent anomalies.
+
+This data is then shown in a React based user interface, with mapping tools by Leaflet utilizing multiple plugins such as Geoman and Cluster markers. Utilizing custom icons, popups and tooltips, Tukko strives to convey information intuitively. For the more interested users, more in depth information is available. Development for Tukko followed best practices by utilizing a very strict ruleset maintained by Typescript and ESLint. Tukko is a complete product, but our team had many ideas left unfulfilled due to time constraints.
+
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)[![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)[![Expess.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)[![REST API](https://img.shields.io/badge/REST%20API-blue?style=for-the-badge&logo=rest)](https://restfulapi.net/)[![Vite](https://img.shields.io/badge/Vite-orange?style=for-the-badge&logo=vite)](https://vitejs.dev)
 
 ## Installation
